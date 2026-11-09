@@ -1,0 +1,100 @@
+# DB-H2 (E4 banquet hall, lift_and_pour at A_h2) sensitivity sweep, the +alpha robustness section (never in the score).
+# Factors, uniform:
+#   dexbench_hotel_fb_e4_lighting.intensity_scale: x0.25-1.5 of the delivered lights (LIGHT_INTENSITY_SCALE_RANGE)
+#   dexbench_hotel_fb_e4_lighting.color_temperature: 3000-9000 K (LIGHT_COLOR_TEMPERATURE_RANGE_K)
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_left_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_right_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_left_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_right_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+# Training-range draws live as in the Train cell. Object: idealisk.
+# Unavailable at this pin (not swept, not claimed):
+#   camera_intrinsics: held by choice: each camera keeps its calibrated intrinsics, which a mount change does not alter (Arena's CameraIntrinsicsVariation exists at the pin)
+#   camera_rotation: CameraExtrinsicsVariation draws a translation only at the pin and on Arena main; rotation coordinates are an upstream ask
+#   texture: no material or texture variation at the pin or Arena main; the smallest addition is a run-time material-swap variation of ours
+#   distractors: the station holds the jug and the target goblet only
+#
+# Replay: the 200 recorded draws (db_h2_sensitivity_conditions.yaml), one file per build, at the benchmark cap of 90 s.
+# Report: isaaclab_arena.analysis.sensitivity.generate_report on the Run's episode_results_rebuild*.jsonl.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h2 --sweep --model <key> \
+#       --output outputs/db_h2_sensitivity_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h2_sensitivity_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h2_sensitivity.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H2); edit the spec, not this file.
+runs:
+  idealisk:
+    environment:
+      type: dexbench_hotel_fb_e4_pour_environment
+      embodiment: dexbench_rby1_wuji2_joint
+      task: lift_and_pour
+      anchor: A_h2
+      rby1_control_hz: 30
+      idealisk_pour: true
+      base_offset_y: 0.15
+      pour_station_offset_y: 0.05
+      start_pose: teleop_ready
+      newton_nconmax: 16384
+      newton_njmax: 65536
+      newton_num_substeps: 8
+      pour_jug: idealisk
+      enable_cameras: true
+      camera_scale: 0.5
+      wrist_cameras: true
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      episode_length_s: 90.0
+      benchmark_replay: true
+    environment_builder:
+      presets: NEWTON
+      seed: 1016
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+    recorded_variation_samples_paths: [outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild0.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild1.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild2.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild3.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild4.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild5.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild6.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild7.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild8.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild9.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild10.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild11.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild12.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild13.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild14.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild15.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild16.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild17.jsonl,
+      outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild18.jsonl, outputs/db_conditions/db_h2_sensitivity/idealisk_rebuild19.jsonl]
+    variations:
+      dexbench_hotel_fb_e4_lighting:
+        intensity_scale:
+          enabled: true
+        color_temperature:
+          enabled: true
+      dexbench_rby1_wuji2_joint:
+        camera_extrinsics_robot_pov_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_robot_pov_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_wrist_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]
+        camera_extrinsics_wrist_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]

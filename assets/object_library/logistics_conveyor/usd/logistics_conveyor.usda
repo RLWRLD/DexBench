@@ -1,0 +1,2497 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/LogisticsConveyor"
+                        string variantSetName = "Newton"
+                    }
+                    dictionary PhysX = {
+                        string activateOption = "Enabled"
+                        string prim = "/LogisticsConveyor"
+                        string variantSetName = "PhysX"
+                    }
+                }
+            }
+            string source_delivery = "deliveries/psl/e2_logistics/261014"
+            string source_generated = "261014"
+            string version = "2.0.0"
+        }
+        string asset_name = "logistics_conveyor"
+        string asset_type = "fixture"
+        dictionary logistics_conveyor = {
+            string builder = "tools/usd/conveyor_build.py"
+            string builder_version = "fix-e2/1"
+            string control_api = "dexbench.conveyor_control/2"
+            string geom_sha256 = "a76b61f90b30858306361f7701c131d3b19ba97779cd49e0a8834f99cbc69fe3"
+            string isaac = "6.0.0-rc.59 · isaacsim.asset.gen.conveyor 1.2.2(IsaacConveyor · 필요) · isaacsim.core.nodes(OnPhysicsStep) · omni.graph.nodes_core · omni.graph.action_nodes"
+            string looks_rule = "cv-m05/3"
+            string looks_sha256 = "5fda90a20a8d272f5d18fa31c7d9f2ec65696b00a20d51164c44cad4473f27ae"
+            string milestone = "REV-M02"
+            string physics_sha256 = "84891504ac08d0a007c1efb2bfa8c1d0590291f79cebe89c580ee73d77e75d42"
+            string plan = "docs/plan_conveyor_e2_e3_revision.md"
+            string spec_sha256 = "dca7fa862a439de19a7b573ae70d7f06b1b0a3de2e621631d25627dcef4774d7"
+            string texture_sha256 = "223253286d97da8c565608d04893b5b1fac8f2fe55abc069e5942603d5943b30"
+        }
+        string source_file = "deliveries/psl/e2_logistics/261014"
+        string usd_date_generated = "2026-10-14"
+    }
+    defaultPrim = "LogisticsConveyor"
+    doc = "컨베이어 공용 모듈(CV-M02 · 제어 API 2 = REV-M02) — tools/usd/conveyor_build.py 생성물. 직접 고치지 말 것."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "LogisticsConveyor" (
+    doc = "DexBench E2·E3 공용 컨베이어 (CV-M02). 좌표계 EQ(D-01): 원점 = 바닥·HB2 프레임 투입단 끝면·폭 중심, +X 반송, +Y 전면(로봇·제어함 쪽), Z-up, m. 형상 = ./_build/logistics_conveyor_geom.usdc(reference). 제어 = /LogisticsConveyor/Control 의 입력 3 개 conveyor:control:{run, hb2_speed_mps, fb1_speed_mps}(API 2 · Isaac + 확장 isaacsim.asset.gen.conveyor 필요 — 꺼져 있으면 벨트가 오류 없이 안 돈다). 물성은 configs/logistics_conveyor/physics.json 의 시뮬레이션 초기값(실측 아님)."
+    kind = "component"
+    prepend references = @./geometry/logistics_conveyor_geom.usdc@</LogisticsConveyor>
+    variants = {
+        string Newton = "Disabled"
+        string PhysX = "Disabled"
+    }
+    append variantSets = ["Newton", "PhysX"]
+)
+{
+    def Scope "PhysicsMaterials"
+    {
+        def Material "PM_belt" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+            doc = "physics.json materials.belt — 시뮬레이션 초기값(실측 아님)"
+        )
+        {
+            float physics:dynamicFriction = 0.7
+            float physics:restitution = 0
+            float physics:staticFriction = 0.8
+        }
+
+        def Material "PM_plate" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+            doc = "physics.json materials.plate — 시뮬레이션 초기값(실측 아님)"
+        )
+        {
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.45
+        }
+
+        def Material "PM_roller" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+            doc = "physics.json materials.roller — 시뮬레이션 초기값(실측 아님)"
+        )
+        {
+            float physics:dynamicFriction = 0.65
+            float physics:restitution = 0
+            float physics:staticFriction = 0.75
+        }
+
+        def Material "PM_frame" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+            doc = "physics.json materials.frame — 시뮬레이션 초기값(실측 아님)"
+        )
+        {
+            float physics:dynamicFriction = 0.45
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+        }
+    }
+
+    def Scope "Looks"
+    {
+        def Material "Belt_HB2" (
+            doc = "HB2 벨트 재질(벨트별 분리 — UV 상태 섞임 방지). UV U = 순환 호 길이(m) · scale (1/0.3, 폭/0.3) · translation.x = −∫유효속도 dt / 주기 (ControlGraph 가 적분) · 기본색·거칠기·노멀이 같은 UV 로 움직인다."
+        )
+        {
+            token outputs:surface.connect = </LogisticsConveyor/Looks/Belt_HB2/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/Looks/Belt_HB2/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/Looks/Belt_HB2/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/Looks/Belt_HB2/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+                token outputs:surface
+            }
+
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "UVAnim"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/Looks/Belt_HB2/STReader.outputs:result>
+                float2 inputs:scale = (3.3333333, 2.5)
+                float2 inputs:translation = (0, 0)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/belt_black_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/Looks/Belt_HB2/UVAnim.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/belt_black_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/Looks/Belt_HB2/UVAnim.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.6, -0.6, -1, 0)
+                asset inputs:file = @./textures/src_leather_white_normal.png@
+                float4 inputs:scale = (1.2, 1.2, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/Looks/Belt_HB2/UVAnim.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+        }
+
+        def Material "Belt_FB1" (
+            doc = "FB1 벨트 재질(벨트별 분리 — UV 상태 섞임 방지). UV U = 순환 호 길이(m) · scale (1/0.3, 폭/0.3) · translation.x = −∫유효속도 dt / 주기 (ControlGraph 가 적분) · 기본색·거칠기·노멀이 같은 UV 로 움직인다."
+        )
+        {
+            token outputs:surface.connect = </LogisticsConveyor/Looks/Belt_FB1/PreviewSurface.outputs:surface>
+
+            def Shader "PreviewSurface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/Looks/Belt_FB1/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/Looks/Belt_FB1/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/Looks/Belt_FB1/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+                token outputs:surface
+            }
+
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "UVAnim"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/Looks/Belt_FB1/STReader.outputs:result>
+                float2 inputs:scale = (3.3333333, 2.5)
+                float2 inputs:translation = (0, 0)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/belt_black_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/Looks/Belt_FB1/UVAnim.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/belt_black_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/Looks/Belt_FB1/UVAnim.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.6, -0.6, -1, 0)
+                asset inputs:file = @./textures/src_leather_white_normal.png@
+                float4 inputs:scale = (1.2, 1.2, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/Looks/Belt_FB1/UVAnim.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+        }
+    }
+
+    over "Belts"
+    {
+        over "HB2_EdgeCover_B"
+        {
+            over "HB2_EdgeCover_B" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "HB2_EdgeCover_F"
+        {
+            over "HB2_EdgeCover_F" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "HB2_Belt"
+        {
+            def Xform "TransportBody" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                doc = "HB2 반송 강체(키네마틱). 충돌 = 상면 평탄 구간 박스(드럼 축 74.5~1954.5 mm · 상면 812 mm). 표면 속도는 Control/ControlGraph 의 IsaacConveyor 노드가 쓴다(+X 바디 로컬 · Stop/열기 때 ResetGraph 가 0). 직접 쓰지 말 것."
+            )
+            {
+                bool physics:kinematicEnabled = 1
+
+                def Cube "TopRun" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_belt> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token purpose = "guide"
+                    double size = 1
+                    float3 xformOp:scale = (1.88, 0.75, 0.02)
+                    double3 xformOp:translate = (1.0144999795593321, 0, 0.802)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+                }
+            }
+
+            over "HB2_Belt" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </LogisticsConveyor/Looks/Belt_HB2>
+            }
+        }
+
+        over "FB1_Belt"
+        {
+            def Xform "TransportBody" (
+                prepend apiSchemas = ["PhysicsRigidBodyAPI"]
+                doc = "FB1 반송 강체(키네마틱). 충돌 = 상면 평탄 구간 박스(드럼 축 2316.5~3192.5 mm · 상면 800 mm). 표면 속도는 Control/ControlGraph 의 IsaacConveyor 노드가 쓴다(+X 바디 로컬 · Stop/열기 때 ResetGraph 가 0). 직접 쓰지 말 것."
+            )
+            {
+                bool physics:kinematicEnabled = 1
+
+                def Cube "TopRun" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_belt> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token purpose = "guide"
+                    double size = 1
+                    float3 xformOp:scale = (0.87600017, 0.75, 0.02)
+                    double3 xformOp:translate = (2.7545000314712524, 0, 0.79)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+                }
+            }
+
+            over "FB1_Belt" (
+                prepend apiSchemas = ["MaterialBindingAPI"]
+            )
+            {
+                rel material:binding = </LogisticsConveyor/Looks/Belt_FB1>
+            }
+        }
+    }
+
+    over "Braces"
+    {
+        over "Brace_FB1In"
+        {
+            over "Brace_FB1In" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Brace_FB1Out"
+        {
+            over "Brace_FB1Out" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Brace_HB2In"
+        {
+            over "Brace_HB2In" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Brace_HB2Out"
+        {
+            over "Brace_HB2Out" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+    }
+
+    over "ControlBox"
+    {
+        over "ControlBox"
+        {
+            over "ControlBox" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "ControlBox_Handle5"
+        {
+            over "ControlBox_Handle5" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "ControlBox_Handle6"
+        {
+            over "ControlBox_Handle6" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+    }
+
+    over "Covers"
+    {
+        over "FB1_FrontDriveBox"
+        {
+            over "FB1_FrontDriveBox" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "MotorCover_FB1"
+        {
+            over "MotorCover_FB1" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "MotorCover_HB2"
+        {
+            over "MotorCover_HB2" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+    }
+
+    over "Feet"
+    {
+        over "Foot_FB1InB"
+        {
+            over "Foot_FB1InB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_FB1InF"
+        {
+            over "Foot_FB1InF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_FB1OutB"
+        {
+            over "Foot_FB1OutB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_FB1OutF"
+        {
+            over "Foot_FB1OutF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_HB2InB"
+        {
+            over "Foot_HB2InB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_HB2InF"
+        {
+            over "Foot_HB2InF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_HB2OutB"
+        {
+            over "Foot_HB2OutB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Foot_HB2OutF"
+        {
+            over "Foot_HB2OutF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+    }
+
+    over "Frame"
+    {
+        over "FB1_FrameB"
+        {
+            over "FB1_FrameB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "FB1_FrameF"
+        {
+            over "FB1_FrameF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "HB2_FrameB"
+        {
+            over "HB2_FrameB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "HB2_FrameF"
+        {
+            over "HB2_FrameF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+    }
+
+    over "Legs"
+    {
+        over "Leg_FB1InB"
+        {
+            over "Leg_FB1InB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_FB1InF"
+        {
+            over "Leg_FB1InF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_FB1OutB"
+        {
+            over "Leg_FB1OutB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_FB1OutF"
+        {
+            over "Leg_FB1OutF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_HB2InB"
+        {
+            over "Leg_HB2InB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_HB2InF"
+        {
+            over "Leg_HB2InF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_HB2OutB"
+        {
+            over "Leg_HB2OutB" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "Leg_HB2OutF"
+        {
+            over "Leg_HB2OutF" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+    }
+
+    over "Plate"
+    {
+        over "PlateSupport_0B"
+        {
+            over "PlateSupport_0B" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "PlateSupport_0F"
+        {
+            over "PlateSupport_0F" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "PlateSupport_1B"
+        {
+            over "PlateSupport_1B" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "PlateSupport_1F"
+        {
+            over "PlateSupport_1F" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "PlateSupport_2B"
+        {
+            over "PlateSupport_2B" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "PlateSupport_2F"
+        {
+            over "PlateSupport_2F" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_frame> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token physics:approximation = "convexHull"
+            }
+        }
+
+        over "WorkPlate"
+        {
+            def Xform "CollisionPieces" (
+                doc = "작업판 충돌 = 상면 다각형(polyfill 삼각형)을 볼록 다각형으로 합친 뒤 두께 압출. V·롤러 쪽 절개를 덮지 않는다(검증: verify 의 plate_collision.*_open)."
+            )
+            {
+                def Mesh "Piece_00" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(2.0045, 0.28, 0.811), (2.8325, 0.45, 0.821)]
+                    int[] faceVertexCounts = [16, 16, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 0, 1, 17, 16, 1, 2, 18, 17, 2, 3, 19, 18, 3, 4, 20, 19, 4, 5, 21, 20, 5, 6, 22, 21, 6, 7, 23, 22, 7, 8, 24, 23, 8, 9, 25, 24, 9, 10, 26, 25, 10, 11, 27, 26, 11, 12, 28, 27, 12, 13, 29, 28, 13, 14, 30, 29, 14, 15, 31, 30, 15, 0, 16, 31]
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_plate> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "convexHull"
+                    point3f[] points = [(2.8325, 0.28, 0.811), (2.8325, 0.435, 0.811), (2.8319888, 0.4388823, 0.811), (2.8304904, 0.4425, 0.811), (2.8281066, 0.4456066, 0.811), (2.825, 0.4479904, 0.811), (2.8213823, 0.44948888, 0.811), (2.8175, 0.45, 0.811), (2.0195, 0.45, 0.811), (2.0156176, 0.44948888, 0.811), (2.012, 0.4479904, 0.811), (2.0088935, 0.4456066, 0.811), (2.0065095, 0.4425, 0.811), (2.005011, 0.4388823, 0.811), (2.0045, 0.435, 0.811), (2.1245, 0.4, 0.811), (2.8325, 0.28, 0.821), (2.8325, 0.435, 0.821), (2.8319888, 0.4388823, 0.821), (2.8304904, 0.4425, 0.821), (2.8281066, 0.4456066, 0.821), (2.825, 0.4479904, 0.821), (2.8213823, 0.44948888, 0.821), (2.8175, 0.45, 0.821), (2.0195, 0.45, 0.821), (2.0156176, 0.44948888, 0.821), (2.012, 0.4479904, 0.821), (2.0088935, 0.4456066, 0.821), (2.0065095, 0.4425, 0.821), (2.005011, 0.4388823, 0.821), (2.0045, 0.435, 0.821), (2.1245, 0.4, 0.821)]
+                    uniform token purpose = "guide"
+                }
+
+                def Mesh "Piece_01" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(2.0045, 0.4, 0.811), (2.1245, 0.435, 0.821)]
+                    int[] faceVertexCounts = [3, 3, 4, 4, 4]
+                    int[] faceVertexIndices = [2, 1, 0, 3, 4, 5, 0, 1, 4, 3, 1, 2, 5, 4, 2, 0, 3, 5]
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_plate> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "convexHull"
+                    point3f[] points = [(2.1245, 0.4, 0.811), (2.0045, 0.435, 0.811), (2.0045, 0.4, 0.811), (2.1245, 0.4, 0.821), (2.0045, 0.435, 0.821), (2.0045, 0.4, 0.821)]
+                    uniform token purpose = "guide"
+                }
+
+                def Mesh "Piece_02" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(2.1245, 0.136, 0.811), (2.8325, 0.4, 0.821)]
+                    int[] faceVertexCounts = [3, 3, 4, 4, 4]
+                    int[] faceVertexIndices = [2, 1, 0, 3, 4, 5, 0, 1, 4, 3, 1, 2, 5, 4, 2, 0, 3, 5]
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_plate> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "convexHull"
+                    point3f[] points = [(2.8325, 0.28, 0.811), (2.1245, 0.4, 0.811), (2.5525, 0.136, 0.811), (2.8325, 0.28, 0.821), (2.1245, 0.4, 0.821), (2.5525, 0.136, 0.821)]
+                    uniform token purpose = "guide"
+                }
+
+                def Mesh "Piece_03" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(2.1245, -0.435, 0.811), (2.8325, 0.4, 0.821)]
+                    int[] faceVertexCounts = [5, 5, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [4, 3, 2, 1, 0, 5, 6, 7, 8, 9, 0, 1, 6, 5, 1, 2, 7, 6, 2, 3, 8, 7, 3, 4, 9, 8, 4, 0, 5, 9]
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_plate> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "convexHull"
+                    point3f[] points = [(2.8325, -0.33, 0.811), (2.5525, 0.136, 0.811), (2.1245, 0.4, 0.811), (2.1245, -0.4, 0.811), (2.8325, -0.435, 0.811), (2.8325, -0.33, 0.821), (2.5525, 0.136, 0.821), (2.1245, 0.4, 0.821), (2.1245, -0.4, 0.821), (2.8325, -0.435, 0.821)]
+                    uniform token purpose = "guide"
+                }
+
+                def Mesh "Piece_04" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "MaterialBindingAPI"]
+                )
+                {
+                    float3[] extent = [(2.0045, -0.45, 0.811), (2.8325, -0.4, 0.821)]
+                    int[] faceVertexCounts = [16, 16, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+                    int[] faceVertexIndices = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 0, 1, 17, 16, 1, 2, 18, 17, 2, 3, 19, 18, 3, 4, 20, 19, 4, 5, 21, 20, 5, 6, 22, 21, 6, 7, 23, 22, 7, 8, 24, 23, 8, 9, 25, 24, 9, 10, 26, 25, 10, 11, 27, 26, 11, 12, 28, 27, 12, 13, 29, 28, 13, 14, 30, 29, 14, 15, 31, 30, 15, 0, 16, 31]
+                    rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_plate> (
+                        bindMaterialAs = "weakerThanDescendants"
+                    )
+                    uniform token physics:approximation = "convexHull"
+                    point3f[] points = [(2.8175, -0.45, 0.811), (2.8213823, -0.44948888, 0.811), (2.825, -0.4479904, 0.811), (2.8281066, -0.4456066, 0.811), (2.8304904, -0.4425, 0.811), (2.8319888, -0.4388823, 0.811), (2.8325, -0.435, 0.811), (2.1245, -0.4, 0.811), (2.0045, -0.4, 0.811), (2.0045, -0.435, 0.811), (2.005011, -0.4388823, 0.811), (2.0065095, -0.4425, 0.811), (2.0088935, -0.4456066, 0.811), (2.012, -0.4479904, 0.811), (2.0156176, -0.44948888, 0.811), (2.0195, -0.45, 0.811), (2.8175, -0.45, 0.821), (2.8213823, -0.44948888, 0.821), (2.825, -0.4479904, 0.821), (2.8281066, -0.4456066, 0.821), (2.8304904, -0.4425, 0.821), (2.8319888, -0.4388823, 0.821), (2.8325, -0.435, 0.821), (2.1245, -0.4, 0.821), (2.0045, -0.4, 0.821), (2.0045, -0.435, 0.821), (2.005011, -0.4388823, 0.821), (2.0065095, -0.4425, 0.821), (2.0088935, -0.4456066, 0.821), (2.012, -0.4479904, 0.821), (2.0156176, -0.44948888, 0.821), (2.0195, -0.45, 0.821)]
+                    uniform token purpose = "guide"
+                }
+            }
+        }
+    }
+
+    over "Rollers"
+    {
+        def Xform "RollerMount" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+            doc = "롤러 축 고정점(키네마틱 · 충돌 없음 · 장비 원점). 관절 body0. 인스턴스 변환을 따라간다."
+        )
+        {
+            float3 physics:diagonalInertia = (0.01, 0.01, 0.01)
+            bool physics:kinematicEnabled = 1
+            float physics:mass = 1
+        }
+
+        over "Roller1" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            float physics:mass = 1.4
+
+            def Capsule "Collision" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Y"
+                float3[] extent = [(-0.025, -0.385, -0.025), (0.025, 0.385, 0.025)]
+                double height = 0.72
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_roller> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double radius = 0.025
+            }
+        }
+
+        def PhysicsRevoluteJoint "Joint_Roller1" (
+            doc = "무동력 자유 회전(축 = 로컬 Y · 한계·구동 없음). 축 위치 고정."
+        )
+        {
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </LogisticsConveyor/Rollers/RollerMount>
+            rel physics:body1 = </LogisticsConveyor/Rollers/Roller1>
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (2.0395, 0, 0.791)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+
+        over "Roller2" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI"]
+        )
+        {
+            float physics:mass = 1.4
+
+            def Capsule "Collision" (
+                prepend apiSchemas = ["PhysicsCollisionAPI", "MaterialBindingAPI"]
+            )
+            {
+                uniform token axis = "Y"
+                float3[] extent = [(-0.025, -0.385, -0.025), (0.025, 0.385, 0.025)]
+                double height = 0.72
+                rel material:binding:physics = </LogisticsConveyor/PhysicsMaterials/PM_roller> (
+                    bindMaterialAs = "weakerThanDescendants"
+                )
+                uniform token purpose = "guide"
+                double radius = 0.025
+            }
+        }
+
+        def PhysicsRevoluteJoint "Joint_Roller2" (
+            doc = "무동력 자유 회전(축 = 로컬 Y · 한계·구동 없음). 축 위치 고정."
+        )
+        {
+            uniform token physics:axis = "Y"
+            rel physics:body0 = </LogisticsConveyor/Rollers/RollerMount>
+            rel physics:body1 = </LogisticsConveyor/Rollers/Roller2>
+            bool physics:collisionEnabled = 0
+            point3f physics:localPos0 = (2.0995002, 0, 0.79600006)
+            point3f physics:localPos1 = (0, 0, 0)
+            quatf physics:localRot0 = (1, 0, 0, 0)
+            quatf physics:localRot1 = (1, 0, 0, 0)
+        }
+    }
+
+    over "_materials"
+    {
+        over "ButtonGreen" (
+            doc = "외관 button_green(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/ButtonGreen/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/button_green_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ButtonGreen/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/button_green_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ButtonGreen/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.1, -0.1, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (0.2, 0.2, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ButtonGreen/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/ButtonGreen/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/ButtonGreen/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/ButtonGreen/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "ButtonRed" (
+            doc = "외관 button_red(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/ButtonRed/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/button_red_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ButtonRed/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/button_red_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ButtonRed/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.1, -0.1, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (0.2, 0.2, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ButtonRed/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/ButtonRed/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/ButtonRed/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/ButtonRed/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "CasterRed" (
+            doc = "외관 caster_red(looks.json · 타일 0.300 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/CasterRed/STReader.outputs:result>
+                float2 inputs:scale = (3.3333333, 3.3333333)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/caster_red_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/CasterRed/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/caster_red_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/CasterRed/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.25, -0.25, -1, 0)
+                asset inputs:file = @./textures/src_leather_white_normal.png@
+                float4 inputs:scale = (0.5, 0.5, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/CasterRed/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/CasterRed/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/CasterRed/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/CasterRed/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "ControlGray" (
+            doc = "외관 control_gray(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/ControlGray/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/control_gray_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ControlGray/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/control_gray_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ControlGray/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.7, -0.7, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (1.4, 1.4, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/ControlGray/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/ControlGray/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/ControlGray/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/ControlGray/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "FrameBlue" (
+            doc = "외관 frame_blue(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/FrameBlue/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/frame_blue_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/FrameBlue/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/frame_blue_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/FrameBlue/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.5, -0.5, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (1, 1, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/FrameBlue/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/FrameBlue/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/FrameBlue/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/FrameBlue/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "Galvanized" (
+            doc = "외관 galvanized(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/Galvanized/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/galvanized_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/Galvanized/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/galvanized_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/Galvanized/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.4, -0.4, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (0.8, 0.8, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/Galvanized/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/Galvanized/BaseTex.outputs:rgb>
+                float inputs:metallic = 1
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/Galvanized/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/Galvanized/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "HandleMetal" (
+            doc = "외관 handle_metal(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/HandleMetal/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/handle_metal_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/HandleMetal/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/handle_metal_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/HandleMetal/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.3, -0.3, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (0.6, 0.6, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/HandleMetal/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/HandleMetal/BaseTex.outputs:rgb>
+                float inputs:metallic = 1
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/HandleMetal/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/HandleMetal/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "PlateYellow" (
+            doc = "외관 plate_yellow(looks.json · 타일 2.125 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/PlateYellow/STReader.outputs:result>
+                float2 inputs:scale = (0.47058824, 0.47058824)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/plate_yellow_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/PlateYellow/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/plate_yellow_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/PlateYellow/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.4, -0.4, -1, 0)
+                asset inputs:file = @./textures/src_blue_metal_plate_normal.png@
+                float4 inputs:scale = (0.8, 0.8, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/PlateYellow/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/PlateYellow/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/PlateYellow/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/PlateYellow/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+
+        over "RubberBlack" (
+            doc = "외관 rubber_black(looks.json · 타일 0.300 m · 가공 — tools/conveyor_looks.py)"
+        )
+        {
+            def Shader "STReader"
+            {
+                uniform token info:id = "UsdPrimvarReader_float2"
+                token inputs:varname = "st"
+                float2 outputs:result
+            }
+
+            def Shader "Tile"
+            {
+                uniform token info:id = "UsdTransform2d"
+                float2 inputs:in.connect = </LogisticsConveyor/_materials/RubberBlack/STReader.outputs:result>
+                float2 inputs:scale = (3.3333333, 3.3333333)
+                float2 outputs:result
+            }
+
+            def Shader "BaseTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/rubber_black_base.png@
+                token inputs:sourceColorSpace = "sRGB"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/RubberBlack/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            def Shader "RoughTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                asset inputs:file = @./textures/rubber_black_rough.png@
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/RubberBlack/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float outputs:r
+            }
+
+            def Shader "NormalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (-0.5, -0.5, -1, 0)
+                asset inputs:file = @./textures/src_leather_white_normal.png@
+                float4 inputs:scale = (1, 1, 2, 1)
+                token inputs:sourceColorSpace = "raw"
+                float2 inputs:st.connect = </LogisticsConveyor/_materials/RubberBlack/Tile.outputs:result>
+                token inputs:wrapS = "repeat"
+                token inputs:wrapT = "repeat"
+                float3 outputs:rgb
+            }
+
+            over "Principled_BSDF"
+            {
+                color3f inputs:diffuseColor.connect = </LogisticsConveyor/_materials/RubberBlack/BaseTex.outputs:rgb>
+                float inputs:metallic = 0
+                normal3f inputs:normal.connect = </LogisticsConveyor/_materials/RubberBlack/NormalTex.outputs:rgb>
+                float inputs:roughness.connect = </LogisticsConveyor/_materials/RubberBlack/RoughTex.outputs:r>
+                int inputs:useSpecularWorkflow = 0
+            }
+        }
+    }
+
+    def Scope "Control" (
+        customData = {
+            dictionary conveyor = {
+                string control_api = "dexbench.conveyor_control/2"
+            }
+        }
+        doc = "컨베이어 제어(dexbench.conveyor_control/2 · 계획 §5 · D-73). Play 뒤 이 프림의 입력 3 개만 바꾼다: run(bool · 기본 false) · hb2_speed_mps · fb1_speed_mps(float m/s · 비음수 · 유한). 유효 속도 = run 이고 입력이 유효하면 설정 속도, 아니면 0 (개별 0 = 그 벨트 정지 · run=false = 양쪽 정지 · 음수·NaN·∞ = 그 벨트 0 + inputs_valid=false). 정지는 실제 표면 속도 0 을 쓴다. 진단 출력 hb2/fb1_effective_mps · inputs_valid 는 그래프가 물리 스텝마다 쓴다(읽기 전용). 구 API 1 의 mode · hb2_request 는 없다."
+    )
+    {
+        custom float conveyor:control:fb1_effective_mps = 0 (
+            customData = {
+                dictionary conveyor = {
+                    string direction = "out"
+                }
+            }
+            displayGroup = "Conveyor Diagnostics (read-only)"
+            doc = "진단(읽기 전용) — 물리 스텝마다 그래프가 쓰는 FB1 유효 속도."
+        )
+        custom float conveyor:control:fb1_speed_mps = 0.2 (
+            customData = {
+                dictionary conveyor = {
+                    string direction = "in"
+                }
+            }
+            displayGroup = "Conveyor Control"
+            doc = "FB1(배출) 벨트 속도 m/s · 비음수·유한. 0 = FB1 정지. 음수·NaN·∞ = 그 벨트 0 + inputs_valid=false."
+        )
+        custom float conveyor:control:hb2_effective_mps = 0 (
+            customData = {
+                dictionary conveyor = {
+                    string direction = "out"
+                }
+            }
+            displayGroup = "Conveyor Diagnostics (read-only)"
+            doc = "진단(읽기 전용) — 물리 스텝마다 그래프가 쓰는 HB2 유효 속도."
+        )
+        custom float conveyor:control:hb2_speed_mps = 0.2 (
+            customData = {
+                dictionary conveyor = {
+                    string direction = "in"
+                }
+            }
+            displayGroup = "Conveyor Control"
+            doc = "HB2(투입) 벨트 속도 m/s · 비음수·유한. 0 = HB2 정지. 음수·NaN·∞ = 그 벨트 0 + inputs_valid=false."
+        )
+        custom bool conveyor:control:inputs_valid = 1 (
+            customData = {
+                dictionary conveyor = {
+                    string direction = "out"
+                }
+            }
+            displayGroup = "Conveyor Diagnostics (read-only)"
+            doc = "진단(읽기 전용) — 두 속도 입력이 모두 비음수·유한이면 true."
+        )
+        custom bool conveyor:control:run = 0 (
+            customData = {
+                dictionary conveyor = {
+                    string direction = "in"
+                }
+            }
+            displayGroup = "Conveyor Control"
+            doc = "전체 운전. false = 설정 속도와 관계없이 두 벨트 실제 표면 속도 0(배포 기본 false)."
+        )
+
+        def OmniGraph "ControlGraph"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "StageWithoutHistory"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageOnDemand"
+
+            def OmniGraphNode "OnStep"
+            {
+                token node:type = "isaacsim.core.nodes.OnPhysicsStep"
+                int node:typeVersion = 1
+                custom double outputs:deltaSimulationTime
+                custom double outputs:deltaSystemTime
+                custom uint outputs:step (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "read_run"
+            {
+                custom token inputs:name = "conveyor:control:run"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usePath = 0
+                token node:type = "omni.graph.nodes.ReadPrimAttribute"
+                int node:typeVersion = 3
+                custom bool outputs:value
+            }
+
+            def OmniGraphNode "read_hb2_speed"
+            {
+                custom token inputs:name = "conveyor:control:hb2_speed_mps"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usePath = 0
+                token node:type = "omni.graph.nodes.ReadPrimAttribute"
+                int node:typeVersion = 3
+                custom float outputs:value
+            }
+
+            def OmniGraphNode "read_fb1_speed"
+            {
+                custom token inputs:name = "conveyor:control:fb1_speed_mps"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usePath = 0
+                token node:type = "omni.graph.nodes.ReadPrimAttribute"
+                int node:typeVersion = 3
+                custom float outputs:value
+            }
+
+            def OmniGraphNode "f_zero"
+            {
+                custom float inputs:value = 0
+                token node:type = "omni.graph.nodes.ConstantFloat"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "f_max"
+            {
+                custom float inputs:value = 3.4028235e38
+                token node:type = "omni.graph.nodes.ConstantFloat"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "hb2_speed_ge0"
+            {
+                custom float inputs:a
+                prepend float inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_hb2_speed.outputs:value>
+                custom float inputs:b
+                prepend float inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/f_zero.inputs:value>
+                custom token inputs:operation = ">="
+                token node:type = "omni.graph.nodes.Compare"
+                int node:typeVersion = 1
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "hb2_speed_finite"
+            {
+                custom float inputs:a
+                prepend float inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_hb2_speed.outputs:value>
+                custom float inputs:b
+                prepend float inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/f_max.inputs:value>
+                custom token inputs:operation = "<="
+                token node:type = "omni.graph.nodes.Compare"
+                int node:typeVersion = 1
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "hb2_speed_valid"
+            {
+                custom bool inputs:a
+                prepend bool inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/hb2_speed_ge0.outputs:result>
+                custom bool inputs:b
+                prepend bool inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/hb2_speed_finite.outputs:result>
+                token node:type = "omni.graph.nodes.BooleanAnd"
+                int node:typeVersion = 2
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "hb2_go"
+            {
+                custom bool inputs:a
+                prepend bool inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_run.outputs:value>
+                custom bool inputs:b
+                prepend bool inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/hb2_speed_valid.outputs:result>
+                token node:type = "omni.graph.nodes.BooleanAnd"
+                int node:typeVersion = 2
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "hb2_effective"
+            {
+                custom bool inputs:condition
+                prepend bool inputs:condition.connect = </LogisticsConveyor/Control/ControlGraph/hb2_go.outputs:result>
+                custom float inputs:ifFalse
+                prepend float inputs:ifFalse.connect = </LogisticsConveyor/Control/ControlGraph/f_zero.inputs:value>
+                custom float inputs:ifTrue
+                prepend float inputs:ifTrue.connect = </LogisticsConveyor/Control/ControlGraph/read_hb2_speed.outputs:value>
+                token node:type = "omni.graph.nodes.SelectIf"
+                int node:typeVersion = 1
+                custom float outputs:result
+            }
+
+            def OmniGraphNode "fb1_speed_ge0"
+            {
+                custom float inputs:a
+                prepend float inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_fb1_speed.outputs:value>
+                custom float inputs:b
+                prepend float inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/f_zero.inputs:value>
+                custom token inputs:operation = ">="
+                token node:type = "omni.graph.nodes.Compare"
+                int node:typeVersion = 1
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "fb1_speed_finite"
+            {
+                custom float inputs:a
+                prepend float inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_fb1_speed.outputs:value>
+                custom float inputs:b
+                prepend float inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/f_max.inputs:value>
+                custom token inputs:operation = "<="
+                token node:type = "omni.graph.nodes.Compare"
+                int node:typeVersion = 1
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "fb1_speed_valid"
+            {
+                custom bool inputs:a
+                prepend bool inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/fb1_speed_ge0.outputs:result>
+                custom bool inputs:b
+                prepend bool inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/fb1_speed_finite.outputs:result>
+                token node:type = "omni.graph.nodes.BooleanAnd"
+                int node:typeVersion = 2
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "fb1_go"
+            {
+                custom bool inputs:a
+                prepend bool inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_run.outputs:value>
+                custom bool inputs:b
+                prepend bool inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/fb1_speed_valid.outputs:result>
+                token node:type = "omni.graph.nodes.BooleanAnd"
+                int node:typeVersion = 2
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "fb1_effective"
+            {
+                custom bool inputs:condition
+                prepend bool inputs:condition.connect = </LogisticsConveyor/Control/ControlGraph/fb1_go.outputs:result>
+                custom float inputs:ifFalse
+                prepend float inputs:ifFalse.connect = </LogisticsConveyor/Control/ControlGraph/f_zero.inputs:value>
+                custom float inputs:ifTrue
+                prepend float inputs:ifTrue.connect = </LogisticsConveyor/Control/ControlGraph/read_fb1_speed.outputs:value>
+                token node:type = "omni.graph.nodes.SelectIf"
+                int node:typeVersion = 1
+                custom float outputs:result
+            }
+
+            def OmniGraphNode "inputs_valid"
+            {
+                custom bool inputs:a
+                prepend bool inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/hb2_speed_valid.outputs:result>
+                custom bool inputs:b
+                prepend bool inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/fb1_speed_valid.outputs:result>
+                token node:type = "omni.graph.nodes.BooleanAnd"
+                int node:typeVersion = 2
+                custom bool outputs:result
+            }
+
+            def OmniGraphNode "dt_f"
+            {
+                custom double inputs:value
+                prepend double inputs:value.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:deltaSimulationTime>
+                token node:type = "omni.graph.nodes.ToFloat"
+                int node:typeVersion = 1
+                custom float outputs:converted
+            }
+
+            def OmniGraphNode "Conveyor_HB2"
+            {
+                custom float2 inputs:animateDirection = (1, 0)
+                custom float inputs:animateScale = 1
+                custom bool inputs:animateTexture = 0
+                custom rel inputs:conveyorPrim = </LogisticsConveyor/Belts/HB2_Belt/TransportBody> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:curved = 0
+                custom float inputs:delta
+                prepend float inputs:delta.connect = </LogisticsConveyor/Control/ControlGraph/dt_f.outputs:converted>
+                custom float3 inputs:direction = (1, 0, 0)
+                custom bool inputs:enabled = 1
+                custom uint inputs:onStep (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:onStep.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom float inputs:velocity
+                prepend float inputs:velocity.connect = </LogisticsConveyor/Control/ControlGraph/hb2_effective.outputs:result>
+                token node:type = "isaacsim.asset.gen.conveyor.IsaacConveyor"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "write_hb2_effective"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom token inputs:name = "conveyor:control:hb2_effective_mps"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float inputs:value
+                prepend float inputs:value.connect = </LogisticsConveyor/Control/ControlGraph/hb2_effective.outputs:result>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "Conveyor_FB1"
+            {
+                custom float2 inputs:animateDirection = (1, 0)
+                custom float inputs:animateScale = 1
+                custom bool inputs:animateTexture = 0
+                custom rel inputs:conveyorPrim = </LogisticsConveyor/Belts/FB1_Belt/TransportBody> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:curved = 0
+                custom float inputs:delta
+                prepend float inputs:delta.connect = </LogisticsConveyor/Control/ControlGraph/dt_f.outputs:converted>
+                custom float3 inputs:direction = (1, 0, 0)
+                custom bool inputs:enabled = 1
+                custom uint inputs:onStep (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:onStep.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom float inputs:velocity
+                prepend float inputs:velocity.connect = </LogisticsConveyor/Control/ControlGraph/fb1_effective.outputs:result>
+                token node:type = "isaacsim.asset.gen.conveyor.IsaacConveyor"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "write_fb1_effective"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom token inputs:name = "conveyor:control:fb1_effective_mps"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float inputs:value
+                prepend float inputs:value.connect = </LogisticsConveyor/Control/ControlGraph/fb1_effective.outputs:result>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "write_inputs_valid"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom token inputs:name = "conveyor:control:inputs_valid"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom bool inputs:value
+                prepend bool inputs:value.connect = </LogisticsConveyor/Control/ControlGraph/inputs_valid.outputs:result>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "uv_k"
+            {
+                custom float2 inputs:value = (-3.3333333, 0)
+                token node:type = "omni.graph.nodes.ConstantFloat2"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "uv_step"
+            {
+                custom float inputs:a
+                prepend float inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/dt_f.outputs:converted>
+                custom float2 inputs:b
+                prepend float2 inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/uv_k.inputs:value>
+                token node:type = "omni.graph.nodes.Multiply"
+                int node:typeVersion = 2
+                custom float2 outputs:product
+            }
+
+            def OmniGraphNode "read_hb2_uv"
+            {
+                custom token inputs:name = "inputs:translation"
+                custom rel inputs:prim = </LogisticsConveyor/Looks/Belt_HB2/UVAnim> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usePath = 0
+                token node:type = "omni.graph.nodes.ReadPrimAttribute"
+                int node:typeVersion = 3
+                custom float2 outputs:value
+            }
+
+            def OmniGraphNode "hb2_uv_du"
+            {
+                custom float2 inputs:a
+                prepend float2 inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/uv_step.outputs:product>
+                custom float inputs:b
+                prepend float inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/hb2_effective.outputs:result>
+                token node:type = "omni.graph.nodes.Multiply"
+                int node:typeVersion = 2
+                custom float2 outputs:product
+            }
+
+            def OmniGraphNode "hb2_uv_sum"
+            {
+                custom float2 inputs:a
+                prepend float2 inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_hb2_uv.outputs:value>
+                custom float2 inputs:b
+                prepend float2 inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/hb2_uv_du.outputs:product>
+                token node:type = "omni.graph.nodes.Add"
+                int node:typeVersion = 2
+                custom float2 outputs:sum
+            }
+
+            def OmniGraphNode "write_hb2_uv"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom token inputs:name = "inputs:translation"
+                custom rel inputs:prim = </LogisticsConveyor/Looks/Belt_HB2/UVAnim> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float2 inputs:value
+                prepend float2 inputs:value.connect = </LogisticsConveyor/Control/ControlGraph/hb2_uv_sum.outputs:sum>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "read_fb1_uv"
+            {
+                custom token inputs:name = "inputs:translation"
+                custom rel inputs:prim = </LogisticsConveyor/Looks/Belt_FB1/UVAnim> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usePath = 0
+                token node:type = "omni.graph.nodes.ReadPrimAttribute"
+                int node:typeVersion = 3
+                custom float2 outputs:value
+            }
+
+            def OmniGraphNode "fb1_uv_du"
+            {
+                custom float2 inputs:a
+                prepend float2 inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/uv_step.outputs:product>
+                custom float inputs:b
+                prepend float inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/fb1_effective.outputs:result>
+                token node:type = "omni.graph.nodes.Multiply"
+                int node:typeVersion = 2
+                custom float2 outputs:product
+            }
+
+            def OmniGraphNode "fb1_uv_sum"
+            {
+                custom float2 inputs:a
+                prepend float2 inputs:a.connect = </LogisticsConveyor/Control/ControlGraph/read_fb1_uv.outputs:value>
+                custom float2 inputs:b
+                prepend float2 inputs:b.connect = </LogisticsConveyor/Control/ControlGraph/fb1_uv_du.outputs:product>
+                token node:type = "omni.graph.nodes.Add"
+                int node:typeVersion = 2
+                custom float2 outputs:sum
+            }
+
+            def OmniGraphNode "write_fb1_uv"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = </LogisticsConveyor/Control/ControlGraph/OnStep.outputs:step>
+                custom token inputs:name = "inputs:translation"
+                custom rel inputs:prim = </LogisticsConveyor/Looks/Belt_FB1/UVAnim> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float2 inputs:value
+                prepend float2 inputs:value.connect = </LogisticsConveyor/Control/ControlGraph/fb1_uv_sum.outputs:sum>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+        }
+
+        def OmniGraph "ResetGraph"
+        {
+            token evaluationMode = "Automatic"
+            token evaluator:type = "execution"
+            token fabricCacheBacking = "StageWithoutHistory"
+            int2 fileFormatVersion = (1, 9)
+            token pipelineStage = "pipelineStageSimulation"
+
+            def OmniGraphNode "OnLoaded"
+            {
+                token node:type = "omni.graph.action.OnLoaded"
+                int node:typeVersion = 2
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "OnStop"
+            {
+                custom token inputs:eventName = "Animation Stop Play"
+                custom bool inputs:onlyPlayback = 0
+                token node:type = "omni.graph.action.OnStageEvent"
+                int node:typeVersion = 4
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "b_false"
+            {
+                custom bool inputs:value = 0
+                token node:type = "omni.graph.nodes.ConstantBool"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "f_zero"
+            {
+                custom float inputs:value = 0
+                token node:type = "omni.graph.nodes.ConstantFloat"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "f2_zero"
+            {
+                custom float2 inputs:value = (0, 0)
+                token node:type = "omni.graph.nodes.ConstantFloat2"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "v3_zero"
+            {
+                custom vector3f inputs:value = (0, 0, 0)
+                token node:type = "omni.graph.nodes.ConstantVector3f"
+                int node:typeVersion = 1
+            }
+
+            def OmniGraphNode "reset_run"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "conveyor:control:run"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom bool inputs:value
+                prepend bool inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/b_false.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "reset_hb2_surface_velocity"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "physxSurfaceVelocity:surfaceVelocity"
+                custom rel inputs:prim = </LogisticsConveyor/Belts/HB2_Belt/TransportBody> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom vector3f inputs:value
+                prepend vector3f inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/v3_zero.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "reset_hb2_uv"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "inputs:translation"
+                custom rel inputs:prim = </LogisticsConveyor/Looks/Belt_HB2/UVAnim> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float2 inputs:value
+                prepend float2 inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/f2_zero.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "reset_hb2_effective"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "conveyor:control:hb2_effective_mps"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float inputs:value
+                prepend float inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/f_zero.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "reset_fb1_surface_velocity"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "physxSurfaceVelocity:surfaceVelocity"
+                custom rel inputs:prim = </LogisticsConveyor/Belts/FB1_Belt/TransportBody> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom vector3f inputs:value
+                prepend vector3f inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/v3_zero.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "reset_fb1_uv"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "inputs:translation"
+                custom rel inputs:prim = </LogisticsConveyor/Looks/Belt_FB1/UVAnim> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float2 inputs:value
+                prepend float2 inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/f2_zero.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+
+            def OmniGraphNode "reset_fb1_effective"
+            {
+                custom uint inputs:execIn (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+                prepend uint inputs:execIn.connect = [
+                    </LogisticsConveyor/Control/ResetGraph/OnLoaded.outputs:execOut>,
+                    </LogisticsConveyor/Control/ResetGraph/OnStop.outputs:execOut>,
+                ]
+                custom token inputs:name = "conveyor:control:fb1_effective_mps"
+                custom rel inputs:prim = </LogisticsConveyor/Control> (
+                    customData = {
+                        dictionary omni = {
+                            dictionary graph = {
+                                string relType = "target"
+                            }
+                        }
+                    }
+                )
+                custom bool inputs:usdWriteBack = 1
+                custom bool inputs:usePath = 0
+                custom float inputs:value
+                prepend float inputs:value.connect = </LogisticsConveyor/Control/ResetGraph/f_zero.inputs:value>
+                token node:type = "omni.graph.nodes.WritePrimAttribute"
+                int node:typeVersion = 3
+                custom uint outputs:execOut (
+                    customData = {
+                        bool isExecution = 1
+                    }
+                )
+            }
+        }
+    }
+    variantSet "Newton" = {
+        "Disabled" {
+
+        }
+        "Enabled" (
+            prepend payload = @./runnables/physics/newton.usd@
+        ) {
+
+        }
+    }
+    variantSet "PhysX" = {
+        "Disabled" {
+
+        }
+        "Enabled" (
+            prepend payload = @./runnables/physics/physx.usd@
+        ) {
+
+        }
+    }
+}
+

@@ -1,0 +1,70 @@
+{
+ "outputs/db_conditions/db_m4_train/lg_fx25_leveling_leg.jsonl": {
+  "sha256": "a28b9b342849b570ac2ae043b8f087b92ca43e482aa804f4c2e29ab43d6dc99c",
+  "rows": 120
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_e.jsonl": {
+  "sha256": "fcca2e07f04b980564ce65cd2d48eaeb61d6c0d69a87a7c2953a1dfaea15b6b5",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_ne.jsonl": {
+  "sha256": "8dbf18890eb2793bc28d527f2cba2cd998cfe8a1a738e9fe43cf6629b4f2d2b4",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_n.jsonl": {
+  "sha256": "6038a5cc04b68c5a00668a54474be2d14276714ede91ac8ea5d196fcda758530",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_nw.jsonl": {
+  "sha256": "d3214cc68d635d5a3cc3747eee609b9385e40dff077c782a09fa09044dbf3ce6",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_w.jsonl": {
+  "sha256": "2507bb513cb890d1c22a6b8c0df01b06f9bcb44f11a21d812eeeb05f8f5aa938",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_sw.jsonl": {
+  "sha256": "4c4a0b2e641bee6a78f60af9394d9b02a1339de6de38a65d97201654968b4632",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_s.jsonl": {
+  "sha256": "97a67638ecaf05dee8bb17a10e768d47b152d28e8d96d7155de7e41b1dd56d7b",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_se.jsonl": {
+  "sha256": "bb809000f2aca901252f3ff1301461b6be0aad2ba449d66fa9e3b49bf752b22d",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_e.jsonl": {
+  "sha256": "7f665d1d6cb9a6523ded387638b22623faeee839fba751690e06465903ffcb63",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_ne.jsonl": {
+  "sha256": "9965640155043c5b73120b10ad9d16338a845d2de735b475085b125e37260cda",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_n.jsonl": {
+  "sha256": "07ebf7d256db3426c8cb47ed2620460e832bd669965f54705278e9edb1194475",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_nw.jsonl": {
+  "sha256": "83207b60ede160a4f0cc0c986229f6576bd4fe35eaccb75db1e4065ad7b423bc",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_w.jsonl": {
+  "sha256": "4a22ccd0e84981732c15246b4f8c930e95d304a9ade5c408baa904026ec84ec1",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_sw.jsonl": {
+  "sha256": "d390cb18ac734de6d2fca58ee3a69325ca99be44c59098c2f69464644eb405ec",
+  "rows": 7
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_s.jsonl": {
+  "sha256": "efb9e2e8b05aa4cc30ec81870d7b2a7be796311dd6b98df5d7f35b2c2c4237bd",
+  "rows": 8
+ },
+ "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_se.jsonl": {
+  "sha256": "d6095e1dd9023e65038852576573a0b96546170df0e762f18909473ac8d31bfd",
+  "rows": 7
+ }
+}

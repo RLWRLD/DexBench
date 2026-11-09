@@ -1,0 +1,268 @@
+{
+  "format_version": "1.0",
+  "content_root": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0",
+  "items": [
+    {
+      "relative_path": ".thumbs/256x256/Power_Drill.usd.png",
+      "size": 29533,
+      "hash": {
+        "sha256-flat-1mb": "f110aaac1a7d505d316242c0ed1b0f7cbc9e2b7eb1ce29bc06b376619d47c87a",
+        "sha256": "702b7f724bfe17fb64a3be858b5b98e355f74e39da397966ec831e15ed3232f2",
+        "blake3": "15a31287e05e3dd136e774527ddd8e7a4526f8fbe894c6c67ca9c531d331fb96"
+      }
+    },
+    {
+      "relative_path": "Power_Drill.usd",
+      "size": 30723816,
+      "hash": {
+        "sha256-flat-1mb": "a8fddf4c50668b5775522580027cf19266a5fb354fb85d52d5f2b55d310ae8c3",
+        "sha256": "0012ad6899f3d9af6f9b4e09a4fc152cb0c78ea6aeec8bfe8f52c39874780ab9",
+        "blake3": "bb7b818521e597c1f438ee0aa3d14fd1c0e7b22fc79d1d3673e59c4886b00c44",
+        "sha256-first1m": "f41fdb1ef358b52514dd5d4426135da6be67d7b8eaa739c7814da9997645bf14"
+      }
+    },
+    {
+      "relative_path": "materials/OmniPBR.mdl",
+      "size": 13989,
+      "hash": {
+        "sha256-flat-1mb": "4d0f54d47017bfbe22cc483cb02c4fe7e2254ddd1119cd618cbaea553639d52c",
+        "sha256": "d384fc800f120e3cad1b7ca8837f9c554f9c34343d194813fca27caa493001f2",
+        "blake3": "fe01b61f31324e246140c0d996f3802825bcca10420eacad79ad9f50ed69897f"
+      }
+    },
+    {
+      "relative_path": "materials/OmniPBRBase.mdl",
+      "size": 17274,
+      "hash": {
+        "sha256-flat-1mb": "4b54e7fb8bc92191512851b3acc6fc6fa9863f80d98ffece8f0cb9b99f5f4535",
+        "sha256": "701f37299b44106842bdbe025de52eedec391e35b038f61c4ed4d25bd98e7db1",
+        "blake3": "814d4d727984b0d38230460eb6013d978470b73605cf2fd4a3bc4af34bda8e1b"
+      }
+    },
+    {
+      "relative_path": "materials/OmniPBR_ClearCoat.mdl",
+      "size": 27453,
+      "hash": {
+        "sha256-flat-1mb": "0e35217542eb4ece0205fc09f74eb71aaa6bfb75b3b861d64693d317282df424",
+        "sha256": "687fce3f0693146b91495f04407a7c38c78f6b9262b63621f44b4b1f09110469",
+        "blake3": "5f82d766f0a7d8d8432b74ce04a113974480ebde6ef81b1625534d4bd513c00c"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_battery_BaseColor.png",
+      "size": 1087247,
+      "hash": {
+        "sha256-flat-1mb": "54661085d4342e5dcc51b7c2be05f7f5f2e80454e4db64458044cdbbfd4cd4bc",
+        "sha256": "33447010d5aa19ae28aebb03da411f1592676dfeaa1d74e5c943b36cc1f573a8",
+        "blake3": "0de446830b6d29d73b9b91c7825ae4c1f54509ef2c73a665b4cc4a07019d8ed7",
+        "sha256-first1m": "5f12e245dd0e1933d0048666b2750d6896024c76a5eddbf8a7d51e6992200cbf"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_battery_Normal.png",
+      "size": 4837765,
+      "hash": {
+        "sha256-flat-1mb": "5afac6f924550c1888ac8d2d1ce6e5b49bb77150cf604010e88db771c793791b",
+        "sha256": "900beb000098dcc20f843400b034f20cc4630837d01802ae3d6902297d47565d",
+        "blake3": "05e3c48a950f06e2b5188ac5064be0195cab33e1dc88cf44bde58caa02b36be3",
+        "sha256-first1m": "481393066acb85022cba2f37f58ffe6c94762e3ca483d811d7eb00f947402738"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_battery_ORM.png",
+      "size": 2285939,
+      "hash": {
+        "sha256-flat-1mb": "df42b5efef82ba4f1064994301277c5a72488fd1ed952c61015f7717570bae2d",
+        "sha256": "b0dfb16187b30c2a5351dc43cf9b2005f0916e1cd160e5194c8d40a8398d54f4",
+        "blake3": "d92c162f1e36e6a9f973574e2afccd61208d0ffed739d9d10a1f81fe1e12d92b",
+        "sha256-first1m": "3722a95886d312618353f529f00f293b384d25d30b61e1fd7790ab0bac288e30"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_bit_BaseColor.png",
+      "size": 5377628,
+      "hash": {
+        "sha256-flat-1mb": "2e8abf36bbf5a14f4f9dbfabe6eaa5fbcef7e33344d7369aeaff40b339108cfd",
+        "sha256": "b4a92903361360435cc614f95d48b742b5fc1cb762865863bde35e660abc2f01",
+        "blake3": "ae315ce0a8f4641ebb0e764731d77718031909f6368e280537ac29b1ee28224e",
+        "sha256-first1m": "31904ad59e9ce48af30d3b84e63ce0933b09372f5469a9845e4ff3e86a0e5dff"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_bit_Normal.png",
+      "size": 5231731,
+      "hash": {
+        "sha256-flat-1mb": "1bc8230423f8a252aa7c564026845cb878fcfdcdaa80b381fd13bd43194ba769",
+        "sha256": "d1749ece866ca84b520b97037d6a7a98b3d6c4fbf3fb7512fb59c07600623f8e",
+        "blake3": "0a8d2050cb4eeccc80c4e460143162152cc7b4cfc6e79cbf6bfd89d20d334943",
+        "sha256-first1m": "3ee82c9f4e0800f491f506ae84bbfabf5d916413adc82ca51c56ffee6522e712"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_bit_ORM.png",
+      "size": 4622793,
+      "hash": {
+        "sha256-flat-1mb": "7da22353b8d975183404073513311d00fc7b351c8dcc2bdb53ef8fab7d5a7c14",
+        "sha256": "8e4276ada29b0c3832c33f46a13c674459eb10231b4bb1b7ae3572a0c3df177a",
+        "blake3": "42609b7416a350434e8dc44e4cdb29be5eb6bbbcbcd1d56433c79b68a4e71ad3",
+        "sha256-first1m": "79c17550adc01afca91959131d13924a4fb3b298ea5676126fda5a6cd82c1d6c"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_body_001_BaseColor.png",
+      "size": 856689,
+      "hash": {
+        "sha256-flat-1mb": "67918eafe7569cb6be58a0ba3bbe5749564b79f605783b3a8711d6cd1b0a4ffc",
+        "sha256": "9f23b3846005bd8fd9a049d38ec9bcc8ebd0830c8e9e8ef100f6f1a4f1203a22",
+        "blake3": "18da84ec9e5fba4ab468408384c0d665f587053c561b47f15020da594f335e00"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_body_001_Normal.png",
+      "size": 5334452,
+      "hash": {
+        "sha256-flat-1mb": "adafe051e610de73378a3c65769c696807c2e0430a3da4c36da5ca7c6fb64ffa",
+        "sha256": "182bae721595e664981ed01dfbf76a8b8252cfd37ca9d5a31ef52eb43e61c025",
+        "blake3": "bdec749369cbc83339e46eebb0ffdd04c368a2dd36f517f102f6a2dc27424253",
+        "sha256-first1m": "b2117ce6d968fdb8a373f2a9bbe7af48fb1ed0bd4a391628379320c85531acdc"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_body_001_ORM.png",
+      "size": 1538054,
+      "hash": {
+        "sha256-flat-1mb": "c604c752f7c43f938d64fb543b1319ebeabd865238090e8ae831a98da25ea237",
+        "sha256": "54a6bb882c61ecd52339cfd37a8821287dc6d67e341226d820c7c729f05b71ba",
+        "blake3": "e7a618b505f13df16946628cd6023357313b7e7fc0e04687d5fe0983206488ad",
+        "sha256-first1m": "d914c7397b0aef6e61f7f47acdfae00125db818df9c5d22546e72585eb826276"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_body_BaseColor.png",
+      "size": 1755300,
+      "hash": {
+        "sha256-flat-1mb": "23286fd4bd087ccc59fc1206eea15564b5f4754ab891e5ecd5ca11ad14848c01",
+        "sha256": "f2fa6c5562942b2546438991415f0a22ef134ae9c663341078595b7b5e48c365",
+        "blake3": "e7182d9330604efeeffed31c603ec6891ac7c0e425079d39e9241f12f5af55d8",
+        "sha256-first1m": "5f46896984c88313c4b5b70405b94c6ae3f2fcbf5a5b7a60886aca32f4450300"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_body_Normal.png",
+      "size": 4654047,
+      "hash": {
+        "sha256-flat-1mb": "eb43c541b85eb28dcaf1c07b54350b9392e5affd3edf14779e90327aff6a6f57",
+        "sha256": "1b4d11a6aa67ed34d308cf0366343bdce721d0bf62054db1e17646fc9627d518",
+        "blake3": "f709a294e2ce8e95e06d2fb36196579712cb6777f8f50cb82de2cc15e1fbc247",
+        "sha256-first1m": "ae69feaa8ecc4fa9acae92859ba9c0f3d9e8de0a0de0ba8910523a1313324c89"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_body_ORM.png",
+      "size": 2260305,
+      "hash": {
+        "sha256-flat-1mb": "ddf7a31cd8182703fcf14dcb5f43bd369c45c53379edff5d81ac99c87fe48917",
+        "sha256": "2cc62deccdd5d6aae6b035afc33ed27857a646de3e2f1014f660437965b280f6",
+        "blake3": "0b81d0604e90ee6abb3dff5fbc7cc8412db528dcd88505b474a4ba4a56711e73",
+        "sha256-first1m": "04977d54c66fc8a3cef9c00673ef063c9ff40b6303de183c370cfbb918775e4f"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_chuck_BaseColor.png",
+      "size": 2862607,
+      "hash": {
+        "sha256-flat-1mb": "7042102887865ba69de3644c4dfc50f324dcff5427417cbb04147fee8bfbab55",
+        "sha256": "ad607781c035bd0dbf85249bbf8e4893d5206bd4fb3db97c701ec61fba83eb50",
+        "blake3": "7589dcfc75b15ea4f7148889a1ad679e0c14c6d444b9c2446240cd9db0166f03",
+        "sha256-first1m": "9318b22c52f36d3cdc519f713066e40e3b9585d6cd8fd6e4fcf3e3cfa33aba90"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_chuck_Normal.png",
+      "size": 5362646,
+      "hash": {
+        "sha256-flat-1mb": "80599419871d43343d5ff321a360048564ffb0ce7619be015462a1960eb48b06",
+        "sha256": "164bf7d80f132a1fc07faef0301bf4d70c6252801ea5f995d222badd913674d4",
+        "blake3": "272e77356c7d948638c3e94609d738ee28ad3aa732e1bb0de77c2ce1559c804c",
+        "sha256-first1m": "49e0477b30cd219665002b4a31289c6db415bdc89068be4e9caf8fb084c3c694"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_chuck_ORM.png",
+      "size": 3219887,
+      "hash": {
+        "sha256-flat-1mb": "f69c250c80ff87958fca12712e2a31231eb9847321a7955706c066842141db75",
+        "sha256": "9f0b225a18dc2a5069ded81f6c82b2181dcb241d20e41a5daabb8c397c3e1baf",
+        "blake3": "23e6a9137e44fc6cf2eb55440a32395b7c2f05a546ba40fa79fdf1412da89cc8",
+        "sha256-first1m": "35f58ba112b493f0af27ff2bf951f131641bc6d79f95ec4113f6aa4291ba54f6"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_grip_BaseColor.png",
+      "size": 1255630,
+      "hash": {
+        "sha256-flat-1mb": "4d8634b7ce61f2fd6f241146d56f10966417fa9499f1eaf2bbb50650fe245f50",
+        "sha256": "33a755dad86e2c5fc352c428b80710d172ba5429a0df3341dbcf6211f45652d1",
+        "blake3": "11e7a85dcacf85b072a0958fa6a58583580d87b21a5ee5d585bc8334182815b0",
+        "sha256-first1m": "f192e07859bf64db9405635d93247c9a1396ccdf588c9914630264f2ca06d77a"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_grip_Normal.png",
+      "size": 4986119,
+      "hash": {
+        "sha256-flat-1mb": "f773a774783196a050838966958bc61c6d3cb7d82d4597730230d37d55171580",
+        "sha256": "66b2a3a256ec5d43929ffa94845d878a5ab370f08ca4c291163febecffd8a57b",
+        "blake3": "363fc067b07903f46703365cfe35d308f6b1dcbbe8202c809cb6f7aca78af9be",
+        "sha256-first1m": "ddfc08064bdf65094398c712670de00c7d9959239e824ce918d2e558e8d3c781"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_grip_ORM.png",
+      "size": 2410985,
+      "hash": {
+        "sha256-flat-1mb": "095c573d42c2f2fa903a5ea1a754e3821595ef9d2ffd302ae46bcc2a5487e826",
+        "sha256": "cf460593050d437796b04651c6ed398b8fe9b8cd48dd32e0c47c34f20f4bdb95",
+        "blake3": "536d16e474725a83fc932696e16f7a25ba01eb6b6844fff221cd7b3fe6a89cbc",
+        "sha256-first1m": "eb709e1e2e0ac932bdc5497f2b0a438789b69c5ad681c82b1c6c531135d8fafc"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_trigger_BaseColor.png",
+      "size": 225546,
+      "hash": {
+        "sha256-flat-1mb": "5aca09160c2499039803e66dcbe0501afe8c42b45588da0cf8f5e1d4d173036d",
+        "sha256": "2544eb02a3b82ccc70cd5049df788931cb71cfd094c98623818d3271fded4ed1",
+        "blake3": "99df22b43910b1ecb3e3891a05b45a3a94d5a6b25ebc28d62ff51d581bbe5575"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_trigger_Normal.png",
+      "size": 3488092,
+      "hash": {
+        "sha256-flat-1mb": "ee516887ef4b80be85d2c5640a26333d3931edffc2b3b387eea67040cc0aed97",
+        "sha256": "5e94015773361a83d6c0b65ba055472b28d6111002f135761bf2e5604d4335f3",
+        "blake3": "5a8e2747dc7f820cc75d1e8f1834e8b4de422872e87d20f691a3d3a6fe50a3dc",
+        "sha256-first1m": "1d135b24831f2e10826cccfac7c0238913643acc9a3f30959c01d4253bb32775"
+      }
+    },
+    {
+      "relative_path": "textures/Drill_trigger_ORM.png",
+      "size": 438596,
+      "hash": {
+        "sha256-flat-1mb": "3e9f0ded75be6ebd96ed3ef30ad409ea53834bba1d7195eb8f2b67d3939cefe1",
+        "sha256": "54d09a98834f6896a580475b8a750ffad110cbd1f443becfe6769ebafae2bcb8",
+        "blake3": "5a2da6649619c6540a32e362d35172eb9280262f3ac894a707f440cdde35faa4"
+      }
+    },
+    {
+      "relative_path": "validation_report.json",
+      "size": 621,
+      "hash": {
+        "sha256-flat-1mb": "5404e78aba2699e98ce9e5b3ae139db74900f62014ca7e9fe9987a031addc428",
+        "sha256": "e16504baea523582c77947ae267fb3cfc8329f15c6f4cc98335545c22a45da5c",
+        "blake3": "434c1763606a331437f3a6f4f79bdfa294d7155cb775fc352bd42bccfc2100dc"
+      }
+    }
+  ]
+}

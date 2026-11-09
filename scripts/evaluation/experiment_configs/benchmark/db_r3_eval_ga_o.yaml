@@ -1,0 +1,85 @@
+# DB-R3 (retail_v1, place_box_in_slot at the Gondola anchor).
+# Cell GA-O (ga_o): held-out objects, spatial training range.
+# Spatial: the base drawn uniformly from the square x, y in [-2, 2] cm around the carry layout's base and turned uniformly in [-2.5, 3] deg (dexbench_rby1_wuji2_joint.base_pose; narrower to the right, where the r3_carry hand nears tote_06's wall), and the carton in the top tote from x, y in [-20, 20] mm, no yaw (target_carton.pose): db_r3_collect.yaml's range, which the 240 training demos (60 per carton, R3-T1..T4) cover; reachable at every corner and clear of contact at reset (Newton contact query, all 9 cartons).
+# Evaluation: each Run (an object at a spatial setting) replays its row file (24 each), the filtered rows of db_r3_conditions_ga_o.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 75 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task r3 --cell ga_o --model <key> \
+#       --output outputs/db_r3_eval_ga_o_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_r3_eval_ga_o_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_r3_eval_ga_o.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-R3); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: place_box_in_slot
+    scene_layout: fc_260821
+    anchor: Gondola
+    start_pose: r3_carry
+    base_offset_x: 0.05
+    base_offset_y: -0.1
+    rby1_control_hz: 30
+    with_full_items: true
+    facing_width_mm: null
+    box_jitter_xy: 0.02
+    episode_length_s: 75.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.02, -0.0436332]
+          high: [0.02, 0.02, 0.0523599]
+runs:
+  dexbench_retail_e1_fc_r3e1:
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3e1
+    environment_builder:
+      seed: 1303965
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e1.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  dexbench_retail_e1_fc_r3e2:
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3e2
+    environment_builder:
+      seed: 822375
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e2.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  dexbench_retail_e1_fc_r3e4:
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3e4
+    environment_builder:
+      seed: 2116626
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e4.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  dexbench_retail_e1_fc_r3e5:
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3e5
+    environment_builder:
+      seed: 5812100
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e5.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  dexbench_retail_e1_fc_r3e6:
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3e6
+    environment_builder:
+      seed: 9769726
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e6.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

@@ -1,0 +1,27 @@
+canonical_format: mjcf
+name: zed_mini
+kind: camera
+vendor:
+  source: https://github.com/stereolabs/zed-ros2-description (meshes/zedm.stl)
+  version: commit 449eef9566a49461cc37d6ac13230fe2886ff2be
+  license: Apache-2.0
+  license_file: LICENSE.zed-ros2-description
+formats:
+  mjcf: hand-authored wrapper around the DEFT mesh and calibrated optical frames
+  urdf: generated
+  usd: generated
+mesh:
+  file: meshes/zedm.stl
+  sha256: bf0193e6b2f36a348e1cbe3c19e18adc3e90e4b054f4fce47286482380cd149c
+  units: metres
+  lineage: >-
+    Byte-identical to both the Stereolabs source and
+    RLWRLD/DEFT src/deft/assets/rby1_wuji/urdf/meshes/zedm.stl.
+mount_note: >-
+  Attach root to RBY1 link_head_2 at pos [0.0125, -0.007, 0.058] with identity
+  rotation. The resulting zed_m_ego_cam_frame and zed_m_ego_cam_right_frame poses
+  exactly reproduce DEFT custom v1.
+tags:
+- camera
+- stereo
+- zed-mini

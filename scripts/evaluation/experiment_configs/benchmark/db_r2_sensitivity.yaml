@@ -1,0 +1,96 @@
+# DB-R2 (retail_v1, retrieve_beverage_from_clutter at the Fridge anchor) sensitivity sweep, the +alpha robustness section (never in the score).
+# Factors, uniform:
+#   dexbench_retail_v1_lighting.intensity_scale: x0.25-1.5 of the delivered lights (RETAIL_V1_LIGHT_INTENSITY_SCALE_RANGE)
+#   dexbench_retail_v1_lighting.color_temperature: 2700-6500 K on every light (RETAIL_V1_LIGHT_COLOR_TEMPERATURE_RANGE_K)
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_left_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_right_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_left_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_right_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+# Training-range draws live as in the Train cell. Object: TC2.
+# Unavailable at this pin (not swept, not claimed):
+#   camera_intrinsics: held by choice: each camera keeps its calibrated intrinsics, which a mount change does not alter (Arena's CameraIntrinsicsVariation exists at the pin)
+#   camera_rotation: CameraExtrinsicsVariation draws a translation only at the pin and on Arena main; rotation coordinates are an upstream ask
+#   texture: no material or texture variation at the pin or Arena main; the smallest addition is a run-time material-swap variation of ours
+#   distractors: the neighbours and the stock are part of the task: a moved or removed one is the failure the neighbour gate scores
+# Note: the base keeps the EA training draw (x, y +-2 cm, no turn), not the Train cell's turned one: the frozen sensitivity rows were recorded with it
+#
+# Replay: the 200 recorded draws (db_r2_sensitivity_conditions.yaml), one file per build, at the benchmark cap of 35 s.
+# Report: isaaclab_arena.analysis.sensitivity.generate_report on the Run's episode_results_rebuild*.jsonl.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task r2 --sweep --model <key> \
+#       --output outputs/db_r2_sensitivity_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_r2_sensitivity_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_r2_sensitivity.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-R2); edit the spec, not this file.
+runs:
+  tc2:
+    environment:
+      type: dexbench_retail_v1_environment
+      embodiment: dexbench_rby1_wuji2_joint
+      arm_mode: dual_arm
+      task: retrieve_beverage_from_clutter
+      scene_layout: fc_260821
+      anchor: Fridge
+      start_pose: teleop_home
+      rby1_control_hz: 30
+      with_full_items: true
+      fridge_shelf3_raise_m: 0.065
+      r2_stock_rule: unique_target
+      r2_stock_fillers: TC2,TC1
+      success_tier: strict
+      r2_target_sku: TC2
+      enable_cameras: true
+      camera_scale: 0.5
+      wrist_cameras: true
+      base_jitter_radius: 0.02
+      r2_target_lane: 4
+      episode_length_s: 35.0
+      benchmark_replay: true
+    environment_builder:
+      presets: NEWTON
+      seed: 1016
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+    recorded_variation_samples_paths: [outputs/db_conditions/db_r2_sensitivity/tc2_rebuild0.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild1.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild2.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild3.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild4.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild5.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild6.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild7.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild8.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild9.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild10.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild11.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild12.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild13.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild14.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild15.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild16.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild17.jsonl,
+      outputs/db_conditions/db_r2_sensitivity/tc2_rebuild18.jsonl, outputs/db_conditions/db_r2_sensitivity/tc2_rebuild19.jsonl]
+    variations:
+      dexbench_retail_v1_lighting:
+        intensity_scale:
+          enabled: true
+        color_temperature:
+          enabled: true
+      dexbench_rby1_wuji2_joint:
+        camera_extrinsics_robot_pov_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_robot_pov_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_wrist_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]
+        camera_extrinsics_wrist_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]

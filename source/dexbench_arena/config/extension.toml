@@ -1,0 +1,32 @@
+[package]
+
+version = "0.0.1"
+category = "isaaclab"
+# The package has no README of its own; the repository README is the one.
+readme = "../../README.md"
+
+title = "DexBench"
+author = "RLWRLD"
+maintainer = "RLWRLD"
+description = "DexBench tasks ported to the IsaacLab-Arena extension structure."
+repository = "https://github.com/RLWRLD/DexBench"
+keywords = ["dexbench", "isaaclab", "isaaclab-arena", "manipulation"]
+
+# Kit does not load DexBench as an extension, and nothing at the pinned
+# Isaac Lab resolves this table: the isaaclab* packages ship no extension.toml
+# of their own, and setup.py reads only [package]. Kept as the human-readable
+# list of the upstream packages the code imports.
+[dependencies]
+"isaaclab" = {}
+"isaaclab_mimic" = {}
+"isaaclab_newton" = {}
+"isaaclab_physx" = {}
+"isaaclab_tasks" = {}
+"isaaclab_teleop" = {}
+"isaaclab_arena" = {}
+"isaaclab_arena_environments" = {}
+"isaaclab_arena_gr00t" = {}
+"isaaclab_arena_openpi" = {}
+
+[[python.module]]
+name = "dexbench_arena"

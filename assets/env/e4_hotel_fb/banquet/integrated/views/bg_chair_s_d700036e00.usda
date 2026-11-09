@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_chair_S"
+    doc = "E4 r01 배경 그룹 BG_chair_S — 시각 전용. 오브젝트 4 · 평가 삼각형 21928."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_chair_S" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_d700036e0077c929daf9/BG_chair_S>
+)
+{
+}
+

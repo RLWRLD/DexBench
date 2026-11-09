@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_chair_S_static"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_chair_S_static" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_55a1661ccf77dd79dd6d/BG_chair_S_static>
+)
+{
+}
+

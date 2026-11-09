@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "Newton"
+                    }
+                    dictionary PhysX = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "PhysX"
+                    }
+                }
+            }
+            string version = "1.0.0"
+        }
+        string asset_name = "oriental_raisin_tea_500ml_straight_pet"
+        string asset_type = "prop"
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.3211805781494989, 0.2880254366417841, 0.3966158566538757)
+                double3 target = (-0.014093381178313158, -0.04724852268602786, 0.06134190532846001)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./Oriental_Raisin_Tea_500ml_Straight_PET.usd"
+        }
+        dictionary renderSettings = {
+        }
+        string source_file = "authored"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_8bcfcc3155d6bb9fb2e2/World>
+)
+{
+}
+

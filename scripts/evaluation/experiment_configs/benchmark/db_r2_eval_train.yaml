@@ -1,0 +1,126 @@
+# DB-R2 (retail_v1, retrieve_beverage_from_clutter at the Fridge anchor).
+# Cell Train (train): training objects, spatial training range.
+# Spatial: the target in MiniFit lane MF3, MF4 or MF5, the 240 training demos' lanes, 40 rows each; the base drawn uniformly from the square x, y in [-2, 2] cm and turned uniformly in [-3, 3] deg (dexbench_rby1_wuji2_joint.base_pose); reach is checked over a 3 cm disk, which contains the x, y draw, at no turn; the settle filter guards the turned starts.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (13 or 14 each, as the spec's row_quotas declare), the filtered rows of db_r2_conditions_train.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 35 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task r2 --cell train --model <key> \
+#       --output outputs/db_r2_eval_train_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_r2_eval_train_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_r2_eval_train.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-R2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: retrieve_beverage_from_clutter
+    scene_layout: fc_260821
+    anchor: Fridge
+    start_pose: teleop_home
+    rby1_control_hz: 30
+    with_full_items: true
+    fridge_shelf3_raise_m: 0.065
+    r2_stock_rule: unique_target
+    r2_stock_fillers: TC2,TC1
+    success_tier: strict
+    episode_length_s: 35.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.02, -0.0523599]
+          high: [0.02, 0.02, 0.0523599]
+runs:
+  tc1_mf3:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+    environment_builder:
+      seed: 6224796
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tc1_mf3.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+    environment_builder:
+      seed: 5442815
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tc1_mf4.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+    environment_builder:
+      seed: 4271465
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tc1_mf5.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+    environment_builder:
+      seed: 6903372
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tc2_mf3.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+    environment_builder:
+      seed: 9044399
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tc2_mf4.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+    environment_builder:
+      seed: 9734073
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tc2_mf5.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+    environment_builder:
+      seed: 4088169
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tp1_mf3.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+    environment_builder:
+      seed: 888074
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tp1_mf4.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+    environment_builder:
+      seed: 2214940
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_train/tp1_mf5.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

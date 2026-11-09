@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "Newton"
+                    }
+                    dictionary PhysX = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "PhysX"
+                    }
+                }
+            }
+            string version = "1.0.0"
+        }
+        string asset_name = "cocacola_355ml_standard_can"
+        string asset_type = "prop"
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.21925613953388917, 0.219256139533891, 0.2192562536417876)
+                double3 target = (-0.025385744148944178, -0.010767990296782687, 0.04188922555767033)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./CocaCola_355ml_Standard_Can.usd"
+        }
+        dictionary renderSettings = {
+        }
+        string source_file = "authored"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_6e54ee0eaf40bd256004/World>
+)
+{
+}
+

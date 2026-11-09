@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="36" viewBox="0 0 116 36" role="img" aria-label="Website">
+  <title>Website</title>
+  <rect x="0.5" y="0.5" width="115" height="35" rx="6" fill="#0f766e" stroke="#334155"/>
+  <g transform="translate(12 9) scale(.75)" fill="none" stroke="#5eead4" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g>
+  <text x="40" y="22.5" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600">Website</text>
+</svg>

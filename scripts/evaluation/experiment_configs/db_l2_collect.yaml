@@ -1,0 +1,40 @@
+# DB-L2 (E2 logistics, lift_to_conveyor at the A1_CAGE anchor).
+# Recording experiment: the Train objects, every draw sampled live at its
+# training range. The held-out cells evaluate on recorded conditions instead
+# (db_l2_conditions_<cell>.yaml, then db_l2_eval_<cell>.yaml; docs/Eval_Protocol.md).
+shared:
+  environment:
+    type: dexbench_logistics_center_e2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: lift_to_conveyor
+    anchor: A1_CAGE
+    rby1_control_hz: 30
+    # The two alternate cage-box sets the cage_stack draw swaps in (parked outside the room).
+    cage_box_alt_scales: [0.85, 1.15]
+    # No base-pose axis for DB-L2: the base stays at A1_CAGE, facing into the parcel
+    # cage with the conveyor's infeed end on its left. The spatial axis is the box pose on
+    # the cage tier and the cage-stack draw.
+    base_jitter_radius: 0.0
+  environment_builder:
+    # The release runs on Newton; conditions and their evaluation must share the backend.
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+  variations:
+    # Recorded per episode as cage_l2_package.cage_stack and cage_l2_package.pose; the stack draw
+    # runs first, so the pose lands on the drawn stack. The pose range is each box's own safe range.
+    cage_l2_package.cage_stack.enabled: true
+    cage_l2_package.cage_stack.sampler_cfg.low: [0.0, 0.0, -0.01]
+    cage_l2_package.cage_stack.sampler_cfg.high: [1.0, 0.08, 0.01]
+    cage_l2_package.pose.enabled: true
+
+runs:
+  train_0:  # Korea Post No.4, 410x310x280
+    environment:
+      object_box: train_0
+  train_1:  # Korea Post No.5, 480x380x340
+    environment:
+      object_box: train_1

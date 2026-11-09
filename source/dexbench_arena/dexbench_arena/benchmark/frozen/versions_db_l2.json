@@ -1,0 +1,17 @@
+{"frozen_set": "db_l2.json", "frozen_sha256": "08ad39e08ff4d4b3efe623d1824f2f9cb1feb1bb9a6ae19d19bf6d0409392849",
+"versions": {
+ "v1": {
+  "outputs/db_conditions/db_l2_261014_train/train_0.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57],
+  "outputs/db_conditions/db_l2_261014_train/train_1.jsonl": [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59],
+  "outputs/db_conditions/db_l2_261014_ga_o/eval_0.jsonl": [0, 1, 3, 4, 7, 8, 11, 12, 15, 16, 18, 19, 22, 23, 26],
+  "outputs/db_conditions/db_l2_261014_ga_o/eval_1.jsonl": [0, 3, 7, 8, 10, 11, 14, 15, 18, 19, 22, 23, 25, 26, 29],
+  "outputs/db_conditions/db_l2_261014_ga_o/eval_2.jsonl": [0, 1, 3, 4, 7, 8, 11, 15, 16, 18, 19, 22, 23, 26, 27],
+  "outputs/db_conditions/db_l2_261014_ga_o/eval_3.jsonl": [0, 3, 4, 7, 8, 10, 11, 14, 15, 18, 22, 23, 25, 26, 29],
+  "outputs/db_conditions/db_l2_261014_ga_s/train_0.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57],
+  "outputs/db_conditions/db_l2_261014_ga_s/train_1.jsonl": [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39, 42, 43, 46, 47, 50, 51, 54, 55, 58, 59],
+  "outputs/db_conditions/db_l2_261014_ga_os/eval_0.jsonl": [0, 1, 3, 4, 7, 8, 11, 12, 15, 16, 18, 19, 22, 23, 26],
+  "outputs/db_conditions/db_l2_261014_ga_os/eval_1.jsonl": [0, 3, 7, 8, 10, 11, 14, 15, 18, 19, 22, 23, 25, 26, 29],
+  "outputs/db_conditions/db_l2_261014_ga_os/eval_2.jsonl": [0, 1, 3, 4, 7, 8, 11, 15, 16, 18, 19, 22, 23, 26, 27],
+  "outputs/db_conditions/db_l2_261014_ga_os/eval_3.jsonl": [0, 3, 4, 7, 8, 10, 11, 14, 15, 18, 22, 23, 25, 26, 29]
+ }
+}}

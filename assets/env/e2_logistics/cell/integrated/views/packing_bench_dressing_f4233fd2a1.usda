@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    defaultPrim = "BenchDressing"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BenchDressing" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_f4233fd2a14aa1014e21/BenchDressing>
+)
+{
+}

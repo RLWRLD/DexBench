@@ -1,0 +1,61 @@
+{
+  "default_variant": "harmynta_deep_plate_22",
+  "contact_offset_m": 0.002,
+  "vhacd": {
+    "max_convex_hulls": 128,
+    "hull_vertex_limit": 64,
+    "error_percentage": 0.5,
+    "voxel_resolution": 1000000,
+    "shrink_wrap": true
+  },
+  "dishes": {
+    "godmiddag_deep_plate_23": {
+      "kind": "plate",
+      "folder": "deep_plate_23cm",
+      "diameter_m": 0.2287,
+      "height_m": 0.0512,
+      "nest_pitch_m": 0.01122,
+      "split": "eval"
+    },
+    "harmynta_deep_plate_22": {
+      "kind": "plate",
+      "folder": "deep_plate_22cm",
+      "diameter_m": 0.218,
+      "height_m": 0.0427,
+      "nest_pitch_m": 0.00746,
+      "split": "train"
+    },
+    "godmiddag_bowl_16": {
+      "kind": "bowl",
+      "folder": "bowl_16cm",
+      "diameter_m": 0.1622,
+      "height_m": 0.06,
+      "nest_pitch_m": 0.01078,
+      "split": "eval"
+    },
+    "ikea_365_bowl_16": {
+      "kind": "bowl",
+      "folder": "bowl_rounded_16cm",
+      "diameter_m": 0.1635,
+      "height_m": 0.0738,
+      "nest_pitch_m": 0.01472,
+      "split": "train"
+    },
+    "ikea_365_bowl_19": {
+      "kind": "bowl",
+      "folder": "bowl_rounded_19cm",
+      "diameter_m": 0.1899,
+      "height_m": 0.0865,
+      "nest_pitch_m": 0.02335,
+      "split": "eval"
+    },
+    "ikea_365_bowl_22": {
+      "kind": "bowl",
+      "folder": "bowl_rounded_22cm",
+      "diameter_m": 0.22,
+      "height_m": 0.1,
+      "nest_pitch_m": 0.0294,
+      "split": "train"
+    }
+  }
+}

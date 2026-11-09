@@ -1,0 +1,143 @@
+# DB-H3 (E4 banquet hall, extract one utensil from the held bundle).
+# Cell Train (train): training objects, spatial training range.
+# Spatial: saved in-hand clutter grasps from the collection range, excluding every physical start in the 240 selected training demos.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (10 each), frozen rows (10 distinct state-target pairs per trio/target, 120 per cell; a physical grasp may be reused for another target), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 25 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h3 --cell train --model <key> \
+#       --output outputs/db_h3_eval_train_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h3_eval_train_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h3_eval_train.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H3); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_h3_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: extract_utensil
+    anchor: A_h3
+    rby1_control_hz: 30
+    wrist_cameras: true
+    camera_scale: 0.5
+    head_yaw_deg: 5.0
+    head_pitch_deg: 45.0
+    h3_drive_profile: collection_v1
+    episode_length_s: 25.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  train_01_fork:
+    environment:
+      h3_object: train_01_fork
+    environment_builder:
+      seed: 2070795
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_01_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_01_knife:
+    environment:
+      h3_object: train_01_knife
+    environment_builder:
+      seed: 8326742
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_01_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_01_spoon:
+    environment:
+      h3_object: train_01_spoon
+    environment_builder:
+      seed: 6237002
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_01_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_02_fork:
+    environment:
+      h3_object: train_02_fork
+    environment_builder:
+      seed: 560229
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_02_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_02_knife:
+    environment:
+      h3_object: train_02_knife
+    environment_builder:
+      seed: 2003531
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_02_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_02_spoon:
+    environment:
+      h3_object: train_02_spoon
+    environment_builder:
+      seed: 6316887
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_02_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_03_fork:
+    environment:
+      h3_object: train_03_fork
+    environment_builder:
+      seed: 803584
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_03_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_03_knife:
+    environment:
+      h3_object: train_03_knife
+    environment_builder:
+      seed: 6279999
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_03_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_03_spoon:
+    environment:
+      h3_object: train_03_spoon
+    environment_builder:
+      seed: 6254371
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_03_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_04_fork:
+    environment:
+      h3_object: train_04_fork
+    environment_builder:
+      seed: 2490744
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_04_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_04_knife:
+    environment:
+      h3_object: train_04_knife
+    environment_builder:
+      seed: 9797297
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_04_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  train_04_spoon:
+    environment:
+      h3_object: train_04_spoon
+    environment_builder:
+      seed: 1664941
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_train/train_04_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets

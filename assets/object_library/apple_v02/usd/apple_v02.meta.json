@@ -1,0 +1,182 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "source_delivery": "deliveries/spaceai/260914",
+    "source_generated": "260914",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid apple variant (large flat, lobed) from object_library/apple_scan: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 262.2 g, apple skin friction 0.6/0.5.",
+    "mass_kg": 0.2622,
+    "mass_source": "realistic apple weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 800.5 kg/m3 over render-mesh volume 3.275e-04 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "geometry": {
+      "size_m": [
+        0.0856,
+        0.092,
+        0.0745
+      ],
+      "volume_m3": 0.000327535,
+      "vertices": 14998,
+      "faces": 30000,
+      "textures": {
+        "Albedo": "./textures/apple_v02_base_color.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 0.000334189,
+      "hull_vertices": 9111
+    },
+    "physics_material": {
+      "static_friction": 0.6,
+      "dynamic_friction": 0.5,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth waxy (apple 0.60/0.50 as the SpaceAI scans; plum, citrus 0.55/0.45), achened strawberry 0.70/0.60, fuzzy peach 0.75/0.65, hairy kiwi 0.80/0.70; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.0626,
+            0.0,
+            0.0372
+          ],
+          [
+            0.0626,
+            0.0,
+            0.0372
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "apple",
+      "base": "apple_scan",
+      "base_kind": "scan",
+      "base_version": "1.2.0",
+      "package_template": null,
+      "base_quality": "SpaceAI scan, 15k vertices, 2048 px albedo: good",
+      "subdivision_levels": 0,
+      "index": 2,
+      "seed": 102,
+      "preset_mm": 80,
+      "size_vs_preset": 0.15,
+      "params": {
+        "label": "large flat, lobed",
+        "size_mm": 92,
+        "aspect": 0.82,
+        "lobes": {
+          "n": 5,
+          "amp": 0.05,
+          "kappa": 6.0
+        },
+        "seed": 102
+      },
+      "derived": {
+        "lobe_dirs": [
+          [
+            0.2557,
+            0.8844,
+            0.3905
+          ],
+          [
+            -0.7184,
+            -0.3948,
+            0.5727
+          ],
+          [
+            0.6644,
+            0.5927,
+            -0.4554
+          ],
+          [
+            -0.3859,
+            -0.7871,
+            -0.4812
+          ],
+          [
+            0.4606,
+            0.8556,
+            -0.2362
+          ]
+        ],
+        "lobe_amps": [
+          0.0393,
+          0.0452,
+          0.0382,
+          0.0468,
+          0.0447
+        ]
+      },
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 830,
+        "spread": -0.0354,
+        "unclamped_g": 262.2,
+        "range_g": [
+          120,
+          280
+        ],
+        "requested_g": 262.2,
+        "implied_density_kg_m3": 800.5
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 14998,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.0015587848971282056,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.0004524514079093933,
+      "convex_volume_ratio": 0.9755401163778761,
+      "previous_scan_outside_hull_m": 0.003184141892604117
+    }
+  }
+}

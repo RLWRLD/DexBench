@@ -1,0 +1,1077 @@
+# DB-H2 (E4 banquet hall, lift_and_pour at A_h2).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: one axis fixed off its training range and every other at its training draw: the jug 4 cm toward world e, ne, n, nw, sw and se and 3 cm toward w and s (at 4 cm the IDEALISK spout meets a goblet drawn toward w, and a grasp knocks the jug over toward the robot); or the jug turned -15 or +15 deg; or the base 2 cm toward each of the eight, turned at its draw; or the base turned +7 or -7 deg; or the goblet 2 cm toward each of the eight. Every point lies outside the training box on its axis and is checked at the 1.90 m base with every other axis at its training extremes, all four jugs: the placement on the trolley, the base >= 17 mm from the trolley's columns and the curtain, the wrist poses within the arm's reach, and the start at rest on Newton with no hand touching a prop.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (1 or 2 or 6 each, as the spec's row_quotas declare), the filtered rows of db_h2_conditions_ga_s.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 90 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h2 --cell ga_s --model <key> \
+#       --output outputs/db_h2_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h2_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h2_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_pour_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: lift_and_pour
+    anchor: A_h2
+    rby1_control_hz: 30
+    idealisk_pour: true
+    base_offset_y: 0.15
+    pour_station_offset_y: 0.05
+    start_pose: teleop_ready
+    newton_nconmax: 16384
+    newton_njmax: 65536
+    newton_num_substeps: 8
+    episode_length_s: 90.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  idealisk_jug_e:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.04
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_n:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: 0.04
+    environment_builder:
+      seed: 9201
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_w:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.03
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9202
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_s:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: -0.03
+    environment_builder:
+      seed: 9203
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_ne:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9204
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_nw:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9205
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_sw:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9206
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_se:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9207
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_yaw_m15:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: -15.0
+    environment_builder:
+      seed: 9208
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_yaw_m15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_jug_yaw_p15:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: 15.0
+    environment_builder:
+      seed: 9209
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_jug_yaw_p15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_e:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9210
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.02, 0.0, -0.0872665]
+            high: [0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_n:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9211
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, 0.02, -0.0872665]
+            high: [0.0, 0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_w:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9212
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, 0.0, -0.0872665]
+            high: [-0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_s:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9213
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, -0.02, -0.0872665]
+            high: [0.0, -0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_ne:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9214
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, 0.0141, -0.0872665]
+            high: [0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_nw:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9215
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, 0.0141, -0.0872665]
+            high: [-0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_sw:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9216
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, -0.0141, -0.0872665]
+            high: [-0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_se:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9217
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, -0.0141, -0.0872665]
+            high: [0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_yaw_p7:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9218
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_yaw_p7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.122173]
+            high: [0.01, 0.01, 0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_base_yaw_m7:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9219
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_base_yaw_m7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.122173]
+            high: [0.01, 0.01, -0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_e:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9220
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_n:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: 0.02
+    environment_builder:
+      seed: 9221
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_w:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9222
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_s:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: -0.02
+    environment_builder:
+      seed: 9223
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_ne:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9224
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_nw:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9225
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_sw:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9226
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  idealisk_goblet_se:
+    environment:
+      pour_jug: idealisk
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9227
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/idealisk_goblet_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_e:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.04
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9228
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_n:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: 0.04
+    environment_builder:
+      seed: 9229
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_w:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.03
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9230
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_s:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: -0.03
+    environment_builder:
+      seed: 9231
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_ne:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9232
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_nw:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9233
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_sw:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9234
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_se:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9235
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_yaw_m15:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: -15.0
+    environment_builder:
+      seed: 9236
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_yaw_m15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_jug_yaw_p15:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: 15.0
+    environment_builder:
+      seed: 9237
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_jug_yaw_p15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_e:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9238
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.02, 0.0, -0.0872665]
+            high: [0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_n:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9239
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, 0.02, -0.0872665]
+            high: [0.0, 0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_w:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9240
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, 0.0, -0.0872665]
+            high: [-0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_s:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9241
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, -0.02, -0.0872665]
+            high: [0.0, -0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_ne:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9242
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, 0.0141, -0.0872665]
+            high: [0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_nw:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9243
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, 0.0141, -0.0872665]
+            high: [-0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_sw:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9244
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, -0.0141, -0.0872665]
+            high: [-0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_se:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9245
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, -0.0141, -0.0872665]
+            high: [0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_yaw_p7:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9246
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_yaw_p7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.122173]
+            high: [0.01, 0.01, 0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_base_yaw_m7:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9247
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_base_yaw_m7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.122173]
+            high: [0.01, 0.01, -0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_e:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9248
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_n:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: 0.02
+    environment_builder:
+      seed: 9249
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_w:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9250
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_s:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: -0.02
+    environment_builder:
+      seed: 9251
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_ne:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9252
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_nw:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9253
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_sw:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9254
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  d00527_x15_goblet_se:
+    environment:
+      pour_jug: d00527_x15
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9255
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_s/d00527_x15_goblet_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

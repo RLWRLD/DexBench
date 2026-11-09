@@ -1,0 +1,163 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid lime variant (large, a little lighter) from SimReady food_produce_lime_d01 (nvidia/simready-assets@a666cb43, CC-BY-4.0) in apple_scan's package layout: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 80.0 g, lime skin friction 0.55/0.45.",
+    "mass_kg": 0.08,
+    "mass_source": "realistic lime weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 822.1 kg/m3 over render-mesh volume 9.732e-05 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "provenance": {
+      "dataset": "nvidia/simready-assets",
+      "revision": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "catalogue": "https://huggingface.co/spaces/nvidia/simready-central",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "package": "food_produce_lime_d01",
+      "package_id": "simready.hf.nvidia.simready-assets.food_produce_lime_d01.2026.10.09_045311932560",
+      "package_license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/nvidia/simready-assets/tree/a666cb4381ba513b174fb120ed523c1566ba832c/food_produce_lime_d01",
+      "files": [
+        "food_produce_lime_d01/simready_usd/sm_food_produce_lime_d01_01.usd",
+        "food_produce_lime_d01/simready_usd/payloads/geometries.usd",
+        "food_produce_lime_d01/simready_usd/Textures/t_lime_green_d01_alb.png",
+        "food_produce_lime_d01/simready_usd/Textures/t_lime_green_d01_nor.png"
+      ],
+      "attribution": "food_produce_lime_d01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; modified: render mesh re-scaled and deformed, albedo recoloured, re-packaged by scripts/tools/make_fruit_variants.py"
+    },
+    "geometry": {
+      "size_m": [
+        0.0549,
+        0.063,
+        0.0565
+      ],
+      "volume_m3": 9.7316e-05,
+      "vertices": 2500,
+      "faces": 4996,
+      "textures": {
+        "Albedo": "./textures/lime_v02_base_color.png",
+        "Normal": "./textures/lime_v02_normal.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 9.7724e-05,
+      "hull_vertices": 1506
+    },
+    "physics_material": {
+      "static_friction": 0.55,
+      "dynamic_friction": 0.45,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth (apple, pear 0.60/0.50 as the SpaceAI apple scan; plum, citrus, waxy bell pepper 0.55/0.45), fuzzy peach 0.75/0.65; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.0475,
+            0.0,
+            0.0282
+          ],
+          [
+            0.0475,
+            0.0,
+            0.0282
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "lime",
+      "base": "food_produce_lime_d01",
+      "base_kind": "simready",
+      "base_version": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "package_template": "object_library/apple_scan",
+      "base_quality": "SimReady lime_d01: 5k triangles, 512 px albedo + normal map: fair (soft texture up close)",
+      "subdivision_levels": 0,
+      "index": 2,
+      "seed": 902,
+      "preset_mm": 58,
+      "size_vs_preset": 0.086,
+      "params": {
+        "label": "large, a little lighter",
+        "size_mm": 63,
+        "color": {
+          "hue_deg": 3,
+          "sat": 0.95,
+          "val": 1.06
+        },
+        "seed": 902
+      },
+      "derived": {},
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 1000,
+        "spread": -0.0163,
+        "unclamped_g": 95.7,
+        "range_g": [
+          50,
+          80
+        ],
+        "requested_g": 80.0,
+        "implied_density_kg_m3": 822.1
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 2500,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.002262484403222572,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.0013484787195920944,
+      "convex_volume_ratio": 0.9757339897074234,
+      "previous_scan_outside_hull_m": 0.0018363847229463971
+    }
+  }
+}

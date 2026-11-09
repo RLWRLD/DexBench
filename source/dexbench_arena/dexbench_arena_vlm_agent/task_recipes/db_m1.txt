@@ -1,0 +1,7 @@
+Task recipe (DB-M1 inserting a detergent drawer into a washing machine; the task's own definition and the fixed furniture, no object positions):
+- Goal: push the detergent drawer you are holding straight into its slot in the washing machine until it is seated.
+- The drawer: a plastic drawer about 0.20 m wide, 0.54 m long and 0.09 m high. At the start you already hold it with both hands: the left hand hooks its front handle, the right hand cradles it from below. Keep holding it while you push.
+- Fixed geometry: the washing machine stands ahead and to your right. Its drawer slot opens at about (0.69, -0.19) m in the base frame, at z 1.16 m, and runs straight into the machine along the base-frame direction (0.77, -0.64, 0), about 40 degrees to the right of straight ahead. The drawer enters the slot's rails at about (0.42, 0.04) m and is seated when its front face is flush with the machine, about 0.6 m of travel from where it starts.
+- Success, which ends the episode: the drawer is seated, within 12 mm short of or 2 mm past its seat along the slot, within 2 mm of the slot's centre line sideways and in height, tilted under 1.5 degrees, and stays so for 0.5 s.
+- Failure, which ends the episode: the drawer drops 10 cm below the slot's height. Otherwise the episode ends when its time runs out.
+- Start: you start crouched, the torso turned toward the machine and the head looking down at the drawer in your hands; each turn's state gives where your hands are. The torso and the neck can turn (body).

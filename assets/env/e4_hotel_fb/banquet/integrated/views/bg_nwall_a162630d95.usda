@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_nwall"
+    doc = "E4 r01 배경 그룹 BG_nwall — 시각 전용. 오브젝트 65 · 평가 삼각형 221593 · 절개 분할 N,NW."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_nwall" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_a162630d95e79ac1617a/BG_nwall>
+)
+{
+}
+

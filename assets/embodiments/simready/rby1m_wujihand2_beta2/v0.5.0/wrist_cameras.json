@@ -1,0 +1,292 @@
+{
+  "camera_model": "stereolabs_zed_x_one_s_wide",
+  "camera_intrinsics": {
+    "name": "zed_x_one_s_wide_nominal_rectified_16_9",
+    "width": 1280,
+    "height": 720,
+    "fx": 491.3333333333333,
+    "fy": 491.3333333333333,
+    "cx": 640.0,
+    "cy": 360.0,
+    "baseline_m": null,
+    "distortion_k": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "provenance": "Stereolabs ZED X One S Wide (ZED-412012), 2.2 mm, GMSL2 mono RGB. Manufacturer nominal rectified HD1080 (1920x1080): fx=fy=737 px; resized to 1280x720, with an assumed centred principal point and zero distortion. 640x360 at scale 0.5 uses fx=fy=245.6666667 px. Not SDK/per-unit calibration; the product's 110 degree optical FOV is not the rectified pinhole FOV. https://support.stereolabs.com/articles/8809264540-what-is-the-camera-focal-length-and-field-of-view"
+  },
+  "near_clip_m": 0.002,
+  "source_manifest_sha256": "b88dd4b37f90d7885e1884ab05ff5124fabfa147e4c4e4f2812cc0fc8bbf4255",
+  "source_cad": {
+    "camera": "Stereolabs ZED X One S Wide",
+    "sku": "ZED-412012",
+    "camera_step_url": "https://cdn.sanity.io/files/s18ewfw4/staging/1cf7772916852c89a45415103ce6ce27a7c1a3eb.step/ZED%20X%20ONE%20S%20-%20Wide%20lens.step",
+    "connector_step_url": "https://cdn.sanity.io/files/s18ewfw4/staging/f97bda3167d3b4d5a915f1ccde97b15796253d84.step/GMSL%20Cable%20-%20Fakra-Z%20Jack%20angled.STEP",
+    "excluded_solids": {
+      "9": "FOV reference volume",
+      "11": "Image plane reference"
+    },
+    "cad_to_optical_mm": [
+      [
+        -1.0,
+        0.0,
+        0.0,
+        0.51419616214565
+      ],
+      [
+        0.0,
+        0.0,
+        -1.0,
+        -17.6945004785863
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0,
+        -94.98260219946773
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "tessellation_mm": 0.05,
+    "angular_tolerance": 0.1,
+    "connector_mating_transform_m": [
+      [
+        0.0,
+        0.0,
+        1.0,
+        -0.002782
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.006055
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0,
+        -0.0495
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "note": "25x25x38.7 mm catalog body excludes rear protruding socket. All physical STEP solids retained, unit scale only. Connector placement nominal, not tolerance verified.",
+    "sha256": {
+      "zed_solid_09_mm.stl": "e8b735f9476caa25218b6e714a3a6d6baf559868d061459ed741029825658a9e",
+      "zed_solid_10_mm.stl": "c162a777a3f51a6c8f310007645350ef70a9d32d57e6485a04038917738a4fdf",
+      "zed_solid_00_mm.stl": "b004d927f60b81686428b4ea8b584b74b660f5fd07e4ef88e28167d79aaa1332",
+      "lens_optical_m.stl": "d59440c40c9a487203abd5a99f7f508c0e83f68d33e1d6ac6d99c2271f15a6b3",
+      "socket_optical_m.stl": "90ed214c181387f13c506b6727313df1e94e8b9a67474224bdab9c8a2f00cf03",
+      "zed_solid_03_mm.stl": "35c305f8a9e62826b9da163c2b5d57546293392682351bda9ec02f47c1ebe524",
+      "zed_solid_11_mm.stl": "c3ef0c79add0dca1b5f5c49a7ce03f36d5cfb078b0e5243a4eeee178ba813828",
+      "fakra_z_angled_mm.stl": "86c580c11051e29fa60bc8195014f040fa036efa520f96e15e0b4a820fdf535f",
+      "plug_body_optical_m.stl": "c12ba57c921c3236e7fdc30a6e95f69595bd7bce47cf02aa48739ea87ac1b3b3",
+      "fakra_z_angled.step": "3229400faaf527645b01574f1fc19741ddaa50d4edcd663189a51bfd4e6d1e43",
+      "plug_tail_optical_m.stl": "4b633add746a9aa1e01fce889823f5c075ffa4aeee39c53fb7d953202261f10e",
+      "zed_solid_05_mm.stl": "0cfc0b730eac4b17b092e5f36121e1f24eecfa02a6201b7b1cab52463a1cb387",
+      "zed_solid_12_mm.stl": "743fcb35cc4b0e6f2e4d68c008bee5829d2e96e1da34f2fca831036c943ecfa2",
+      "zed_x_one_s_wide.step": "cd6c15d5061aaab08410b615b423880b8120c153ffd2eb7a8e14c39e03da676f",
+      "zed_solid_02_mm.stl": "09cf905a889b68d6c397effb36556eca1a36d22f782bdc6349b498ad82430820",
+      "cable_plug_optical_m.stl": "82967b5ded8d9daf04ac35a2a2ca9d31dac3a3e559a57a11a45e06d92a52982e",
+      "zed_solid_07_mm.stl": "25b9ca20e5472f88555f5de0043884098acfb3a20bb22bf06d7505ae2c8929a3",
+      "body_optical_m.stl": "92b4f7fd422a897218ca62f241490454825eb9d010e071dffa2d3bcd37b67357",
+      "zed_solid_08_mm.stl": "a043c6a5f8e374c95001da9e39a05ffd8eae1a2989cf8bf18fbec93800e11c0c",
+      "zed_x_one_s_wide_mm.stl": "c60804a6458e50df85737912eafa100591cdd28f5ba025403069500c20bce990",
+      "zed_solid_04_mm.stl": "01505bfa0a13196b6bc2bcb7a44073ab6d1e030c85140b58ed3df2b5633dde2f",
+      "zed_solid_06_mm.stl": "1a2c3f5c864f42ce6729315813d56127666d7ce444e66309c410bc882e55dff4",
+      "zed_solid_01_mm.stl": "c190e9e794aabb1f92e190408d6f4fd6d2ac10e1f7f7cdc16c10ad79a778ca96"
+    }
+  },
+  "added_mass_inertia": false,
+  "collision_note": "26 support-plane convex envelopes with 0.5 mm padding enclose all camera/connector CAD vertices; collar and bracket use separate solids.",
+  "mounts": {
+    "left": {
+      "parent_link": "link_left_arm_6/wrist_camera",
+      "optical_position": [
+        -0.005,
+        -0.065,
+        0.059000000000000004
+      ],
+      "optical_quat_xyzw": [
+        0.998909613036363,
+        -0.02790495766417661,
+        -0.029241530230314918,
+        0.02336303129076632
+      ],
+      "parent_from_geometry_row_major": [
+        [
+          8.196780525215885e-06,
+          -0.9994616399952404,
+          0.03280899435882624,
+          0.0
+        ],
+        [
+          0.9999998749671098,
+          -8.212083827174865e-06,
+          -0.0004999983263922689,
+          0.0
+        ],
+        [
+          0.0004999985775028526,
+          0.0328089943549994,
+          0.9994615149623501,
+          0.0
+        ],
+        [
+          -0.00022364,
+          -0.0030292100000000044,
+          -0.15459999999999996,
+          1.0
+        ]
+      ],
+      "source_usd_sha256": "546c9aed5499e8a9a74fdcebbc9ceff2dfbf8c973137107950012dbd18384a4b",
+      "colliders": [
+        {
+          "name": "camera_body",
+          "vertices": 48
+        },
+        {
+          "name": "camera_lens",
+          "vertices": 48
+        },
+        {
+          "name": "camera_socket",
+          "vertices": 48
+        },
+        {
+          "name": "cable_plug",
+          "vertices": 48
+        },
+        {
+          "name": "cable_tail",
+          "vertices": 48
+        },
+        {
+          "name": "camera_clamp",
+          "vertices": 8
+        },
+        {
+          "name": "bonded_carrier",
+          "vertices": 8
+        },
+        {
+          "name": "saddle_base",
+          "vertices": 8
+        },
+        {
+          "name": "saddle_back",
+          "vertices": 8
+        },
+        {
+          "name": "conformal_spacer",
+          "vertices": 9
+        }
+      ]
+    },
+    "right": {
+      "parent_link": "link_right_arm_6/wrist_camera",
+      "optical_position": [
+        -0.005,
+        0.065,
+        0.059000000000000004
+      ],
+      "optical_quat_xyzw": [
+        0.02790495766417666,
+        -0.9989096130363632,
+        -0.023363031290766365,
+        0.029241530230314918
+      ],
+      "parent_from_geometry_row_major": [
+        [
+          8.196780525215885e-06,
+          0.9994616399952404,
+          0.03280899435882624,
+          0.0
+        ],
+        [
+          -0.9999998749671098,
+          -8.212083827174865e-06,
+          0.0004999983263922689,
+          0.0
+        ],
+        [
+          0.0004999985775028526,
+          -0.0328089943549994,
+          0.9994615149623501,
+          0.0
+        ],
+        [
+          -0.00022364,
+          0.0030292100000000044,
+          -0.15459999999999996,
+          1.0
+        ]
+      ],
+      "source_usd_sha256": "8aeecf49bcdb40d6c8f939129ea4356944c99b78451119c769378331fea4a498",
+      "colliders": [
+        {
+          "name": "camera_body",
+          "vertices": 48
+        },
+        {
+          "name": "camera_lens",
+          "vertices": 48
+        },
+        {
+          "name": "camera_socket",
+          "vertices": 48
+        },
+        {
+          "name": "cable_plug",
+          "vertices": 48
+        },
+        {
+          "name": "cable_tail",
+          "vertices": 48
+        },
+        {
+          "name": "camera_clamp",
+          "vertices": 8
+        },
+        {
+          "name": "bonded_carrier",
+          "vertices": 8
+        },
+        {
+          "name": "saddle_base",
+          "vertices": 8
+        },
+        {
+          "name": "saddle_back",
+          "vertices": 8
+        },
+        {
+          "name": "conformal_spacer",
+          "vertices": 9
+        }
+      ]
+    }
+  },
+  "source_review_camera_intrinsics": {
+    "name": "zed_x_one_s_wide_nominal_rectified_16_9",
+    "width": 1280,
+    "height": 720,
+    "fx": 448.1328244542143,
+    "fy": 448.1328244542143,
+    "cx": 640.0,
+    "cy": 360.0,
+    "provenance": "Nominal 110 degree horizontal FOV; ideal rectified square pixels. 16:9 crop vertical FOV is 77.55 degrees, not the native distorted lens specification. No per-unit calibration."
+  }
+}

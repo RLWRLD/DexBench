@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "part_elbow_50a_fc_newton.usd",
+    "sha256": "bdc270fa07f92cf2f7fb5c8caa78d32c1326f62ba3a6c7c598d09b76f03b9d17"
+  },
+  "pieces": 3,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/Part_Elbow50A",
+    "sources": [
+      {
+        "prim": "/Part_Elbow50A/Geom/part_elbow_50a_fc/PartFC_Elbow_Mesh_visonly/PartFC_Elbow_Mesh_visonly",
+        "authored_approximation": "visual",
+        "vertices": 34669,
+        "physics_material": "/Part_Elbow50A/_physics/PhysicsMaterial"
+      }
+    ],
+    "max_convex_hull": 3,
+    "coacd_pieces": 0,
+    "start": "align-axes",
+    "primitives": 3,
+    "kinds": [
+      "cylinder",
+      "cylinder",
+      "cylinder"
+    ],
+    "cost": 2.55425,
+    "excess_over_mesh_ratio": 2.48207,
+    "missing_ratio": 0.00241,
+    "growth_vs_vendor": -0.48092,
+    "lost_vs_vendor_ratio": 0.53837,
+    "seconds": 1.1,
+    "constraint": {
+      "kinds": [
+        "cylinder",
+        "cylinder",
+        "cylinder"
+      ],
+      "upright": {
+        "index": 2,
+        "replaced": "cylinder",
+        "radius_m": 0.023107,
+        "z_m": [
+          0.026397,
+          0.061976
+        ]
+      },
+      "align_axes": {
+        "cylinders": [
+          {
+            "index": 0,
+            "axis": "y",
+            "moved_mm": 0.32,
+            "radius_m": 0.019782,
+            "length_m": 0.049395
+          },
+          {
+            "index": 1,
+            "axis": "x",
+            "moved_mm": 2.26,
+            "radius_m": 0.018795,
+            "length_m": 0.07788
+          },
+          {
+            "index": 2,
+            "axis": "z",
+            "moved_mm": 6.85,
+            "radius_m": 0.016364,
+            "length_m": 0.035857
+          }
+        ]
+      }
+    },
+    "primitives_detail": [
+      {
+        "kind": "cylinder",
+        "center_m": [
+          -1.53e-05,
+          -0.0142721,
+          0.0293343
+        ],
+        "orient_wxyz": [
+          -0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "radius_m": 0.0197819,
+        "half_height_m": 0.0246974,
+        "physics_material": "/Part_Elbow50A/_physics/PhysicsMaterial"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          3.18e-05,
+          0.0166534,
+          0.0186835
+        ],
+        "orient_wxyz": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "radius_m": 0.0187954,
+        "half_height_m": 0.0389399,
+        "physics_material": "/Part_Elbow50A/_physics/PhysicsMaterial"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          3.78e-05,
+          0.022422,
+          0.0440461
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.0163641,
+        "half_height_m": 0.0179286,
+        "physics_material": "/Part_Elbow50A/_physics/PhysicsMaterial"
+      }
+    ],
+    "collider_volume_m3": 0.000160572,
+    "part_volume_m3": 4.6146e-05,
+    "vendor_newton_variant": {
+      "pieces": 2,
+      "collider_volume_m3": 0.000309339,
+      "excess_over_mesh_ratio": 5.85457,
+      "missing_ratio": 0.15105,
+      "cost": 10.38596
+    },
+    "newton8_variant": null,
+    "search": [
+      {
+        "max_convex_hull": 3,
+        "coacd_pieces": 0,
+        "start": "align-axes",
+        "primitives": 3,
+        "kinds": [
+          "cylinder",
+          "cylinder",
+          "cylinder"
+        ],
+        "cost": 2.55425,
+        "excess_over_mesh_ratio": 2.48207,
+        "missing_ratio": 0.00241,
+        "growth_vs_vendor": -0.48092,
+        "lost_vs_vendor_ratio": 0.53837,
+        "seconds": 1.1
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "part_elbow_50a_fc_newton.usd",
+    "sha256": "0d687100734a3704368a01928c7a681da0488d9642f3eb6ea52e57a966255ee7",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

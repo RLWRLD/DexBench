@@ -1,0 +1,43 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "Newton"
+                    }
+                    dictionary PhysX = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "PhysX"
+                    }
+                }
+            }
+            string version = "1.0.0"
+        }
+        string asset_name = "godmiddag_deep_plate_23"
+        string asset_type = "prop"
+        string source_file = "authored"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "World"
+    doc = """Blender v5.1.0
+
+Generated from Composed Stage of root layer C:\\Users\\madei\\Desktop\\ndot_root\\01_project\\prj_Real_World\\_pipeline\\_raw\\GODMIDDAG_Deep_Plate_23.usd
+
+
+Generated from Composed Stage of root layer C:\\Users\\madei\\Desktop\\ndot_root\\01_project\\prj_Real_World\\3_Items\\DB-H1\\GODMIDDAG_Deep_Plate_23\\4_USD\\GODMIDDAG_Deep_Plate_23\\GODMIDDAG_Deep_Plate_23.usd
+"""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_040da2e5cbf712cea05a/World>
+)
+{
+}
+

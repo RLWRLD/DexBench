@@ -1,0 +1,123 @@
+# DB-L1 (E2 logistics, pick_polybag_from_conveyor at the A_L1 anchor on HB2) sensitivity sweep, the +alpha robustness section (never in the score).
+# Factors, uniform:
+#   high_bay_light_02.intensity: x0.25-1.5 of the high-bay's 6302 (DexBenchInteriorLightBase), the high-bay nearest the station, over HB2 at the pick
+#   high_bay_light_02.color_temperature: 2700-6500 K
+#   high_bay_light_05.intensity: x0.25-1.5, the next nearest, north of the station
+#   high_bay_light_05.color_temperature: 2700-6500 K
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_left_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_right_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_left_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_right_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+# Training-range draws live as in the Train cell. Object: train_a.
+# Unavailable at this pin (not swept, not claimed):
+#   camera_intrinsics: held by choice: each camera keeps its calibrated intrinsics, which a mount change does not alter (Arena's CameraIntrinsicsVariation exists at the pin)
+#   camera_rotation: CameraExtrinsicsVariation draws a translation only at the pin and on Arena main; rotation coordinates are an upstream ask
+#   texture: no material or texture variation at the pin or Arena main; the smallest addition is a run-time material-swap variation of ours
+#   distractors: the boxes on the belt are the task's distractors: one disturbed is the failure the episode scores
+# Note: no scene-wide light factor: E2's twelve lights are separate Arena lights, so the sweep varies the two high-bays nearest A_L1 (2.70, 1.60): high_bay_light_02 at (3, 1), 0.67 m off, and high_bay_light_05 at (3, 3), 1.43 m off
+#
+# Replay: the 200 recorded draws (db_l1_sensitivity_conditions.yaml), one file per build, at the benchmark cap of 60 s.
+# Report: isaaclab_arena.analysis.sensitivity.generate_report on the Run's episode_results_rebuild*.jsonl.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l1 --sweep --model <key> \
+#       --output outputs/db_l1_sensitivity_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l1_sensitivity_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l1_sensitivity.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L1); edit the spec, not this file.
+runs:
+  train_a:
+    environment:
+      type: dexbench_logistics_e2_l1_environment
+      embodiment: dexbench_rby1_wuji2_joint
+      task: pick_polybag_from_conveyor
+      anchor: A_L1
+      rby1_control_hz: 30
+      belt_speed: 0.2
+      l1_stream_mode: episode
+      l1_stream_bags: 3
+      l1_stream_boxes: 2
+      l1_stream_lead: bag
+      l1_item_y: [0.8, 0.95]
+      l1_spacing: [0.72, 0.88]
+      polybag_coupling: two_way
+      polybag_contact_ke: 3000.0
+      polybag_contact_kd: 1.0
+      polybag_collider_ke: 3000.0
+      polybag_collider_kd: 1.0
+      polybag_contact_mu: 1.0
+      newton_solver: newton
+      polybag_stepping: a
+      polybag_vbd_iterations: 8
+      polybag_collider_mu: 3.0
+      l1_bag_wrist_link_collision: 'off'
+      polybag_contact_barrier: 'off'
+      polybag_vbd_init: contact
+      polybag_film_hessian: psd
+      polybag_tet_poisson: 0.45
+      polybag_tet_damping: 10.0
+      l1_bag_set: train_a
+      enable_cameras: true
+      camera_scale: 0.5
+      wrist_cameras: true
+      l1_bag_yaw_off_belt_deg: [0.0, 30.0]
+      episode_length_s: 60.0
+      benchmark_replay: true
+    environment_builder:
+      presets: NEWTON
+      seed: 1016
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+    recorded_variation_samples_paths: [outputs/db_conditions/db_l1_sensitivity/train_a_rebuild0.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild1.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild2.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild3.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild4.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild5.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild6.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild7.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild8.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild9.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild10.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild11.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild12.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild13.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild14.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild15.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild16.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild17.jsonl,
+      outputs/db_conditions/db_l1_sensitivity/train_a_rebuild18.jsonl, outputs/db_conditions/db_l1_sensitivity/train_a_rebuild19.jsonl]
+    variations:
+      high_bay_light_02:
+        intensity:
+          enabled: true
+        color_temperature:
+          enabled: true
+          sampler_cfg:
+            low: [2700.0]
+            high: [6500.0]
+      high_bay_light_05:
+        intensity:
+          enabled: true
+        color_temperature:
+          enabled: true
+          sampler_cfg:
+            low: [2700.0]
+            high: [6500.0]
+      dexbench_rby1_wuji2_joint:
+        camera_extrinsics_robot_pov_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_robot_pov_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_wrist_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]
+        camera_extrinsics_wrist_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]

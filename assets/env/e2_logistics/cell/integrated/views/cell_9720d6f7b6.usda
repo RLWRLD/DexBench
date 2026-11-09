@@ -1,0 +1,35 @@
+#usda 1.0
+(
+    defaultPrim = "World"
+    doc = """E2 logistics cell, DexBench composition on PSL 261014: fixture slots, the room's structure, background, background collision and dressing, the robot anchor.
+Fixtures are object_library packages re-sourced from PSL's r02 fixtures; the conveyor is PSL's conveyor.
+Units are metres, Z-up; the origin is the room's south-west floor corner."""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_9720d6f7b68ab4a3eafe/World>
+)
+{
+    over "FixtureSlots"
+    {
+        over "Slot_Conveyor"
+        {
+            over "Asset" (
+                prepend payload = @../../../../../object_library/logistics_conveyor/usd/logistics_conveyor.usda@
+            )
+            {
+            }
+        }
+
+        over "Slot_SortTable"
+        {
+            over "Asset" (
+                prepend payload = @../../../../../object_library/sort_table/usd/sort_table.usd@
+            )
+            {
+            }
+        }
+    }
+}

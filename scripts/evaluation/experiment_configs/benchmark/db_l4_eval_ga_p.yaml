@@ -1,0 +1,131 @@
+# DB-L4 (E2 logistics, deliver_parcels_barcode_up at A_L4 on HB2 and FB1).
+# Cell GA-P (ga_p): training objects, spatial training range, physical beyond the training range.
+# Spatial: each parcel put down on HB2 at one of its in-domain rotations, drawn per slot at every reset (L4RotationVariation): barcode up, down or to a side, square to the belt (16 for a box, 8 for a bag, e2_logistics_l4_layout.rotation_labels), the rotations the training set's sequences use, each ten times per parcel.
+# Physical: each parcel at a held-out multiplier, x0.25, x0.35, x2.83 or x4: a step of sqrt(2) past each end of the training range on a log scale.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (10 each), frozen rows (each evaluation sequence's 10 rows at the Run's seed: every slot's rotation and mass multiplier from the cell's domains, stratified over the domain, outcome-blind), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 95 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l4 --cell ga_p --model <key> \
+#       --output outputs/db_l4_eval_ga_p_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l4_eval_ga_p_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l4_eval_ga_p.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L4); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_logistics_e2_l4_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: deliver_parcels_barcode_up
+    anchor: A_L4
+    rby1_control_hz: 30
+    belt_speed: 0.45
+    end_on_parcel_failure: true
+    l4_rotation_draw: id
+    l4_mass_draw: ood
+    episode_length_s: 95.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  eval_00:
+    environment:
+      l4_sequence: eval_00
+    environment_builder:
+      seed: 3646640
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_00.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_01:
+    environment:
+      l4_sequence: eval_01
+    environment_builder:
+      seed: 4360486
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_01.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_02:
+    environment:
+      l4_sequence: eval_02
+    environment_builder:
+      seed: 6836316
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_02.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_03:
+    environment:
+      l4_sequence: eval_03
+    environment_builder:
+      seed: 6687306
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_03.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_04:
+    environment:
+      l4_sequence: eval_04
+    environment_builder:
+      seed: 8195497
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_04.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_05:
+    environment:
+      l4_sequence: eval_05
+    environment_builder:
+      seed: 2857023
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_05.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_06:
+    environment:
+      l4_sequence: eval_06
+    environment_builder:
+      seed: 10099653
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_06.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_07:
+    environment:
+      l4_sequence: eval_07
+    environment_builder:
+      seed: 8632019
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_07.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_08:
+    environment:
+      l4_sequence: eval_08
+    environment_builder:
+      seed: 6784194
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_08.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_09:
+    environment:
+      l4_sequence: eval_09
+    environment_builder:
+      seed: 4738004
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_09.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_10:
+    environment:
+      l4_sequence: eval_10
+    environment_builder:
+      seed: 2999409
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_10.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  eval_11:
+    environment:
+      l4_sequence: eval_11
+    environment_builder:
+      seed: 3427175
+      recorded_variation_samples_path: outputs/db_conditions/db_l4_ga_p/eval_11.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

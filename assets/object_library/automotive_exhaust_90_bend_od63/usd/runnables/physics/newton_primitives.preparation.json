@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "automotive_exhaust_90_bend_od63_newton.usd",
+    "sha256": "e6249458c2593220a544dffbb570df22be3d9e50b181c907e5f1a26324af1490"
+  },
+  "pieces": 5,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/World/Automotive_Exhaust_90_Bend_OD63",
+    "sources": [
+      {
+        "prim": "/World/Automotive_Exhaust_90_Bend_OD63/exhaust_bend_90",
+        "authored_approximation": "sdf",
+        "vertices": 2058,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      }
+    ],
+    "max_convex_hull": 5,
+    "coacd_pieces": 0,
+    "start": "torus",
+    "primitives": 5,
+    "kinds": [
+      "cylinder",
+      "cylinder",
+      "cylinder",
+      "cylinder",
+      "cylinder"
+    ],
+    "cost": 14.17492,
+    "excess_over_mesh_ratio": 14.17492,
+    "missing_ratio": 0.0,
+    "growth_vs_vendor": 4.44544,
+    "lost_vs_vendor_ratio": 0.04786,
+    "seconds": 0.0,
+    "growth_vs_newton8": 1.20891,
+    "lost_vs_newton8_ratio": 0.15053,
+    "constraint": {
+      "torus_chain": {
+        "torus_axis": "z",
+        "centre_m": [
+          -0.04725,
+          -0.04725,
+          0.0315
+        ],
+        "bend_radius_m": 0.063,
+        "tube_radius_m": 0.0315,
+        "bend_deg": [
+          -0.0,
+          90.0
+        ],
+        "cylinders": 5,
+        "cylinder_half_length_m": 0.014967,
+        "inward_shift_and_radius_growth_m": 0.000388
+      }
+    },
+    "primitives_detail": [
+      {
+        "kind": "cylinder",
+        "center_m": [
+          0.0145913,
+          -0.0374553,
+          0.0315
+        ],
+        "orient_wxyz": [
+          -0.704927,
+          0.704927,
+          0.0554789,
+          -0.0554789
+        ],
+        "radius_m": 0.0318878,
+        "half_height_m": 0.0149673,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          0.0085379,
+          -0.0188247,
+          0.0315
+        ],
+        "orient_wxyz": [
+          -0.6875694,
+          0.6875694,
+          0.1650708,
+          -0.1650708
+        ],
+        "radius_m": 0.0318878,
+        "half_height_m": 0.0149673,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          -0.0029765,
+          -0.0029765,
+          0.0315
+        ],
+        "orient_wxyz": [
+          -0.6532815,
+          0.6532815,
+          0.270598,
+          -0.270598
+        ],
+        "radius_m": 0.0318878,
+        "half_height_m": 0.0149673,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          -0.0188247,
+          0.0085379,
+          0.0315
+        ],
+        "orient_wxyz": [
+          -0.6029076,
+          0.6029076,
+          0.3694623,
+          -0.3694623
+        ],
+        "radius_m": 0.0318878,
+        "half_height_m": 0.0149673,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          -0.0374553,
+          0.0145913,
+          0.0315
+        ],
+        "orient_wxyz": [
+          -0.5376882,
+          0.5376882,
+          0.4592291,
+          -0.4592291
+        ],
+        "radius_m": 0.0318878,
+        "half_height_m": 0.0149673,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      }
+    ],
+    "collider_volume_m3": 0.000348998,
+    "part_volume_m3": 2.2998e-05,
+    "vendor_newton_variant": {
+      "pieces": 32,
+      "collider_volume_m3": 6.409e-05,
+      "excess_over_mesh_ratio": 1.79148,
+      "missing_ratio": 0.00476,
+      "cost": 1.93422
+    },
+    "newton8_variant": {
+      "pieces": 8,
+      "collider_volume_m3": 0.000157996,
+      "excess_over_mesh_ratio": 5.91134,
+      "missing_ratio": 0.04146,
+      "cost": 7.1552
+    },
+    "search": [
+      {
+        "max_convex_hull": 5,
+        "coacd_pieces": 0,
+        "start": "torus",
+        "primitives": 5,
+        "kinds": [
+          "cylinder",
+          "cylinder",
+          "cylinder",
+          "cylinder",
+          "cylinder"
+        ],
+        "cost": 14.17492,
+        "excess_over_mesh_ratio": 14.17492,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": 4.44544,
+        "lost_vs_vendor_ratio": 0.04786,
+        "seconds": 0.0,
+        "growth_vs_newton8": 1.20891,
+        "lost_vs_newton8_ratio": 0.15053
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "automotive_exhaust_90_bend_od63_newton.usd",
+    "sha256": "0ad3259b2dc17d3c3fe790a1cb251f9a2169d2909a4cb7e66fb399b8bb10151b",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

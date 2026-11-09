@@ -1,0 +1,76 @@
+{
+  "asset": {
+    "version": "1.1.1",
+    "source_delivery": "deliveries/psl/e3_manufacturing/260827",
+    "source_generated": "260826",
+    "categories": [
+      "container"
+    ],
+    "categories_seeded": true,
+    "kind": "fixture",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-10-04",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "fail",
+        "FET_003_NEWTON": "fail",
+        "FET_003_PHYSX": "fail",
+        "FET_003_STANDARD": "fail",
+        "FET_004_MUJOCO": "fail",
+        "FET_004_NEWTON": "fail",
+        "FET_004_PHYSX": "fail",
+        "FET_004_STANDARD": "fail",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    }
+  },
+  "fixture_key": "parts_bin_fc",
+  "schema": {
+    "sheet_kind": "wide",
+    "header_row": 3,
+    "field_count": 18
+  },
+  "measured_from": "fixtures/parts_bin_fc.usdc",
+  "measured_after": "u02_physics (after the physics authoring; runner order u02 → u04s → u03)",
+  "pending": {
+    "front_access_profile": "Pending: until the purchased part is measured. Read from the embedded image as a hopper: the front opening is the full 470 mm width, the front wall 60 mm, the side walls slope from 150 to 70 mm",
+    "notes": "Pending: the wall thicknesses are derived from the fixed inner dimensions (15/20, 35/25, bottom 10) and are frozen after measurement. The mass is not derived from density: walls built to the fixed inner dimensions give 5.8 kg, and the real part is about 0.9 kg"
+  },
+  "metadata": {
+    "fixture_id": "psl.e3.parts_bin_fc",
+    "variant_id": "M5-SB-REF",
+    "color": "Yellow",
+    "overall_w_mm": 500,
+    "overall_d_mm": 300,
+    "overall_h_mm": 150,
+    "inner_upper_w_mm": 470,
+    "inner_upper_d_mm": 260,
+    "inner_lower_w_mm": 430,
+    "inner_lower_d_mm": 250,
+    "inner_h_mm": 140,
+    "material": "PPC",
+    "capacity_l": 15,
+    "topology": "Single cavity / no divider",
+    "front_access_profile": "Pending: until the purchased part is measured. Read from the embedded image as a hopper: the front opening is the full 470 mm width, the front wall 60 mm, the side walls slope from 150 to 70 mm",
+    "physics_material_id": "M5_STAGING_BIN_CANONICAL",
+    "variation_scope": "Colour only (Yellow reference; Green, Blue, Red, Gray, Black)",
+    "notes": "Pending: the wall thicknesses are derived from the fixed inner dimensions (15/20, 35/25, bottom 10) and are frozen after measurement. The mass is not derived from density: walls built to the fixed inner dimensions give 5.8 kg, and the real part is about 0.9 kg"
+  }
+}

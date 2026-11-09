@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "Newton"
+                    }
+                    dictionary PhysX = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "PhysX"
+                    }
+                }
+            }
+            string version = "1.0.0"
+        }
+        string asset_name = "monster_473ml_tall_can"
+        string asset_type = "prop"
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.4429039176070246, 0.44290391760702597, 0.44290402637684745)
+                double3 target = (-3.9780388649823806e-8, -3.978038709551157e-8, 7.956076825132996e-8)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./Monster_473ml_Tall_Can.usd"
+        }
+        dictionary renderSettings = {
+        }
+        string source_file = "authored"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_0f2f7a62589490e158db/World>
+)
+{
+}
+

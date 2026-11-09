@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_chandelier_static"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_chandelier_static" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_80a847534d87a8dd7f61/BG_chandelier_static>
+)
+{
+}
+

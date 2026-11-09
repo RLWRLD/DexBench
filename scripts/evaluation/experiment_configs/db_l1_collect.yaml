@@ -1,0 +1,97 @@
+# DB-L1 (E2 logistics, pick_polybag_from_conveyor at the A_L1 anchor on HB2, 261014 cell).
+# Recording experiment: one Run per training bag set (GA-O's training bags) at the training range,
+# which is the benchmark's Train range (benchmark/spec.py DB_L1.training). Each Run replays its set's rows of batch 0
+# of the recorded start-state dump, one row an episode of 3 bags + 2 boxes (bag-box-bag-box-bag) laid out as the row's
+# layout draw (l1_park_slab.stream_layout) says, and record_demos.py / teleop.py hold a row until a demo of it is kept
+# (--collection_rows, which environment_builder.recorded_variation_samples_path gives them). An episode succeeds once its three bags are placed and no box was disturbed,
+# and ends on the first failure; a failed take starts the same row again. A headset recording, for example:
+#   record_demos.py --viz kit --device cuda:0 --dataset_file <hdf5> --num_demos <n> [--collection_first_row <row>] \
+#       --experiment db_l1_collect.yaml --run train_a --embodiment dexbench_rby1_wuji2 --teleop_device openxr \
+#       --arm_mode dual_arm --waist_ik
+# The cap is the task's own episode's 600 s (e2_logistics_l1_layout.L1_EPISODE_LENGTH_S; record_demos.py lifts it);
+# the protocol's cap for the 3 + 2 evaluation episodes is the benchmark's (Eval_Protocol.md §5). The bags are shape
+# SI (polybag_tet_sort_variants 5.0.0).
+shared:
+  environment:
+    type: dexbench_logistics_e2_l1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    # The joint twin, as every task's YAML; a headset session names the IK twin and the torso IK on its command line
+    # after --run: --embodiment dexbench_rby1_wuji2 --teleop_device openxr --arm_mode dual_arm --waist_ik. The left
+    # hand picks every bag and puts it straight into the tote on the robot's right, turning the torso (main's gains)
+    # to get over it.
+    task: pick_polybag_from_conveyor
+    anchor: A_L1
+    rby1_control_hz: 30
+    # One belt speed for every run: belt speed is no axis (a sorting line runs at one speed).
+    belt_speed: 0.2
+    # An episode per row: three of the set's four bags and two of the four boxes, bag-box-bag-box-bag, laid out by the
+    # row; success is every bag placed and no box disturbed, and the first drop, miss or disturbed box ends it. A teleop
+    # session refuses another count or lead (the continuous mode, l1_stream_mode continuous, is for a stream session).
+    l1_stream_mode: episode
+    l1_stream_bags: 3
+    l1_stream_boxes: 2
+    l1_stream_lead: bag
+    # GA-S training band: a bag's long side within 30 deg of the belt's direction (either way along it).
+    # 60-90 deg is held out for GA-S; 30-60 is in neither.
+    l1_bag_yaw_off_belt_deg: [0.0, 30.0]
+    # Where across HB2 an item's centre goes down [m, world y], and the belt run between releases [m]:
+    # the same in every cell (no lateral or spacing axis).
+    l1_item_y: [0.80, 0.95]
+    l1_spacing: [0.72, 0.88]
+    # The bags' physics: two-way coupling, MJWarp in every VBD substep, contact 3000 N/m and 1 on the bags' side
+    # and the colliders' alike (two-way needs them equal), bag friction 1.0 (DB-L4's values); MuJoCo-Warp's
+    # newton solver, as DB-L4.
+    polybag_coupling: two_way
+    polybag_contact_ke: 3000.0
+    polybag_contact_kd: 1.0
+    polybag_collider_ke: 3000.0
+    polybag_collider_kd: 1.0
+    polybag_contact_mu: 1.0
+    newton_solver: newton
+    # The collection's physics: 8 VBD substeps x 8 iterations, MJWarp 8; the colliders' friction against the bags 3 (the asset's 0.8); the wrist links above
+    # the palm pass through the bags (the palm and fingers collide); the linear contact penalty, not the log barrier;
+    # VBD's iterate started without the gravity sink for a supported bag; the film springs' Hessian clamped positive;
+    # the bag tets' Poisson ratio 0.45 and damping 10 Pa s over the asset's; the pool's own moduli. The bag shape is SI
+    # (polybag_tet_sort_variants 5.0.0): a symmetric pillow, 8 / 7.6 / 7.2 cm by label 1A/2B/3C, per-tet 2.5 kPa core
+    # and bottom, 0.5 kPa top skin, a 2 kN/m spring film.
+    polybag_stepping: a
+    polybag_vbd_iterations: 8
+    polybag_collider_mu: 3.0
+    l1_bag_wrist_link_collision: "off"
+    polybag_contact_barrier: "off"
+    polybag_vbd_init: contact
+    polybag_film_hessian: psd
+    polybag_tet_poisson: 0.45
+    polybag_tet_damping: 10.0
+  environment_builder:
+    # DB-L1 runs on Newton only (VBD bags).
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+# A session that stops early goes on with --collection_first_row <next row> and a new --dataset_file; the console
+# prints each row as it is presented and kept.
+runs:
+  train_a:  # silver 30x40, grey 25x35, black 25x35, pink 20x30
+    environment:
+      l1_bag_set: train_a
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_collect/batch_0/train_a.jsonl
+  train_b:  # silver 30x40, black 25x35, white 25x35, grey 20x30
+    environment:
+      l1_bag_set: train_b
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_collect/batch_0/train_b.jsonl
+  train_c:  # black 30x40, grey 25x35, white 25x35, pink 20x30
+    environment:
+      l1_bag_set: train_c
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_collect/batch_0/train_c.jsonl
+  train_d:  # black 30x40, grey 25x35, white 25x35, grey 20x30
+    environment:
+      l1_bag_set: train_d
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_collect/batch_0/train_d.jsonl

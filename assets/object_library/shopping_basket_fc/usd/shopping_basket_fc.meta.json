@@ -1,0 +1,74 @@
+{
+  "asset": {
+    "version": "1.1.0",
+    "source_delivery": "deliveries/psl/e1_retail/260914",
+    "source_generated": "260914",
+    "categories": [
+      "container",
+      "retail"
+    ],
+    "categories_seeded": true,
+    "kind": "fixture",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-09-20",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "fail",
+        "FET_003_NEWTON": "fail",
+        "FET_003_PHYSX": "fail",
+        "FET_003_STANDARD": "fail",
+        "FET_004_MUJOCO": "fail",
+        "FET_004_NEWTON": "fail",
+        "FET_004_PHYSX": "fail",
+        "FET_004_STANDARD": "fail",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    }
+  },
+  "fixture_id": "psl.e1.shopping_basket_fc",
+  "variant_id": "REF",
+  "fixture_class": "destination_container",
+  "used_task": "DB-R1",
+  "task_role": "destination",
+  "product_sku": "R1-SHOPBOX (the FC workbook's 01_Retail Shopping Basket block; the large size is canonical, the extra-large 510×340×H240 is for reference)",
+  "outer_w": 450.0,
+  "outer_d": 330.0,
+  "outer_h": 230.0,
+  "inner_usable_w": 444,
+  "inner_usable_d": 324,
+  "inner_usable_h": 227,
+  "opening_plane_z": 830.0,
+  "placement_pose_id": "psl.e1.shopping_basket_fc.pose@Slot_Cart_R1_Top ((2.600, 0.250, 0.600), Slot_Floor_Cart_R1): seated on the cart cradle. It is a module and a slot apart from the cart, so the basket alone can be replaced",
+  "interior_collision_proxy_id": "psl.e1.shopping_basket_fc.proxy@REF: canonical smooth proxy. The visual shell (vertical slot grid, label plate, grip) has no collision (6 _visonly); inside, only 13 smooth convex pieces collide (5 plates and 8 rounded corner prisms; _colproxy, purpose=guide). The four wall plates lean at the 11.07° draft of the taper, but each piece is convex",
+  "rim_geometry_id": "psl.e1.shopping_basket_fc.rim@REF: stacking flange (outside 450 × 330 at the top, 360 × 240 at the bottom; walls a uniform t3.0, so the rim opening is 444 × 324; usable H 227; inner volume 25.8 L)",
+  "task_physics_id": "static / convexHull / μs 0.6, μd 0.5, e 0 / 13 collision pieces (13 of them proxy only)",
+  "basket_init_state": "Upright, open-top, level",
+  "color_sku": "Light grey (reference). Eight colours are the variant axis: black, charcoal grey, light grey, silver grey, dark green, green (lime), red, yellow",
+  "wall_perforation_style": "Standard grid perforation (visual only; it does not act as an inner notch)",
+  "handle_style": "Straight fixed grip at the top (visual only)",
+  "rib_corner_style": "Five rows of vertical slots and a label plate, vertical corner radius R30 (outer wall visual only, outside the inner envelope; light grey PP, our own retexture)",
+  "branding_decal": "",
+  "support_mount_style": "carrier_cart",
+  "support_mount_height": 600.0,
+  "actual_measured_wdh": null,
+  "geometry_validation": "REVIEW: the three outside dimensions reproduce fixed values, and a gate compares them to ±5 mm. The workbook leaves the three inner envelope dimensions (top opening, bottom footprint, usable H) open, so they are derived values, waiting for a caliper measurement of the purchased part. opening_plane_z is not final and follows the cart's upper tier plane",
+  "source_image_ref": "The FC workbook's 01_Retail Shopping Basket block reference table, with the embedded size chart and colour line-up images (received 2026-08-27); our own parametric authoring. The colour line-up image shows a product family with a bail handle, unlike the size chart's fixed grip; the size chart is followed",
+  "compatibility_check": "PASS: it seats on the upper tier plane (z 600 mm) of the cart that carries it (Slot_Floor_Cart_R1), and mounted_basket_opening_z = 600 + 230 = 830 mm matches this basket's opening_plane_z. A drop probe gate shows by playback that it seats in the cradle"
+}

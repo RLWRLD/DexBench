@@ -1,0 +1,120 @@
+DexBench
+Copyright (c) 2026, RLWRLD Inc. and contributors.
+
+LICENSE SCOPE
+
+RLWRLD-authored source code, scripts, build recipes, configuration files and
+text documentation in this repository are licensed under Apache-2.0, unless
+a file or component states otherwise. The full license is in LICENSE.
+Apache-2.0 permits commercial use subject to its terms.
+
+The grant for text documentation does not extend to images, screenshots,
+renders or videos under docs/ unless an explicit license for that material
+states otherwise. Such media require separate rights verification, including
+any third-party assets, product packaging or other protected material they
+depict. Inclusion in documentation does not itself grant redistribution rights.
+
+This grant covers only rights held by the respective contributors. Existing
+third-party copyright notices and licenses remain in effect; this NOTICE does
+not relicense them or grant rights to trademarks.
+
+The grant does not cover the top-level assets/ payloads, datasets, recordings,
+model weights, vendor deliveries, or downloaded software and binaries. Those
+materials retain their own licenses and agreements. Python implementation code
+under source/dexbench_arena/dexbench_arena/assets/ is code, not a grant of rights
+to the scene, robot or object payloads it loads.
+
+The top-level assets/ payloads are licensed separately. Unless otherwise noted, they
+are licensed under CC BY 4.0; the license statement, provider credits and the
+components that keep their own terms are listed in assets/ASSET_LIST.md and
+assets/Asset_Rights_Index.md. Preserve the per-asset attribution when redistributing.
+The Python distribution does not bundle the top-level asset payloads or their
+asset-tree license inventory.
+
+Submodule contents retain their component licenses. In particular, the
+Apache-2.0 declaration here must not be read as applying to the entire recursive
+checkout or to a locally built simulator environment.
+
+INCORPORATED SOURCE
+
+1. IsaacLab-Arena VLM policy, adapters and object-state getters (Apache-2.0)
+
+   Copyright (c) 2026, The Isaac Lab Arena Project Developers.
+   All rights reserved.
+   Contributors: https://github.com/isaac-sim/IsaacLab-Arena/blob/main/CONTRIBUTORS.md
+   Project: https://github.com/isaac-sim/IsaacLab-Arena
+
+   Location relative to source/dexbench_arena/ (or the installed package root):
+     dexbench_arena_vlm_agent/upstream/action_adapter.py
+     dexbench_arena_vlm_agent/upstream/image.py
+     dexbench_arena_vlm_agent/upstream/observation_adapter.py
+     dexbench_arena_vlm_agent/upstream/vlm_agent_policy.py
+     dexbench_arena_vlm_agent/upstream/inference.py
+     dexbench_arena/tasks/predicates/object_state.py
+
+   The first four files identify upstream revision c8c4395f23; imports were
+   adapted to this package. inference.py identifies d6699ca44 and retains the
+   request/schema helpers and backend interface; the implementation uses
+   DexBench's OpenAIBackend. File headers retain the provenance and changes.
+   object_state.py retains the env-based getters from
+   isaaclab_arena/tasks/predicates/predicate_utils.py at c5826c87a;
+   the unused select helper is omitted and the module docstring is local.
+   The Apache-2.0 text accompanying these files is LICENSE.
+
+2. Deformable loader implementation (Apache-2.0)
+
+   Location relative to source/dexbench_arena/ (or the installed package root):
+     dexbench_arena/assets/polybag/canonical/
+
+   The package's __init__.py records the source as simready-foundation revision
+   2f32655cd41e80a218f533b917a08b5eb8e519ca, from
+   rlwrld/asset_checks/asset_checks/native/{loader,newton_scene,usd_deformable,
+   asset_properties,setups,stepping,drop_shape}.py, delivered on 2026-09-29.
+   It records Apache-2.0 and the conversion of inter-module imports to relative
+   imports. Preserve that provenance and the LICENSE text. This entry concerns
+   the loader code only, not the polybag assets or their delivery terms.
+
+3. Adapted Isaac Lab two-way reaction kernel (BSD-3-Clause)
+
+   Copyright (c) 2022-2026, The Isaac Lab Project Developers.
+   All rights reserved.
+   Contributors: https://github.com/isaac-sim/IsaacLab/blob/main/CONTRIBUTORS.md
+   Project: https://github.com/isaac-sim/IsaacLab
+
+   Location relative to source/dexbench_arena/ (or the installed package root):
+     dexbench_arena/assets/polybag/two_way_reaction.py
+
+   Adapted from _kernel_body_particle_reaction in
+   source/isaaclab_contrib/isaaclab_contrib/custom_coupling/kernels.py at
+   revision 2d3ae03ede6be38d71af5698509fe8116b6b7216. DexBench extends the
+   reaction to edge/face contacts, Newton API compatibility and contact
+   filtering. The module retains the original copyright, BSD conditions and
+   disclaimer inline; DexBench's additions retain Apache-2.0. Its combined
+   SPDX expression is Apache-2.0 AND BSD-3-Clause. This adapted implementation
+   is included in the Python wheel/sdist, not acquired only as a dependency.
+
+SEPARATELY ACQUIRED DEPENDENCIES
+
+The following are dependencies, not code relicensed by this project. Their own
+license files and notices must accompany any redistribution of their contents.
+Except for the incorporated source listed above, the Python wheel/sdist of
+DexBench does not bundle these dependencies' implementations.
+
+- IsaacLab-Arena: Apache-2.0, submodule/isaaclab_arena/LICENSE.md.
+- Isaac Lab: BSD-3-Clause, submodule/isaaclab_arena/submodules/IsaacLab/LICENSE;
+  Mimic portions also carry LICENSE-mimic in that checkout (Apache-2.0).
+- Isaac Sim/Omniverse Kit and CloudXR: NVIDIA component terms apply to the
+  binaries acquired by the builder; the source-code licenses are not grants
+  to redistribute these binaries.
+- FFmpeg/imageio-ffmpeg: the wrapper's BSD license does not describe every
+  bundled FFmpeg build. FFmpeg's LGPL/GPL terms depend on its build options.
+  qpsolvers (LGPL) and pytetwild (MPL-2.0) likewise retain their own terms.
+  These licenses can permit commercial use while imposing source and notice
+  obligations when the covered software is distributed.
+
+Selecting a policy/planner requires an appropriately licensed setup for its
+dependencies.
+Model weights and external model servers require their own license review.
+
+This file records source attributions and dependency boundaries. It is not an
+SBOM or a license clearance for assets, data, models or container binaries.

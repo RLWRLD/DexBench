@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "source": {
+    "usd_path": "object_library/godmiddag_deep_plate_23/usd/godmiddag_deep_plate_23.usd",
+    "sha256": "ecbb06994aaf702dc05efbb97f1eec65897e45b27409da72a2b594194d3715cc",
+    "dependencies": [
+      {
+        "path": "object_library/godmiddag_deep_plate_23/usd/materials/OmniPBR/OmniPBR.mdl",
+        "sha256": "d384fc800f120e3cad1b7ca8837f9c554f9c34343d194813fca27caa493001f2"
+      },
+      {
+        "path": "object_library/godmiddag_deep_plate_23/usd/runnables/physics/newton.usd",
+        "sha256": "d97f9080379de2e9f1eb059aed5c7bed70924f3d2561183efe5f676484f1e62e"
+      },
+      {
+        "path": "object_library/godmiddag_deep_plate_23/usd/runnables/physics/physx.usd",
+        "sha256": "83d76c8617b32758e4a34c2067dbb69af4443ce191cc0e18fb9252bff4881782"
+      },
+      {
+        "path": "object_library/godmiddag_deep_plate_23/usd/textures/T_Ceramic_Glaze_BaseColor.png",
+        "sha256": "2eaf0540caf1ec7eb8fc2fe9cc9fb5bf82bfbc6f3a99aca0c8fcbef2a44b9b63"
+      },
+      {
+        "path": "object_library/godmiddag_deep_plate_23/usd/textures/T_Ceramic_Glaze_Normal.png",
+        "sha256": "8e6db96cc3d3bad12b89ee28a048d07f2fe34e5e62cb9a36403f5ffcdbb9d8c7"
+      },
+      {
+        "path": "object_library/godmiddag_deep_plate_23/usd/textures/T_Ceramic_Glaze_OcclusionRoughnessMetallic.png",
+        "sha256": "9ffe1e0c8ee2414b8dc648661f0dd4bf8f8a137032b2295a2a695c3c93c4d885"
+      }
+    ]
+  },
+  "recipe": {
+    "version": 1,
+    "cook_params": {
+      "max_convex_hulls": 128,
+      "hull_vertex_limit": 64,
+      "error_percentage": 0.5,
+      "voxel_resolution": 1000000,
+      "shrink_wrap": true
+    },
+    "contact_gap_m": 0.002,
+    "contact_margin_m": 0.0,
+    "frame_seed": 20260925,
+    "source_hashes": {
+      "scripts/tools/prepare_h1_newton_colliders.py": "116af2117f46727816a6778a1bb7ab6532fdc00c4f434a9de80248de312023ca",
+      "scripts/tools/_h1_convex_frames.py": "1b7e264389aab3e3841d152b3fc45255dad8d86cbef3918535c385b6e6976278",
+      "scripts/tools/make_newton_variant.py": "523e7d18abdd7a7170c16a29d5a1607727c9d5a0f795da9aef4a34f623c48ea6"
+    },
+    "runtime_versions": {
+      "isaacsim": null,
+      "isaaclab": "16.4.0",
+      "isaaclab-physx": "5.1.0",
+      "omni-physx": null
+    }
+  },
+  "output": {
+    "usd_path": "usd/variants/godmiddag_deep_plate_23_newton.usd",
+    "sha256": "ff21c416222e016444162a8ab69da8c3e32a0c47053d5e33ecb54ea2016ad085",
+    "dependencies": [
+      {
+        "path": "usd/materials/OmniPBR/OmniPBR.mdl",
+        "sha256": "d384fc800f120e3cad1b7ca8837f9c554f9c34343d194813fca27caa493001f2"
+      },
+      {
+        "path": "usd/runnables/physics/newton.usd",
+        "sha256": "d97f9080379de2e9f1eb059aed5c7bed70924f3d2561183efe5f676484f1e62e"
+      },
+      {
+        "path": "usd/runnables/physics/physx.usd",
+        "sha256": "83d76c8617b32758e4a34c2067dbb69af4443ce191cc0e18fb9252bff4881782"
+      },
+      {
+        "path": "usd/textures/T_Ceramic_Glaze_BaseColor.png",
+        "sha256": "2eaf0540caf1ec7eb8fc2fe9cc9fb5bf82bfbc6f3a99aca0c8fcbef2a44b9b63"
+      },
+      {
+        "path": "usd/textures/T_Ceramic_Glaze_Normal.png",
+        "sha256": "8e6db96cc3d3bad12b89ee28a048d07f2fe34e5e62cb9a36403f5ffcdbb9d8c7"
+      },
+      {
+        "path": "usd/textures/T_Ceramic_Glaze_OcclusionRoughnessMetallic.png",
+        "sha256": "9ffe1e0c8ee2414b8dc648661f0dd4bf8f8a137032b2295a2a695c3c93c4d885"
+      }
+    ]
+  },
+  "geometry": {
+    "hull_count": 128,
+    "vertex_max": 21,
+    "minimum_seed_clearance_m": 0.00029720878968119563,
+    "max_body_vertex_error_m": 4.315011174410782e-09,
+    "floored_hulls": [
+      {
+        "hull": 121,
+        "thickness_m": 0.0008181907370334183,
+        "floored_to_m": 0.0010009999999999971,
+        "vertices": 10
+      }
+    ]
+  },
+  "generated_physics_config": {
+    "backend": "PhysX",
+    "device": "cpu"
+  }
+}

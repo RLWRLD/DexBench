@@ -1,0 +1,69 @@
+{
+  "asset": {
+    "version": "1.1.0",
+    "categories": [
+      "container"
+    ],
+    "categories_seeded": true,
+    "kind": "fixture",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-09-20",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "fail",
+        "FET_003_NEWTON": "fail",
+        "FET_003_PHYSX": "fail",
+        "FET_003_STANDARD": "fail",
+        "FET_004_MUJOCO": "fail",
+        "FET_004_NEWTON": "fail",
+        "FET_004_PHYSX": "fail",
+        "FET_004_STANDARD": "fail",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    }
+  },
+  "fixture_id": "psl.e1.tote_fc",
+  "variant_id": "REF",
+  "optic_context": "Automotive-parts style solid-wall tote — DB-R2 dense-clutter selective retrieval station",
+  "outer_width": 600,
+  "outer_depth": 400,
+  "outer_height": 210,
+  "inner_upper_width": 560,
+  "inner_upper_depth": 360,
+  "inner_lower_width": 550,
+  "inner_lower_depth": 350,
+  "inner_usable_height": 205,
+  "interior_collision_proxy": "Canonical: the visual shell (ribs, handles, flange) has no collision (5 _visonly); inside, only five smooth convex plates collide (_colproxy, purpose=guide)",
+  "tote_state": "Upright, open-top, level",
+  "task_physics_profile": "static / convexHull / μs 0.6, μd 0.5, e 0 / 5 collision pieces (5 of them proxy only)",
+  "r2_object_config_id": "psl.e1.r2_dense_clutter@REF",
+  "wall_style": "Solid",
+  "color": "Orange",
+  "handle_style": "Recessed slot (in the outer wall, outside the inner envelope; visual-only mesh)",
+  "outer_rib_corner_style": "Vertical ribs (visual-only mesh, inside the 600×400 outline)",
+  "rim_flange_style": "Stacking flange: the flange's outer edge is exactly the nominal 600×400",
+  "base_style": "Flat bottom (support plane at z 0)",
+  "visual_finish": "Matte plastic (procedural)",
+  "branding_label": "",
+  "actual_measured_w": null,
+  "actual_measured_d": null,
+  "actual_measured_h": null,
+  "geometry_validation": "REVIEW: waiting for a measurement of the purchased part (Planned). The present values reproduce the FC workbook's nominal values, and gates compare them to ±5 mm"
+}

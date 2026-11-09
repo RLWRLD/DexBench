@@ -1,0 +1,132 @@
+{
+  "asset": {
+    "version": "2.0.0",
+    "source_delivery": "deliveries/spaceai/261009",
+    "source_generated": "261009",
+    "tool": "scripts/tools/conform_simready_basics.py",
+    "tool_commit": "f12afce27",
+    "kind": "deformable",
+    "categories": [
+      "logistics",
+      "parcel",
+      "deformable"
+    ],
+    "categories_seeded": false,
+    "description": "SpaceAI green cotton polybag as one tet soft body (film and filling not separated), textured render mesh with a parcel label (DB-L1)",
+    "deformable": {
+      "type": "tet_softbody",
+      "solver": "newton",
+      "authored_for": "Newton VBD: one TetMesh soft body plus a render mesh that follows it (the 260914 fruit layout)",
+      "bbox_size_m": [
+        0.249,
+        0.3215,
+        0.0917
+      ],
+      "physics": {
+        "/World/polybag_green_cotton": {
+          "tets": 1770,
+          "vertices": 536,
+          "surface_triangles": 840,
+          "purpose": "guide"
+        },
+        "/World/PhysicsMaterial": {
+          "newton:density": 22.406921,
+          "newton:kDamp": 30.0,
+          "newton:kLambda": 2795.031006,
+          "newton:kMu": 6521.739258,
+          "newton:particleRadius": 0.004,
+          "physics:density": 22.406921,
+          "physics:dynamicFriction": 0.8,
+          "physics:poissonsRatio": 0.15,
+          "physics:staticFriction": 0.8,
+          "physics:youngsModulus": 15000.0,
+          "spaceai:totalMass": 0.09
+        },
+        "/World/polybag_green_cotton_render": {
+          "vertices": 16506,
+          "faces": 33000,
+          "purpose": "default"
+        }
+      },
+      "loading": "Newton's add_usd does not read newton:particleRadius or newton:kDamp from a bare TetMesh (1.5 and 1.6.1): set ModelBuilder.default_particle_radius = 0.004 and default_tet_k_damp = 30 before it, as the delivery says.",
+      "note": "Not a rigid body: SimReady Prop-Robotics-Neutral does not apply; not run through simready-validate.",
+      "validation": {
+        "vendor": "SpaceAI report deliveries/spaceai/261009/261009_polybag_single_tet_spaceai.html: Newton 1.5.0 (cca3bb8a), warp 1.16, SolverVBD 60 Hz x 8 substeps x 5 iterations, self-contact radius 1 mm margin 2 mm, bag-frame truncation, full-surface rigid-soft contact; drop, edge 40/50 %, side squeeze lift, shake, end pinch lift, 170 deg fold: no burst, no drop, no penetration; 14.8 ms per 1/60 s step resting (H200)",
+        "engine": "Newton 1.6.1 standalone (warp 1.17, SolverVBD), not the Arena image",
+        "date": "2026-10-09",
+        "procedure": "the delivery's loading code; 20 cm drop onto a ground plane, 8 substeps x 5 iterations, self-contact radius 1 mm margin 2 mm, bag-frame truncation init, full-surface contact, 300 steps",
+        "status": "pass",
+        "metrics": {
+          "mass_g": 90.0,
+          "particle_radius_m": 0.004,
+          "rest_min_z_mm": 4.0,
+          "finite": true,
+          "step_ms_rtx4090": 16.1
+        }
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-11-06",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "unmet",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "fail",
+        "FET_003_NEWTON": "fail",
+        "FET_003_PHYSX": "fail",
+        "FET_003_STANDARD": "fail",
+        "FET_004_MUJOCO": "fail",
+        "FET_004_NEWTON": "fail",
+        "FET_004_PHYSX": "fail",
+        "FET_004_STANDARD": "fail",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "waybill": {
+      "tool": "scripts/tools/relabel_l4_parcels.py",
+      "fonts": "Noto Sans CJK KR (SIL Open Font License 1.1)",
+      "size_mm": [
+        100,
+        81
+      ],
+      "albedos": {
+        "polybag_1": {
+          "albedo": "usd/textures/green_albedo_waybill_polybag_1.jpg",
+          "seed": 11
+        },
+        "polybag_2": {
+          "albedo": "usd/textures/green_albedo_waybill_polybag_2.jpg",
+          "seed": 12
+        },
+        "polybag_3": {
+          "albedo": "usd/textures/green_albedo_waybill_polybag_3.jpg",
+          "seed": 13
+        },
+        "polybag_4": {
+          "albedo": "usd/textures/green_albedo_waybill_polybag_4.jpg",
+          "seed": 14
+        },
+        "polybag_5": {
+          "albedo": "usd/textures/green_albedo_waybill_polybag_5.jpg",
+          "seed": 15
+        }
+      }
+    },
+    "version_alignment": {
+      "previous_version": "1.2.0",
+      "reason": "Retirement of usd/textures/green_albedo.png is an address-breaking MAJOR change",
+      "payload_change": "none relative to upstream PR 497 head 8abd93886092f531828a0a5c3439d1f31f8cceae",
+      "simready_evidence": "The 2026-11-06 result covers byte-identical USD and textures; metadata version correction does not claim a new validator run"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_console"
+    doc = "E4 r01 배경 그룹 BG_console — 시각 전용. 오브젝트 1 · 평가 삼각형 984."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_console" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_1304c77b606dc66fe7d8/BG_console>
+)
+{
+}
+

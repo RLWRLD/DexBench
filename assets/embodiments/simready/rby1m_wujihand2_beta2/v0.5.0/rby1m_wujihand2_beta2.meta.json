@@ -1,0 +1,43 @@
+{
+  "asset": {
+    "version": "0.5.0",
+    "kind": "robot",
+    "description": "Wuji2 v0.4.0 plus bilateral palm ZED X One S Wide cameras; GA physical default with optional RGB rendering.",
+    "source_generated": "Wuji2 v0.4.0 and reviewed palm_gmsl2 attachment geometry",
+    "wrist_cameras": "wrist_cameras.json",
+    "simready": {
+      "profile": "Robot-Body-Neutral",
+      "spec_version": "1.1.0",
+      "scope": "robot",
+      "validator": "simready-validate 2026.8.0; foundation d5c4c95; Robot-Body profiles 1.1.0",
+      "validated": "2026-10-20",
+      "result": "pass",
+      "features": {
+        "FET_001_STANDARD": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_STANDARD": "pass",
+        "FET_022_STANDARD": "pass",
+        "FET_024_STANDARD": "pass"
+      }
+    },
+    "simready_runnable": {
+      "profile": "Robot-Body-Runnable",
+      "spec_version": "1.1.0",
+      "scope": "robot",
+      "validator": "simready-validate 2026.8.0; foundation d5c4c95; Robot-Body profiles 1.1.0",
+      "validated": "2026-10-20",
+      "result": "pass",
+      "features": {
+        "FET_001_STANDARD": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_004_PHYSX": "pass",
+        "FET_004_ROBOT_PHYSX": "pass",
+        "FET_021_ISAAC": "pass",
+        "FET_022_PHYSX": "pass",
+        "FET_024_PHYSX": "pass",
+        "FET_024_STANDARD": "pass"
+      }
+    },
+    "packaging_commit": "94af60f2e6bfe40d36e0ebf1d84bea1e7937421e"
+  }
+}

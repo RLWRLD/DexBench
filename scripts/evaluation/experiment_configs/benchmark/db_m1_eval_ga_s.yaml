@@ -1,0 +1,64 @@
+# DB-M1 (E3 manufacturing, tabletop pick_insert_drawer at A_m1).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: the supported part of the 1.5x envelope: base XY +-4.5 cm, yaw +-7.5 deg; drawer XY +-7.5 cm, yaw +-7.5 deg; washer XY +-7.5 cm, yaw +-7.5 deg; every row is outside the training envelope on at least one coordinate, with no policy-success filtering.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (120 each), frozen rows (120 support-constrained draws per cell, at independent cell_run_seed seeds; no training pose is reused), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 100 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m1 --cell ga_s --model <key> \
+#       --output outputs/db_m1_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m1_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m1_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M1); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_m1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: pick_insert_drawer
+    anchor: A_m1
+    start_pose: teleop_ready
+    m1_tabletop_base_xy: [0.15, -0.9757]
+    m1_tabletop_base_yaw_deg: 180.0
+    m1_tabletop_crouch_deg: 55.0
+    m1_tabletop_drawer_mass_kg: 0.55
+    m1_physics_profile: damped_contacts
+    rby1_control_hz: 30
+    camera_hz: 30
+    episode_length_s: 100.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.045, -0.045, -0.1308997]
+          high: [0.045, 0.045, 0.1308997]
+    drawer:
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.075, -0.075, -0.1308997]
+          high: [0.075, 0.075, 0.1308997]
+    washer:
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.075, -0.075, -0.1308997]
+          high: [0.075, 0.075, 0.1308997]
+runs:
+  lg_fh25eae_detergent_drawer:
+    environment:
+      m1_drawer: lg_fh25eae_detergent_drawer
+    environment_builder:
+      seed: 2765252
+      recorded_variation_samples_path: outputs/db_conditions/db_m1_tabletop_ga_s/lg_fh25eae_detergent_drawer.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

@@ -1,0 +1,30 @@
+"""Retail SKU package addresses shared by runtime assets and offline USD builders."""
+
+RETAIL_E1_FC_SKU_PACKAGES: dict[str, str] = {
+    "TC1": "cola_can_330ml_sleek",
+    "TC2": "cola_can_355ml_standard",
+    "TP1": "tea_pet_500ml_straight",
+    "EC1": "energy_drink_can_250ml_slim",
+    "EC2": "energy_drink_can_473ml_tall",
+    "EP2": "beverage_pet_500ml",
+    "EP3": "juice_pet_750ml_tall",
+    "R3T1": "choco_stick_box_54g",
+    "R3T2": "cracker_pack_121g",
+    "R3T3": "cream_wafer_box_128g",
+    "R3T4": "chocolate_pie_box_12p_468g",
+    "R3E1": "choco_mushroom_box_50g",
+    "R3E2": "choco_chip_cookie_box_240g",
+    "R3E4": "berry_pie_box_6p",
+    "R3E5": "cream_wafer_box_289g",
+    "R3E6": "custard_cake_box_12p",
+    "APPLE_SCAN": "apple_scan",
+    "PLUM_SCAN": "plum_scan",
+    "STRAWBERRY_SCAN": "strawberry_scan",
+    "BANANA_SCAN": "banana_scan",
+    "R1_PEACH": "r1_peach",
+    "YELLOW_LEMON_FC": "yellow_lemon_fc",
+    "RIPE_TOMATO_FC": "ripe_tomato_fc",
+    "FRESH_ORANGE_FC": "fresh_orange_fc",
+    "RIPE_MANGO_FC": "ripe_mango_fc",
+}
+

@@ -1,0 +1,69 @@
+# retail_v1 (DB-R3) variation scenarios: one Run per axis, for experiment_runner.py. Every Run mounts the RBY1-M Wuji2 and the
+# full visual stock so what you see is the eval-time picture.
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz kit \
+#       --experiment_config scripts/evaluation/experiment_configs/e1_retail_variations.yaml
+#
+# A Run lists only what differs from `shared`. Keys under `environment` are the
+# environment's typed config fields; `variations` are Arena's Hydra variation
+# keys (<asset>.<variation>.<field>).
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2
+    task: place_box_in_slot
+    with_full_items: true
+  policy:
+    type: zero_action
+  rollout_limit:
+    num_steps: 30
+
+runs:
+  # The R3-T2 baseline with the full visual backdrop. Check: no doubled cartons at the slot/tote.
+  full_store: {}
+
+  # GA-S #1: robot base 15 cm to its left of the anchor, re-aimed at the shelf.
+  base_left:
+    environment:
+      base_offset_y: -0.15
+
+  # GA-S #1: base 15 cm to its right. Check clearance to the tote stack.
+  base_right:
+    environment:
+      base_offset_y: 0.15
+
+  # GA-S #1: base 15 cm further from the shelf; watch reach to the slot.
+  base_back:
+    environment:
+      base_offset_x: 0.15
+
+  # Facing sensitivity, narrow: R3-T2 in 160 mm, 10 mm a side against its own 20.
+  facing_narrow:
+    environment:
+      facing_width_mm: 160.0
+
+  # Facing sensitivity, wide: R3-T2 in 200 mm, 30 mm a side; the banks repack outward.
+  facing_wide:
+    environment:
+      facing_width_mm: 200.0
+
+  # Recorded target_carton.pose draws: press R repeatedly to see fresh poses.
+  # 45 mm with a 15 deg turn fits the tote for every R3 carton except R3-E5.
+  target_jitter:
+    environment:
+      box_jitter_xy: 0.045
+      box_jitter_yaw_deg: 15.0
+
+  # Loosened success tier (+1 cm). Visually identical; compare the printed halfsize.
+  slot_margin_loose:
+    environment:
+      slot_xy_margin: 0.01
+
+  # Recorded lighting variations live: the retail_v1 look's lights scale together (one
+  # factor on every light) and take one colour temperature, each drawn fresh on every
+  # rebuild (press N twice to compare). They hang in and over fixtures, so there is no
+  # position axis.
+  sensitivity_lighting:
+    variations:
+      dexbench_retail_v1_lighting.intensity_scale.enabled: true
+      dexbench_retail_v1_lighting.color_temperature.enabled: true

@@ -1,0 +1,71 @@
+# DB-R3 (retail_v1, place_box_in_slot at the Gondola anchor; optional for the release).
+# Recording experiment: the Train objects at the training range, which is the
+# benchmark's Train range (benchmark/spec.py DB_R3.training). Each Run replays its carton's rows of batch 0 of the
+# recorded start-state dump (another batch's file given as --collection_rows replaces it),
+# and record_demos.py / teleop.py hold a row until a demo of it is kept (--collection_rows, which
+# environment_builder.recorded_variation_samples_path gives them).
+# The benchmark's episode cap, 75 s, comes from the training demos' lengths (benchmark/demo_lengths/db_r3.json);
+# recording keeps the task's 60 s. The cells evaluate on their own recorded conditions
+# (benchmark/db_r3_conditions_<cell>.yaml, then benchmark/db_r3_eval_<cell>.yaml; docs/Eval_Protocol.md).
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: place_box_in_slot
+    scene_layout: fc_260821
+    anchor: Gondola
+    # The carry start (embodiment start pose r3_carry): at teleop_home the right hand starts inside tote_06.
+    start_pose: r3_carry
+    rby1_control_hz: 30
+    # The carry layout's base (5 cm toward +x, 10 cm toward -y of the Gondola anchor), the centre of the
+    # base-pose draw: at the anchor the r3_carry hand starts in tote_06 too.
+    base_offset_x: 0.05
+    base_offset_y: -0.1
+    # The stocked store and fridge backdrop (visual only).
+    with_full_items: true
+    # Supply-carton placement draw in the tote, recorded as target_carton.pose: +-20 mm in X and Y
+    # (the train_xy_p1 profile), no yaw.
+    box_jitter_xy: 0.02
+    # Each carton's empty facing is derived from it: its width + 40 mm (fc_260821_r3_facing_width_m).
+    facing_width_mm: null
+  variations:
+    # Training base-pose range: a uniform +-2 cm draw in X and Y and a -2.5 to +3 deg turn (narrower to the right,
+    # where the r3_carry hand nears tote_06), recorded as dexbench_rby1_wuji2_joint.base_pose (benchmark/spec.py
+    # _R3_BASE_TRAINING). The station's --embodiment dexbench_rby1_wuji2 names it dexbench_rby1_wuji2.base_pose, as
+    # the collection dump records it.
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.02, -0.0436332]
+          high: [0.02, 0.02, 0.0523599]
+  environment_builder:
+    # The release runs on Newton; conditions and their evaluation must share the backend.
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  r3t1:  # Chocolate-stick carton 87.8 mm
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3t1
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_collect/batch_0/dexbench_retail_e1_fc_r3t1.jsonl
+  r3t2:  # Cracker sleeve 140 mm
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3t2
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_collect/batch_0/dexbench_retail_e1_fc_r3t2.jsonl
+  r3t3:  # Cream-wafer carton 128 g, 175 mm
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3t3
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_collect/batch_0/dexbench_retail_e1_fc_r3t3.jsonl
+  r3t4:  # Chocolate-pie carton 12p, 245 mm
+    environment:
+      r3_target_asset: dexbench_retail_e1_fc_r3t4
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r3_collect/batch_0/dexbench_retail_e1_fc_r3t4.jsonl

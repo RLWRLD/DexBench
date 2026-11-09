@@ -1,0 +1,76 @@
+# DB-M5 (E3 manufacturing, place_part_in_kit_box at the A_m5 anchor: a part from the parts bin into the kit
+# box riding the conveyor). Recording experiment: the five training parts, each Run recorded
+# from the part's rows file (environment_builder.recorded_variation_samples_path, which record_demos.py and
+# teleop.py take as --collection_rows: the training range's two compartments times the first 24 of the part's
+# seeds by rank, every start once, in order). record_demos.py holds a row until a demo of it is kept, so 48 kept
+# demos cover the part's 48 starts and the session stops after the last (variations/collection_rows.py).
+# The cells' rows are drawn from the same grid. The grid is written, not recorded: a condition dump (benchmark
+# CollectionSpec) cannot settle with the kit box riding the belt, so these Runs are no manifest collection Run;
+# test_benchmark_experiments.py holds this file to the Train cell (benchmark/spec.py DB_M5).
+# A headset session records a Run with the IK twin given after the pair, --num_success_steps 20 so a take ends with the
+# hand drawn back from the kit box (a recorder flag, not the environment's)
+# and --teleop_session for the operator's view (--num_demos defaults to the rows left):
+#   /isaac-sim/python.sh scripts/imitation_learning/record_demos.py --dataset_file <file> \
+#       --num_success_steps 20 \
+#       --experiment db_m5_collect.yaml --run <part> --embodiment dexbench_rby1_wuji2 --teleop_device openxr \
+#       --teleop_session
+# A session that stopped after k kept demos resumes with --collection_first_row k and a new --dataset_file (the
+# recorder overwrites an existing one). An experiment_runner Run of this file (the hold-pose policy below) replays
+# the rows in order, one per episode.
+shared:
+  environment:
+    # DB-M5's own id, not dexbench_manufacturing_e3_environment + place_part_in_kit_box (the same build): a take
+    # records it as its env_name.
+    type: dexbench_manufacturing_m5_moving_conveyor_kitting_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: place_part_in_kit_box
+    anchor: A_m5
+    # 30 Hz, the rate the benchmark's cells state.
+    rby1_control_hz: 30
+    # The left arm alone (the right holds its idle pose): a recording and its replays build it the same way, so it is
+    # the Run's, not a flag each step has to repeat.
+    arm_mode: left
+    # The pile set, one subdirectory per part (not part of this repository).
+    parts_bin_clutter_dir: outputs/clutter/all_x40
+    # The training range (db_m5_layout.M5_SPATIAL_RANGES["training"]) and the piles (M5_PILE_SEED_QUANTILES) the
+    # start lists are written from, drawn at every reset and recorded as belt_kit_box.empty_compartment and
+    # dexbench_assembly_line_e3.parts_bin_clutter_seed: the far-right or near-left compartment empty, a pile
+    # among the first 24 of the part's seeds by rank. They enable the two draws and bound what a start may
+    # name; every cell's rows take the same seeds.
+    kit_box_empty_compartments: [0, 3]
+    parts_bin_seed_quantiles: [0.0, 0.6]
+  environment_builder:
+    # DB-M5 builds on Newton main only (require_newton_contact_fixes).
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  bolt_m24:  # M24 bolt (fc)
+    environment:
+      part: bolt_m24
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_demos/bolt_m24.jsonl
+  pom_roller:  # POM conveyor roller (fc)
+    environment:
+      part: pom_roller
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_demos/pom_roller.jsonl
+  elbow_50a:  # 50A pipe elbow (fc)
+    environment:
+      part: elbow_50a
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_demos/elbow_50a.jsonl
+  bearing_6206:  # 6206 ball bearing (fc)
+    environment:
+      part: bearing_6206
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_demos/bearing_6206.jsonl
+  rs_pro_stepper_motor_535_0502_nema23_class:  # NEMA 23 stepper motor
+    environment:
+      part: rs_pro_stepper_motor_535_0502_nema23_class
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_demos/rs_pro_stepper_motor_535_0502_nema23_class.jsonl

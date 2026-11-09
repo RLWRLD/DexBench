@@ -1,0 +1,203 @@
+{
+  "asset": {
+    "version": "2.0.2",
+    "kind": "handled",
+    "categories": [
+      "confectionery",
+      "packaged-food"
+    ],
+    "categories_seeded": true,
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            0.0,
+            -0.1205,
+            0.0173
+          ],
+          [
+            0.0,
+            0.1205,
+            0.0173
+          ]
+        ],
+        "rule": "flat-across-y",
+        "note": "",
+        "reviewed": "2026-09-15",
+        "evidence": "projection preview of the mesh (scripts/tools/propose_grasp_lines.py + outputs/grasp_previews), not simulated",
+        "benchmark": {
+          "test": "grasp_and_lift",
+          "test_version": "1.0.0",
+          "status": "pass",
+          "date": "2026-09-15",
+          "engine": "Isaac Sim 6.0.1 (PhysX), simready-benchmark 2026.6.5, kit suite 2026.6.1",
+          "message": "",
+          "identifiers_passed": 1,
+          "identifiers_total": 1,
+          "class": "pass",
+          "reason": "authored line held through lift, hold and shake",
+          "line_source": "pass-1"
+        },
+        "benchmark_newton15": {
+          "test": "grasp_and_lift",
+          "engine": "Newton 1.5.2 standalone (MuJoCo-Warp), not the Arena image",
+          "date": "2026-09-16",
+          "asset_version_certified": "1.1.3",
+          "status": "pass",
+          "phase": null,
+          "message": "authored line held through lift, hold and shake",
+          "line_frame": "body:/World/Orion_Choc_Choc_Choc_Chip_240g",
+          "max_slip_m": 0.0001,
+          "creep_in_jaws_m": 0.0001,
+          "settle_shift_m": 0.01,
+          "settle_tilt_deg": 0.0,
+          "settings": {
+            "contact_timeconst_s": 0.004,
+            "finger_armature_kg": 1.0,
+            "pad_condim": 4,
+            "cone": "elliptic",
+            "impratio": 10.0,
+            "multiccd": true,
+            "grip_force_N": 13.244,
+            "pad_edge_m": 0.0104
+          },
+          "stage_frame": {
+            "status": "pass",
+            "phase": null,
+            "message": "authored line held through lift, hold and shake",
+            "line_frame": "stage (authored pose + placement offset, NVIDIA semantics)"
+          },
+          "stock_defaults": {
+            "status": "fail",
+            "phase": "Grasping",
+            "message": "Grasping failed: pads touched (no object)",
+            "settings": {
+              "contact_timeconst_s": 0.02,
+              "finger_armature_kg": 0.0,
+              "pad_condim": 3,
+              "cone": "pyramidal",
+              "impratio": 1.0,
+              "multiccd": false,
+              "grip_force_N": 13.244,
+              "pad_edge_m": 0.0104
+            }
+          },
+          "report": "the maintainers' Newton 1.5 grasp benchmark"
+        }
+      }
+    ],
+    "newton15": {
+      "engine": "Newton 1.5.2 standalone (MuJoCo-Warp), not the Arena image",
+      "date": "2026-09-16",
+      "versions": {
+        "newton": "1.5.2",
+        "warp": "1.17.0",
+        "mujoco": "3.11.0",
+        "mujoco_warp": "3.11.0",
+        "coacd": "?",
+        "scipy": "1.18.1"
+      },
+      "asset_version_certified": "1.1.3",
+      "parse": {
+        "ok": true,
+        "body_count": 1,
+        "collider_count": 1,
+        "mass_total_kg": 0.27,
+        "approximations_replaced": [],
+        "planar_colliders_thickened": 0,
+        "warnings": []
+      },
+      "ground_drop": {
+        "status": "pass",
+        "message": "",
+        "tilt_deg": 0.0,
+        "displacement_xy_m": 0.0,
+        "max_penetration_m": 0.0004
+      },
+      "slope_drop": {
+        "status": "pass",
+        "message": "creep 18.7 mm/s while 'at rest' (MuJoCo soft contact)",
+        "tilt_deg": 15.0,
+        "displacement_xy_m": 0.0,
+        "max_penetration_m": 0.0008
+      },
+      "report": "the maintainers' Newton 1.5 grasp benchmark"
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-11-06",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "pass",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "variants": {
+      "physics": {
+        "PhysX": "usd/runnables/physics/physx.usd",
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "visual_update": {
+      "source_archive": "20261106_DexBench_Assets_R2_R3_Label.zip",
+      "archive_sha256": "ac5048f0115ebd1812e33d0a2272cd30d31c59140403592d08be097c5c8d83f8",
+      "source_usd": "DB-R3/Choco_Chip_Cookie_Box_240g/Choco_Chip_Cookie_Box_240g.usd",
+      "date": "2026-11-06",
+      "change": "Adopt delivered label textures; exact mesh geometry, UVs, transforms and shader settings match. Runtime USD layers and physics payloads retained byte-for-byte.",
+      "receipt": "the maintainers' delivery receipt",
+      "creator": "NdotLight",
+      "creator_confirmation": {
+        "date": "2026-11-06",
+        "basis": "User confirmation identifying NdotLight as the creator of the new label delivery."
+      },
+      "label_license": {
+        "status": "CC-BY-4.0",
+        "scope": "Covered by NdotLight's written CC BY 4.0 approval (maintainer confirmation, 2026-11-08)."
+      }
+    },
+    "licensing": {
+      "creator": "NdotLight",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "scope": "NdotLight-owned contributions only; bundled third-party material retains its own terms",
+      "confirmed_on": "2026-11-05",
+      "task": "DB-R3",
+      "third_party_elements": [],
+      "third_party_permission": "none_reported",
+      "attribution": "NdotLight, CC BY 4.0; modified by RLWRLD (see CHANGELOG.md).",
+      "replacement_appearance": {
+        "date": "2026-11-06",
+        "source_archive": "20261106_DexBench_Assets_R2_R3_Label.zip",
+        "archive_sha256": "ac5048f0115ebd1812e33d0a2272cd30d31c59140403592d08be097c5c8d83f8",
+        "source_usd": "DB-R3/Choco_Chip_Cookie_Box_240g/Choco_Chip_Cookie_Box_240g.usd",
+        "permission_status": "confirmed",
+        "creator": "NdotLight",
+        "creator_confirmation": {
+          "source": "Repository maintainer confirmation in the asset cleanup conversation",
+          "date": "2026-11-06"
+        },
+        "license_status": "CC BY 4.0; covered by NdotLight's written approval (maintainer confirmation, 2026-11-08)"
+      }
+    }
+  }
+}

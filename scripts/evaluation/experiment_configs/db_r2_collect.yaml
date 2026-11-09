@@ -1,0 +1,56 @@
+# DB-R2 (retail_v1, retrieve_beverage_from_clutter at the Fridge anchor).
+# Recording experiment: the Train objects, every draw sampled live at its
+# training range. The held-out cells evaluate on recorded conditions instead
+# (db_r2_conditions_<cell>.yaml, then db_r2_eval_<cell>.yaml; docs/Eval_Protocol.md).
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: retrieve_beverage_from_clutter
+    scene_layout: fc_260821
+    anchor: Fridge
+    start_pose: teleop_home
+    rby1_control_hz: 30
+    # The stocked store and fridge backdrop (visual only).
+    with_full_items: true
+    # The split's fixture profile (FC_260821_R2_SPLIT_SHELF3_RAISE_M): Shelf3 raised 65 mm, so TP1/EP2/EP3 clear it.
+    fridge_shelf3_raise_m: 0.065
+    # The split's row (FC_260821_R2_OBJECT_AXIS.fixture_profile): the target in MiniFit lane MF4, a
+    # middle lane with lateral neighbors on both sides (MF6 has the fridge wall on its right), and
+    # its SKU in no other lane of the row: a lane that would show it is restocked with the first of
+    # r2_stock_fillers that is not the target (TC2; TC1 when TC2 is the target).
+    # Nor does any other visual item in the store: the fridges' other tiers and the totes leave it out.
+    r2_target_lane: 4
+    r2_stock_rule: unique_target
+    r2_stock_fillers: TC2,TC1
+  variations:
+    # Base-pose values from a reach check.
+    # Training base-pose range: a uniform +-2 cm draw in X and Y and a +-3 deg turn, recorded as
+    # dexbench_rby1_wuji2_joint.base_pose (benchmark/spec.py _BASE_TRAINING). The station's --embodiment
+    # dexbench_rby1_wuji2 names it dexbench_rby1_wuji2.base_pose, as the collection dump records it.
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.02, -0.0523599]
+          high: [0.02, 0.02, 0.0523599]
+  environment_builder:
+    # The release runs on Newton; conditions and their evaluation must share the backend.
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  tc1:  # 330 mL sleek cola can, 57 mm
+    environment:
+      r2_target_sku: TC1
+  tc2:  # 355 mL standard cola can, 66 mm (the reviewed baseline)
+    environment:
+      r2_target_sku: TC2
+  tp1:  # Hovenia 500 mL PET, 66 x 222 mm
+    environment:
+      r2_target_sku: TP1

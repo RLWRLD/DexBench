@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "CeilingLights"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "CeilingLights" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_26631d7ab50a34b0dd5a/CeilingLights>
+)
+{
+}
+

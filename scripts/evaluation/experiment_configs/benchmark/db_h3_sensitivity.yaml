@@ -1,0 +1,84 @@
+# DB-H3 (E4 banquet hall, extract one utensil from the held bundle) sensitivity sweep, the +alpha robustness section (never in the score).
+# Factors, uniform:
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_left_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_right_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_left_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_right_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+# Training-range draws live as in the Train cell. Object: train_01_spoon.
+# Unavailable at this pin (not swept, not claimed):
+#   camera_intrinsics: held by choice: each camera keeps its calibrated intrinsics, which a mount change does not alter (Arena's CameraIntrinsicsVariation exists at the pin)
+#   camera_rotation: CameraExtrinsicsVariation draws a translation only at the pin and on Arena main; rotation coordinates are an upstream ask
+#   texture: no material or texture variation at the pin or Arena main; the smallest addition is a run-time material-swap variation of ours
+#   light_intensity: the collection disk light has a fixed 60000 intensity and no registered variation
+#   color_temperature: the collection disk light uses fixed white RGB and no registered variation
+#   distractors: the three utensils are task objects; no distractor variation is supplied
+#
+# Replay: the 200 recorded draws (db_h3_sensitivity_conditions.yaml), one file per build, at the benchmark cap of 25 s.
+# Report: isaaclab_arena.analysis.sensitivity.generate_report on the Run's episode_results_rebuild*.jsonl.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h3 --sweep --model <key> \
+#       --output outputs/db_h3_sensitivity_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h3_sensitivity_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h3_sensitivity.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H3); edit the spec, not this file.
+runs:
+  train_01_spoon:
+    environment:
+      type: dexbench_hotel_fb_e4_h3_environment
+      embodiment: dexbench_rby1_wuji2_joint
+      task: extract_utensil
+      anchor: A_h3
+      rby1_control_hz: 30
+      wrist_cameras: true
+      camera_scale: 0.5
+      head_yaw_deg: 5.0
+      head_pitch_deg: 45.0
+      h3_drive_profile: collection_v1
+      h3_object: train_01_spoon
+      enable_cameras: true
+      episode_length_s: 25.0
+      benchmark_replay: true
+    environment_builder:
+      presets: NEWTON
+      seed: 1016
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+    recorded_variation_samples_paths: [outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild0.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild1.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild2.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild3.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild4.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild5.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild6.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild7.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild8.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild9.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild10.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild11.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild12.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild13.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild14.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild15.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild16.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild17.jsonl,
+      outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild18.jsonl, outputs/db_conditions/db_h3_sensitivity/train_01_spoon_rebuild19.jsonl]
+    variations:
+      dexbench_rby1_wuji2_joint:
+        camera_extrinsics_robot_pov_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_robot_pov_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_wrist_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]
+        camera_extrinsics_wrist_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]

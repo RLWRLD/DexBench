@@ -1,0 +1,67 @@
+# DB-R1 (retail_v1, pick_fruit_from_display at the Fruit anchor).
+# Cell GA-O (ga_o): held-out objects, spatial training range.
+# Spatial: the pile's start layout: one dense settled layer of the kind (30 fruit; apple 26, pear 22, bell pepper 18), five shape variants mixed, on the divided tray's pile compartment, drawn from the kind's evaluation seed stream, apart from the collection's; the robot at teleop_home, no base draw (db_r1_collect.yaml's range, which the 240 training demos cover).
+# Evaluation: each Run (an object at a spatial setting) replays its row file (30 each), frozen rows (the 240 evaluation layouts, 30 per kind: of each kind's 60 baked layouts (bake_r1_layouts.py --phase evaluation, each reloaded three times within 3 mm), the 30 with the lowest seeds, by seed order alone; one row per layout, in seed order), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 50 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task r1 --cell ga_o --model <key> \
+#       --output outputs/db_r1_eval_ga_o_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_r1_eval_ga_o_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_r1_eval_ga_o.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-R1); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: pick_fruit_from_display
+    scene_layout: fc_260821
+    anchor: Fruit
+    start_pose: teleop_home
+    rby1_control_hz: 30
+    with_full_items: true
+    r1_layouts: outputs/db_conditions/db_r1_layouts/eval
+    episode_length_s: 50.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  lime_pile:
+    environment:
+      r1_target_sku: lime_pile
+    environment_builder:
+      seed: 9430093
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_fc_260821_ga_o/lime_pile.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  mandarin_pile:
+    environment:
+      r1_target_sku: mandarin_pile
+    environment_builder:
+      seed: 4674150
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_fc_260821_ga_o/mandarin_pile.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lemon_pile:
+    environment:
+      r1_target_sku: lemon_pile
+    environment_builder:
+      seed: 2990627
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_fc_260821_ga_o/lemon_pile.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  bell_pepper_pile:
+    environment:
+      r1_target_sku: bell_pepper_pile
+    environment_builder:
+      seed: 9277600
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_fc_260821_ga_o/bell_pepper_pile.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

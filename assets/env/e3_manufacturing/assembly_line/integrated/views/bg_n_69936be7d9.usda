@@ -1,0 +1,23 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary e3r01_matfix = {
+            double emissive_x = 1231.7
+            int fixes = 2
+            string glass_kinds = "glass,glass_tex"
+            string look_emission_k = "E3F_M_Signs=15"
+            string tool = "tools/usd/e3r01_usd_matfix.py --inplace"
+        }
+    }
+    defaultPrim = "BG_N"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_N" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_69936be7d97b761890ed/BG_N>
+)
+{
+}
+

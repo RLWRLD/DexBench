@@ -1,0 +1,1077 @@
+# DB-H2 (E4 banquet hall, lift_and_pour at A_h2).
+# Cell GA-OS (ga_os): held-out objects, spatial beyond the training range.
+# Spatial: one axis fixed off its training range and every other at its training draw: the jug 4 cm toward world e, ne, n, nw, sw and se and 3 cm toward w and s (at 4 cm the IDEALISK spout meets a goblet drawn toward w, and a grasp knocks the jug over toward the robot); or the jug turned -15 or +15 deg; or the base 2 cm toward each of the eight, turned at its draw; or the base turned +7 or -7 deg; or the goblet 2 cm toward each of the eight. Every point lies outside the training box on its axis and is checked at the 1.90 m base with every other axis at its training extremes, all four jugs: the placement on the trolley, the base >= 17 mm from the trolley's columns and the curtain, the wrist poses within the arm's reach, and the start at rest on Newton with no hand touching a prop.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (1 or 2 or 6 each, as the spec's row_quotas declare), the filtered rows of db_h2_conditions_ga_os.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 90 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h2 --cell ga_os --model <key> \
+#       --output outputs/db_h2_eval_ga_os_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h2_eval_ga_os_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h2_eval_ga_os.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_pour_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: lift_and_pour
+    anchor: A_h2
+    rby1_control_hz: 30
+    idealisk_pour: true
+    base_offset_y: 0.15
+    pour_station_offset_y: 0.05
+    start_pose: teleop_ready
+    newton_nconmax: 16384
+    newton_njmax: 65536
+    newton_num_substeps: 8
+    episode_length_s: 90.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  steel_pitcher_large_jug_e:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.04
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9300
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_n:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: 0.04
+    environment_builder:
+      seed: 9301
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_w:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.03
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9302
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_s:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: -0.03
+    environment_builder:
+      seed: 9303
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_ne:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9304
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_nw:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9305
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_sw:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9306
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_se:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9307
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_yaw_m15:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: -15.0
+    environment_builder:
+      seed: 9308
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_yaw_m15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_jug_yaw_p15:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: 15.0
+    environment_builder:
+      seed: 9309
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_jug_yaw_p15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_e:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9310
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.02, 0.0, -0.0872665]
+            high: [0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_n:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9311
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, 0.02, -0.0872665]
+            high: [0.0, 0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_w:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9312
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, 0.0, -0.0872665]
+            high: [-0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_s:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9313
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, -0.02, -0.0872665]
+            high: [0.0, -0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_ne:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9314
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, 0.0141, -0.0872665]
+            high: [0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_nw:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9315
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, 0.0141, -0.0872665]
+            high: [-0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_sw:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9316
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, -0.0141, -0.0872665]
+            high: [-0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_se:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9317
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, -0.0141, -0.0872665]
+            high: [0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_yaw_p7:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9318
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_yaw_p7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.122173]
+            high: [0.01, 0.01, 0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_base_yaw_m7:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9319
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_base_yaw_m7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.122173]
+            high: [0.01, 0.01, -0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_e:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9320
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_n:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: 0.02
+    environment_builder:
+      seed: 9321
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_w:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9322
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_s:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: -0.02
+    environment_builder:
+      seed: 9323
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_ne:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9324
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_nw:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9325
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_sw:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9326
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_large_goblet_se:
+    environment:
+      pour_jug: steel_pitcher_large
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9327
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_large_goblet_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_e:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.04
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9328
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_n:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: 0.04
+    environment_builder:
+      seed: 9329
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_w:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.03
+      pour_jug_offset_y: 0.0
+    environment_builder:
+      seed: 9330
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_s:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0
+      pour_jug_offset_y: -0.03
+    environment_builder:
+      seed: 9331
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_ne:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9332
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_nw:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: 0.0283
+    environment_builder:
+      seed: 9333
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_sw:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: -0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9334
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_se:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_x: 0.0283
+      pour_jug_offset_y: -0.0283
+    environment_builder:
+      seed: 9335
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_yaw_m15:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: -15.0
+    environment_builder:
+      seed: 9336
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_yaw_m15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_jug_yaw_p15:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_goblet_jitter_xy: 0.01
+      pour_jug_offset_yaw_deg: 15.0
+    environment_builder:
+      seed: 9337
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_jug_yaw_p15.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_e:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9338
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.02, 0.0, -0.0872665]
+            high: [0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_n:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9339
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, 0.02, -0.0872665]
+            high: [0.0, 0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_w:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9340
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, 0.0, -0.0872665]
+            high: [-0.02, 0.0, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_s:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9341
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, -0.02, -0.0872665]
+            high: [0.0, -0.02, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_ne:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9342
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, 0.0141, -0.0872665]
+            high: [0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_nw:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9343
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, 0.0141, -0.0872665]
+            high: [-0.0141, 0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_sw:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9344
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0141, -0.0141, -0.0872665]
+            high: [-0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_se:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9345
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0141, -0.0141, -0.0872665]
+            high: [0.0141, -0.0141, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_yaw_p7:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9346
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_yaw_p7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.122173]
+            high: [0.01, 0.01, 0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_base_yaw_m7:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_jitter_xy: 0.01
+    environment_builder:
+      seed: 9347
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_base_yaw_m7.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.122173]
+            high: [0.01, 0.01, -0.122173]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_e:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9348
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_n:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: 0.02
+    environment_builder:
+      seed: 9349
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_w:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.02
+      pour_goblet_offset_y: 0.0
+    environment_builder:
+      seed: 9350
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_s:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0
+      pour_goblet_offset_y: -0.02
+    environment_builder:
+      seed: 9351
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_ne:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9352
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_nw:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: 0.0141
+    environment_builder:
+      seed: 9353
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_sw:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: -0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9354
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed_goblet_se:
+    environment:
+      pour_jug: steel_pitcher_footed
+      pour_jug_jitter_xy: 0.02
+      pour_jug_jitter_yaw_deg: 10.0
+      pour_goblet_offset_x: 0.0141
+      pour_goblet_offset_y: -0.0141
+    environment_builder:
+      seed: 9355
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_os/steel_pitcher_footed_goblet_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, -0.0872665]
+            high: [0.01, 0.01, 0.0872665]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

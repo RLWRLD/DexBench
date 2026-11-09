@@ -1,0 +1,83 @@
+{
+  "asset": {
+    "version": "1.0.0",
+    "authored": "prepared for DB-H3 by RLWRLD from a third-party SimReady package (see source_archive); not a vendor delivery",
+    "provenance": {
+      "dataset": "nvidia/simready-assets",
+      "revision": "653d91e182011f357cf1644013cc94ddf194d349",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "package": "kitchenware_fork_k01",
+      "package_id": "simready.hf.nvidia.simready-assets.kitchenware_fork_k01.2026.10.09_061340669253",
+      "package_license": "CC-BY-4.0",
+      "package_record_sha256": "72879508639c5c7f84c3b74a6c1d9e132d02236e93b95ccc80594899a51c705a",
+      "url": "https://huggingface.co/datasets/nvidia/simready-assets/tree/653d91e182011f357cf1644013cc94ddf194d349/kitchenware_fork_k01",
+      "attribution": "kitchenware_fork_k01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; prepared for DB-H3 by RLWRLD (offline CoACD convex collision parts, uniform-density mass at 8000 kg/m3, 1 mm contact margin)."
+    },
+    "derived_from": {
+      "h3_asset_id": "nvidia_kitchenware_fork_k01",
+      "preparation": "RLWRLD wrapper layer (usd/kitchenware_fork_k01.usd) referencing the upstream package under usd/deps/kitchenware_fork_k01/, byte-identical to upstream except the two Kit MDL copies (see materials)",
+      "upstream_root_sha256": "dc9fd0eb3872149cc32bbeba39c39c3840e156a8bfc7ecf8f7932e19883a6a3a",
+      "layer_metadata": {
+        "h3_collision_authoring": "offline CoACD; explicit convex parts; seed=0",
+        "h3_contact_gap_m": 0.002,
+        "h3_contact_margin_m": 0.001,
+        "h3_density_assumption_kg_m3": 8000.0,
+        "h3_mass_policy": "uniform-density closed visual mesh estimate",
+        "h3_original_prepared_sha256": "008bd38a618f004be0f37c0777ae8c2323d824b0648441ea086ab0a97e34a31b",
+        "h3_repair_profile": "decomp_steel_margin_1mm",
+        "h3_source_id": "nvidia_kitchenware_fork_k01",
+        "h3_source_prim": "/RootNode"
+      },
+      "adopted_from": "DB-H3's evaluation inputs (an internal revision): nvidia_kitchenware_fork_k01.usda (sha256 963e9a1654179cdb20c1210aed3b41534b62df53b9f006f22b8ce880854689af)",
+      "adoption_changes": [
+        "reference @../../vendor/simready-assets-653d91e1/kitchenware_fork_k01/ -> @./deps/kitchenware_fork_k01/",
+        "root customLayerData h3_* entries moved here; SimReady Core stamp (SimReady_Metadata, asset_name, asset_type, source_file, usd_date_generated) added"
+      ],
+      "materials": "OmniPBRBase.mdl and OmniPBR_ClearCoat.mdl in deps/kitchenware_fork_k01/simready_usd/source_assets are the Kit 2022-2025 BSD-3-Clause copies shipped elsewhere in this pool, not the upstream 2022 copies (the MDL bodies are identical once the license header and CRLF line ends are set aside); every other dependency file is byte-identical to the upstream revision."
+    },
+    "categories": [
+      "cutlery",
+      "hotel",
+      "tableware"
+    ],
+    "kind": "handled",
+    "description": "fork for DB-H3's held utensil bundle. Z-up, metres; rigid body as prepared for DB-H3.",
+    "attribution": "kitchenware_fork_k01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; prepared for DB-H3 by RLWRLD (offline CoACD convex collision parts, uniform-density mass at 8000 kg/m3, 1 mm contact margin).",
+    "used_by": "DB-H3 extract_utensil (runtime bundles in RLWRLD/DexBench-eval eval/db_h3_inputs)",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1, RLWRLD fork d5c4c95)",
+      "validated": "2026-11-09",
+      "result": "fail",
+      "failing_requirements": [
+        "COL.001",
+        "MDL.001",
+        "PMT.001",
+        "VG.002",
+        "VG.027"
+      ],
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "unmet",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "fail",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "unmet",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "unmet",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "pass"
+      }
+    }
+  }
+}

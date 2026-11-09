@@ -1,0 +1,128 @@
+{
+  "asset": {
+    "version": "1.0.3",
+    "source_delivery": "deliveries/spaceai/260911",
+    "source_generated": "260911",
+    "kind": "deformable",
+    "categories": [
+      "logistics",
+      "parcel",
+      "deformable"
+    ],
+    "categories_seeded": false,
+    "description": "SpaceAI green bubble polybag loaded with a cotton tet filling: VBD cloth film plus soft body contents (DB-L2)",
+    "deformable": {
+      "type": "vbd_cloth+tet_softbody",
+      "solver": "newton",
+      "authored_for": "Newton VBD (SpaceAI runtime adapter 'usd_asset' format 3 for the polybags)",
+      "bbox_size_m": [
+        0.2583,
+        0.3293,
+        0.0986
+      ],
+      "physics": {
+        "/Polybag/Film/Simulation": {
+          "vertices": 7772,
+          "purpose": "guide"
+        },
+        "/Polybag/Film/PhysicsMaterial": {
+          "newton:density": 0.13328,
+          "newton:edgeKd": 0.000214,
+          "newton:edgeKe": 1.071692,
+          "newton:particleRadius": 0.003,
+          "newton:triKa": 0.0,
+          "newton:triKd": 10.931507,
+          "newton:triKe": 54657.534247,
+          "physics:bendStiffness": 1.071692,
+          "physics:density": 44.426666,
+          "physics:stretchStiffness": 54657.535156,
+          "physics:thickness": 0.003
+        },
+        "/Polybag/Film/Display": {
+          "vertices": 15544,
+          "purpose": "default"
+        },
+        "/Polybag/Film/FoldedFlap": {
+          "vertices": 962,
+          "purpose": "default"
+        },
+        "/Polybag/Contents/Simulation": {
+          "tets": 45227,
+          "vertices": 10932
+        },
+        "/Polybag/Contents/PhysicsMaterial": {
+          "newton:density": 74.823361,
+          "newton:kDamp": 10.0,
+          "newton:kLambda": 227.272727,
+          "newton:kMu": 909.090909,
+          "newton:particleRadius": 0.002,
+          "physics:density": 74.823364,
+          "physics:poissonsRatio": 0.1,
+          "physics:youngsModulus": 2000.0
+        },
+        "/Polybag/Contents/Display": {
+          "vertices": 10932,
+          "purpose": "default"
+        }
+      },
+      "note": "Not a rigid body: SimReady Prop-Robotics-Neutral does not apply; validated by simulation (see CHANGELOG).",
+      "validation": {
+        "engine": "Newton 1.5.2 standalone (warp 1.17, SolverVBD), not the Arena image",
+        "date": "2026-09-16",
+        "procedure": "film as VBD cloth with the 292 seal springs, cotton as a tet soft body, self-contact on; two pads pinch the sealed lip off the table, lift 0.36 m, hold, shake, hold, open, the lower pad drops away",
+        "status": "pass",
+        "metrics": {
+          "film_z_rest_mm": [
+            -0.7,
+            31.2,
+            83.7
+          ],
+          "film_z_held_mm": [
+            153.7,
+            299.4,
+            417.5
+          ],
+          "film_z_released_mm": [
+            2.6,
+            37.1,
+            105.3
+          ],
+          "lifted": true,
+          "clears_table_when_held": true,
+          "dropped_after_release": true,
+          "nan": false,
+          "stays_on_table": true
+        },
+        "video": "outputs/newton15_videos/polybag_cotton.mp4 (DexBench repo, not shipped with the asset)",
+        "script": "scripts/tools/newton15_polybag_grasp.py"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-09-20",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "unmet",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "fail",
+        "FET_003_NEWTON": "fail",
+        "FET_003_PHYSX": "fail",
+        "FET_003_STANDARD": "fail",
+        "FET_004_MUJOCO": "fail",
+        "FET_004_NEWTON": "fail",
+        "FET_004_PHYSX": "fail",
+        "FET_004_STANDARD": "fail",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    }
+  }
+}

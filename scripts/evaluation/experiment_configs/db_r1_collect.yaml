@@ -1,0 +1,58 @@
+# DB-R1 five-variant piles (pick_fruit_from_display at the Fruit anchor): a recording experiment for the four
+# train kinds (r1_clutter.R1_FRUIT_KINDS: plum, peach, apple, pear). Each Run collects from its kind's layout set,
+# outputs/db_conditions/db_r1_layouts/batch_1/<kind>/: settled start layouts of one exact-count family, so one running
+# scene switches between them. A Run spawns the set's first layout (r1_layouts) and replays the set's rows
+# (outputs/db_conditions/db_r1_collect/batch_1/<run>.jsonl), which record_demos.py / teleop.py take as
+# --collection_rows from environment_builder.recorded_variation_samples_path (another file given as --collection_rows
+# replaces it): an operator reset, a fruit_lost failure or a discarded take starts the same layout again, and a kept
+# demo moves on to the next, written over the running scene's fruit at reset.
+# Not a declared benchmark collection dump: DB-R1 has no CollectionSpec in benchmark/spec.py.
+# A headset session runs it with, after --run: --embodiment dexbench_rby1_wuji2 --teleop_device openxr --arm_mode dual_arm
+# --waist_ik (the raised tray puts the pile's back rows out of reach from teleop_home without the waist).
+# Lean for the headset: only the display, its cart and basket, none of the room drawn (r1_minimal_scene), no visual
+# stock, and record without --enable_cameras.
+# Recording keeps the task's 60 s cap.
+# batch_1: the raised divided tray (produce_display_fc 2.0.0), four-hull fruit colliders (1.2.0), DB-M5's Newton setup.
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: pick_fruit_from_display
+    scene_layout: fc_260821
+    anchor: Fruit
+    start_pose: teleop_home
+    rby1_control_hz: 30
+    success_tier: collection
+    r1_minimal_scene: true
+  environment_builder:
+    presets: NEWTON
+  policy:
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 1
+runs:
+  plum:
+    environment:
+      r1_target_sku: plum_pile
+      r1_layouts: outputs/db_conditions/db_r1_layouts/batch_1/plum
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_collect/batch_1/plum.jsonl
+  peach:
+    environment:
+      r1_target_sku: peach_pile
+      r1_layouts: outputs/db_conditions/db_r1_layouts/batch_1/peach
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_collect/batch_1/peach.jsonl
+  apple:
+    environment:
+      r1_target_sku: apple_pile
+      r1_layouts: outputs/db_conditions/db_r1_layouts/batch_1/apple
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_collect/batch_1/apple.jsonl
+  pear:
+    environment:
+      r1_target_sku: pear_pile
+      r1_layouts: outputs/db_conditions/db_r1_layouts/batch_1/pear
+    environment_builder:
+      recorded_variation_samples_path: outputs/db_conditions/db_r1_collect/batch_1/pear.jsonl

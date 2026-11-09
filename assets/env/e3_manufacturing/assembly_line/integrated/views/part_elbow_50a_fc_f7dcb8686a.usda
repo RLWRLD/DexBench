@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/Part_Elbow50A"
+                        string variantSetName = "Newton"
+                    }
+                }
+            }
+            string source_delivery = "deliveries/psl/e3_manufacturing/260827"
+            string source_generated = "260826"
+            string version = "1.0.0"
+        }
+        string asset_name = "part_elbow_50a_fc"
+        string asset_type = "prop"
+        string source_file = "deliveries/psl/e3_manufacturing/260827"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "Part_Elbow50A"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "Part_Elbow50A" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_f7dcb8686a26576aa7e3/Part_Elbow50A>
+)
+{
+}
+

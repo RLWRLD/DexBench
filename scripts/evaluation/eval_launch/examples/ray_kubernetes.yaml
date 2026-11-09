@@ -1,0 +1,47 @@
+# A launch on the Ray backend on a Kubernetes cluster (ray_k8s.render_ray): a CPU-only head pod that runs the driver,
+# and worker pods of whole GPUs that join it; servers.layout says where each server and its simulators go
+# (USER_GUIDE.md, "On Ray (several machines, or a Kubernetes cluster)"). The cluster's settings come from the site profile
+# backend.site names. Render and start it:
+#   scripts/evaluation/eval_launch/launch.sh scripts/evaluation/eval_launch/examples/ray_kubernetes.yaml --k8s-job <dir>
+#   copy <dir>/eval.yaml to <output>/eval.yaml; kubectl apply -f <dir>/prepull.json (wait until ready, delete it);
+#   kubectl apply -f <dir>/ray.json
+# The model and the placeholders are kubernetes.yaml's.
+model:
+  key: gr00t                                    # an entry in benchmark/models.py
+  checkpoint: /data/stage/ckpts/CHECKPOINT
+tasks: [r2]
+cells: all
+version: v1
+servers:
+  layout: colocated
+  recipe:
+    # The client's contract goes in this worker's own directory, with the checkpoint's cameras in its order (read from
+    # its processor config); client_set points the simulator's policy block at it.
+    setup: >-
+      (cd {checkpoint} && sha256sum -c --quiet MANIFEST.sha256)
+      && test "$(cat /data/stage/ws/DexBench-Isaac-GR00T/.source-commit)" = 0acbcf9027240a622371da057dcbb2e86e233b41
+      && /isaac-sim/python.sh -m dexbench_arena_gr00t.policy.wuji2_gr00t_config --output {worker_dir}/gr00t-{checkpoint_id}
+      --cameras $(/isaac-sim/python.sh -c "import glob, json, sys; path = sorted(glob.glob(sys.argv[1] + '/processor_config.json') + glob.glob(sys.argv[1] + '/processor/processor_config.json'))[0]; print(*json.load(open(path))['processor_kwargs']['modality_configs']['new_embodiment']['video']['modality_keys'])" {checkpoint}) > /dev/null
+    client_set: ["policy_config_yaml_path={worker_dir}/gr00t-{checkpoint_id}/policy.yaml"]
+    # GR00T's own server at the training commit (RLWRLD/DexBench-Isaac-GR00T 0acbcf90), run from its uv venv; offline,
+    # as pods usually have no Hub token
+    command: >-
+      cd /data/stage/ws/DexBench-Isaac-GR00T && HF_HOME=/data/stage/.cache/huggingface HF_HUB_OFFLINE=1
+      exec /data/stage/ws/DexBench-Isaac-GR00T/.venv/bin/python -m gr00t.eval.run_gr00t_server --model-path {checkpoint}
+      --embodiment-tag NEW_EMBODIMENT --host 127.0.0.1 --port {port} --api-token-file {token_file}
+    ready: Server ready
+plan:
+  timings: timings/l40s_example.json
+  unit_minutes: 15
+backend:
+  kind: ray
+  site: examples/sites/kubernetes.yaml
+  gpus: 8
+  k8s:
+    job_name: me-evl-RUN
+    tree_dir: /data/stage/trees/TREE
+    commit: COMMIT
+    deadline_h: 12
+    ray:
+      worker_gpus: 1          # whole GPUs per worker pod: any multiple of the layout's GPUs per station
+output: /data/stage/launches/RUN

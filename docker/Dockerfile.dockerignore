@@ -1,0 +1,20 @@
+**/.mypy_cache
+**/.pytest_cache
+**/.ruff_cache
+**/__pycache__
+**/*.py[cod]
+**/*.egg-info
+/.git
+**/.git
+/.cache
+/datasets
+/.venv
+/assets
+/data
+/logs
+/outputs
+/videos
+
+# Only Isaac Lab is needed from the nested source checkouts.
+/submodule/isaaclab_arena/submodules/*
+!/submodule/isaaclab_arena/submodules/IsaacLab

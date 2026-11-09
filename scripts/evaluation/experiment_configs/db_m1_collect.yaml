@@ -1,0 +1,35 @@
+# DB-M1 EA (E3 cell, insert_drawer at the A_m1 anchor), insertion only: the episode starts with the
+# drawer already in the formed grasp (it forms during the reset, against the kinematically held drawer,
+# then is released). The pick from the workstation nest is the full task. Newton only.
+# Recording experiment: every draw live at its training range.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_m1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: insert_drawer
+    anchor: A_m1
+    rby1_control_hz: 30
+  environment_builder:
+    presets: NEWTON
+  variations:
+    # The grasp disturbance, drawn at every reset and recorded as drawer.grasp_disturbance: the EA rig's
+    # ranges, which are also the variation's default. [base dx m, dy m, dyaw deg, tilt deg, tilt-axis
+    # azimuth rad, cos-polar]: base +-10 mm and +-1 deg; grasp tilt 2-8 deg about a uniform axis.
+    # Nested, so an experiment override can reach it (shared.variations.drawer.grasp_disturbance...).
+    # The same variation points the head at reset, undrawn: head_joint_positions, default pan -0.15, tilt 0.7 rad.
+    drawer:
+      grasp_disturbance:
+        sampler_cfg:
+          low: [-0.010, -0.010, -1.0, 2.0, -3.141592653589793, -1.0]
+          high: [0.010, 0.010, 1.0, 8.0, 3.141592653589793, 1.0]
+  policy:
+    # Holds the targets the grasp reset leaves (the default pose would open the grasp).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+    hold: targets
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  lg_fh25eae_detergent_drawer:
+    environment:
+      m1_drawer: lg_fh25eae_detergent_drawer

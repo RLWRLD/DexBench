@@ -1,0 +1,56 @@
+# DB-M2 (E3 manufacturing, insert_connector at A_m2).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: every draw out together: the tape spot uniform by area in the 4-6 mm ring about the same centre, turned +25 to +30 deg, past a held-out +20 to +25 deg gap, and the base in the wider box +-12.5 mm, +-1.25 deg (its overlap with the training box included). The ring starts where the disk ends, so the two share only that circle, and no GA-S draw lies in the training range. One-sided: the S2 tape domain stops yaw at 30 deg either way.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (120 each), frozen rows (each cell's 120 draws stratified over the six coordinates at the Run's seed (spatial_conditions, outcome-blind), as the training set's were at its own placement seeds), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 70 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m2 --cell ga_s --model <key> \
+#       --output outputs/db_m2_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m2_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m2_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_m2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: insert_connector
+    anchor: A_m2
+    rby1_control_hz: 30
+    arm_mode: dual_arm
+    m2_plug_condim: 3
+    m2_fingertip_condim: 4
+    m2_wire_collision: panel
+    m2_wire_rest_spot: [-0.008, 0.008, 0.4799655]
+    episode_length_s: 70.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    plug:
+      tape_spot:
+        enabled: true
+        sampler_cfg:
+          low: [-0.014, 0.002, 0.4363323]
+          high: [-0.002, 0.014, 0.5235988]
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.0125, -0.0125, -0.0218166]
+          high: [0.0125, 0.0125, 0.0218166]
+runs:
+  s2:
+    environment:
+      m2_connector: S2
+    environment_builder:
+      seed: 3884204
+      recorded_variation_samples_path: outputs/db_conditions/db_m2_ga_s/s2.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

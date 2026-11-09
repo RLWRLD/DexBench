@@ -1,0 +1,74 @@
+# DB-M5 (E3 manufacturing, place_part_in_kit_box at A_m5).
+# Cell Train (train): training objects, spatial training range.
+# Spatial: the kit box's empty compartment drawn from the far-right and the near-left (belt_kit_box.empty_compartment, kit_box_empty_compartments [0, 3]) and the parts-bin pile from the first 24 of the part's 40 dbclutter seeds by rank (dexbench_assembly_line_e3.parts_bin_clutter_seed, parts_bin_seed_quantiles [0, 0.6]): db_m5_collect.yaml's range, every start of which one of the 240 training demos was collected at.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (24 each), frozen rows (each part of the cell's split an even share of the 120 rows (Train and GA-S 24, GA-O and GA-OS 12), spread over the range's two compartments and the 24 piles by a fixed rule (row i: compartment i mod 2, pile of rank floor(24 i / n)), outcome-blind; written, not recorded, because a condition recording's settle check fails on the kit box the belt carries), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 30 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m5 --cell train --model <key> \
+#       --output outputs/db_m5_eval_train_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m5_eval_train_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m5_eval_train.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M5); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_m5_moving_conveyor_kitting_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: place_part_in_kit_box
+    anchor: A_m5
+    rby1_control_hz: 30
+    arm_mode: left
+    parts_bin_clutter_dir: outputs/db_conditions/db_m5_piles
+    kit_box_empty_compartments: [0, 3]
+    parts_bin_seed_quantiles: [0.0, 0.6]
+    episode_length_s: 30.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  bolt_m24:
+    environment:
+      part: bolt_m24
+    environment_builder:
+      seed: 6725162
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_train/bolt_m24.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  pom_roller:
+    environment:
+      part: pom_roller
+    environment_builder:
+      seed: 3530595
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_train/pom_roller.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  elbow_50a:
+    environment:
+      part: elbow_50a
+    environment_builder:
+      seed: 365485
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_train/elbow_50a.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  bearing_6206:
+    environment:
+      part: bearing_6206
+    environment_builder:
+      seed: 7294458
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_train/bearing_6206.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rs_pro_stepper_motor_535_0502_nema23_class:
+    environment:
+      part: rs_pro_stepper_motor_535_0502_nema23_class
+    environment_builder:
+      seed: 5167944
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_train/rs_pro_stepper_motor_535_0502_nema23_class.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

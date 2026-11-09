@@ -1,0 +1,86 @@
+{
+ "outputs/db_conditions/db_l3_train/invoice_202x276.jsonl": {
+  "sha256": "759039f9bcc0f25555b62643bcf8db2ee5ce2fbe300013299108295aa2b095ee",
+  "rows": 120
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_x_neg_1p5x.jsonl": {
+  "sha256": "dbffa8388c1e5c3cf5a22856c6ceb337ae1fd2882e3f188907e0336d82551262",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_x_pos_1p5x.jsonl": {
+  "sha256": "42dd44cc7fbc000943d475a796f29f62b02635bf674f9714b9291446864a4255",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_y_neg_1p5x.jsonl": {
+  "sha256": "6220e62f6f78480a794868327534311be704982cd4074f4b01bfdfbb4342f6e9",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_y_pos_1p5x.jsonl": {
+  "sha256": "33f6801dcd6cca5ff21080f654ba81391149b39f8ff5a818c32199c7ad523bf0",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_yaw_neg_1p5x.jsonl": {
+  "sha256": "ef661bdbf08c9f88419551a26dc8fbda75d759c48861c5c470ca27f171558cda",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_yaw_pos_1p5x.jsonl": {
+  "sha256": "b60b487c29f5df8034c04673900aad61a62104c36d34207392afd5f67ceccbd2",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_x_neg_1p5x.jsonl": {
+  "sha256": "e220ec015867e8e9bf9f26c0f03cf92d487a7e2117757c772c7ab49d4c669214",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_x_pos_1p5x.jsonl": {
+  "sha256": "91b54020ec7d6c76915b919bf8499097692d7868ffaf08990e4c4089824a1adc",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_y_neg_1p5x.jsonl": {
+  "sha256": "d1d08be79fa2ae7f8a46999b952e82dd3161c92e5a8af12ecaef6e393e6f42ed",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_y_pos_1p5x.jsonl": {
+  "sha256": "bb89970d40b5dae7335c7a4bfe4825da76e540b2b8edbd3235bbace46d04ccc8",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_yaw_neg_1p5x.jsonl": {
+  "sha256": "2084e72efd8827a3bedfded59d7ec9ce08f2f81f4272cdcbd2f731ca2fb99c9c",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_yaw_pos_1p5x.jsonl": {
+  "sha256": "376e43934f741cef9be5aa22d0a7266f355a159070cb2986d53c32eda004e295",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_bench_z_neg_1p5x.jsonl": {
+  "sha256": "b97bb7e50bf1ec7c2224dfeab766ddf0bbcd0eec194079166cb53fd0f98cbee6",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_bench_z_pos_1p5x.jsonl": {
+  "sha256": "b32712f8772e8db9b111404fe1be0d4ca71af0762606e6ab7ecf3900628db426",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_x_neg_1p5x.jsonl": {
+  "sha256": "4c2237f5919c83cd38ee542e4195fb8444489bbb8578e1e7cff1b3902020d9ae",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_x_pos_1p5x.jsonl": {
+  "sha256": "fe6affefcecd50a3a9fe410cb6401c079dd0d657ed32c591469021d446357458",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_y_neg_1p5x.jsonl": {
+  "sha256": "de69c68ecc0f5f546ca781fdb44bb1e0da2780117f5a1c20a596130882ff8883",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_y_pos_1p5x.jsonl": {
+  "sha256": "7d6f05fa30688de32aaa39d4e2b2d0f1aa42f60e53d165dabdc54c0aff7ae19b",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_yaw_neg_1p5x.jsonl": {
+  "sha256": "528a41f6e5c010fdf14c9c96fa5bf1c1b8b704654d81aa5e7773de2840a2b386",
+  "rows": 6
+ },
+ "outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_yaw_pos_1p5x.jsonl": {
+  "sha256": "dead579480e13f40d253d910c1920f97979d86f480003ce71730ec786ad84c72",
+  "rows": 6
+ }
+}

@@ -1,0 +1,76 @@
+# DB-H1 (E4 banquet hall, stack_plates at A_h1).
+# Cell GA-OS (ga_os): held-out objects, spatial beyond the training range.
+# Spatial: each uniform by area in a 3-5 cm ring, base yaw +-5 deg (the H1 scene set's GA-S draws).
+# Evaluation: each Run (an object at a spatial setting) replays its row file (40 each), frozen rows (the benchmark's 480 of the 1,200 frozen scenes: for each cell and dish, the 40 with the lowest scene numbers (db_h1_selected_scenes.json, sha256 69f71fd3...), outcome-blind, none matching a draw of either 240-demo training set (EA db_h1_training_draws.json, GA db_h1_ga_training_draws.json)), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 55 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h1 --cell ga_os --model <key> \
+#       --output outputs/db_h1_eval_ga_os_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h1_eval_ga_os_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h1_eval_ga_os.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H1); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: stack_plates
+    anchor: A_h1
+    rby1_control_hz: 30
+    hide_replay_prims: true
+    stack_alignment_point: rim
+    success_follows_dest_draw: true
+    episode_length_s: 55.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.05, -0.05, -0.0872665]
+          high: [0.05, 0.05, 0.0872665]
+    table_plate_00:
+      source_stack_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.05, -0.05, 0.0]
+          high: [0.05, 0.05, 0.0]
+    clearing_plate_00:
+      dest_stack_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.05, -0.05, 0.0]
+          high: [0.05, 0.05, 0.0]
+runs:
+  godmiddag_deep_plate_23:
+    environment:
+      plate_variant: godmiddag_deep_plate_23
+    environment_builder:
+      seed: 10047532
+      recorded_variation_samples_path: outputs/db_conditions/db_h1_ga_os/godmiddag_deep_plate_23.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  godmiddag_bowl_16:
+    environment:
+      plate_variant: godmiddag_bowl_16
+    environment_builder:
+      seed: 7790528
+      recorded_variation_samples_path: outputs/db_conditions/db_h1_ga_os/godmiddag_bowl_16.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  ikea_365_bowl_19:
+    environment:
+      plate_variant: ikea_365_bowl_19
+    environment_builder:
+      seed: 7724280
+      recorded_variation_samples_path: outputs/db_conditions/db_h1_ga_os/ikea_365_bowl_19.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

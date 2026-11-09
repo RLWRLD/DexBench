@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    defaultPrim = "Carton"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "Carton" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_07d26482520c84e86653/Carton>
+)
+{
+}

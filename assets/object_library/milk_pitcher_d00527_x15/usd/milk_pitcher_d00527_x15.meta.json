@@ -1,0 +1,37 @@
+{
+  "asset": {
+    "version": "2.0.0",
+    "authored": "scaled from a third-party SimReady asset (see derived_from); not a vendor delivery",
+    "source_archive": {
+      "from": "HF dataset PalatialSim/palatial-nv-asset-library",
+      "file": "D00527/simready_usd/D00527.usd",
+      "revision": "69a87329036cec0440403351c12230970c4e67d8",
+      "catalog_id": "batch29_D00527_Milk_Pitcher",
+      "upstream_usd_sha256": "b6eb0e9a70b6d79d1f9751590f332c1d6b6ff61d0fd2815e2c6adede4f21be11",
+      "license": "CC-BY-4.0",
+      "author": "Palatial Platforms",
+      "attribution": "Palatial Platforms — Palatial NV Asset Library, item D00527 (https://huggingface.co/datasets/PalatialSim/palatial-nv-asset-library), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); scaled 1.5x and repackaged by RLWRLD."
+    },
+    "derived_from": {
+      "packaging": "D00527 Milk Pitcher scaled uniformly by 1.5 in x, y and z (geometry, colliders, centre of mass); mass x 1.5^2 (0.25 -> 0.5625 kg, a thin-walled shell keeps its wall thickness) and diagonal inertia x 1.5^4; textures, materials, hierarchy and the delivered collision meshes otherwise as delivered, except the three bottom plates, replaced in 2.0.0 by one flat frustum (Collider_bottom)",
+      "water": "usd/milk_pitcher_d00527_x15_profile.npz (interior lathe profile: rim 0.192 m, rim radius 0.065 m) and usd/milk_pitcher_d00527_x15_water_shell.npz (MPM water collider: a closed shell ray-cast from the render mesh, 2-voxel wall, 8 mm corner rounding, thin handle), found beside the USD by name by dexbench_arena/fluids/water_pour_setup.py"
+    },
+    "categories": [
+      "tableware",
+      "container",
+      "hotel"
+    ],
+    "kind": "handled",
+    "description": "Stainless steam/milk pitcher with a pour spout and a loop handle, 1.5x the D00527 delivery (about 0.21 x 0.17 x 0.20 m). Z-up, metres, rigid body on /World/part_00.",
+    "mass_kg": 0.5625,
+    "mass_source": "delivered 0.25 kg scaled by 1.5^2 (wall area), not weighed",
+    "physics_material": {
+      "prim": "part_00/PhysicsMaterials/part_00_material",
+      "static_friction": 0.5,
+      "dynamic_friction": 0.4,
+      "restitution": 0.4,
+      "source": "as delivered"
+    },
+    "used_by": "DB-H2 lift_and_pour, --pour_jug d00527_x15"
+  }
+}

@@ -1,0 +1,42 @@
+# DB-M2 (E3 cell, insert_connector at the A_m2 anchor): pick the loose harness connector up from its tape spot
+# beside its mate, insert it until it is seated and leave the other one mated. Newton only.
+# Recording experiment: every draw live at its training range. One run, S2, the connector the
+# benchmark trains on; S1 has no tape spot, and a build refuses it
+# (db_m2_layout.M2_CONNECTOR_OBJECT_AXIS).
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_m2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: insert_connector
+    anchor: A_m2
+    # The task's own start (teleop_ready: hands above and outside the liner; teleop_home's reach into it),
+    # named here as db_r2_collect.yaml names its start.
+    start_pose: teleop_ready
+    # Where the plug starts: tape (standing nose down on the liner face beside its mate, to be picked up; the
+    # default) or entry (on its mate's entry, one push from home). Only S2 has a tape spot so far. For the entry
+    # start of S2, give --m2_start entry after --run s2 (a collection file runs each connector once).
+    m2_start: tape
+    # Base-pose range, not yet reach-checked: the DB-R2/R3 training range, a uniform +-2 cm draw in X and Y, no yaw,
+    # recorded as <embodiment>.base_pose. The base stands 36 mm short of the line, so it never reaches it.
+    base_jitter_radius: 0.02
+  environment_builder:
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  s2:  # JST YL 16-pin, 11.5 mm stroke (the package's "DB-M2 inserts S2"), from its tape spot
+    environment:
+      m2_connector: S2
+    variations:
+      # Where the plug stands, drawn at every reset and recorded as plug.tape_spot: [dx m, dy m, dyaw rad]
+      # from the tape release (db_m2_layout.TAPE_SPOT_RANGE). Past TAPE_SPOT_LIMIT (16 mm, 16 mm, 30 deg) it is refused.
+      plug:
+        tape_spot:
+          sampler_cfg:
+            low: [-0.008, 0.0, -0.349]
+            high: [0.0, 0.008, 0.349]

@@ -1,0 +1,1136 @@
+# DB-R2 (retail_v1, retrieve_beverage_from_clutter at the Fridge anchor).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: the target in MF3, MF4 or MF5 and the base fixed 4 cm out, toward e, w, sw, s and se, turned at its training draw on the left and at most 0.5 deg right (R2_YAW_RING_DEG); n, ne and nw are out, since the fingers meet fridge_01/02 or the door frame at reset from teleop_home on every lane. At MF3, IK reaches TC2's grasp poses from s and se, with nominal joint-limit margins. GA-OS's held-out drinks are reach-checked at MF4 only: at MF3 and MF5 the settle filter guards their starts, but reach is unverified. Or the base at its training x, y draw and turned 6 deg left (base_yaw_p6) or 4 deg right (base_yaw_m4), reach-checked on every lane (R2_YAW_* says why the right side is narrower).
+# Evaluation: each Run (an object at a spatial setting) replays its row file (1 or 2 each, as the spec's row_quotas declare), the filtered rows of db_r2_conditions_ga_s.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 35 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task r2 --cell ga_s --model <key> \
+#       --output outputs/db_r2_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_r2_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_r2_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-R2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_retail_v1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    arm_mode: dual_arm
+    task: retrieve_beverage_from_clutter
+    scene_layout: fc_260821
+    anchor: Fridge
+    start_pose: teleop_home
+    rby1_control_hz: 30
+    with_full_items: true
+    fridge_shelf3_raise_m: 0.065
+    r2_stock_rule: unique_target
+    r2_stock_fillers: TC2,TC1
+    success_tier: strict
+    episode_length_s: 35.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  tc1_mf3_base_e:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 932516
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf3_base_w:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 7316588
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf3_base_sw:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 8425074
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf3_base_s:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 6083189
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf3_base_se:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 5540794
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf3_base_yaw_p6:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+    environment_builder:
+      seed: 4184917
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf3_base_yaw_m4:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 3
+    environment_builder:
+      seed: 2268965
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf3_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_e:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 5413821
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_w:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 2260085
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_sw:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 8127035
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_s:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 5922412
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_se:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 10003827
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_yaw_p6:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+    environment_builder:
+      seed: 4657037
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf4_base_yaw_m4:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 4
+    environment_builder:
+      seed: 6577533
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf4_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_e:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 7362595
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_w:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 3226859
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_sw:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 7766136
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_s:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 7914354
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_se:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 6458032
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_yaw_p6:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+    environment_builder:
+      seed: 6630664
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc1_mf5_base_yaw_m4:
+    environment:
+      r2_target_sku: TC1
+      r2_target_lane: 5
+    environment_builder:
+      seed: 2125176
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc1_mf5_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_e:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 9704852
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_w:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 2433628
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_sw:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 3708860
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_s:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 7990341
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_se:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 3119604
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_yaw_p6:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+    environment_builder:
+      seed: 7272145
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf3_base_yaw_m4:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 3
+    environment_builder:
+      seed: 1772961
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf3_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_e:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 5042061
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_w:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 7569733
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_sw:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 5553269
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_s:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 1191388
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_se:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 7110205
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_yaw_p6:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+    environment_builder:
+      seed: 8778121
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf4_base_yaw_m4:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 4
+    environment_builder:
+      seed: 4272633
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf4_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_e:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 755731
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_w:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 5811419
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_sw:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 6831030
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_s:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 6796482
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_se:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 9739134
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_yaw_p6:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+    environment_builder:
+      seed: 6448268
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tc2_mf5_base_yaw_m4:
+    environment:
+      r2_target_sku: TC2
+      r2_target_lane: 5
+    environment_builder:
+      seed: 8368764
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tc2_mf5_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_e:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 2698160
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_w:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 4909176
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_sw:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 1214597
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_s:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 3272801
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_se:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 9833677
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_yaw_p6:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+    environment_builder:
+      seed: 4780527
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf3_base_yaw_m4:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 3
+    environment_builder:
+      seed: 8669855
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf3_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_e:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 1108521
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_w:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 7074017
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_sw:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 2663372
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_s:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 6324216
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_se:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 5780356
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_yaw_p6:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+    environment_builder:
+      seed: 9487927
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf4_base_yaw_m4:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 4
+    environment_builder:
+      seed: 5602247
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf4_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_e:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+      base_offset_x: 0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 350519
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_w:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+      base_offset_x: -0.04
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 3876735
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_sw:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+      base_offset_x: -0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 8446863
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_s:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+      base_offset_x: 0.0
+      base_offset_y: -0.04
+    environment_builder:
+      seed: 2054886
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_se:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+      base_offset_x: 0.0283
+      base_offset_y: -0.0283
+    environment_builder:
+      seed: 2343111
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0, -0.0, -0.0087266]
+            high: [0.0, 0.0, 0.0523599]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_yaw_p6:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+    environment_builder:
+      seed: 7736370
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_yaw_p6.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.1047198]
+            high: [0.02, 0.02, 0.1047198]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tp1_mf5_base_yaw_m4:
+    environment:
+      r2_target_sku: TP1
+      r2_target_lane: 5
+    environment_builder:
+      seed: 7425730
+      recorded_variation_samples_path: outputs/db_conditions/db_r2_ga_s/tp1_mf5_base_yaw_m4.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, -0.0698132]
+            high: [0.02, 0.02, -0.0698132]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

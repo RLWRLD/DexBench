@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "tyb_ucp205_pillow_block_bearing_unit_newton.usd",
+    "sha256": "31dcb6f82a36e349ab946c3cd7f0a39651d2a6758198baa5052d5b167e18dd09"
+  },
+  "pieces": 2,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit",
+    "sources": [
+      {
+        "prim": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit/inner_race",
+        "authored_approximation": "sdf",
+        "vertices": 9424,
+        "physics_material": "/World/PhysicsMaterials/SteelPolished"
+      },
+      {
+        "prim": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit/housing",
+        "authored_approximation": "sdf",
+        "vertices": 86041,
+        "physics_material": "/World/PhysicsMaterials/CastIron"
+      },
+      {
+        "prim": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit/insert_bearing",
+        "authored_approximation": "convexHull",
+        "vertices": 30203,
+        "physics_material": "/World/PhysicsMaterials/SteelPolished"
+      },
+      {
+        "prim": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit/grease_nipple",
+        "authored_approximation": "convexHull",
+        "vertices": 21256,
+        "physics_material": "/World/PhysicsMaterials/Brass"
+      },
+      {
+        "prim": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit/set_screw_02",
+        "authored_approximation": "convexHull",
+        "vertices": 7607,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "prim": "/World/TYB_UCP205_Pillow_Block_Bearing_Unit/set_screw_01",
+        "authored_approximation": "convexHull",
+        "vertices": 7472,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      }
+    ],
+    "max_convex_hull": 2,
+    "coacd_pieces": 0,
+    "start": "set",
+    "primitives": 2,
+    "kinds": [
+      "cylinder",
+      "box"
+    ],
+    "cost": 0.61847,
+    "excess_over_mesh_ratio": 0.56941,
+    "missing_ratio": 0.00164,
+    "growth_vs_vendor": 0.23618,
+    "lost_vs_vendor_ratio": 0.03917,
+    "seconds": 0.0,
+    "growth_vs_newton8": 0.09748,
+    "lost_vs_newton8_ratio": 0.04113,
+    "constraint": {
+      "kinds": [
+        "box",
+        "cylinder"
+      ],
+      "snap_axis": [
+        0,
+        1
+      ],
+      "set_center_mm": {
+        "0": [
+          0.0,
+          null,
+          null
+        ],
+        "1": [
+          0.0,
+          null,
+          null
+        ]
+      }
+    },
+    "primitives_detail": [
+      {
+        "kind": "cylinder",
+        "center_m": [
+          0.0,
+          -0.0014666,
+          0.0342537
+        ],
+        "orient_wxyz": [
+          -0.4999991,
+          -0.4999991,
+          0.5000009,
+          -0.5000009
+        ],
+        "radius_m": 0.0377954,
+        "half_height_m": 0.0179419,
+        "physics_material": "/World/PhysicsMaterials/CastIron"
+      },
+      {
+        "kind": "box",
+        "center_m": [
+          0.0,
+          0.0003474,
+          0.0086747
+        ],
+        "orient_wxyz": [
+          -0.7071068,
+          0.7071068,
+          0.0,
+          0.0
+        ],
+        "half_extents_m": [
+          0.0699879,
+          0.008717,
+          0.0190343
+        ],
+        "physics_material": "/World/PhysicsMaterials/CastIron"
+      }
+    ],
+    "collider_volume_m3": 0.000221604,
+    "part_volume_m3": 0.00014135,
+    "vendor_newton_variant": {
+      "pieces": 68,
+      "collider_volume_m3": 0.000179265,
+      "excess_over_mesh_ratio": 0.26894,
+      "missing_ratio": 0.0007,
+      "cost": 0.28989
+    },
+    "newton8_variant": {
+      "pieces": 8,
+      "collider_volume_m3": 0.000201921,
+      "excess_over_mesh_ratio": 0.42858,
+      "missing_ratio": 6e-05,
+      "cost": 0.43051
+    },
+    "search": [
+      {
+        "max_convex_hull": 2,
+        "coacd_pieces": 0,
+        "start": "set",
+        "primitives": 2,
+        "kinds": [
+          "cylinder",
+          "box"
+        ],
+        "cost": 0.61847,
+        "excess_over_mesh_ratio": 0.56941,
+        "missing_ratio": 0.00164,
+        "growth_vs_vendor": 0.23618,
+        "lost_vs_vendor_ratio": 0.03917,
+        "seconds": 0.0,
+        "growth_vs_newton8": 0.09748,
+        "lost_vs_newton8_ratio": 0.04113
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002,
+      "ignored_meshes": null,
+      "ignored_above_mm": null
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "tyb_ucp205_pillow_block_bearing_unit_newton.usd",
+    "sha256": "9de744d24771851002583fdfdc838bd663425db60c99667aa5f9f0c59cd967db",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

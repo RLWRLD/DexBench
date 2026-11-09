@@ -1,0 +1,61 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "Newton"
+                    }
+                    dictionary PhysX = {
+                        string activateOption = "Enabled"
+                        string prim = "/World"
+                        string variantSetName = "PhysX"
+                    }
+                }
+            }
+            string version = "1.0.0"
+        }
+        string asset_name = "achime_juice_abc_750ml_tall_pet"
+        string asset_type = "prop"
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (5, 0, 0)
+                double radius = 5
+            }
+            dictionary Perspective = {
+                double3 position = (0.25840891831901913, 0.2370773714357418, 0.374079264997724)
+                double3 target = (-0.031446268234495256, -0.052777815117772464, 0.08422408536254017)
+            }
+            dictionary Right = {
+                double3 position = (0, -5, 0)
+                double radius = 5
+            }
+            dictionary Top = {
+                double3 position = (0, 0, 5)
+                double radius = 5
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            string authoring_layer = "./Achime_Juice_ABC_750ml_Tall_PET.usd"
+        }
+        dictionary renderSettings = {
+        }
+        string source_file = "authored"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "World"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "World" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_4429594c34e987331930/World>
+)
+{
+}
+

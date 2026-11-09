@@ -1,0 +1,4 @@
+include LICENSE NOTICE
+include config/extension.toml
+include dexbench_arena/benchmark/submission.schema.json
+include dexbench_arena/benchmark/model_entry.schema.json

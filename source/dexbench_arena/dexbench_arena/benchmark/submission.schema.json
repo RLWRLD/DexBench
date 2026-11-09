@@ -1,0 +1,341 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "const": "generalist"
+        },
+        "code_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "code_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "base_model": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "name",
+        "key",
+        "scope",
+        "code_url",
+        "code_commit",
+        "base_model"
+      ],
+      "additionalProperties": false
+    },
+    "training": {
+      "type": "object",
+      "properties": {
+        "track": {
+          "const": "standard-data"
+        },
+        "datasets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "uri": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "episodes": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "uri",
+              "revision",
+              "episodes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "additional_data": {
+          "type": "boolean"
+        },
+        "checkpoint_selection": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "track",
+        "datasets",
+        "additional_data",
+        "checkpoint_selection"
+      ],
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "image_digest": {
+          "type": "string",
+          "pattern": "^.+@sha256:[a-f0-9]{64}$"
+        },
+        "command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hardware": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inference_settings": {
+          "type": "string",
+          "minLength": 1
+        },
+        "episode_reset": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "image_digest",
+        "command",
+        "hardware",
+        "inference_settings",
+        "episode_reset"
+      ],
+      "additionalProperties": false
+    },
+    "benchmark": {
+      "type": "object",
+      "properties": {
+        "release": {
+          "type": "string",
+          "minLength": 1
+        },
+        "code_commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "manifest_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "eval_version": {
+          "enum": [
+            "v1",
+            "v1-plus"
+          ]
+        },
+        "evaluator_image_digest": {
+          "type": "string",
+          "pattern": "^.+@sha256:[a-f0-9]{64}$"
+        },
+        "evaluation_sha256": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      },
+      "required": [
+        "release",
+        "code_commit",
+        "manifest_sha256",
+        "eval_version",
+        "evaluator_image_digest",
+        "evaluation_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "checkpoints": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "uri",
+          "sha256",
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "method_card": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": {
+            "type": "string",
+            "minLength": 1
+          },
+          "cell": {
+            "type": "string",
+            "minLength": 1
+          },
+          "directory": {
+            "type": "string",
+            "minLength": 1
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "result_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "trajectories": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "run": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "rebuild": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "path",
+                "sha256",
+                "run",
+                "rebuild"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "videos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "task",
+          "cell",
+          "directory",
+          "manifest_sha256",
+          "result_sha256",
+          "trajectories",
+          "videos"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "model_entry": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "model",
+    "training",
+    "runtime",
+    "benchmark",
+    "checkpoints",
+    "method_card",
+    "runs",
+    "model_entry"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DexBench leaderboard submission v1"
+}

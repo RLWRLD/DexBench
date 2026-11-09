@@ -1,0 +1,1598 @@
+{
+  "asset": {
+    "version": "5.0.0",
+    "source_package": "object_library/polybag_cotton_tet_deformable",
+    "tool": "scripts/tools/make_polybag_sort_variants.py",
+    "kind": "deformable",
+    "categories": [
+      "logistics",
+      "parcel",
+      "deformable"
+    ],
+    "description": "DB-L1 polybag pool: bag shape SI (picked 2026-10-27) in 11 film colour x size bodies, each with 3 fictional 4x6 in shipping labels (ISO 15394 zones; sort classes 1A/2B/3C). A symmetric pillow, seam at mid-height 2 mm thick, a straight 45 mm wedge to the full thickness, 8 / 7.6 / 7.2 cm by label 1A/2B/3C; structured tets (15 mm columns, 3 layers) in per-tet materials core / skin (top) / bottom 2.5 / 0.5 / 2.5 kPa, Poisson 0.05, kDamp 0.5 / 0.2 / 0.5 (dexbench:tetYoungsModulus / tetPoissonsRatio / tetKDamp), a surface film of springs 2 kN/m, kd 0.1 (dexbench:surfaceFilmMode springs), 0.20-0.30 kg by size. Each body built over the 261009 bag in the 4.1.1 parcel section (the tool's SI_SPEC, PARCEL_*). Main file: a `label` variant set over the 33 layers usd/variants/<key>.usd",
+    "section": {
+      "kind": "symmetric_pillow",
+      "seam_half_thickness_m": 0.002,
+      "wedge_m": 0.045,
+      "profile": "linear",
+      "corner_r_m": 0.02,
+      "tet_column_m": 0.015,
+      "tet_layers": 3,
+      "skin_m": 0.02,
+      "materials_pa": {
+        "core": 2500.0,
+        "skin": 500.0,
+        "bottom": 2500.0
+      },
+      "poissons_ratio": 0.05,
+      "k_damp": {
+        "core": 0.5,
+        "skin": 0.2,
+        "bottom": 0.5
+      },
+      "film": {
+        "mode": "springs",
+        "ke_n_m": 2000.0,
+        "kd": 0.1,
+        "region": "all"
+      },
+      "particle_radius_m": 0.004
+    },
+    "thickness_levels_m": [
+      0.08,
+      0.076,
+      0.072
+    ],
+    "youngs_moduli_pa": [
+      2500.0
+    ],
+    "variants": [
+      {
+        "key": "grey_25x35__1a",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "5435 9147 2324",
+          "date": "2026-10-11",
+          "recipient": "Y. JANG",
+          "recipient_phone": "+82 10-4020-****",
+          "address1": "Unit 1402, Bldg 115",
+          "address2": "30 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04785",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "74 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-600905",
+          "sscc": "088096217321784860"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "grey_25x35__2b",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "6727 2897 2018",
+          "date": "2026-10-11",
+          "recipient": "G. PARK",
+          "recipient_phone": "+82 10-4395-****",
+          "address1": "Unit 2104, Bldg 111",
+          "address2": "69 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04799",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "97 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-933443",
+          "sscc": "088059929609223037"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "grey_25x35__3c",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "5582 7607 3187",
+          "date": "2026-10-11",
+          "recipient": "E. KANG",
+          "recipient_phone": "+82 10-2123-****",
+          "address1": "Unit 1703, Bldg 114",
+          "address2": "43 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04800",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "38 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-502084",
+          "sscc": "088052046459712034"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "black_25x35__1a",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "6775 8241 6402",
+          "date": "2026-10-11",
+          "recipient": "S. JUNG",
+          "recipient_phone": "+82 10-7589-****",
+          "address1": "Unit 602, Bldg 114",
+          "address2": "9 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04781",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "77 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-772142",
+          "sscc": "088011695038010707"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "black_25x35__2b",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "5177 8731 5477",
+          "date": "2026-10-11",
+          "recipient": "C. HAN",
+          "recipient_phone": "+82 10-2139-****",
+          "address1": "Unit 1401, Bldg 106",
+          "address2": "27 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04790",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "61 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-749938",
+          "sscc": "088094944690205642"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "black_25x35__3c",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "6588 5377 1190",
+          "date": "2026-10-11",
+          "recipient": "W. PARK",
+          "recipient_phone": "+82 10-3146-****",
+          "address1": "Unit 803, Bldg 115",
+          "address2": "9 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04803",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "64 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-207955",
+          "sscc": "088060200709676821"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "white_25x35__1a",
+        "colour": "화이트(유백)",
+        "rgb": [
+          232,
+          232,
+          226
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "5600 3650 5427",
+          "date": "2026-10-11",
+          "recipient": "A. LEE",
+          "recipient_phone": "+82 10-9953-****",
+          "address1": "Unit 904, Bldg 114",
+          "address2": "26 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04783",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "10 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-780089",
+          "sscc": "088030256883706754"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "white_25x35__2b",
+        "colour": "화이트(유백)",
+        "rgb": [
+          232,
+          232,
+          226
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "6489 8526 2401",
+          "date": "2026-10-11",
+          "recipient": "E. LEE",
+          "recipient_phone": "+82 10-7092-****",
+          "address1": "Unit 1602, Bldg 115",
+          "address2": "55 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04794",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "62 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-891589",
+          "sscc": "088058118036018694"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "white_25x35__3c",
+        "colour": "화이트(유백)",
+        "rgb": [
+          232,
+          232,
+          226
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "5662 5192 4974",
+          "date": "2026-10-11",
+          "recipient": "N. YOON",
+          "recipient_phone": "+82 10-6151-****",
+          "address1": "Unit 1404, Bldg 105",
+          "address2": "31 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04800",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "38 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-835700",
+          "sscc": "088096796137993609"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "pink_20x30__1a",
+        "colour": "핫핑크",
+        "rgb": [
+          222,
+          72,
+          142
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "6172 4512 9224",
+          "date": "2026-10-11",
+          "recipient": "B. JUNG",
+          "recipient_phone": "+82 10-7194-****",
+          "address1": "Unit 1402, Bldg 108",
+          "address2": "3 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04780",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "77 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-442623",
+          "sscc": "088019920746755797"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "pink_20x30__2b",
+        "colour": "핫핑크",
+        "rgb": [
+          222,
+          72,
+          142
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "5605 7595 7935",
+          "date": "2026-10-11",
+          "recipient": "Y. OH",
+          "recipient_phone": "+82 10-5848-****",
+          "address1": "Unit 803, Bldg 112",
+          "address2": "93 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04796",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "42 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-213168",
+          "sscc": "088067191016074932"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "pink_20x30__3c",
+        "colour": "핫핑크",
+        "rgb": [
+          222,
+          72,
+          142
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "5056 1645 5427",
+          "date": "2026-10-11",
+          "recipient": "Y. JANG",
+          "recipient_phone": "+82 10-8412-****",
+          "address1": "Unit 1602, Bldg 101",
+          "address2": "66 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04800",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "61 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-942383",
+          "sscc": "088063547437799550"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "silver_30x40__1a",
+        "colour": "실버",
+        "rgb": [
+          186,
+          189,
+          194
+        ],
+        "nominal_cm": [
+          30,
+          40
+        ],
+        "footprint_m": [
+          0.2988,
+          0.3674
+        ],
+        "scale_xy": [
+          1.2,
+          1.1429
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "6200 3323 4569",
+          "date": "2026-10-11",
+          "recipient": "K. CHO",
+          "recipient_phone": "+82 10-6760-****",
+          "address1": "Unit 1603, Bldg 104",
+          "address2": "96 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04784",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "51 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-419085",
+          "sscc": "088053528636646756"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2288,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.25
+      },
+      {
+        "key": "silver_30x40__2b",
+        "colour": "실버",
+        "rgb": [
+          186,
+          189,
+          194
+        ],
+        "nominal_cm": [
+          30,
+          40
+        ],
+        "footprint_m": [
+          0.2988,
+          0.3674
+        ],
+        "scale_xy": [
+          1.2,
+          1.1429
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "6183 1100 8325",
+          "date": "2026-10-11",
+          "recipient": "K. OH",
+          "recipient_phone": "+82 10-2070-****",
+          "address1": "Unit 1504, Bldg 113",
+          "address2": "84 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04796",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "69 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-410896",
+          "sscc": "088087561011416701"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2288,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.25
+      },
+      {
+        "key": "silver_30x40__3c",
+        "colour": "실버",
+        "rgb": [
+          186,
+          189,
+          194
+        ],
+        "nominal_cm": [
+          30,
+          40
+        ],
+        "footprint_m": [
+          0.2988,
+          0.3674
+        ],
+        "scale_xy": [
+          1.2,
+          1.1429
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "6665 7684 9656",
+          "date": "2026-10-11",
+          "recipient": "E. YOON",
+          "recipient_phone": "+82 10-6930-****",
+          "address1": "Unit 401, Bldg 107",
+          "address2": "89 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04805",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "49 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-732814",
+          "sscc": "088012267997180266"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2288,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.25
+      },
+      {
+        "key": "grey_20x30__1a",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "6750 7026 6820",
+          "date": "2026-10-11",
+          "recipient": "E. HAN",
+          "recipient_phone": "+82 10-3024-****",
+          "address1": "Unit 2004, Bldg 110",
+          "address2": "16 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04783",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "22 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-307850",
+          "sscc": "088035328411744493"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "grey_20x30__2b",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "5150 3885 7379",
+          "date": "2026-10-11",
+          "recipient": "J. JUNG",
+          "recipient_phone": "+82 10-4132-****",
+          "address1": "Unit 1801, Bldg 112",
+          "address2": "82 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04793",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "26 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-498676",
+          "sscc": "088020434704791162"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "grey_20x30__3c",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "5159 6070 9882",
+          "date": "2026-10-11",
+          "recipient": "N. KIM",
+          "recipient_phone": "+82 10-4321-****",
+          "address1": "Unit 1902, Bldg 111",
+          "address2": "20 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04808",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "14 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-539087",
+          "sscc": "088061306837452661"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "black_30x40__1a",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          30,
+          40
+        ],
+        "footprint_m": [
+          0.2988,
+          0.3674
+        ],
+        "scale_xy": [
+          1.2,
+          1.1429
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "train",
+        "fields": {
+          "tracking": "5018 8530 1003",
+          "date": "2026-10-11",
+          "recipient": "D. LIM",
+          "recipient_phone": "+82 10-2533-****",
+          "address1": "Unit 2003, Bldg 106",
+          "address2": "49 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04786",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "87 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-750071",
+          "sscc": "088053435228319151"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2288,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.25
+      },
+      {
+        "key": "black_30x40__2b",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          30,
+          40
+        ],
+        "footprint_m": [
+          0.2988,
+          0.3674
+        ],
+        "scale_xy": [
+          1.2,
+          1.1429
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "train",
+        "fields": {
+          "tracking": "5861 1941 9959",
+          "date": "2026-10-11",
+          "recipient": "J. CHO",
+          "recipient_phone": "+82 10-3130-****",
+          "address1": "Unit 2302, Bldg 114",
+          "address2": "16 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04795",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "41 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-991147",
+          "sscc": "088091176142944912"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2288,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.25
+      },
+      {
+        "key": "black_30x40__3c",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          30,
+          40
+        ],
+        "footprint_m": [
+          0.2988,
+          0.3674
+        ],
+        "scale_xy": [
+          1.2,
+          1.1429
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "train",
+        "fields": {
+          "tracking": "5681 2225 6804",
+          "date": "2026-10-11",
+          "recipient": "H. CHOI",
+          "recipient_phone": "+82 10-7349-****",
+          "address1": "Unit 2203, Bldg 114",
+          "address2": "60 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04806",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "27 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-415972",
+          "sscc": "088015292574511253"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2288,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.25
+      },
+      {
+        "key": "purple_25x35__1a",
+        "colour": "보라",
+        "rgb": [
+          118,
+          82,
+          160
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "eval_colour",
+        "fields": {
+          "tracking": "6758 5056 4510",
+          "date": "2026-10-11",
+          "recipient": "K. KIM",
+          "recipient_phone": "+82 10-4336-****",
+          "address1": "Unit 1001, Bldg 106",
+          "address2": "16 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04785",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "86 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-314988",
+          "sscc": "088028305859591780"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "purple_25x35__2b",
+        "colour": "보라",
+        "rgb": [
+          118,
+          82,
+          160
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "eval_colour",
+        "fields": {
+          "tracking": "6131 6721 6360",
+          "date": "2026-10-11",
+          "recipient": "C. PARK",
+          "recipient_phone": "+82 10-4014-****",
+          "address1": "Unit 1204, Bldg 114",
+          "address2": "59 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04797",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "10 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-216282",
+          "sscc": "088014654165436542"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "purple_25x35__3c",
+        "colour": "보라",
+        "rgb": [
+          118,
+          82,
+          160
+        ],
+        "nominal_cm": [
+          25,
+          35
+        ],
+        "footprint_m": [
+          0.249,
+          0.3215
+        ],
+        "scale_xy": [
+          1.0,
+          1.0
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "eval_colour",
+        "fields": {
+          "tracking": "6954 5699 3774",
+          "date": "2026-10-11",
+          "recipient": "S. OH",
+          "recipient_phone": "+82 10-4483-****",
+          "address1": "Unit 2103, Bldg 112",
+          "address2": "3 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04802",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "86 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-548049",
+          "sscc": "088084286804572145"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1656,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.22
+      },
+      {
+        "key": "skyblue_20x30__1a",
+        "colour": "소라(하늘)",
+        "rgb": [
+          146,
+          196,
+          226
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "eval_colour",
+        "fields": {
+          "tracking": "5714 8875 8230",
+          "date": "2026-10-11",
+          "recipient": "J. CHOI",
+          "recipient_phone": "+82 10-3549-****",
+          "address1": "Unit 1804, Bldg 113",
+          "address2": "21 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04787",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "70 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-881574",
+          "sscc": "088053659335181160"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "skyblue_20x30__2b",
+        "colour": "소라(하늘)",
+        "rgb": [
+          146,
+          196,
+          226
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "eval_colour",
+        "fields": {
+          "tracking": "6068 8486 2041",
+          "date": "2026-10-11",
+          "recipient": "H. CHO",
+          "recipient_phone": "+82 10-4984-****",
+          "address1": "Unit 2103, Bldg 101",
+          "address2": "10 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04793",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "94 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-433064",
+          "sscc": "088044306949995059"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "skyblue_20x30__3c",
+        "colour": "소라(하늘)",
+        "rgb": [
+          146,
+          196,
+          226
+        ],
+        "nominal_cm": [
+          20,
+          30
+        ],
+        "footprint_m": [
+          0.1992,
+          0.2756
+        ],
+        "scale_xy": [
+          0.8,
+          0.8571
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "eval_colour",
+        "fields": {
+          "tracking": "6828 4042 7155",
+          "date": "2026-10-11",
+          "recipient": "C. KIM",
+          "recipient_phone": "+82 10-9219-****",
+          "address1": "Unit 1302, Bldg 114",
+          "address2": "31 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04801",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "15 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-372682",
+          "sscc": "088051478077398085"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1200,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.2
+      },
+      {
+        "key": "grey_35x45__1a",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          35,
+          45
+        ],
+        "footprint_m": [
+          0.3486,
+          0.4134
+        ],
+        "scale_xy": [
+          1.4,
+          1.2857
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "eval_shape",
+        "fields": {
+          "tracking": "6803 5924 3520",
+          "date": "2026-10-11",
+          "recipient": "D. LEE",
+          "recipient_phone": "+82 10-8415-****",
+          "address1": "Unit 904, Bldg 106",
+          "address2": "42 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04785",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "91 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-724316",
+          "sscc": "088058901312221464"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2900,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.3
+      },
+      {
+        "key": "grey_35x45__2b",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          35,
+          45
+        ],
+        "footprint_m": [
+          0.3486,
+          0.4134
+        ],
+        "scale_xy": [
+          1.4,
+          1.2857
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "eval_shape",
+        "fields": {
+          "tracking": "5592 2608 7542",
+          "date": "2026-10-11",
+          "recipient": "N. LIM",
+          "recipient_phone": "+82 10-7991-****",
+          "address1": "Unit 1702, Bldg 110",
+          "address2": "41 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04792",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "34 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-322836",
+          "sscc": "088064320908273709"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2900,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.3
+      },
+      {
+        "key": "grey_35x45__3c",
+        "colour": "진회색",
+        "rgb": [
+          92,
+          94,
+          99
+        ],
+        "nominal_cm": [
+          35,
+          45
+        ],
+        "footprint_m": [
+          0.3486,
+          0.4134
+        ],
+        "scale_xy": [
+          1.4,
+          1.2857
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "eval_shape",
+        "fields": {
+          "tracking": "5221 4130 8670",
+          "date": "2026-10-11",
+          "recipient": "A. PARK",
+          "recipient_phone": "+82 10-3605-****",
+          "address1": "Unit 2002, Bldg 107",
+          "address2": "46 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04803",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "79 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-625670",
+          "sscc": "088082774523360874"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 2900,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.3
+      },
+      {
+        "key": "black_20x40__1a",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          20,
+          40
+        ],
+        "footprint_m": [
+          0.1992,
+          0.3674
+        ],
+        "scale_xy": [
+          0.8,
+          1.1429
+        ],
+        "thickness_m": 0.08,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-1A",
+        "tote": 1,
+        "split": "eval_shape",
+        "fields": {
+          "tracking": "6710 7306 2641",
+          "date": "2026-10-11",
+          "recipient": "Y. LIM",
+          "recipient_phone": "+82 10-7912-****",
+          "address1": "Unit 1501, Bldg 104",
+          "address2": "6 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04786",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "67 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-502070",
+          "sscc": "088013151240414170"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1560,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.21
+      },
+      {
+        "key": "black_20x40__2b",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          20,
+          40
+        ],
+        "footprint_m": [
+          0.1992,
+          0.3674
+        ],
+        "scale_xy": [
+          0.8,
+          1.1429
+        ],
+        "thickness_m": 0.076,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-2B",
+        "tote": 2,
+        "split": "eval_shape",
+        "fields": {
+          "tracking": "6429 5271 1329",
+          "date": "2026-10-11",
+          "recipient": "J. JUNG",
+          "recipient_phone": "+82 10-7415-****",
+          "address1": "Unit 2302, Bldg 115",
+          "address2": "42 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04795",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "68 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-703334",
+          "sscc": "088021746724571594"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1560,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.21
+      },
+      {
+        "key": "black_20x40__3c",
+        "colour": "검정",
+        "rgb": [
+          32,
+          32,
+          35
+        ],
+        "nominal_cm": [
+          20,
+          40
+        ],
+        "footprint_m": [
+          0.1992,
+          0.3674
+        ],
+        "scale_xy": [
+          0.8,
+          1.1429
+        ],
+        "thickness_m": 0.072,
+        "youngs_modulus_pa": 2500.0,
+        "sort_code": "5K21-3C",
+        "tote": 3,
+        "split": "eval_shape",
+        "fields": {
+          "tracking": "5651 6018 4087",
+          "date": "2026-10-11",
+          "recipient": "E. CHO",
+          "recipient_phone": "+82 10-9198-****",
+          "address1": "Unit 603, Bldg 106",
+          "address2": "97 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04809",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "89 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-616512",
+          "sscc": "088042861184180650"
+        },
+        "scaled_prims": {
+          "/World/polybag_green_cotton": 1560,
+          "/World/polybag_green_cotton_render": 16506
+        },
+        "mass_kg": 0.21
+      }
+    ],
+    "fonts": "Liberation Sans (SIL Open Font License 1.1)",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-10-22",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "unmet",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "fail",
+        "FET_003_NEWTON": "fail",
+        "FET_003_PHYSX": "fail",
+        "FET_003_STANDARD": "fail",
+        "FET_004_MUJOCO": "fail",
+        "FET_004_NEWTON": "fail",
+        "FET_004_PHYSX": "fail",
+        "FET_004_STANDARD": "fail",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "boltkorea_iso4014_class_8_8_hex_bolt_m36x160_newton.usd",
+    "sha256": "22f4060ff25d89ef4e04514f09edf890d0fb1f3f8e854af827d43d5f48642d46"
+  },
+  "pieces": 3,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/World/BoltKorea_ISO4014_Class_8_8_Hex_Bolt_M36x160",
+    "sources": [
+      {
+        "prim": "/World/BoltKorea_ISO4014_Class_8_8_Hex_Bolt_M36x160/hex_bolt_m36x160",
+        "authored_approximation": "sdf",
+        "vertices": 4152,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      }
+    ],
+    "max_convex_hull": 3,
+    "coacd_pieces": 0,
+    "start": "set",
+    "primitives": 3,
+    "kinds": [
+      "capsule",
+      "cylinder",
+      "hexprism"
+    ],
+    "cost": 0.07622,
+    "excess_over_mesh_ratio": 0.07435,
+    "missing_ratio": 6e-05,
+    "growth_vs_vendor": 0.013,
+    "lost_vs_vendor_ratio": 0.00603,
+    "seconds": 0.0,
+    "constraint": {
+      "hex_head": {
+        "head_z_m": [
+          0.16,
+          0.1825
+        ],
+        "corner_radius_m": 0.031788,
+        "across_flats_m": 0.055058,
+        "replaced": [
+          "cylinder",
+          "cylinder"
+        ],
+        "kept": [
+          "capsule",
+          "cylinder"
+        ]
+      },
+      "snap_axis": [
+        0,
+        1,
+        2
+      ],
+      "set_center_mm": {
+        "0": [
+          0.0,
+          0.0,
+          null
+        ],
+        "1": [
+          0.0,
+          0.0,
+          null
+        ],
+        "2": [
+          0.0,
+          0.0,
+          null
+        ]
+      }
+    },
+    "primitives_detail": [
+      {
+        "kind": "capsule",
+        "center_m": [
+          0.0,
+          0.0,
+          0.1300344
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.0180104,
+        "half_height_m": 0.0337618,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          0.0,
+          0.0,
+          0.0473958
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.0179293,
+        "half_height_m": 0.0473745,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      },
+      {
+        "kind": "hexprism",
+        "center_m": [
+          0.0,
+          0.0,
+          0.17125
+        ],
+        "orient_wxyz": [
+          0.8660254,
+          0.0,
+          0.0,
+          -0.5
+        ],
+        "radius_m": 0.0317877,
+        "corner_radius": true,
+        "sides": 6,
+        "half_height_m": 0.01125,
+        "physics_material": "/World/PhysicsMaterials/Steel"
+      }
+    ],
+    "collider_volume_m3": 0.000221632,
+    "part_volume_m3": 0.000206307,
+    "vendor_newton_variant": {
+      "pieces": 3,
+      "collider_volume_m3": 0.000218788,
+      "excess_over_mesh_ratio": 0.06443,
+      "missing_ratio": 0.00393,
+      "cost": 0.1822
+    },
+    "newton8_variant": null,
+    "search": [
+      {
+        "max_convex_hull": 3,
+        "coacd_pieces": 0,
+        "start": "set",
+        "primitives": 3,
+        "kinds": [
+          "capsule",
+          "cylinder",
+          "hexprism"
+        ],
+        "cost": 0.07622,
+        "excess_over_mesh_ratio": 0.07435,
+        "missing_ratio": 6e-05,
+        "growth_vs_vendor": 0.013,
+        "lost_vs_vendor_ratio": 0.00603,
+        "seconds": 0.0
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002,
+      "ignored_meshes": null,
+      "ignored_above_mm": null
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "boltkorea_iso4014_class_8_8_hex_bolt_m36x160_newton.usd",
+    "sha256": "f8a038f49551914af1f24841609832c00305bf22993e38ed0bac5c636e312132",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "RoomShell"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "RoomShell" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_4df3c5348202923ea144/RoomShell>
+)
+{
+}
+

@@ -1,0 +1,54 @@
+# DB-M4 (E3 cell, hand_start_leg at the A_m4 anchor): pick the leveling leg from its holder on the workstation
+# with the left hand, put its stud on the free -y bracket hole of the upturned base cabinet and turn it in by hand
+# until the thread has taken it (one turn past where the thread catches, held 0.5 s). Newton only.
+# Recording experiment: every draw live at the training range, which is the benchmark's
+# Train range (benchmark/spec.py DB_M4.training). The benchmark's episode cap, 115 s, comes from the training
+# demos' lengths (benchmark/demo_lengths/db_m4.json); recording keeps the task's 60 s. The cells evaluate on their own recorded conditions (benchmark/db_m4_conditions_<cell>.yaml, then
+# benchmark/db_m4_eval_<cell>.yaml; docs/Eval_Protocol.md).
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: hand_start_leg
+    anchor: A_m4
+    rby1_control_hz: 30
+  environment_builder:
+    presets: NEWTON
+  variations:
+    # The robot base's place, drawn at every reset within +-20 mm in X and Y, no turn (db_m4_layout.ROBOT_BASE_JITTER_M,
+    # benchmark/spec.py _M4_BASE_TRAINING), recorded as dexbench_rby1_wuji2_joint.base_pose: the draw
+    # --base_jitter_radius 0.02 makes.
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.02, 0.0]
+          high: [0.02, 0.02, 0.0]
+    # Where the leg stands, drawn at every reset and recorded as leg.station_pose: [dx m, dy m, dyaw rad] for the
+    # leg and the five pieces of its holder together; +-5 mm, which is also the variation's default.
+    # Yaw stays 0.
+    # Nested, so an experiment override can reach it (shared.variations.leg.station_pose...).
+    leg:
+      station_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.005, -0.005, 0.0]
+          high: [0.005, 0.005, 0.0]
+    # Where the cabinet and its pallet stand on the workbench, drawn at every reset and recorded as
+    # base_cabinet.station_pose: [dx m, dy m, dyaw rad], +-20 mm, no turn (db_m4_layout.CABINET_STATION_JITTER_M).
+    base_cabinet:
+      station_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.02, 0.0]
+          high: [0.02, 0.02, 0.0]
+  policy:
+    # Holds the start pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  lg_fx25_leveling_leg:
+    environment:
+      m4_leg: lg_fx25_leveling_leg

@@ -1,0 +1,302 @@
+{
+  "version": "1.0.0",
+  "source_file": "MNext3_M3_config_asset.usd",
+  "source_sha256": "619374370562ab53cbe8431a939ac784a543ef9c58b3f37ae72e96d43d567502",
+  "source_manifest": "dexbench_m3_powerdriver/manifest.json was not present in the mounted Drive; this manifest is measured from the attached CAD, not a copy of that file",
+  "units": "m",
+  "up_axis": "Z",
+  "fixture_root": "/MNext3_M3Config",
+  "refrigerator_translation": [
+    0,
+    0,
+    0.325
+  ],
+  "axis": [
+    0,
+    1,
+    0
+  ],
+  "initial_withdrawal_m": 0.005,
+  "excluded_internal_bolts": [
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Customized_001",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Customized_1_001",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Customized_3_001",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Customized_2_001"
+  ],
+  "bolts": [
+    {
+      "id": "B1",
+      "source_prim": "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Taptite_002",
+      "site_prim": "/MNext3_M3Config/Sites/B1",
+      "usd": "../b1/center_hinge_station_b1.usd",
+      "cad_center_xyz": [
+        0.3382971132743656,
+        0.005859332541773046,
+        0.8185000617648484
+      ],
+      "seated_head_xyz": [
+        0.3382971132743656,
+        -0.0053451727783342794,
+        0.8185000617648484
+      ],
+      "bounds_min": [
+        0.33080000350512506,
+        -0.0053451727783342794,
+        0.8110000614086175
+      ],
+      "bounds_max": [
+        0.3457942230436062,
+        0.01706383786188037,
+        0.8260000621210792
+      ]
+    },
+    {
+      "id": "B2",
+      "source_prim": "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Taptite_1_002",
+      "site_prim": "/MNext3_M3Config/Sites/B2",
+      "usd": "../b2/center_hinge_station_b2.usd",
+      "cad_center_xyz": [
+        0.373297145454356,
+        0.005859332541773046,
+        0.8185000617648484
+      ],
+      "seated_head_xyz": [
+        0.373297145454356,
+        -0.0053451727783342794,
+        0.8185000617648484
+      ],
+      "bounds_min": [
+        0.36580003568511543,
+        -0.0053451727783342794,
+        0.8110000614086175
+      ],
+      "bounds_max": [
+        0.38079425522359656,
+        0.01706383786188037,
+        0.8260000621210792
+      ]
+    },
+    {
+      "id": "B3",
+      "source_prim": "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Case_Assembly_Refrigerator_Inner_003/Screw_Customized_007",
+      "site_prim": "/MNext3_M3Config/Sites/B3",
+      "usd": "../b3/center_hinge_station_b3.usd",
+      "cad_center_xyz": [
+        0.39862113890953094,
+        0.01383391493701341,
+        0.8244652579066456
+      ],
+      "seated_head_xyz": [
+        0.39862113890953094,
+        0.006667825061882899,
+        0.8244652579066456
+      ],
+      "bounds_min": [
+        0.3941000219612384,
+        0.006667825061882899,
+        0.8198904900997867
+      ],
+      "bounds_max": [
+        0.4031422558578235,
+        0.021000004812143924,
+        0.8290400257135044
+      ]
+    },
+    {
+      "id": "B4",
+      "source_prim": "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Taptite_2_001",
+      "site_prim": "/MNext3_M3Config/Sites/B4",
+      "usd": "../b4/center_hinge_station_b4.usd",
+      "cad_center_xyz": [
+        -0.3387029493989884,
+        0.005859332541773046,
+        0.8185000617648484
+      ],
+      "seated_head_xyz": [
+        -0.3387029493989884,
+        -0.0053451727783342794,
+        0.8185000617648484
+      ],
+      "bounds_min": [
+        -0.34620005916822894,
+        -0.0053451727783342794,
+        0.8110000614086175
+      ],
+      "bounds_max": [
+        -0.3312058396297478,
+        0.01706383786188037,
+        0.8260000621210792
+      ]
+    },
+    {
+      "id": "B5",
+      "source_prim": "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Screw_Taptite_3_001",
+      "site_prim": "/MNext3_M3Config/Sites/B5",
+      "usd": "../b5/center_hinge_station_b5.usd",
+      "cad_center_xyz": [
+        -0.37370301209655843,
+        0.005859332541773046,
+        0.8185000617648484
+      ],
+      "seated_head_xyz": [
+        -0.37370301209655843,
+        -0.0053451727783342794,
+        0.8185000617648484
+      ],
+      "bounds_min": [
+        -0.381200121865799,
+        -0.0053451727783342794,
+        0.8110000614086175
+      ],
+      "bounds_max": [
+        -0.36620590232731787,
+        0.01706383786188037,
+        0.8260000621210792
+      ]
+    },
+    {
+      "id": "B6",
+      "source_prim": "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Case_Assembly_Refrigerator_Inner_003/Screw_Customized_1_006",
+      "site_prim": "/MNext3_M3Config/Sites/B6",
+      "usd": "../b6/center_hinge_station_b6.usd",
+      "cad_center_xyz": [
+        -0.39988099246823294,
+        0.01382397868244178,
+        0.8101895445145484
+      ],
+      "seated_head_xyz": [
+        -0.39988099246823294,
+        0.006378813164400106,
+        0.8101895445145484
+      ],
+      "bounds_min": [
+        -0.40471926600985075,
+        0.006378813164400106,
+        0.8048824428330792
+      ],
+      "bounds_max": [
+        -0.3950427189266152,
+        0.021269144200483456,
+        0.8154966461960176
+      ]
+    }
+  ],
+  "deactivated_duplicate_meshes": [
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Tube_Assembly_Drain/Cap_Drain_Tube/Mesh_3960/Mesh_3960",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Tube_Assembly_Drain/Cap_Drain_Tube_2/Mesh_3963/Mesh_3963",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Tube_Assembly_Drain/Tube_Drain/Mesh_3962/Mesh_3962",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Tube_Assembly_Drain/Shutter_Drain_Tube/Mesh_3961/Mesh_3961",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4030/Mesh_4030",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4034/Mesh_4034",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4029/Mesh_4029",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4046/Mesh_4046",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4025/Mesh_4025",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4044/Mesh_4044",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4035/Mesh_4035",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4031/Mesh_4031",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4016/Mesh_4016",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4047/Mesh_4047",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4042/Mesh_4042",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4041/Mesh_4041",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4037/Mesh_4037",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4045/Mesh_4045",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4026/Mesh_4026",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4048/Mesh_4048",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4043/Mesh_4043",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4027/Mesh_4027",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4040/Mesh_4040",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4020/Mesh_4020",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4019/Mesh_4019",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4024/Mesh_4024",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4018/Mesh_4018",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4038/Mesh_4038",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4028/Mesh_4028",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4022/Mesh_4022",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4021/Mesh_4021",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4036/Mesh_4036",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4032/Mesh_4032",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4039/Mesh_4039",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4017/Mesh_4017",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4023/Mesh_4023",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Motor_DC_2/Mesh_4033/Mesh_4033",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Cycle_Assembly_Main/Base_Assembly_Compressor/Tray_Assembly_Drip/Guide_Assembly_Fan/Motor_Assembly_DC/Connector/Mesh_4050/Mesh_4050",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3823/Mesh_3823",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3824/Mesh_3824",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3831/Mesh_3831",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3815/Mesh_3815",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3808/Mesh_3808",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3812/Mesh_3812",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3826/Mesh_3826",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3825/Mesh_3825",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3806/Mesh_3806",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3810/Mesh_3810",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3818/Mesh_3818",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3801/Mesh_3801",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3817/Mesh_3817",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3821/Mesh_3821",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3809/Mesh_3809",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3803/Mesh_3803",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3822/Mesh_3822",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3807/Mesh_3807",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3814/Mesh_3814",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3819/Mesh_3819",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3827/Mesh_3827",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3820/Mesh_3820",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3805/Mesh_3805",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3799/Mesh_3799",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3800/Mesh_3800",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3804/Mesh_3804",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3802/Mesh_3802",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3816/Mesh_3816",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3828/Mesh_3828",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3830/Mesh_3830",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3829/Mesh_3829",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3813/Mesh_3813",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Motor_Assembly_DC/Motor_DC_2/Mesh_3811/Mesh_3811",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Perform_Part_Assembly/Duct_Assembly_Multi/Motor_Assembly_DC/Fan_Assembly/Spring_Fan_2/Mesh_3834/Mesh_3834",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Case_Assembly_Refrigerator_Inner_003/Bracket_Assembly/Harness_Assembly/Connector_001/Mesh_1633/Mesh_1633",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Case_Assembly_Refrigerator_Inner_003/Bracket_Assembly/Harness_Assembly/Housing_001/Mesh_1631/Mesh_1631",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Hinge_Assembly_Lower_003_2/Leg_Assembly_Adjust_004_2/Cap_Cover_006/Mesh_1560/Mesh_1560",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Hinge_Assembly_Lower_003_2/Leg_Assembly_Adjust_004_2/Leg_Assembly_Adjust_006/Mesh_1561/Mesh_1561",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Hinge_Assembly_Lower_003_2/Leg_Assembly_Adjust_004_2/Leg_Assembly_Adjust_006/Mesh_1562/Mesh_1562",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Hinge_Assembly_Lower_003/Leg_Assembly_Adjust_003_2/Cap_Cover_004/Mesh_1548/Mesh_1548",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Hinge_Assembly_Lower_003/Leg_Assembly_Adjust_003_2/Leg_Assembly_Adjust_004/Mesh_1549/Mesh_1549",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Hinge_Assembly_Lower_003/Leg_Assembly_Adjust_003_2/Leg_Assembly_Adjust_004/Mesh_1550/Mesh_1550",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower/Nut_Customized_1_001/Mesh_1576/Mesh_1576",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower/Nut_Customized_3_001/Mesh_1578/Mesh_1578",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower/Nut_Customized_001/Mesh_1575/Mesh_1575",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower/Nut_Customized_2_001/Mesh_1577/Mesh_1577",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower/Plate_Lower_004/Mesh_1580/Mesh_1580",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower_003/Plate_Assembly_Lower/Bracket_Roller_001/Mesh_1579/Mesh_1579",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Harness_Assembly/Holder_Assembly_Bracket_2/Supporter_Housing_2/Mesh_1507/Mesh_1507",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Harness_Assembly/Holder_Assembly_Bracket_3/Supporter_Housing_2/Mesh_1512/Mesh_1512",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Case_Foam_Assembly_003/Harness_Assembly/Housing_3_2/Mesh_1496/Mesh_1496",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Door_Liner_Assembly_Refrigerator_004/Door_Liner_Freezer_004_2/Mesh_015/Mesh_015",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Stopper_Door_004_2/Mesh_019/Mesh_019",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Screw_Customized_1_001/Mesh_022/Mesh_022",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Screw_Customized_001/Mesh_021/Mesh_021",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Bracket_Door_004/Mesh_020/Mesh_020",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Stopper_Door_004/Mesh_018/Mesh_018",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Bush_004/Mesh_023/Mesh_023",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Stopper_Door_004_3/Mesh_024/Mesh_024",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Right_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004/Cap_Decor_Freezer_004/Mesh_025/Mesh_025",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Stopper_Door_005_2/Mesh_101/Mesh_101",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Stopper_Door_005/Mesh_100/Mesh_100",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Screw_Customized_004/Mesh_097/Mesh_097",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Screw_Customized_1_004/Mesh_098/Mesh_098",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Stopper_Door_007/Mesh_094/Mesh_094",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Cap_Decor_Freezer_005/Mesh_095/Mesh_095",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Bush_007/Mesh_099/Mesh_099",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Door_Set_Assembly_005/Door_Assembly_Freezer_Left_004/Door_Foam_Assembly_Freezer_004/Frame_Assembly_Door_004/Cap_Assembly_Decor_Freezer_004_2/Bracket_Door_007/Mesh_096/Mesh_096",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Movable_Part_Assembly_001/Guide_Assembly_Rail_3/Head_Assembly_Filter/Tube_Assembly_Inject/Holder_Hose_2/Mesh_3237/Mesh_3237",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Movable_Part_Assembly_001/Guide_Assembly_Rail_3/Head_Assembly_Filter/Tube_Assembly_Inject/Holder_Hose/Mesh_3235/Mesh_3235",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter/Block_Assembly/Housing_Upper/Mesh_2792/Mesh_2792",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter_2/Block_Assembly/Housing_Upper_001/Mesh_2799/Mesh_2799",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter_3/Block_Assembly_2/Housing_Upper_002/Mesh_2829/Mesh_2829",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter_3/Block_Assembly/Housing_Upper_002/Mesh_2825/Mesh_2825",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter_3/Block_Assembly/Block/Mesh_2827/Mesh_2827",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter_3/Block_Assembly/Cap_Filter/Mesh_2828/Mesh_2828",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Filter_Assembly_Water/Filter_3/Block_Assembly/Cap_Bottom/Mesh_2826/Mesh_2826",
+    "/MNext3_M3Config/Fridge_M3_Root/Refrigerator_Assembly_005/Refrigerator_Assembly_005/Parts_Assembly_Ice_Water/Ice_Maker_Assembly_Kit_2/Heater_Plate_2/Housing/Mesh_2908/Mesh_2908"
+  ]
+}

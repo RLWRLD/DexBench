@@ -1,0 +1,58 @@
+# DB-L2 (E2 logistics, lift_to_conveyor at the A1_CAGE anchor).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: cage stack recorded over depth -50 to +88 mm and lateral +-13 mm, the widest box every set and every object fits (CageStackVariation.validate_range with the 1.15 set), keeping the rows outside the training box: in practice the stack up to 50 mm nearer the robot, or 1-3 mm further out sideways or deeper. The box pose already spans its safe range in training, so it has no beyond.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (60 each), the filtered rows of db_l2_conditions_ga_s.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 25 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l2 --cell ga_s --model <key> \
+#       --output outputs/db_l2_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l2_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l2_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_logistics_center_e2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: lift_to_conveyor
+    anchor: A1_CAGE
+    rby1_control_hz: 30
+    cage_box_alt_scales: [0.85, 1.15]
+    base_jitter_radius: 0.0
+    newton_num_substeps: 8
+    episode_length_s: 25.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    cage_l2_package:
+      cage_stack:
+        enabled: true
+        sampler_cfg:
+          low: [0.0, -0.05, -0.013]
+          high: [1.0, 0.088, 0.013]
+      pose:
+        enabled: true
+runs:
+  train_0:
+    environment:
+      object_box: train_0
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l2_261014_ga_s/train_0.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  train_1:
+    environment:
+      object_box: train_1
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l2_261014_ga_s/train_1.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

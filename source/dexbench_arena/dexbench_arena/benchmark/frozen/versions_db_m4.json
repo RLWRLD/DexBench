@@ -1,0 +1,22 @@
+{"frozen_set": "db_m4.json", "frozen_sha256": "41c358a328e7f133295c4da09222ab3c29104e3bafa80df7921866211daaba17",
+"versions": {
+ "v1": {
+  "outputs/db_conditions/db_m4_train/lg_fx25_leveling_leg.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37, 40, 41, 44, 45, 48, 49, 52, 53, 56, 57, 60, 61, 64, 65, 68, 69, 72, 73, 76, 77, 80, 81, 84, 85, 88, 89, 92, 93, 96, 97, 100, 101, 104, 105, 108, 109, 112, 113, 116, 117],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_e.jsonl": [0, 1, 4, 5],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_ne.jsonl": [0, 1, 3, 4],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_n.jsonl": [1, 2, 5, 6],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_nw.jsonl": [1, 2, 4, 5],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_w.jsonl": [2, 3, 6, 7],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_sw.jsonl": [2, 3, 5, 6],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_s.jsonl": [0, 3, 4, 7],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_se.jsonl": [0, 3, 4, 6],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_e.jsonl": [0, 1, 4, 5],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_ne.jsonl": [3, 4, 6],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_n.jsonl": [1, 2, 5, 6],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_nw.jsonl": [0, 4, 5],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_w.jsonl": [2, 3, 6, 7],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_sw.jsonl": [1, 5, 6],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_s.jsonl": [0, 3, 4, 7],
+  "outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_se.jsonl": [0, 2, 6]
+ }
+}}

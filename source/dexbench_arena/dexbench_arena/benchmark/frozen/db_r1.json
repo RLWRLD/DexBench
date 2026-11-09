@@ -1,0 +1,34 @@
+{
+ "outputs/db_conditions/db_r1_fc_260821_train/plum_pile.jsonl": {
+  "sha256": "94d89485c0e15a2789dec2bdb89ea9465d3f197192a7ce6f1e093f14bef609f8",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_train/peach_pile.jsonl": {
+  "sha256": "3d05d87e053a4796b5984aa928c8e46ae362d1a8976108f4c544b7c3cdf84f80",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_train/apple_pile.jsonl": {
+  "sha256": "ae9bab34277854a0f9b45a781e5a053526e345b4eadacb827322f866a3b723b1",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_train/pear_pile.jsonl": {
+  "sha256": "409a964266eacb9ca70e860b98d9d14c22b1faf459e10ef99af8dbf183b78ad4",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_ga_o/lime_pile.jsonl": {
+  "sha256": "825fe6936a6e7567f6bf83d3b13e9b9e398776a7f368166017c4c16db5a448c9",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_ga_o/mandarin_pile.jsonl": {
+  "sha256": "a29b079331a17ddd65ba03309a262ae0b69b34d26a60a857fec2316b60fa6c69",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_ga_o/lemon_pile.jsonl": {
+  "sha256": "972fe8217c5e221f95627201612545b1dac11208046c5dc3a56347bd3773eb11",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r1_fc_260821_ga_o/bell_pepper_pile.jsonl": {
+  "sha256": "d1598e67ef8af69230bcaef49b598c74b881f49e080b871b979c791ed298f893",
+  "rows": 30
+ }
+}

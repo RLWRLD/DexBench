@@ -1,0 +1,48 @@
+# A launch on a Kubernetes cluster (the k8s backend): an indexed Job of one-GPU pods, each a colocated policy server and
+# simulator. The cluster's settings (image, namespace, shared volume, node rules, pod sizes) come from the site profile
+# backend.site names; this file holds what the launch decides. Render and start it (USER_GUIDE.md, "On Kubernetes"):
+#   scripts/evaluation/eval_launch/launch.sh scripts/evaluation/eval_launch/examples/kubernetes.yaml --k8s-job <dir>
+#   copy <dir>/eval.yaml to <output>/eval.yaml; kubectl apply -f <dir>/prepull.json (wait until ready, delete it);
+#   kubectl apply -f <dir>/job.json
+# The model is GR00T N1.7 (benchmark/models.py gr00t) served by its own server; for your own model, replace the key,
+# the checkpoint and the recipe (CONNECT_YOUR_POLICY.md). Placeholders: /data/stage is your directory on the shared
+# volume (the profile's volume_mount), holding the checkpoints, the GR00T server checkout (its commit in .source-commit,
+# its uv venv in .venv), the staged trees and the launch outputs; CHECKPOINT the checkpoint directory, TREE and COMMIT
+# the staged tree (USER_GUIDE.md), RUN the launch's name.
+model:
+  key: gr00t                                    # an entry in benchmark/models.py
+  checkpoint: /data/stage/ckpts/CHECKPOINT      # the server gets it as {checkpoint}; the run manifest records it
+tasks: [r2]
+cells: all
+version: v1
+servers:
+  recipe:
+    # The client's contract goes in this worker's own directory, with the checkpoint's cameras in its order (read from
+    # its processor config); client_set points the simulator's policy block at it.
+    setup: >-
+      (cd {checkpoint} && sha256sum -c --quiet MANIFEST.sha256)
+      && test "$(cat /data/stage/ws/DexBench-Isaac-GR00T/.source-commit)" = 0acbcf9027240a622371da057dcbb2e86e233b41
+      && /isaac-sim/python.sh -m dexbench_arena_gr00t.policy.wuji2_gr00t_config --output {worker_dir}/gr00t-{checkpoint_id}
+      --cameras $(/isaac-sim/python.sh -c "import glob, json, sys; path = sorted(glob.glob(sys.argv[1] + '/processor_config.json') + glob.glob(sys.argv[1] + '/processor/processor_config.json'))[0]; print(*json.load(open(path))['processor_kwargs']['modality_configs']['new_embodiment']['video']['modality_keys'])" {checkpoint}) > /dev/null
+    client_set: ["policy_config_yaml_path={worker_dir}/gr00t-{checkpoint_id}/policy.yaml"]
+    # GR00T's own server at the training commit (RLWRLD/DexBench-Isaac-GR00T 0acbcf90), run from its uv venv; offline,
+    # as pods usually have no Hub token
+    command: >-
+      cd /data/stage/ws/DexBench-Isaac-GR00T && HF_HOME=/data/stage/.cache/huggingface HF_HUB_OFFLINE=1
+      exec /data/stage/ws/DexBench-Isaac-GR00T/.venv/bin/python -m gr00t.eval.run_gr00t_server --model-path {checkpoint}
+      --embodiment-tag NEW_EMBODIMENT --host 127.0.0.1 --port {port} --api-token-file {token_file}
+    ready: Server ready
+plan:
+  timings: timings/l40s_example.json           # measured on L40S; measure your own GPUs (USER_GUIDE.md)
+  unit_minutes: 15
+backend:
+  kind: k8s
+  site: examples/sites/kubernetes.yaml          # the cluster's settings (from this directory, or the package's)
+  gpus: 8
+  k8s:
+    job_name: me-evl-RUN
+    tree_dir: /data/stage/trees/TREE
+    commit: COMMIT
+    retries_per_worker: 2
+    deadline_h: 12
+output: /data/stage/launches/RUN

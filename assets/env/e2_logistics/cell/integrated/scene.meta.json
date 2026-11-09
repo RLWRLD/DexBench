@@ -1,0 +1,17 @@
+{
+  "asset": {
+    "version": "2.1.1",
+    "kind": "scene_assembly",
+    "fixture_policy": "Explicitly indexed fixtures are embedded; other catalog fixture arcs stay external in reference views",
+    "simready": {
+      "result": "not_run",
+      "scope": "scene composition; source/view and SDK validation are separate"
+    }
+  },
+  "runtime": {
+    "preview_includes_items": false,
+    "resources": "Textures and local MDL dependencies are inside scene.usdz; no loose resources",
+    "packaging": "usdz",
+    "material_overrides": []
+  }
+}

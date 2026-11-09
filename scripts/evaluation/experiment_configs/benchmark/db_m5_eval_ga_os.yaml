@@ -1,0 +1,114 @@
+# DB-M5 (E3 manufacturing, place_part_in_kit_box at A_m5).
+# Cell GA-OS (ga_os): held-out objects, spatial beyond the training range.
+# Spatial: the other diagonal: the near-right or the far-left compartment empty (kit_box_empty_compartments [1, 2]), no demo of which exists, at the same piles, so a GA-S row differs from a Train start in the compartment alone; each range has one near and one far, one left and one right compartment.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (12 each), frozen rows (each part of the cell's split an even share of the 120 rows (Train and GA-S 24, GA-O and GA-OS 12), spread over the range's two compartments and the 24 piles by a fixed rule (row i: compartment i mod 2, pile of rank floor(24 i / n)), outcome-blind; written, not recorded, because a condition recording's settle check fails on the kit box the belt carries), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 30 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m5 --cell ga_os --model <key> \
+#       --output outputs/db_m5_eval_ga_os_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m5_eval_ga_os_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m5_eval_ga_os.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M5); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_m5_moving_conveyor_kitting_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: place_part_in_kit_box
+    anchor: A_m5
+    rby1_control_hz: 30
+    arm_mode: left
+    parts_bin_clutter_dir: outputs/db_conditions/db_m5_piles
+    kit_box_empty_compartments: [1, 2]
+    parts_bin_seed_quantiles: [0.0, 0.6]
+    episode_length_s: 30.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  nema17:
+    environment:
+      part: nema17
+    environment_builder:
+      seed: 3350619
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/nema17.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  automotive_exhaust_90_bend_od63:
+    environment:
+      part: automotive_exhaust_90_bend_od63
+    environment_builder:
+      seed: 5383575
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/automotive_exhaust_90_bend_od63.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  deco_ad02_2_station_ng6cetop3_manifold:
+    environment:
+      part: deco_ad02_2_station_ng6cetop3_manifold
+    environment_builder:
+      seed: 4320569
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/deco_ad02_2_station_ng6cetop3_manifold.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  gy1_rigid_flange_coupling_half_flange:
+    environment:
+      part: gy1_rigid_flange_coupling_half_flange
+    environment_builder:
+      seed: 7339584
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/gy1_rigid_flange_coupling_half_flange.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  jl_sus304_welded_tee_50a:
+    environment:
+      part: jl_sus304_welded_tee_50a
+    environment_builder:
+      seed: 9796267
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/jl_sus304_welded_tee_50a.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  two_piece_split_shaft_collar_od45_bore2_w12:
+    environment:
+      part: two_piece_split_shaft_collar_od45_bore2_w12
+    environment_builder:
+      seed: 5638748
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/two_piece_split_shaft_collar_od45_bore2_w12.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  tyb_ucp205_pillow_block_bearing_unit:
+    environment:
+      part: tyb_ucp205_pillow_block_bearing_unit
+    environment_builder:
+      seed: 993955
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/tyb_ucp205_pillow_block_bearing_unit.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  v_belt_pulley_1a_70_12_4:
+    environment:
+      part: v_belt_pulley_1a_70_12_4
+    environment_builder:
+      seed: 5223912
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/v_belt_pulley_1a_70_12_4.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  boltkorea_iso4014_class_8_8_hex_bolt_m36x160:
+    environment:
+      part: boltkorea_iso4014_class_8_8_hex_bolt_m36x160
+    environment_builder:
+      seed: 447476
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/boltkorea_iso4014_class_8_8_hex_bolt_m36x160.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  norgren_rt_57232_m_50_roundline_cylinder:
+    environment:
+      part: norgren_rt_57232_m_50_roundline_cylinder
+    environment_builder:
+      seed: 1307800
+      recorded_variation_samples_path: outputs/db_conditions/db_m5_ga_os/norgren_rt_57232_m_50_roundline_cylinder.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

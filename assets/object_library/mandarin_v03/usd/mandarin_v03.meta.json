@@ -1,0 +1,211 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid mandarin variant (lumpy loose peel) from SimReady food_produce_tangerine_a01 (nvidia/simready-assets@a666cb43, CC-BY-4.0) in apple_scan's package layout: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 94.7 g, mandarin skin friction 0.55/0.45.",
+    "mass_kg": 0.0947,
+    "mass_source": "realistic mandarin weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 852.9 kg/m3 over render-mesh volume 1.110e-04 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "provenance": {
+      "dataset": "nvidia/simready-assets",
+      "revision": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "catalogue": "https://huggingface.co/spaces/nvidia/simready-central",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "package": "food_produce_tangerine_a01",
+      "package_id": "simready.hf.nvidia.simready-assets.food_produce_tangerine_a01.2026.10.09_050254050706",
+      "package_license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/nvidia/simready-assets/tree/a666cb4381ba513b174fb120ed523c1566ba832c/food_produce_tangerine_a01",
+      "files": [
+        "food_produce_tangerine_a01/simready_usd/sm_food_produce_tangerine_a01_01.usd",
+        "food_produce_tangerine_a01/simready_usd/payloads/geometries.usd",
+        "food_produce_tangerine_a01/simready_usd/Textures/t_tangerine_orange_a01_alb.png",
+        "food_produce_tangerine_a01/simready_usd/Textures/t_tangerine_orange_a01_nor.png"
+      ],
+      "attribution": "food_produce_tangerine_a01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; modified: render mesh re-scaled and deformed, albedo recoloured, re-packaged by scripts/tools/make_fruit_variants.py"
+    },
+    "geometry": {
+      "size_m": [
+        0.064,
+        0.0625,
+        0.049
+      ],
+      "volume_m3": 0.000111028,
+      "vertices": 16794,
+      "faces": 33584,
+      "textures": {
+        "Albedo": "./textures/mandarin_v03_base_color.png",
+        "Normal": "./textures/mandarin_v03_normal.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 0.000111646,
+      "hull_vertices": 10489
+    },
+    "physics_material": {
+      "static_friction": 0.55,
+      "dynamic_friction": 0.45,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth waxy (apple 0.60/0.50 as the SpaceAI scans; plum, citrus 0.55/0.45), achened strawberry 0.70/0.60, fuzzy peach 0.75/0.65, hairy kiwi 0.80/0.70; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.052,
+            0.0,
+            0.0245
+          ],
+          [
+            0.052,
+            0.0,
+            0.0245
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "mandarin",
+      "base": "food_produce_tangerine_a01",
+      "base_kind": "simready",
+      "base_version": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "package_template": "object_library/apple_scan",
+      "base_quality": "SimReady tangerine_a01: 4.2k vertices Loop-subdivided x1, 512 px albedo + normal map: fair (soft texture up close)",
+      "subdivision_levels": 1,
+      "index": 3,
+      "seed": 703,
+      "preset_mm": 62,
+      "size_vs_preset": 0.032,
+      "params": {
+        "label": "lumpy loose peel",
+        "size_mm": 64,
+        "aspect": 0.78,
+        "lobes": {
+          "n": 7,
+          "amp": 0.05,
+          "kappa": 6.0
+        },
+        "seed": 703
+      },
+      "derived": {
+        "lobe_dirs": [
+          [
+            0.9743,
+            -0.2253,
+            -0.0065
+          ],
+          [
+            0.7463,
+            -0.4842,
+            -0.4567
+          ],
+          [
+            0.6108,
+            -0.6838,
+            0.3991
+          ],
+          [
+            -0.623,
+            -0.6339,
+            0.4583
+          ],
+          [
+            -0.4448,
+            0.4684,
+            0.7634
+          ],
+          [
+            -0.5119,
+            -0.7794,
+            -0.3612
+          ],
+          [
+            0.1444,
+            -0.9548,
+            0.2597
+          ]
+        ],
+        "lobe_amps": [
+          0.047,
+          0.0418,
+          0.0375,
+          0.0457,
+          0.0434,
+          0.0462,
+          0.0494
+        ]
+      },
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 860,
+        "spread": -0.0081,
+        "unclamped_g": 94.7,
+        "range_g": [
+          50,
+          140
+        ],
+        "requested_g": 94.7,
+        "implied_density_kg_m3": 852.9
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 16794,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.0010226503835446613,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.00023522041738033295,
+      "convex_volume_ratio": 0.9741866489756262,
+      "previous_scan_outside_hull_m": 0.0022671716574290887
+    }
+  }
+}

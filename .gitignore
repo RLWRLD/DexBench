@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv
+/.cache/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+/data/*
+!/data/.gitkeep
+logs/
+outputs/
+videos/
+datasets/*
+
+# sbi fitting logs from the sensitivity report generator
+sbi-logs/
+checkpoints/
+
+# Eval launch configs with real cluster, volume and checkpoint values (scripts/evaluation/eval_launch/README.md)
+scripts/evaluation/eval_launch/configs/local/
+# pip install source/dexbench_policy_server builds here
+source/dexbench_policy_server/build/
+source/dexbench_policy_server/dist/
+source/dexbench_policy_server/*.egg-info/

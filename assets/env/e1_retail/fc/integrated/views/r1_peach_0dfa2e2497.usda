@@ -1,0 +1,34 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/R1_peach"
+                        string variantSetName = "Newton"
+                    }
+                }
+            }
+            string source_delivery = "deliveries/psl/e1_retail/260903"
+            string source_generated = "260903"
+            string version = "1.0.0"
+        }
+        string asset_name = "r1_peach"
+        string asset_type = "prop"
+        string source_file = "deliveries/psl/e1_retail/260903"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "R1_peach"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "R1_peach" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_0dfa2e2497451b545c24/R1_peach>
+)
+{
+}
+

@@ -1,0 +1,267 @@
+{
+  "format_version": {
+    "version_string": "5.2"
+  },
+  "name": "power_drill",
+  "version": "1.0.0",
+  "catalog": {
+    "format_version": {
+      "version_string": "5.0"
+    },
+    "root": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0",
+    "items": [
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/.metadata/com.nvidia.simready.conformance.Package@1.0.0.json",
+        "relative_path": ".metadata/com.nvidia.simready.conformance.Package@1.0.0.json",
+        "hash": "sha-256-flat;1048576;340e7e33fe1fb363077748fee99a83b08e9b97755994ab556c2970aef1fe5eae",
+        "size": 995,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/.metadata/com.nvidia.simready.packaging.bom.json",
+        "relative_path": ".metadata/com.nvidia.simready.packaging.bom.json",
+        "hash": "sha-256-flat;1048576;566ea74bc88bee2af894050976de46d9787592e7ae1f0f37ab499454ea1b8f99",
+        "size": 12268,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/.metadata/com.nvidia.simready.root_usds.json",
+        "relative_path": ".metadata/com.nvidia.simready.root_usds.json",
+        "hash": "sha-256-flat;1048576;ea2e0b5282865ee02854e2a97443d678212fce00efdee85b8c4fbd595a5eb8e9",
+        "size": 78,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/.thumbs/256x256/Power_Drill.usd.png",
+        "relative_path": ".thumbs/256x256/Power_Drill.usd.png",
+        "hash": "sha-256-flat;1048576;f110aaac1a7d505d316242c0ed1b0f7cbc9e2b7eb1ce29bc06b376619d47c87a",
+        "size": 29533,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/Power_Drill.usd",
+        "relative_path": "Power_Drill.usd",
+        "hash": "sha-256-flat;1048576;a8fddf4c50668b5775522580027cf19266a5fb354fb85d52d5f2b55d310ae8c3",
+        "size": 30723816,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/com.nvidia.simready.packaging.json",
+        "relative_path": "com.nvidia.simready.packaging.json",
+        "hash": "sha-256-flat;1048576;77b7cad0b9accabf0077c36c78f59738f0d31494f8bbdd254786ad30069ef77b",
+        "size": 1308,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/materials/OmniPBR.mdl",
+        "relative_path": "materials/OmniPBR.mdl",
+        "hash": "sha-256-flat;1048576;4d0f54d47017bfbe22cc483cb02c4fe7e2254ddd1119cd618cbaea553639d52c",
+        "size": 13989,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/materials/OmniPBRBase.mdl",
+        "relative_path": "materials/OmniPBRBase.mdl",
+        "hash": "sha-256-flat;1048576;4b54e7fb8bc92191512851b3acc6fc6fa9863f80d98ffece8f0cb9b99f5f4535",
+        "size": 17274,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/materials/OmniPBR_ClearCoat.mdl",
+        "relative_path": "materials/OmniPBR_ClearCoat.mdl",
+        "hash": "sha-256-flat;1048576;0e35217542eb4ece0205fc09f74eb71aaa6bfb75b3b861d64693d317282df424",
+        "size": 27453,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_battery_BaseColor.png",
+        "relative_path": "textures/Drill_battery_BaseColor.png",
+        "hash": "sha-256-flat;1048576;54661085d4342e5dcc51b7c2be05f7f5f2e80454e4db64458044cdbbfd4cd4bc",
+        "size": 1087247,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_battery_Normal.png",
+        "relative_path": "textures/Drill_battery_Normal.png",
+        "hash": "sha-256-flat;1048576;5afac6f924550c1888ac8d2d1ce6e5b49bb77150cf604010e88db771c793791b",
+        "size": 4837765,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_battery_ORM.png",
+        "relative_path": "textures/Drill_battery_ORM.png",
+        "hash": "sha-256-flat;1048576;df42b5efef82ba4f1064994301277c5a72488fd1ed952c61015f7717570bae2d",
+        "size": 2285939,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_bit_BaseColor.png",
+        "relative_path": "textures/Drill_bit_BaseColor.png",
+        "hash": "sha-256-flat;1048576;2e8abf36bbf5a14f4f9dbfabe6eaa5fbcef7e33344d7369aeaff40b339108cfd",
+        "size": 5377628,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_bit_Normal.png",
+        "relative_path": "textures/Drill_bit_Normal.png",
+        "hash": "sha-256-flat;1048576;1bc8230423f8a252aa7c564026845cb878fcfdcdaa80b381fd13bd43194ba769",
+        "size": 5231731,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_bit_ORM.png",
+        "relative_path": "textures/Drill_bit_ORM.png",
+        "hash": "sha-256-flat;1048576;7da22353b8d975183404073513311d00fc7b351c8dcc2bdb53ef8fab7d5a7c14",
+        "size": 4622793,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_body_001_BaseColor.png",
+        "relative_path": "textures/Drill_body_001_BaseColor.png",
+        "hash": "sha-256-flat;1048576;67918eafe7569cb6be58a0ba3bbe5749564b79f605783b3a8711d6cd1b0a4ffc",
+        "size": 856689,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_body_001_Normal.png",
+        "relative_path": "textures/Drill_body_001_Normal.png",
+        "hash": "sha-256-flat;1048576;adafe051e610de73378a3c65769c696807c2e0430a3da4c36da5ca7c6fb64ffa",
+        "size": 5334452,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_body_001_ORM.png",
+        "relative_path": "textures/Drill_body_001_ORM.png",
+        "hash": "sha-256-flat;1048576;c604c752f7c43f938d64fb543b1319ebeabd865238090e8ae831a98da25ea237",
+        "size": 1538054,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_body_BaseColor.png",
+        "relative_path": "textures/Drill_body_BaseColor.png",
+        "hash": "sha-256-flat;1048576;23286fd4bd087ccc59fc1206eea15564b5f4754ab891e5ecd5ca11ad14848c01",
+        "size": 1755300,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_body_Normal.png",
+        "relative_path": "textures/Drill_body_Normal.png",
+        "hash": "sha-256-flat;1048576;eb43c541b85eb28dcaf1c07b54350b9392e5affd3edf14779e90327aff6a6f57",
+        "size": 4654047,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_body_ORM.png",
+        "relative_path": "textures/Drill_body_ORM.png",
+        "hash": "sha-256-flat;1048576;ddf7a31cd8182703fcf14dcb5f43bd369c45c53379edff5d81ac99c87fe48917",
+        "size": 2260305,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_chuck_BaseColor.png",
+        "relative_path": "textures/Drill_chuck_BaseColor.png",
+        "hash": "sha-256-flat;1048576;7042102887865ba69de3644c4dfc50f324dcff5427417cbb04147fee8bfbab55",
+        "size": 2862607,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_chuck_Normal.png",
+        "relative_path": "textures/Drill_chuck_Normal.png",
+        "hash": "sha-256-flat;1048576;80599419871d43343d5ff321a360048564ffb0ce7619be015462a1960eb48b06",
+        "size": 5362646,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_chuck_ORM.png",
+        "relative_path": "textures/Drill_chuck_ORM.png",
+        "hash": "sha-256-flat;1048576;f69c250c80ff87958fca12712e2a31231eb9847321a7955706c066842141db75",
+        "size": 3219887,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_grip_BaseColor.png",
+        "relative_path": "textures/Drill_grip_BaseColor.png",
+        "hash": "sha-256-flat;1048576;4d8634b7ce61f2fd6f241146d56f10966417fa9499f1eaf2bbb50650fe245f50",
+        "size": 1255630,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_grip_Normal.png",
+        "relative_path": "textures/Drill_grip_Normal.png",
+        "hash": "sha-256-flat;1048576;f773a774783196a050838966958bc61c6d3cb7d82d4597730230d37d55171580",
+        "size": 4986119,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_grip_ORM.png",
+        "relative_path": "textures/Drill_grip_ORM.png",
+        "hash": "sha-256-flat;1048576;095c573d42c2f2fa903a5ea1a754e3821595ef9d2ffd302ae46bcc2a5487e826",
+        "size": 2410985,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_trigger_BaseColor.png",
+        "relative_path": "textures/Drill_trigger_BaseColor.png",
+        "hash": "sha-256-flat;1048576;5aca09160c2499039803e66dcbe0501afe8c42b45588da0cf8f5e1d4d173036d",
+        "size": 225546,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_trigger_Normal.png",
+        "relative_path": "textures/Drill_trigger_Normal.png",
+        "hash": "sha-256-flat;1048576;ee516887ef4b80be85d2c5640a26333d3931edffc2b3b387eea67040cc0aed97",
+        "size": 3488092,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/textures/Drill_trigger_ORM.png",
+        "relative_path": "textures/Drill_trigger_ORM.png",
+        "hash": "sha-256-flat;1048576;3e9f0ded75be6ebd96ed3ef30ad409ea53834bba1d7195eb8f2b67d3939cefe1",
+        "size": 438596,
+        "tags": null,
+        "resource_identity": null
+      },
+      {
+        "source_path": "file:///C:/Users/user/AppData/Local/Temp/a4_power_drill/repo/.packages/power_drill/1.0.0/validation_report.json",
+        "relative_path": "validation_report.json",
+        "hash": "sha-256-flat;1048576;5404e78aba2699e98ce9e5b3ae139db74900f62014ca7e9fe9987a031addc428",
+        "size": 621,
+        "tags": null,
+        "resource_identity": null
+      }
+    ],
+    "storage_map": null
+  },
+  "source": "C:/Users/user/Downloads/납품/Nvidia SimReady Asset_4th/Power_Drill/work",
+  "repository": "C:\\Users\\user\\AppData\\Local\\Temp\\a4_power_drill\\repo",
+  "dependencies": null
+}

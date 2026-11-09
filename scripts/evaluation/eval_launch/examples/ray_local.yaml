@@ -1,0 +1,40 @@
+# The Ray backend on one host, with the server kit's example policy (CONNECT_YOUR_POLICY.md), so it names no path
+# outside this checkout. Start it with launch.sh, which saves the environment the servers need before
+# /isaac-sim/python.sh changes it, and hands a Ray config to the Ray driver:
+#   scripts/evaluation/eval_launch/launch.sh scripts/evaluation/eval_launch/examples/ray_local.yaml --local
+# Stopped (Ctrl-C, a reboot)? The same command with --resume continues; accepted units never rerun.
+# servers.layout chooses where the server and its simulators go (USER_GUIDE.md, "On Ray"): colocated here, as the other
+# backends run them; server+2 would give each server its own GPU and two simulators the other, which needs the memory
+# figures to pass the layout check. For your own model, replace the key, the checkpoint and the recipe.
+model:
+  key: mymodel                              # a key of your own: its name in the run manifests and the score
+  label: My Model
+  checkpoint: /path/to/your/checkpoint      # the server gets it as {checkpoint}; the run manifest records it
+  # Registered by this config (no benchmark/models.py entry): the client's policy block. The benchmark's HTTP client
+  # (CONNECT_YOUR_POLICY.md); the worker sets its port. Reported apart from the headline (group: community).
+  policy:
+    type: dexbench_arena_cosmos.policy.cosmos3_joint_policy.Cosmos3JointPolicy
+    remote_url: http://127.0.0.1:5811
+    remote_api_token: ${oc.env:DEXBENCH_POLICY_API_TOKEN,null}   # the worker's token, from the environment
+    policy_device: cpu
+tasks: [r2]
+cells: [train]
+servers:
+  layout: colocated
+  # gpu_memory_gb: {server: <GB>, sim: <GB>}   # measure yours (nvidia-smi) before a layout shares a GPU
+  recipe:
+    setup: test -e {checkpoint}
+    command: >-
+      cd {launcher}/../../../source/dexbench_policy_server && exec /isaac-sim/python.sh -m dexbench_policy_server
+      --policy dexbench_policy_server.example:HoldPose --checkpoint {checkpoint} --port {port} --token-file {token_file}
+      --option cameras=camera_ego_left,camera_ego_right,camera_wrist_left,camera_wrist_right
+    ready: Server ready
+backend:
+  kind: ray
+  gpus: 2                 # this host's first N GPUs, or a list of GPU ids: [0, 2]
+  # gpu_memory_gb: <GB>   # one GPU's memory, for the layout check when a layout shares a GPU
+  ray:
+    port_base: 5810       # station i's server listens on port_base + 10 i
+    actor_restarts: 3
+    station_restarts: 2
+output: outputs/eval/r2-mymodel-ray

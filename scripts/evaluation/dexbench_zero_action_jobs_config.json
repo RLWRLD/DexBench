@@ -1,0 +1,17 @@
+{
+    "jobs": [
+        {
+            "name": "dexbench_retail_store_e1_retrieve_beverage_zero_action",
+            "arena_env_args": {
+                "num_envs": 1,
+                "environment": "dexbench_retail_v1_environment",
+                "embodiment": "dexbench_rby1_wuji2_joint",
+                "task": "retrieve_beverage_from_clutter",
+                "anchor": "Fridge"
+            },
+            "num_steps": 50,
+            "policy_type": "zero_action",
+            "policy_config_dict": {}
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+# DB-H2 (E4 banquet hall, lift_and_pour at A_h2): a recording experiment at the training range.
+# The two training jugs (IDEALISK, the D00527 milk pitcher at 1.5x), every draw sampled live at the episode's reset and
+# recorded under variations/: the jug's and the goblet's pour_pose from the environment's jitter fields, the base's
+# base_pose from the variations block. The training range is the benchmark's Train range (benchmark/spec.py
+# DB_H2.training):
+#   jug x, y +-2 cm and yaw +-10 deg, target goblet x, y +-1 cm, base x, y +-1 cm and yaw +-5 deg, each uniform and
+#   independent.
+# The file names the benchmark's robot, the joint twin. A session that drives the Pink IK twin names it after the pair
+# (--embodiment dexbench_rby1_wuji2, which names the base draw dexbench_rby1_wuji2.base_pose).
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_pour_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: lift_and_pour
+    anchor: A_h2
+    rby1_control_hz: 30
+    idealisk_pour: true
+    # The pour base: 0.15 m closer to the trolley than A_h2 (y 1.90 m); its collision box stops 5 cm short of the
+    # trolley's front edge (1.6 cm at the draw's +1 cm, 5 deg corner).
+    base_offset_y: 0.15
+    # The station 0.05 m behind the layout's spots (jug y 2.44, goblet 2.47); the base moved the same 0.05 m keeps
+    # the layout's geometry.
+    pour_station_offset_y: 0.05
+    start_pose: teleop_ready
+    # MJWarp's contact and constraint budgets, DB-H1's: the joint twin overflows the default 4000 contacts here.
+    newton_nconmax: 16384
+    newton_njmax: 65536
+    # Newton's 8 substeps per 60 Hz physics step, DB-H1's (configure_h1_newton_physics) and DB-L2's benchmark physics,
+    # over the pour environment's default 2; the DB-H2 cells (benchmark/spec.py) use the same.
+    newton_num_substeps: 8
+    # The jug's and the goblet's draws, recorded as <jug>.pour_pose and pour_goblet.pour_pose.
+    pour_jug_jitter_xy: 0.02
+    pour_jug_jitter_yaw_deg: 10.0
+    pour_goblet_jitter_xy: 0.01
+  variations:
+    # The base draw about the 1.90 m base: x, y +-1 cm, yaw +-5 deg (benchmark/spec.py _h2_base).
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.01, -0.01, -0.0872665]
+          high: [0.01, 0.01, 0.0872665]
+  environment_builder:
+    # The release runs on Newton; conditions and their evaluation must share the backend.
+    presets: NEWTON
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+
+runs:
+  idealisk:  # IKEA IDEALISK 1 L, train
+    environment:
+      pour_jug: idealisk
+  d00527_x15:  # D00527 milk pitcher at 1.5x (milk_pitcher_d00527_x15), train
+    environment:
+      pour_jug: d00527_x15

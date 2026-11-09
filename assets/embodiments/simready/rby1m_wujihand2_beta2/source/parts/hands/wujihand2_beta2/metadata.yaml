@@ -1,0 +1,41 @@
+# Per-part metadata for 'wujihand2_beta2' (hand). computed.* is read from the MJCF.
+
+canonical_format: mjcf
+name: wujihand2_beta2
+kind: hand
+sides:
+- left
+- right
+vendor:
+  source: wuji-technology/wuji-description (hand2/hand2_beta2/body/)
+  version: v2026.8.14 (06e5f14cdd1d5fad0a666ca463a668bf609f9534) + in-house
+    wrist_adapter/mount_flange geoms carried over unchanged from the wujihand2 part
+    (STEP-derived; the palm mounting interface is byte-identical between Beta 1 and
+    Beta 2 per the vendor changelog)
+  license: MIT (Copyright (c) 2025 Wuji Technology); in-house mount geoms rlwrld internal
+formats:
+  mjcf: vendor + in-house mount geoms, side-neutralized (r_/l_ prefixes stripped;
+    attach re-adds right_/left_), vendor <option> dropped, default armature baked,
+    collision geoms group 3; appearance taken from the vendor USD (BlackGlove, #050505
+    matte, roughness 0.7 -> shininess 0.3); fingertip tactile-sensor pads keep the
+    vendor's light-blue sensor color (0.55 0.78 0.95). The USD's wrist logo texture
+    is not carried (STL meshes have no UVs)
+  urdf: vendor (no mount geoms)
+  usd: vendor (layered, no mount geoms)
+attach_note: mount_flange mating face is NOT normal to wrist z - measured normal
+  [0.032809, +/-0.0005, 0.999462] (1.88 deg tilt, y sign flips left/right), plane
+  offset 0.0285 m; fingers extend -z, thumb side +x, palm faces +y (right hand).
+  Wrist inertial is the vendor's bare-hand value - adapter/flange mass not included.
+  Actuator kp/kv carried over from Wuji Hand 1 calibration (vendor sysid pending).
+beta2_note: Beta 1 + one tactile-sensor pad link per fingertip
+  ({p}_{finger}_tip_sensor_frame, welded, thumb 6.3 g / others 3.0 g each; distal
+  masses re-measured to match). Joint contract unchanged from Beta 1 - same 20
+  revolute joints, identical axes; fingertip sites carried over.
+tags:
+- hand
+- dexterous
+computed:
+  nq: 20
+  nu: 20
+  njnt: 20
+  nbody: 32

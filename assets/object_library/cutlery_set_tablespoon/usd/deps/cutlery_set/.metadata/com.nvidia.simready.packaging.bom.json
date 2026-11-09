@@ -1,0 +1,55 @@
+{
+  "format_version": "1.0",
+  "items": [
+    {
+      "relative_path": "simready_usd/.thumbs/256x256/cutlery_set.usda.png",
+      "size": 3792,
+      "hash": {
+        "sha256-flat-1mb": "4938534be76d19b4a3117144748d66eebca6d5ac8ae5b271d2aceaaca2127418",
+        "sha256": "c6e0df161bf6686459a64be73c1cfd1121b96ebee42cc751cba947fcce3b7b75"
+      }
+    },
+    {
+      "relative_path": "simready_usd/assets/brushed-cutlery-gold.png",
+      "size": 20984,
+      "hash": {
+        "sha256-flat-1mb": "60978f9e0641e1fa6ff80825e7e1b27eed9ea11350a5601c3bc8a3fdb406c430",
+        "sha256": "d24d03b9f6cf247685a86b64323c8f944a39dc2820810058b6074fcb1ee26cd4"
+      }
+    },
+    {
+      "relative_path": "simready_usd/assets/brushed-cutlery-steel.png",
+      "size": 1479256,
+      "hash": {
+        "sha256-flat-1mb": "32f416cffaf7ddd8e412eae7f7aa6701034b71fa2b5b05aa21e3dd0a0b7256b6",
+        "sha256": "d804ad3319837f863a7ffee0249e9911a79ab0eb6d85cd79c98890dd200a37a3",
+        "sha256-first1m": "1d7c3c9a0d6f8a6dac89fce3d669b75564b4bc7353d64d5a4ad433d573fbfaa9"
+      }
+    },
+    {
+      "relative_path": "simready_usd/cutlery_set.usda",
+      "size": 13907,
+      "hash": {
+        "sha256-flat-1mb": "5fadb9026cf3eaa09732b477ba77c3867630d13fd6868363580e937698a85e2b",
+        "sha256": "3ae2d6cc341fbcfb22f3c659dbc5da78ff43d9589571ba4abb2b18d5d3db5242"
+      }
+    },
+    {
+      "relative_path": "simready_usd/forgecad/geometry.usda",
+      "size": 30425291,
+      "hash": {
+        "sha256-flat-1mb": "1d283d589d31f139e408634e81f9dd4a062839eacec8c88cd97407d9d3476240",
+        "sha256": "596f2c7503634467c0aa0541d0525f49c3e695406f58bca8daa53c90972dd4e3",
+        "sha256-first1m": "83cb0ac0dd18cc54898c83abc1d1731b7f40d8907612c5cba1170e982049ef68"
+      }
+    },
+    {
+      "relative_path": "simready_usd/forgecad/physics.usda",
+      "size": 295807,
+      "hash": {
+        "sha256-flat-1mb": "f227f510f7bf318771f1f586e70a9d972367224f1078f0fb1bd6ba102b5eace6",
+        "sha256": "680456b3e60306f3a705d936fa6e812ac608699fd8542e28c5da5262ae048ba2"
+      }
+    }
+  ]
+}

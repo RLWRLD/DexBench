@@ -1,0 +1,67 @@
+# DB-L3 (E2 logistics, pack_invoice at the A3_BENCH anchor).
+# Recording experiment: the training sheet, every draw sampled live at its training
+# range, at every reset (the headset RESET too). The Train and GA-S cells evaluate on recorded conditions
+# instead (benchmark/db_l3_conditions_<cell>.yaml, then db_l3_eval_<cell>.yaml; docs/Eval_Protocol.md).
+#
+# With a headset (Quest 3, CloudXR up): record_demos.py --experiment db_l3_collect.yaml --run invoice_202x276, as the README's
+# teleoperation section describes.
+#
+# Every episode records what each variation drew under variations/ in its HDF5 and episode.json.
+# The ranges are dexbench_arena.deformables.pack_invoice_scene_randomization.TRAINING_RANGES, half of
+# REACH_LIMITS on each side (reach and the left ego camera searched one axis at a time; the
+# pile and the box kept on the worktop and apart at every corner); the benchmark spec reads the same
+# values. World axes; the robot faces world +y.
+shared:
+  environment:
+    type: dexbench_logistics_center_e2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: pack_invoice
+    anchor: A3_BENCH
+    rby1_control_hz: 30
+    # Robot base, recorded as <embodiment>.base_pose: x -1..+2 cm (its left is -x), y -2..+1.5 cm (its
+    # forward is +y), yaw -2.5..+2 deg.
+    base_jitter_low: [-0.01, -0.02, -2.5]
+    base_jitter_high: [0.02, 0.015, 2.0]
+    # The collection's paper physics (pack_invoice_scene_randomization.PAPER_PHYSICS_ARGS, which the benchmark
+    # cells state too): substeps are per 1/30 s, a 1/480 s paper step.
+    paper_coupling: one_way_proxy
+    paper_hand_colliders: official_hull
+    paper_num_sheets: 4
+    paper_resolution: 4x6
+    paper_substeps: 16
+    paper_iterations: 10
+    paper_contact_mu: 0.2
+    paper_self_contact_radius: 0.002
+  environment_builder:
+    presets: NEWTON
+  variations:
+    packing_bench:
+      # The paper piles about the invoice pile's centre: x -2..+6 cm, y -4.5..+7.5 cm, yaw -15..+20 deg.
+      paper_pile:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.045, -0.2617994]
+          high: [0.06, 0.075, 0.3490659]
+      # The bench and the box on it: -4..+1.5 cm.
+      height:
+        enabled: true
+        sampler_cfg:
+          low: [-0.04]
+          high: [0.015]
+    outbound_box:
+      # The box on the worktop: x -6..+2 cm, y -1.5..+2 cm, yaw -5..+12.5 deg.
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.06, -0.015, -0.0872665]
+          high: [0.02, 0.02, 0.2181662]
+  policy:
+    # Holds the reset pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  invoice_202x276:  # the 202 x 276 mm invoice sheet, the axis' one object
+    environment:
+      invoice_sheet: invoice_202x276

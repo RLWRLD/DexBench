@@ -1,0 +1,66 @@
+# DB-L3 (E2 logistics, pack_invoice at the A3_BENCH anchor).
+# Cell Train (train): training objects, spatial training range.
+# Spatial: each axis uniform in its own interval about the default layout, half of how far, searched one axis at a time, the robot still reaches and the left ego camera keeps the hand, cut so the pile and the box stay on the worktop and apart at every corner (pack_invoice_scene_randomization.TRAINING_RANGES; world x, y, base included): paper_x -2..+6 cm, paper_y -4.5..+7.5 cm, paper_yaw -15..+20 deg, box_x -6..+2 cm, box_y -1.5..+2 cm, box_yaw -5..+12.5 deg, bench_z -4..+1.5 cm, base_x -1..+2 cm, base_y -2..+1.5 cm, base_yaw -2.5..+2 deg.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (120 each), the filtered rows of db_l3_conditions_train.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 25 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l3 --cell train --model <key> \
+#       --output outputs/db_l3_eval_train_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l3_eval_train_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l3_eval_train.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L3); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_logistics_center_e2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: pack_invoice
+    anchor: A3_BENCH
+    rby1_control_hz: 30
+    paper_coupling: one_way_proxy
+    paper_hand_colliders: official_hull
+    paper_num_sheets: 4
+    paper_resolution: 4x6
+    paper_substeps: 16
+    paper_iterations: 10
+    paper_contact_mu: 0.2
+    paper_self_contact_radius: 0.002
+    base_jitter_low: [-0.01, -0.02, -2.5]
+    base_jitter_high: [0.02, 0.015, 2.0]
+    episode_length_s: 25.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    packing_bench:
+      paper_pile:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.045, -0.2617994]
+          high: [0.06, 0.075, 0.3490659]
+      height:
+        enabled: true
+        sampler_cfg:
+          low: [-0.04]
+          high: [0.015]
+    outbound_box:
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.06, -0.015, -0.0872665]
+          high: [0.02, 0.02, 0.2181662]
+runs:
+  invoice_202x276:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9000
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_train/invoice_202x276.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

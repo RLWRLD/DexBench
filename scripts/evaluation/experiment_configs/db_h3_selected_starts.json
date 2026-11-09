@@ -1,0 +1,1278 @@
+{
+  "format": "dexbench_h3_selection_v1",
+  "training_plan_sha256": "12e01a5668e48149510bae7a8620de8b025c38ca74d84264be77fc3fbf3bc602",
+  "preparation_sha256": "17bf94f66cc77ef9ac8b646dd649ab4bd76f7230c516f3025477a8183c5fdbd3",
+  "native_qualification_reports_sha256": "fb67cdc14203fc45c3c208b889a04025a2abce28f30fa94c119bd1ca45372e42",
+  "training_state_sha256": [
+    "026f3683795320a915edc6b1a08191c7b838ca9a3e974c258668e65c96837748",
+    "0638d912dc5ed8a2bc625d8b87defe0f603fedfde22b4a78130f86537d70a6cf",
+    "06503297c467e7fa5b596f7b01ae77310fa6053d76b247943a7765e581fe6bfc",
+    "06a6f24843fdf0b2de8b1f3133f4864db4eaef513dddec3a810bb54a31732b9b",
+    "080180c38b5d2fce0ccded5d62a6cefd2db08e7ba7734650ee5cc781f6c486b7",
+    "088f8acae79fa5af1b91ea099831dbd75930c6071eba23c796f1f5b3899be1e4",
+    "0abb79bd96ae355c1a1d3332f7db489d2125e2a605b19201ae363224dc670619",
+    "0de81819dfe1f73dd12e133a46d7c5e10f7c34d71d1473e31cd49bec59cffc06",
+    "0e3957e623f88a709b5ce123b0da81b49a78c2e65bf83541a388355c3c72222d",
+    "0e7ef5c3c06c9facff467c1d6b31b2dbccf3c53b47ad584593dc986ccc5199b4",
+    "15eb7d79da59893de2fe35bba03399ba779aee0edc8a859d517feea37abe4378",
+    "18a1c88c53a7e55cd007119f52f9c8e09b135eed89417b04f4bbbff1702fc34b",
+    "18cca949b08919c8f4103655848cea515354b30b3a76f38d71c2057110204560",
+    "1ac9d3bf34c1ddede4c302ca25c42fbf0e53dbae980b55aafd622e50c8269d71",
+    "1f601ac42cfd0cd30e125ce3de486d4aee25809b86875b87433ea3d06b9de00b",
+    "2189137b8d5a83f52db64c6dcc710dd7c59cc8a5e80b30ea218e2eeab1a8b2d4",
+    "2259e69ebf87717ed3cd3a42459accea0c33109d040f1eb2e510248731e794c6",
+    "22665ef685636de3446a2cb4eea7d456d46358bbf779410c9618fd5a95ed7d65",
+    "23a5411904af612ab60215eea07a96a36fe047bab63e95cf284cc16d9e733699",
+    "246d5ec07fd39bac16e463754ce8f0b3200eb110fe21f22105f4040efe1659c1",
+    "25e79ad03dffb1be48a02505be0fd0bf44af2ecacc5659b6c4be9e68375f7f46",
+    "2802f020a5809ff26b8d544ecd04edd92c3fff8c604a83a5b171994c33f1cb76",
+    "2b37e934161196c1de0b5f98d64495c991e408e318a4f91a368cf2e933f26420",
+    "2b55019efba89975ce45c84a1034bbd91bd90f433ace7a9e86ddef34c978ae97",
+    "2cd439fe221101e3db6f9fc1cda7bf48dcfbaee732e48344aad1516f520da3da",
+    "2dd5ac5a8a1eef272eacc6625644cc1ec8ae39d407a38b201e9bae73cf9a0dfb",
+    "2f7e0887e74efbcba3262ebf6e63fe74c320a3f23420607183be864a37a5bbd9",
+    "32c8cf49b653343bb13ef8be9687bcecbfe54670f0086053582a94ae48ec94dd",
+    "32f7030a8d1137f1f02182da4a3744733a178b9670aa68a6a92949bd1ec32b6e",
+    "349b11af46257e95f64da928cd9e9e61e0aedc5455dee58985a790e75efd9042",
+    "354f2d48608378fe6932503e26ae7fc39e01a5377818e3af3b9bf110b1db0166",
+    "36c38c401a1eed1acaa1f7cfe8dbed9b28fe930206372e65b35605cad31742fa",
+    "3705e1ef2a2623e6cc743aae101e6a3f9921dea21204993df3c1d2c991ebf3ec",
+    "38042c8efa06d903152ccf2295fba21373cc745f308c086efca8baaf72762795",
+    "3aa81da3c89fd796486009851dd379989187e0bbd7c303c7ef2aac76b210f2af",
+    "3aef6716974c352f18052f172336a24c3e91a60ade9cc6a785da8497636aa5b0",
+    "3d1171cad3c5d5508b57adaf5389e15342ff8097195b78b9fc0d3cdb77c504be",
+    "3f6148aa288d7dd67bc07dcc8c6d8a3f397fe9c23d7bcc4db0526c5bf364e9b1",
+    "4158885194895eaf24d77ee1d1c3862c8f144007e902b6720a82235250098152",
+    "42f28e3d2e5b577ddc6b9cd224572d90ea0fb09eb4f2520983dd4df78e293a93",
+    "440563388641907893fdf196fc6da6cfbf5d9517700b133cd0f4eb79b72466fb",
+    "44c066a75ad1d758d8447d1d2fa29d8634562225d51ac2de2d8e70c25468ecbf",
+    "47c5ffecea744c6cd43337c8f707675fba4bbf880a9823404cc363769349e6f4",
+    "49196adb2182c672ceb8c2c85005ce61c6d2ef89b9634c81de9db61a9bae0aca",
+    "4ad51e0208a70361fd35008baa30e14087bea55b5162d67a9959ab0c138e579d",
+    "4c67a56f32447805d6cf84f1d9c1e0965607054102ac470e8c5a0bb238b971a9",
+    "4dad5c9654c3e3037ea0fb774db4748cb0d9c0bd326c2f500529a5d88c732f02",
+    "4f87c227c09a2aa280f0dfedb90d7fdf34f3d98cf85690ea8c0b4262f4602abe",
+    "51750abc82da54255cb5a22492ce308b7b13fec489a3f58f5261fc8dcb0144ac",
+    "517911ecb93bf6b70cd9ed6fc4eb3aad256037aef62226abe6d20df9516aacc9",
+    "51b319654f74feb0b27528bb28c7d19912e11df64bc95f2a83b574ed91dcff8b",
+    "543e88121baff3ab473a50f6779a84a0a04e89ba42bb237356ffdf161b918f72",
+    "5507e9e60de263cfa1ca3a9c57d9a034955270914bffad805840e88380a22b74",
+    "553367271e59f879ebeb6bc0b552fb0fb717681d48e2edefbd3b9ec04c75ff61",
+    "55e75a698f96fa3e11c7dcba160c74f6ed4b20854e8d1e824d8f3f4519122b07",
+    "58a3129db4966e6861f2b26d4a2d87568518e2b3c88e3d36c1f78e871db2deb7",
+    "5940891446b24c3950dcbaff6d620990e12cd34a3039331c86638e69f8fc2aa0",
+    "5e0c6a8ac7efd75dd33e48437fb57b691db60e694108b6b2f19e55222417a943",
+    "5ee32d2f56f55381efd258571ce2eca26dbd52948fee76ee79841764fb71c52e",
+    "5f3525b16584a87bd133bfc94c6386123217d6125aead86bd4fed4101461ece7",
+    "6173648793fc44e35b44cc7c39020ddad7b635de344e7dda75d74f80baa00a36",
+    "669cd5f9bef3165c22cc481127ec82db20047de90539bdb4e8aa66bbf152dd7b",
+    "66b5b657983d4971e92b8d893cea07518491e16bcb50afd2630e3f207d020d5a",
+    "677e0120c6ba052234e986a500af51475b17669b834fbab929d51494e59d3d5d",
+    "6ab5ad42975194b41b9df76bc18f889cad190ccae5159a19ed349e077a9acadf",
+    "6b297c22a3f66c2bf08e7b8a3df96a9707952af9a7e59868ead0c59950fef97c",
+    "6d911a83a3a8dabdfc7ecd9b484e834e3035f84875762d0ab686b0c3dd800fa1",
+    "6e39a848b3a4670cdaf28c1e07b4cab0c75a31af8757a774889f722d82c62731",
+    "704413ee9e5406a380dc518fa8a71da2145cb47209615597682adf854c0c635e",
+    "725f6d6227d38dd57eab4a81d412fababe2da523062f88d3184428f628d0bf6d",
+    "738cfe8aa75e6ee1dc1a39593862587186d0578144d152eeb5d660e6711d50e3",
+    "74772f703dc146217e20345076a99abd697b2f547e3cdcfd7d07779a4133e083",
+    "7652a79627f693e38bec25f5a33ac6afc38e3c2ad66783192e08cd1401f6d569",
+    "7e67032a8836181dcd9b64b0e53c1b8693095e38a4ab6a5f7bd31a49da230a04",
+    "7f7023a1ce8890c912381f4bccf5dd276d64f4c555fd658e50816061075c0424",
+    "80389b3619ef0cb67a4008342f11103dee0cddd72f35ad9a4939ec9f31a1728d",
+    "8378b3f9212c838765c224e45d73751dce0ba99a598f0c8cd76938924ae07da4",
+    "85f9e3a3c9bc6deabbfb8d2c718363d3efb321f3caf31e6140aba67a8d8fab36",
+    "877324eeb677c7efd99f2dfc1234abfc8381e715cb29c53fc036638f89baa4f9",
+    "87d4ab9a7a8202ac27ddb0463cc9412536a5276774f8bf0d0347db9cf1e6df2d",
+    "8bbbeae1ccf54da22586384fd33d9b182508bd6a9535435f0abbde35f1906a56",
+    "8e242e8b6f56357211caaf6e50feccfd57ec925866707dce0daa6faf8e524ddd",
+    "8f631ba63c2e4ade8889af6ab0f9045aca0602e8060c0ea7a61683e1667a05f3",
+    "97f0999c3f5082352f82b11e381bf3354634e944edeb69cb7aaa285e6f423638",
+    "9a0bc7315fc8b578a8d6e6c71a6d2cd798ec03059c734123d4327323e76dc369",
+    "9d86f25b2486048a4ebdc0656b3a5b73516a6df1f487484c3be63dca900f3b88",
+    "a10d54a84f55f003a6760f862fec863d27cadaf98cc641bca74b257f3491d3ee",
+    "a1dc2e9e5d63c5f3f942cb968af8171a64688b9ce49051028c48527a01094e43",
+    "a732bee37ab23d0bbc419045be8d0bdd6a92db36cf2bd8f65f6f2281eb27a37e",
+    "ab2fe28f22144900cf594d11d6cece1737087fc1ff84fbf62a5af0052f59f7a3",
+    "ac91c8dfb229e4af29afaf7c08c9b56b6129034e8d7b319f8fb5d68891666938",
+    "af5342ff41f8d8431d5e3039123dc8cea6e68c472ba189b1353dae85e2dda4ec",
+    "af60e9966f58ead97f29140180c5fc255dc929b328b0b8e9268251e0f200a3fa",
+    "b16d621c72041b3d40d1126e275f2c7ac9b2b48cb17f499117b70e7c618925ad",
+    "b4997fd1211d0ce339a7e804ab4e8c885c2649a99589d51cfb011d07a06ff0d0",
+    "b9603f442c5551a1f120285bc0ebfb47f504ba30a2622d042f3c743f30f6e859",
+    "c152e0a5dc5097736bfe87c57fd23eb52a7930e902e6af499dd30bf6f2b333d9",
+    "c16d1d1b47699b4deaf08306b690c70062dabfc6773e192206bdbd85a22ca5dc",
+    "c2fb1bd382e5b7d9766e2ac380a2f46b3427e70078f2728226411cd293c6c956",
+    "c5f047ca0507ba80764d3e831adb09cf3d757010d7d7c569d49a69b97ea4a948",
+    "c760d2b2f7305da449e3a31425301addb697980f96b3d5ac3d41bd7c949cfb32",
+    "c8e1eb49d4613ee3e8a6431b5a2107d2cdaa7b78ccdaabc2ab32a58a7998c160",
+    "c91e9d30609ad15c1c8829fe31a1423a40046db3e0b6660d3b03e4f7e0365d1a",
+    "c9439117e9719dca5afff52761ff6ab4412649e25de9957877ab286f03ca8647",
+    "cb74f524c081150579a8371823b619edbd6d8fa6fe3f38d8b4e8a08f5fd67d71",
+    "cbc5bc4f567f1a31cb000a9610bf3f601137f524d89a4d49adec7d13d6e73c14",
+    "d0a42874288265687eac0e7f020c46ec74e10b80c3ca563d8a9d0f75ec33e32b",
+    "d0f490ddbd89b3cf1e7cef2a85e71ed2e4cc786ad70f4970a85b4af89f4b243d",
+    "d1ddd6caa4fd87ae4a1779588898574d21326210657471417c3526d034dd1ada",
+    "d52689f071d9af7100faf6c12472a0e850ac1be4ebb3666f1ab1a7a805c2994e",
+    "d529f5229166be765e5fd8706ace13d72c7888c5413a6b23c0a1196397edfdfd",
+    "d6b6ed40c79773244635811d1f94e9dcfee21a8e55b483160d870742720a1244",
+    "d7da37d88571b03ca318422f0df21bdccb45ed3b30192157ac49409e6f87bd30",
+    "da4ce6676bf3570354316892a1b3cfc08a516a0bfaf1f3203df88c57fe670f9f",
+    "ddf6a3ec203ecdb1ea05d9aaeb79d5ed1c7864f64a8d798f217d0e6838ae5085",
+    "df77dbfa957bbdc0b34773ea417ce9782c1c44adedacf44174bf26f39f15e7d4",
+    "e0b372eaabdccc1a0cb1a4e3fac42f3fcee74be955ffd90590eee7bdf423d5b4",
+    "e1b04225569b31980b9dac35e5f6c282b74ef1b55da19c0a8de1591919539145",
+    "e53ccc42cb8e3770e0f024dd0368c7a3dabe44d1b03806aa5db20b0f1bdfb1fe",
+    "ea4523c201bad79ba47a9cdf185ee5d3eec67e63fc43907d0b1fc385455a5646",
+    "eb27bd724c240c42ffb76f930135c2998b949f10fdc035a61ca744c7098ec845",
+    "eb36613204fce7f9de46b656312d4cde2ab214c05029fb642dbe0a588e8dbf05",
+    "f26574b3da3f92ae88c92603264582065bbd3edb2b4883fef341ddf6c87cc133",
+    "f4d64f3d5471103e7c794f63560550ec08d92205d6738da9408a3e8cba64ac55",
+    "f6ed2a02cf528b853a777338b501a494e478d802bdd6c8fe2067634440e7a93f",
+    "f6f43cc5fe056b701aaec8f73b3e7204ba84b31c1e110b1f61cb5e69e9cf9bae",
+    "f7c2841ef63fc1e10d366ef5f9d22d035c53782562111c54ff9475fa960a48f6",
+    "fef70ce332e700014862a950202291057da7735991584e0959eb7b5a0972b6df",
+    "ffcbaf17c8ac1a91a78f52b78a299fa98c78b3a74b321393e86694372224345b"
+  ],
+  "cells": {
+    "train": {
+      "bundles": {
+        "train_01_fork": {
+          "runtime_bundle_sha256": "455f37ac8bb22f9790d896f03de2a8f63e7bd9784b7e2f2f0d0b99e4451eb644",
+          "starts": [
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial200_reach024_open120_seed2027011234_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "0030c2800b3e60ad22a66e118f57e0c024d5b3c0d7a6a397e3ad8a1334704861"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach024_open120_seed2028111266_heading-0100_broll+0050_depth000_curl040__sv2_fork_03ad0687d2",
+              "state_sha256": "03ad0687d2a993fb04da40882a975724df465080ca61d4ba72fb1ac3632e35c8"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach020_open120_seed2028111244_heading+0000_broll-0050_depth050_curl020__sv2_fork_03c148d8c3",
+              "state_sha256": "03c148d8c347985f1f5774813a0f76ed5eef4f0086f4b8164afea7bdc4063e37"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_+10_axial150_reach024_open060_seed2026611277_heading+0000_broll+0050__sv2_fork_05e2d32b8b",
+              "state_sha256": "05e2d32b8b276e95cef983d90051e27354d05fc632e31a2ce47c5f1b11c83b90"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial200_reach028_open000_seed2027111233_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "0c7bfcf205139d8f9e2620f765e93c3adb822e82782fe19c40a07e3592395374"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open060_seed2026911264_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "11a0b64f5e40d100a63cc72117de41e05ff7b446e8add8df079404917eeaee2d"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach024_open120_seed2026911264_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "12ad9c27727289043527fb7f25b7b2335f0889e79bae7a28b0cd5f5c7c256b77"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial250_reach024_open060_seed2026511267_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "1535cbd78eee6a57c45b7dd8df94507bb34ec0b0acb1567bb5e7ae6ae6a618d3"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach024_open180_seed2027111314_heading+0000_broll+0050_depth050_curl020__sv2_fork_1e8996010f",
+              "state_sha256": "1e8996010ff88d90aca95d67206f6e1f33922ebfe7add0d0c6d9f4427aae8218"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial250_reach028_open180_seed2026911319_heading+0000_broll+0050_depth050_curl020",
+              "state_sha256": "2641b3dd567dabdbe4254fce1fde170ed72badeab288b21c1c09d4c70beb4d93"
+            }
+          ],
+          "source_runtime_bundle_sha256": "09dd12d2c99915aa5f07da51639ce940cc53c79c0864d7db87d30b18a51144d4",
+          "qualification_report": "reserved-validation-v15/01_train_01_fork/report.json"
+        },
+        "train_01_knife": {
+          "runtime_bundle_sha256": "47bccd026059b6604d23f36f17f2f5af6419ab420ece735dd6197f7ee2504fa1",
+          "starts": [
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial200_reach024_open120_seed2027011234_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "0030c2800b3e60ad22a66e118f57e0c024d5b3c0d7a6a397e3ad8a1334704861"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_+10_axial150_reach020_open120_seed2026811273_heading+0000_broll+0050__sv2_knife_030aa453a8",
+              "state_sha256": "030aa453a877f7a738724796ade1ee361a2a3bbe097545e24a513837b95e6b22"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_+10_axial150_reach024_open060_seed2026611277_heading+0000_broll+0050__sv2_fork_05e2d32b8b",
+              "state_sha256": "05e2d32b8b276e95cef983d90051e27354d05fc632e31a2ce47c5f1b11c83b90"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial250_reach028_open120_seed2026511247_heading+0000_broll-0050_depth050_curl020__sv2_knife_08290175d4",
+              "state_sha256": "08290175d4a1a91af0dcea97d7bd9196ffc98c09c1f5568637ac9cf42c9c86bd"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial200_reach028_open000_seed2027111233_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "0c7bfcf205139d8f9e2620f765e93c3adb822e82782fe19c40a07e3592395374"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open060_seed2026911264_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "11a0b64f5e40d100a63cc72117de41e05ff7b446e8add8df079404917eeaee2d"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach024_open120_seed2026911264_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "12ad9c27727289043527fb7f25b7b2335f0889e79bae7a28b0cd5f5c7c256b77"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial250_reach024_open060_seed2026511267_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "1535cbd78eee6a57c45b7dd8df94507bb34ec0b0acb1567bb5e7ae6ae6a618d3"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial250_reach028_open180_seed2026911319_heading+0000_broll+0050_depth050_curl020",
+              "state_sha256": "2641b3dd567dabdbe4254fce1fde170ed72badeab288b21c1c09d4c70beb4d93"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open180_seed2026611266_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "28744e0fed1915ba048ac62d95b9499a535afb08c5e74344ef342bbab73255ae"
+            }
+          ],
+          "source_runtime_bundle_sha256": "a7c2b32aee475cf554aa1107a019f38999418947d2904066b33fb75e2ef81c5d",
+          "qualification_report": "reserved-validation-v15/02_train_01_knife/report.json"
+        },
+        "train_01_spoon": {
+          "runtime_bundle_sha256": "197a33de4921eb4188cbf3acb9cc6b5ff9ab70d20754bd3969241717a8ef6b4a",
+          "starts": [
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial200_reach024_open120_seed2027011234_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "0030c2800b3e60ad22a66e118f57e0c024d5b3c0d7a6a397e3ad8a1334704861"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach024_open120_seed2028111266_heading-0100_broll+0050_depth000_curl040__sv2_fork_03ad0687d2",
+              "state_sha256": "03ad0687d2a993fb04da40882a975724df465080ca61d4ba72fb1ac3632e35c8"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach020_open120_seed2028111244_heading+0000_broll-0050_depth050_curl020__sv2_fork_03c148d8c3",
+              "state_sha256": "03c148d8c347985f1f5774813a0f76ed5eef4f0086f4b8164afea7bdc4063e37"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial200_reach020_open180_seed2028611239_heading+0000_broll-0050_depth030_curl020__sv2_spoon_053bd3abd8",
+              "state_sha256": "053bd3abd8c11946b7bc41621bbc6c21edb1731f6660e04e3402a91fc8c0eb06"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial200_reach028_open000_seed2027111233_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "0c7bfcf205139d8f9e2620f765e93c3adb822e82782fe19c40a07e3592395374"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial150_reach020_open180_seed2028611299_heading-0100_broll+0000_depth030_curl020__sv2_spoon_186e7c2d6e",
+              "state_sha256": "186e7c2d6eda2cc2eb23a645b76ab5952d20380ad2422fcd1d646c4197b9497e"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach024_open180_seed2027111314_heading+0000_broll+0050_depth050_curl020__sv2_fork_1e8996010f",
+              "state_sha256": "1e8996010ff88d90aca95d67206f6e1f33922ebfe7add0d0c6d9f4427aae8218"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial250_reach028_open180_seed2026911319_heading+0000_broll+0050_depth050_curl020",
+              "state_sha256": "2641b3dd567dabdbe4254fce1fde170ed72badeab288b21c1c09d4c70beb4d93"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open180_seed2026611266_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "28744e0fed1915ba048ac62d95b9499a535afb08c5e74344ef342bbab73255ae"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial250_reach020_open060_seed2028111244_heading+0000_broll-0050_depth050_curl020__sv2_spoon_290f0284c5",
+              "state_sha256": "290f0284c51a8ff33c9accaca6d6541007a7868d5849f8d607cfac45d5c519d6"
+            }
+          ],
+          "source_runtime_bundle_sha256": "c2f50974443bc4b059356dbd373f41dbe039cbc1c02813ae9149c1889c093724",
+          "qualification_report": "reserved-validation-v15/00_train_01_spoon/report.json"
+        },
+        "train_02_fork": {
+          "runtime_bundle_sha256": "4104a02ccff032d5894bfb4163a86430c53621d0abf2367c2831a1d45bca3e70",
+          "starts": [
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial250_reach024_open000_seed2026112315_heading+0000_broll+0050_depth050_curl020",
+              "state_sha256": "10a795981d4c10c8dc6c077cb80dc6ecb2f6d70f606a72d0eef2c763865376e0"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial200_reach028_open180_seed2026112259_heading+0100_broll+0000_depth050_curl040__14b9cd026323e20d",
+              "state_sha256": "14b9cd026323e20da77fb18860f8073a6199c40b41106b771a77e3bb2f44ad22"
+            },
+            {
+              "id": "FKS_roll_expose_balanced_+00__1b7ac8214c",
+              "state_sha256": "1b7ac8214c4cf21793fc95ac1cc75d04865bf240d86231cb5367dedabb561267"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial250_reach024_open180_seed2026112291_heading+0100_broll-0050_depth030_curl000",
+              "state_sha256": "1bb748e37be464c93b365c8dcb641c7967ef9ce81b914321c3a62c34a1bb0628"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial250_reach028_open060_seed2026112319_heading+0000_broll+0050_depth050_curl020",
+              "state_sha256": "23ecf1fcefdb99dee163cf37bb89c8d7bc1c0046f7fe513090f13a2c603601fa"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial250_reach028_open120_seed2026212247_heading+0000_broll-0050_depth050_curl020",
+              "state_sha256": "24961b0e297909ebc1851401e54e162069b842a8ebe887414601963a265e4ea3"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial150_reach024_open000_seed2026112207__24dfa0c41108b073",
+              "state_sha256": "24dfa0c41108b073eb58770752c4e67f99e044002a709c9f5377cb8f1ab0b792"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial250_reach024_open060_seed2026212219_heading+0100_broll+0050",
+              "state_sha256": "2da926099734dae2ef81813e216739363d6254ee3a617afe8e0a93baed250c79"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial150_reach024_open120_seed2026112279_heading+0000_broll+0050",
+              "state_sha256": "33b85b5de09bc9d3b4fff7d6fb951a012653c0f3609202473d383d0227606e79"
+            },
+            {
+              "id": "FSK_stagger_expose_fork_+10_axial200_reach028_open180_seed2026112259_heading+0100_broll+0000_depth050_curl040__3b83a94368522e30",
+              "state_sha256": "3b83a94368522e30348d9866d6383825abeeeb115eaa4474da4d2c865c9b564f"
+            }
+          ],
+          "source_runtime_bundle_sha256": "e69c2ae917a3bc85a2a434e277cf3edb096a5e23c27d4a336cb0be2a9736379b",
+          "qualification_report": "reserved-validation-v15/04_train_02_fork/report.json"
+        },
+        "train_02_knife": {
+          "runtime_bundle_sha256": "aa6e5550528cce02ef6f4a2132a8c5cc737d5a8a9ef39149b5d2fdd793048a2b",
+          "starts": [
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial150_reach028_open120_seed2026212204",
+              "state_sha256": "0019b93ea9c4fb379ae870e04b786cbded29f57d023b407f1ab10605a6a9d95e"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open120_seed2026112202",
+              "state_sha256": "03f5e0348c73c4033001f744ed656b8a247d0de3a39fdec887c104826c5c2604"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial150_reach028_open060_seed2026112204",
+              "state_sha256": "058ab10f2a427acd8d4af71a95e1851455dc45e0a52fb403f88105290708c117"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial250_reach020_open000_seed2026112244_heading+0000_broll-0050_depth050_curl020",
+              "state_sha256": "09a5b439b86f1e47009bf0749d9a6e68da1941f131372f120adda7ef216a45ae"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_-06_axial150_reach024_open180_seed112006_heading-0200_broll+0300",
+              "state_sha256": "1b3c65f4d70b797ef4b7e064ef4838d2b71114d649fb1f4b5e1244fd48546f6c"
+            },
+            {
+              "id": "knife_reform_s01_000.0mm",
+              "state_sha256": "1e5c003032c93797fe870d877bc68444b44677ff26d73bc36cd2ac5ae92c6855"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial250_reach024_open000_seed2026212218_heading+0100_broll+0050",
+              "state_sha256": "22666ef674013bff1d2de6c64a2ff8d1695c1f9c11b0ae6ed5549c902b79378d"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial250_reach028_open120_seed2026112222_heading+0100_broll+0050_depth030_curl000",
+              "state_sha256": "23ef4ebb911aef99fb63a58c8cba094f30a79149bc5aa657d26af71bb42c0e36"
+            },
+            {
+              "id": "knife_reform_s00_010.0mm",
+              "state_sha256": "2495fb9897e28e53114f08729b86b4ccb4ef11f7fadede3d1c6305f3ddfc20ec"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open120_seed2026112214_heading+0100_broll+0000__27fb67e1ff3bf32b",
+              "state_sha256": "27fb67e1ff3bf32b4d62f61f4044c82b028577fa1396ed64e93e63a5651928b0"
+            }
+          ],
+          "source_runtime_bundle_sha256": "b0d415348b212259d4246d6a882be74643761ce31dcf54faa6e17a7a8fd7d1fa",
+          "qualification_report": "reserved-validation-v15/05_train_02_knife/report.json"
+        },
+        "train_02_spoon": {
+          "runtime_bundle_sha256": "b9ed868cc7edcb1548cbf5211b2137bbd471f3aa38b0c6dec751275ab5ccd0fa",
+          "starts": [
+            {
+              "id": "SFK_stagger_expose_spoon_-06_axial150_reach020_open060_seed2026112201",
+              "state_sha256": "00df9f5d02dbf3568e11d949e927e8738680d6823831a647998f0c76b5fa80c6"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open120_seed2026112209",
+              "state_sha256": "0211998c587c5ecd20acaa838c96b84f3c22174e8a08b79c757521f2185a166a"
+            },
+            {
+              "id": "SKF_packed1_expose_spoon_+10_axial200_reach020_open060_seed112004_depth050_curl080",
+              "state_sha256": "04437e5525f1d737266aed315fdc3b2f75694b58a4ca1f31be8ab55e77b41d16"
+            },
+            {
+              "id": "SKF_stagger_expose_spoon_+10_axial200_reach020_open180_seed2026112309_depth050_curl020",
+              "state_sha256": "06a4fd873caff760156e58feeda65aadd988f6c66064913807d81e4725543840"
+            },
+            {
+              "id": "SKF_packed1_expose_spoon_+10_axial250_reach028_open000_seed110104",
+              "state_sha256": "08947bca2b67271bdc453e47514827cf69b76ccece43189789b864f9e3a13b40"
+            },
+            {
+              "id": "SKF_stagger_expose_spoon_+10_axial250_reach024_open180_seed2026212217_heading+0100_broll+0050",
+              "state_sha256": "112b2f7f221a5d7041858e00a269a9c08633d4c143366a245ded00452f5139a4"
+            },
+            {
+              "id": "SKF_stagger_expose_spoon_+02__16dcb5bb4c",
+              "state_sha256": "16dcb5bb4c3babddce2a2681058e1e14a91da04ef6cf86357b761ac02f1125e9"
+            },
+            {
+              "id": "SKF_packed1_expose_spoon_+10_axial250_reach028_open120_seed110104",
+              "state_sha256": "1fcb41d300c1f935e3e900b7e9cb046d4a5d049d6c043415538dcb785af455dc"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open000_seed2026112209__2084b8127469bd58",
+              "state_sha256": "2084b8127469bd58d25568c514be7745ee40a342bb6edbf425b5563b749b1d2b"
+            },
+            {
+              "id": "KSF_stagger_expose_spoon_+06_reach024",
+              "state_sha256": "228c81ce51833f7e243c37a683134c531814a60a741063ecf3ccfdc50967f5ca"
+            }
+          ],
+          "source_runtime_bundle_sha256": "de308639039f9a62e9c03cd9bbc90e94952d1b83e6ec101736767d9d8172bde0",
+          "qualification_report": "reserved-validation-v15/03_train_02_spoon/report.json"
+        },
+        "train_03_fork": {
+          "runtime_bundle_sha256": "7a2d1d0e2865b94dde1dd0f99f97b6700e68a24c90dba3c3175d987224f77372",
+          "starts": [
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open000_seed2028613216_heading+0100_broll+0050",
+              "state_sha256": "04d03a7ce202e17e863a47f54c33a4b60b9da63a5d71800213bf5b957030c560"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_-06_axial150_reach020_open000_seed2028713225_heading-0100_broll+0050_depth030_curl020__sv2_fork_14c2cfaa5a",
+              "state_sha256": "14c2cfaa5ae4b381359f53e7eb4d1aa01c222b47c9e34f82eed0b60c5941307e"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach020_open180_seed2028113201",
+              "state_sha256": "1691bb20f907ee9d244c9f8d8feabfe943116e4dc19529cdc3e852f2a7e2e232"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open060_seed2028613216_heading+0100_broll+0050__sv2_fork_2291c708e1",
+              "state_sha256": "2291c708e14c65f8126b47feca79469cc042c5ae14d406e8fda1e2c6fbe2f6c3"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach020_open120_seed2029113213_heading+0100_broll+0000",
+              "state_sha256": "2b56610ef0572931ef837aadc71e47837e671a62ba8913b1eb9027ee33634ca5"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach020_open000_seed2029113213_heading+0100_broll+0000",
+              "state_sha256": "3f723c989f76af1316708c7abbe256a92428702f69c050122a737feb95d0e094"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open180_seed2028713209",
+              "state_sha256": "41c89c183499200d00fefc6a986edb4ba55076d5ba331992703178f2143e2bad"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open180_seed2028613205",
+              "state_sha256": "6a4f8240deb6f4110af54119183de19b51d987d03b15f925c944779c9c510174"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open000_seed2028313205__sv2_fork_760cf485be",
+              "state_sha256": "760cf485bef71550dfd06c21468039fa1edf2986849c16b068ae773a53793a45"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open000_seed2028713209",
+              "state_sha256": "7bcf5704e9cf93ae40d3184b44724fc51d1a54b9cfcea03be0f790632a2e1552"
+            }
+          ],
+          "source_runtime_bundle_sha256": "6fb7580ed88ad8cb88a4022218c6c936c8a7bc2e35014f696f8ec7100e373b66",
+          "qualification_report": "reserved-validation-v15/07_train_03_fork/report.json"
+        },
+        "train_03_knife": {
+          "runtime_bundle_sha256": "d7061b0e06836e4dec6e6d25cadc55f9ed8a241e9c40d54520cb1e136b5f17c3",
+          "starts": [
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial250_reach028_open060_seed2028313221_heading+0100_broll+0050_depth030_curl000__sv2_knife_033f0aff50",
+              "state_sha256": "033f0aff50cbb474856ea5097e65a7c73175a4d5d70b3f842cdc4ac7dba166bf"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open000_seed2028613216_heading+0100_broll+0050",
+              "state_sha256": "04d03a7ce202e17e863a47f54c33a4b60b9da63a5d71800213bf5b957030c560"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_-06_axial150_reach020_open000_seed2028713225_heading-0100_broll+0050_depth030_curl020__sv2_fork_14c2cfaa5a",
+              "state_sha256": "14c2cfaa5ae4b381359f53e7eb4d1aa01c222b47c9e34f82eed0b60c5941307e"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach020_open180_seed2028113201",
+              "state_sha256": "1691bb20f907ee9d244c9f8d8feabfe943116e4dc19529cdc3e852f2a7e2e232"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open180_seed2028713209",
+              "state_sha256": "41c89c183499200d00fefc6a986edb4ba55076d5ba331992703178f2143e2bad"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open180_seed2028613205",
+              "state_sha256": "6a4f8240deb6f4110af54119183de19b51d987d03b15f925c944779c9c510174"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open000_seed2028313205__sv2_fork_760cf485be",
+              "state_sha256": "760cf485bef71550dfd06c21468039fa1edf2986849c16b068ae773a53793a45"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open060_seed2028713209",
+              "state_sha256": "9e062d062c24a87d32a72e5e1894703eae508a6f47412050008b2f0e97612d28"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open180_seed2028313205",
+              "state_sha256": "a7e763d0759f6ab0ea12aa06f9db34909671955961980fb9559d1bc7ee821e69"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach020_open000_seed2027113213_heading+0100_broll+0000__sv2_knife_d658f196c1",
+              "state_sha256": "d658f196c1ad4b18682a569f8ef1949b79f2db6a97c5a2bb04ef1f6ad4f1aaf2"
+            }
+          ],
+          "source_runtime_bundle_sha256": "6951d2936d6aeddcb85bc043d80c555700e08dc81926869da473cf87eb51350d",
+          "qualification_report": "reserved-validation-v15/08_train_03_knife/report.json"
+        },
+        "train_03_spoon": {
+          "runtime_bundle_sha256": "0cc84a1ad42813abca19cb90b53e13c4aa5aad6358ec1459be31157b6bfa43e9",
+          "starts": [
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open000_seed2028613216_heading+0100_broll+0050",
+              "state_sha256": "04d03a7ce202e17e863a47f54c33a4b60b9da63a5d71800213bf5b957030c560"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach020_open180_seed2028113201",
+              "state_sha256": "1691bb20f907ee9d244c9f8d8feabfe943116e4dc19529cdc3e852f2a7e2e232"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach024_open060_seed2028613216_heading+0100_broll+0050__sv2_fork_2291c708e1",
+              "state_sha256": "2291c708e14c65f8126b47feca79469cc042c5ae14d406e8fda1e2c6fbe2f6c3"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach020_open120_seed2029113213_heading+0100_broll+0000",
+              "state_sha256": "2b56610ef0572931ef837aadc71e47837e671a62ba8913b1eb9027ee33634ca5"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach020_open000_seed2029113213_heading+0100_broll+0000",
+              "state_sha256": "3f723c989f76af1316708c7abbe256a92428702f69c050122a737feb95d0e094"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open180_seed2028713209",
+              "state_sha256": "41c89c183499200d00fefc6a986edb4ba55076d5ba331992703178f2143e2bad"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open180_seed2028613205",
+              "state_sha256": "6a4f8240deb6f4110af54119183de19b51d987d03b15f925c944779c9c510174"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open000_seed2028713209",
+              "state_sha256": "7bcf5704e9cf93ae40d3184b44724fc51d1a54b9cfcea03be0f790632a2e1552"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial150_reach024_open120_seed2029213229_heading-0100_broll+0050_depth030_curl020",
+              "state_sha256": "8306c2e8c62158430a0c5750015a806bde01ecc5437351f5ac306a5d1aa7e1e2"
+            },
+            {
+              "id": "SFK_stagger_expose_spoon_+10_axial200_reach028_open060_seed2028713209",
+              "state_sha256": "9e062d062c24a87d32a72e5e1894703eae508a6f47412050008b2f0e97612d28"
+            }
+          ],
+          "source_runtime_bundle_sha256": "4124b5d7a48e9191db27b6856bae45abe6ef866afc802e891eab2632fb81f134",
+          "qualification_report": "reserved-validation-v15/06_train_03_spoon/report.json"
+        },
+        "train_04_fork": {
+          "runtime_bundle_sha256": "ff4c148c539280060325c6f03a5f00e31891d2942900502ce52e902bf497e896",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open060_seed2028314201",
+              "state_sha256": "071f293a8dcd225644d07dfb0d11489c5f529b5f7bd727021890cef607bd5d19"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open180_seed2028314200",
+              "state_sha256": "0c04293323abc64166c4d68ec6bbdd64f223bec2aa3179afe44cb5a00a52c4aa"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open060_seed2028314200",
+              "state_sha256": "15c7de545277519fa45572d28633381486ef53ab9c8c8c96545d90b78f0a3693"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open000_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "3fe9c45de4e065bfa8ff743e2af659f767fd0ef2f8fdb32836d969648d16e071"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open000_seed2028314201",
+              "state_sha256": "8b841afb2f1d3230555ed53e2a56fca01aba80a51479f242ffc7f392d1bd4bb8"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open120_seed2028314201",
+              "state_sha256": "a7803b0b72df95ac88d90be04d4504cfb9367037072bdf8dbec47e35771ee9a0"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open120_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "ae69fd148c215f2fa44ccde8e6b20142440105b87a682d727cc8c15bed01f842"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open000_seed2028314200",
+              "state_sha256": "bd20361fb7768fc92157a5cbf4091d6514e1140f51f23cc2852c0ca39ee72be3"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach028_open000_seed2028214204",
+              "state_sha256": "edb325e8e6b9b9914ac063fc3d99d0a61b4390cc5250817787e562ecc6576c2c"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open060_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "f56c8d313375a7a831c3bfb64d778bfbc24efa9f18ff4408eeab722f2edc02aa"
+            }
+          ],
+          "source_runtime_bundle_sha256": "61795b2ad2db438ac779c72147fe935e9917740fb4dd21a626f0ae49b73b7026",
+          "qualification_report": "reserved-validation-v15/10_train_04_fork/report.json"
+        },
+        "train_04_knife": {
+          "runtime_bundle_sha256": "dff55acb418a20e00d71ed51ed154e43a17eb71abf686c2449a05f3e382efc6e",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open060_seed2028314201",
+              "state_sha256": "071f293a8dcd225644d07dfb0d11489c5f529b5f7bd727021890cef607bd5d19"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open180_seed2028314200",
+              "state_sha256": "0c04293323abc64166c4d68ec6bbdd64f223bec2aa3179afe44cb5a00a52c4aa"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open060_seed2028314200",
+              "state_sha256": "15c7de545277519fa45572d28633381486ef53ab9c8c8c96545d90b78f0a3693"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open000_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "3fe9c45de4e065bfa8ff743e2af659f767fd0ef2f8fdb32836d969648d16e071"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open000_seed2028314201",
+              "state_sha256": "8b841afb2f1d3230555ed53e2a56fca01aba80a51479f242ffc7f392d1bd4bb8"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open120_seed2028314201",
+              "state_sha256": "a7803b0b72df95ac88d90be04d4504cfb9367037072bdf8dbec47e35771ee9a0"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open120_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "ae69fd148c215f2fa44ccde8e6b20142440105b87a682d727cc8c15bed01f842"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open000_seed2028314200",
+              "state_sha256": "bd20361fb7768fc92157a5cbf4091d6514e1140f51f23cc2852c0ca39ee72be3"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach028_open000_seed2028214204",
+              "state_sha256": "edb325e8e6b9b9914ac063fc3d99d0a61b4390cc5250817787e562ecc6576c2c"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open060_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "f56c8d313375a7a831c3bfb64d778bfbc24efa9f18ff4408eeab722f2edc02aa"
+            }
+          ],
+          "source_runtime_bundle_sha256": "dbe7c31ac921d260f3248d5b1dacaf84ef6004eda37197f2b0921404c9118397",
+          "qualification_report": "reserved-validation-v15/11_train_04_knife/report.json"
+        },
+        "train_04_spoon": {
+          "runtime_bundle_sha256": "91d4ca2f6fc435c7860020f5387503c8d4c411af54bda4a6dd927caf22ee17ac",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open060_seed2028314201",
+              "state_sha256": "071f293a8dcd225644d07dfb0d11489c5f529b5f7bd727021890cef607bd5d19"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open180_seed2028314200",
+              "state_sha256": "0c04293323abc64166c4d68ec6bbdd64f223bec2aa3179afe44cb5a00a52c4aa"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open060_seed2028314200",
+              "state_sha256": "15c7de545277519fa45572d28633381486ef53ab9c8c8c96545d90b78f0a3693"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open000_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "3fe9c45de4e065bfa8ff743e2af659f767fd0ef2f8fdb32836d969648d16e071"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open000_seed2028314201",
+              "state_sha256": "8b841afb2f1d3230555ed53e2a56fca01aba80a51479f242ffc7f392d1bd4bb8"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach020_open120_seed2028314201",
+              "state_sha256": "a7803b0b72df95ac88d90be04d4504cfb9367037072bdf8dbec47e35771ee9a0"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open120_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "ae69fd148c215f2fa44ccde8e6b20142440105b87a682d727cc8c15bed01f842"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach024_open000_seed2028314200",
+              "state_sha256": "bd20361fb7768fc92157a5cbf4091d6514e1140f51f23cc2852c0ca39ee72be3"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_-06_axial150_reach028_open000_seed2028214204",
+              "state_sha256": "edb325e8e6b9b9914ac063fc3d99d0a61b4390cc5250817787e562ecc6576c2c"
+            },
+            {
+              "id": "KSF_stagger_expose_knife_+10_axial200_reach020_open060_seed2028514214_heading+0100_broll+0000",
+              "state_sha256": "f56c8d313375a7a831c3bfb64d778bfbc24efa9f18ff4408eeab722f2edc02aa"
+            }
+          ],
+          "source_runtime_bundle_sha256": "a843ce3c6b4207b461d8a31d4b7f21aa68ba6a4c7c6e52c46922668c53e4632a",
+          "qualification_report": "reserved-validation-v15/09_train_04_spoon/report.json"
+        }
+      },
+      "distinct_physical_states": 71
+    },
+    "ga_os": {
+      "bundles": {
+        "ga_os_01_fork": {
+          "runtime_bundle_sha256": "2fde82923c733ead1fe8ac42e098cb22f15e631ef3cd7cf2a173f77d2a8509f1",
+          "source_runtime_bundle_sha256": "b505885879bb461704f76f3611709e1e1744c0436083b9738db57a52499ac0a9",
+          "qualification_report": "reserved-validation-v15/13_ga_os_01_fork/report.json",
+          "starts": [
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial150_reach024_open060_seed2026127031_heading-0100_broll+0050_depth030_curl020__target_fork",
+              "state_sha256": "0478a4aaa46e88aa0d81eccb3287c70bc166351501e74b048797f1df122b1456"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial150_reach024_open060_seed2026127055_heading+0100_broll+0000_depth050_curl040__target_fork",
+              "state_sha256": "0e9d15f63b05aeaa49a369e4cca2715e3a8799fc0df33c6929f3dcd855c81fc0"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial200_reach024_open000_seed2026127034_heading-0100_broll-0050_depth030_curl020__target_fork",
+              "state_sha256": "1bce282981c086602b0b1e3f113ac552cbb153d5c21b3017733c17644c117665"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_-06_axial150_reach024_open120_seed2026127031_heading-0100_broll+0050_depth030_curl020__target_fork",
+              "state_sha256": "21ad503695a7bd5493abd05872a9a76dd9182013b32851885d2a141c11d426b1"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial150_reach024_open120_seed2026127007__target_fork",
+              "state_sha256": "22abc994579d93ab088202c53f69b4da9fdf8859c26dd7dae345bd3a2106a7de"
+            },
+            {
+              "id": "KFS_packed1_expose_spoon_+10_axial150_reach020_open180_seed2026127003__target_fork",
+              "state_sha256": "4548f23e5c8d7893e73389e7bf6d3894630be978fa2d9348d6076a4a5f58e13d"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial250_reach028_open060_seed2026127070_heading-0100_broll+0050_depth000_curl040__target_fork",
+              "state_sha256": "4be6e905b499da5ac4956644d047f8cdf8c04143a129e03831a8a76da0f72c33"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_-06_axial200_reach032_open180_seed2026127010__target_fork",
+              "state_sha256": "4e52ed7c4de209cc4cfbaa7efdaaf622a982573157a5bbd0e293f124de040d76"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_-06_axial250_reach020_open000_seed2026127044_heading+0000_broll-0050_depth050_curl020__target_fork",
+              "state_sha256": "4f4bc9b96a9a0420e9e6f7a519becbc85ea42711ab85cc07fc499cfd7da444c2"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial250_reach028_open000_seed2026127070_heading-0100_broll+0050_depth000_curl040__target_fork",
+              "state_sha256": "4f6e78c14da4f9cb70a26a21f23e120280df5cff7863d8327c43b035d2856cce"
+            }
+          ]
+        },
+        "ga_os_01_knife": {
+          "runtime_bundle_sha256": "fcecd425166ca2440b8615b6d20dc4f7669abf39b0d0004305e3bf3a24890994",
+          "source_runtime_bundle_sha256": "03767d97cdb1460c03ea2ce9f78ef384393bb9df2bd4e0b99c89ff421a3e41f9",
+          "qualification_report": "reserved-validation-v15/14_ga_os_01_knife/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial200_reach032_open000_seed2026127010__target_knife",
+              "state_sha256": "046b3e013f41ec4570aa5a4635e15f035ab1b2cd7309abb0aa83b208735bc8e6"
+            },
+            {
+              "id": "FSK_packed1_expose_knife_+10_axial250_reach020_open060_seed2026127044_heading+0000_broll-0050_depth050_curl020__target_knife",
+              "state_sha256": "07457e4b4c3afe5a8b7612062bfd783b416d94820745264407913aaaa7489da4"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial150_reach024_open060_seed2026127055_heading+0100_broll+0000_depth050_curl040__target_knife",
+              "state_sha256": "0e9d15f63b05aeaa49a369e4cca2715e3a8799fc0df33c6929f3dcd855c81fc0"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial150_reach024_open180_seed2026127029_heading-0100_broll+0050_depth030_curl020__target_knife",
+              "state_sha256": "1199c6cb95c4535f414593dfd454670a23a6da16b89c6aa7cd6120fd0cf4328e"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_+10_axial150_reach024_open180_seed2026127053_heading+0100_broll+0000_depth050_curl040__target_knife",
+              "state_sha256": "16e92f25bb5d5938d9ab8223b6c8f501c3659ba9aa8b791ebdfbe5346f0a4219"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial200_reach024_open000_seed2026127034_heading-0100_broll-0050_depth030_curl020__target_knife",
+              "state_sha256": "1bce282981c086602b0b1e3f113ac552cbb153d5c21b3017733c17644c117665"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial200_reach020_open180_seed2026127062_heading-0100_broll+0000_depth000_curl040__target_knife",
+              "state_sha256": "23883781538297c63e12d744f09a2736f3b3f2cf54c18065b8c7c2cee3c9b1b1"
+            },
+            {
+              "id": "FSK_packed1_expose_knife_+10_axial250_reach020_open000_seed2026127044_heading+0000_broll-0050_depth050_curl020__target_knife",
+              "state_sha256": "5be00df91e45d4f5345087312df904459987c2ed6cb3d8097c9a20bb4df96157"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_+10_axial150_reach024_open000_seed2026127029_heading-0100_broll+0050_depth030_curl020__target_knife",
+              "state_sha256": "84b8037a15b4eb0bae37cd81dc2e1328acf7ace017b3429eb890522e8904bdeb"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_-06_axial150_reach024_open000_seed2026127007__target_knife",
+              "state_sha256": "c528acce269f5fe063e4ab086cdca0a9afa83c3ccfc3b90c15e34da7b4789673"
+            }
+          ]
+        },
+        "ga_os_01_spoon": {
+          "runtime_bundle_sha256": "efdfb3f64108b86a1f833f505bde635dc1b457cb61f8e1646f1a5ee8dcc4fe3b",
+          "source_runtime_bundle_sha256": "b8f3031cae4bb1ec60c139d01040b566103a855bca251fa263acb4b252bae613",
+          "qualification_report": "reserved-validation-v15/12_ga_os_01_spoon/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial200_reach032_open000_seed2026127010__target_spoon",
+              "state_sha256": "046b3e013f41ec4570aa5a4635e15f035ab1b2cd7309abb0aa83b208735bc8e6"
+            },
+            {
+              "id": "FSK_packed1_expose_knife_+10_axial250_reach020_open060_seed2026127044_heading+0000_broll-0050_depth050_curl020__target_spoon",
+              "state_sha256": "07457e4b4c3afe5a8b7612062bfd783b416d94820745264407913aaaa7489da4"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial200_reach024_open000_seed2026127034_heading-0100_broll-0050_depth030_curl020__target_spoon",
+              "state_sha256": "1bce282981c086602b0b1e3f113ac552cbb153d5c21b3017733c17644c117665"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial150_reach032_open180_seed2026127024_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "1e8790422def523b085a7b1ca0f28b78d3c7e58c7e15ebb1f9411b6ebf26cd98"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_-06_axial200_reach024_open000_seed2026127032_heading-0100_broll-0050_depth030_curl020__target_spoon",
+              "state_sha256": "2c47d296393036e558c16c68c058b8d8bcc8759e5b6524bf7217c37849c94ffc"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_-06_axial250_reach028_open120_seed2026127070_heading-0100_broll+0050_depth000_curl040__target_spoon",
+              "state_sha256": "44c5eb16783f9e2328921c6e61ec8ff1da727e83f22e7aac71373246bdaab270"
+            },
+            {
+              "id": "KFS_packed1_expose_spoon_+10_axial150_reach020_open180_seed2026127003__target_spoon",
+              "state_sha256": "4548f23e5c8d7893e73389e7bf6d3894630be978fa2d9348d6076a4a5f58e13d"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_-06_axial250_reach024_open060_seed2026127064_heading-0100_broll+0050_depth000_curl040__target_spoon",
+              "state_sha256": "49245448b5ea2c5afda24c5b7a9370baae0b5f6da0fac7b1458aed947a7652e3"
+            },
+            {
+              "id": "FKS_packed1_expose_knife_-06_axial200_reach024_open000_seed2026127032_heading-0100_broll-0050_depth030_curl020__target_spoon",
+              "state_sha256": "4c9b08077d524b5850505bdb52a910a69efb220e0ff8127323c13a6d0cca08b6"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_-06_axial250_reach028_open000_seed2026127070_heading-0100_broll+0050_depth000_curl040__target_spoon",
+              "state_sha256": "599bd048d4c3a351a10e8d27dae7a5d3cb222505362121b7a597b13e009cc2f0"
+            }
+          ]
+        },
+        "ga_os_02_fork": {
+          "runtime_bundle_sha256": "24b2f4a93e8acfb2baebdd45ceb967fb3ab8aa24b416266038f9fa7848bbdf57",
+          "source_runtime_bundle_sha256": "b927e5dba1c1309fda65becb8a6a9ff18d6e62f5c574be9cde644998d7910ac7",
+          "qualification_report": "reserved-validation-v15/16_ga_os_02_fork/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_knife_+10_axial200_reach020_open000_seed2026137062_heading-0100_broll+0000_depth000_curl040__target_fork",
+              "state_sha256": "04e14ec1808c0402897a853384970691a6f7cefd72b88e60f67571da46f86e1b"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_-06_axial150_reach020_open000_seed2026137030_heading-0100_broll+0050_depth030_curl020__target_fork",
+              "state_sha256": "0595bc8ec81317c0b2423a9a9ac8a192c40b5f58fca0efecf3abbcb0e7e80ca1"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial150_reach028_open060_seed2026137004__target_fork",
+              "state_sha256": "0dbd44ab06e11bda1109f8c7849365a094c0fab2049409f235a308dbd4ffa47e"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_+10_axial150_reach024_open060_seed2026137031_heading-0100_broll+0050_depth030_curl020__target_fork",
+              "state_sha256": "1b09aca8c80339c8481ee0b9b1a666076d30173df9fdb2d146c73c3b27b2d01c"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial150_reach024_open060_seed2026137007__target_fork",
+              "state_sha256": "2522364866764feed11bb731825bc54bc6a8a8ff3aaaa3464aca2e30a6f1ebd4"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial150_reach020_open180_seed2026137001__target_fork",
+              "state_sha256": "690f51577d5d3d55761f29ff345059ceab188c10ff0fce9c1a704d0ad06bab13"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial150_reach024_open120_seed2026137007__target_fork",
+              "state_sha256": "825123d6b510007cf8790631580ffa8f4bd280e8c3192172aeadf0ee103e6e66"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial200_reach020_open120_seed2026137014_heading+0100_broll+0000__target_fork",
+              "state_sha256": "b8a7ccdbd2c0c5b3f0e70d2a970d778be9c5e40a89c4d08babc32654287a5d1f"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_+10_axial200_reach020_open060_seed2026137014_heading+0100_broll+0000__target_fork",
+              "state_sha256": "c7665ee653dd4beae5c78239330fcced680380f408183d3620d9536f2577040c"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_-06_axial200_reach028_open120_seed2026137033_heading-0100_broll-0050_depth030_curl020__target_fork",
+              "state_sha256": "de1a1a696629efe963222aed44f2997f232554ad471aa4f118c460c17b485996"
+            }
+          ]
+        },
+        "ga_os_02_knife": {
+          "runtime_bundle_sha256": "91c639e7bf5cc376119d401960cddd12f5ca7bd7b5cf57a557daa357b5059ae0",
+          "source_runtime_bundle_sha256": "b46659d2dd10e069bb276926b9ae60e111d72d22b1af084978cd01aa6f66f072",
+          "qualification_report": "reserved-validation-v15/17_ga_os_02_knife/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed3_expose_spoon_-06_axial150_reach020_open000_seed2026137030_heading-0100_broll+0050_depth030_curl020__target_knife",
+              "state_sha256": "0595bc8ec81317c0b2423a9a9ac8a192c40b5f58fca0efecf3abbcb0e7e80ca1"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_-06_axial250_reach028_open000_seed2026137020_heading+0100_broll+0050_depth030_curl000__target_knife",
+              "state_sha256": "065cda6be36a130e440a2692e471d91e405f1ed338259114c211015de31956d7"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial150_reach028_open060_seed2026137004__target_knife",
+              "state_sha256": "0dbd44ab06e11bda1109f8c7849365a094c0fab2049409f235a308dbd4ffa47e"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial150_reach024_open000_seed2026137007__target_knife",
+              "state_sha256": "0de032da9dcac13119a596cb3cde5d301fa730a561602b1382ebc23cff8849d1"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_+10_axial150_reach024_open060_seed2026137031_heading-0100_broll+0050_depth030_curl020__target_knife",
+              "state_sha256": "1b09aca8c80339c8481ee0b9b1a666076d30173df9fdb2d146c73c3b27b2d01c"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial250_reach020_open000_seed2026137046_heading+0000_broll-0050_depth050_curl020__target_knife",
+              "state_sha256": "1f1d944cf06aaef1f3330bf82d04f29c3605ee824c8e1b9df5cae9bf5f799f9f"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial150_reach024_open060_seed2026137007__target_knife",
+              "state_sha256": "2522364866764feed11bb731825bc54bc6a8a8ff3aaaa3464aca2e30a6f1ebd4"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_+10_axial150_reach028_open000_seed2026137006__target_knife",
+              "state_sha256": "272c30a6a5b4f514a3598d571879679d2bf3caf539d18e87097184e3481e5093"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial250_reach028_open120_seed2026137020_heading+0100_broll+0050_depth030_curl000__target_knife",
+              "state_sha256": "4378b91cee9e58b98bff90784267b058e30d732f6f49a4fe6174b3c1443b5c10"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_-06_axial150_reach020_open060_seed2026137030_heading-0100_broll+0050_depth030_curl020__target_knife",
+              "state_sha256": "9e1e6de2c81084005971f02e6e3090423ef3dae7392cff6751a2918972c4e09c"
+            }
+          ]
+        },
+        "ga_os_02_spoon": {
+          "runtime_bundle_sha256": "b060b690b1df234e91c187cf0330708eb790595e8b48b4fbd92c808fa19400f3",
+          "source_runtime_bundle_sha256": "e1e6b6c47966cd15fec976905b577cad164a98eb5dd73f4f945ba4c4725af322",
+          "qualification_report": "reserved-validation-v15/15_ga_os_02_spoon/report.json",
+          "starts": [
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial250_reach020_open000_seed2026137046_heading+0000_broll-0050_depth050_curl020__target_spoon",
+              "state_sha256": "1f1d944cf06aaef1f3330bf82d04f29c3605ee824c8e1b9df5cae9bf5f799f9f"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial150_reach024_open060_seed2026137007__target_spoon",
+              "state_sha256": "2522364866764feed11bb731825bc54bc6a8a8ff3aaaa3464aca2e30a6f1ebd4"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_+10_axial150_reach028_open000_seed2026137006__target_spoon",
+              "state_sha256": "272c30a6a5b4f514a3598d571879679d2bf3caf539d18e87097184e3481e5093"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial150_reach020_open000_seed2026137025_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "4f94e6fbef26f3d4432cc60f87b200f82e8d0552f25bab07e19c82294bb50a55"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial200_reach020_open000_seed2026137013_heading+0100_broll+0000__target_spoon",
+              "state_sha256": "5181fb7b6304e6136722d6353fbe2fbf18210f05004c738b393f1aee551046b9"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial150_reach020_open180_seed2026137001__target_spoon",
+              "state_sha256": "690f51577d5d3d55761f29ff345059ceab188c10ff0fce9c1a704d0ad06bab13"
+            },
+            {
+              "id": "FSK_packed1_expose_spoon_-06_axial200_reach028_open000_seed2026137033_heading-0100_broll-0050_depth030_curl020__target_spoon",
+              "state_sha256": "8a671924c16a572bccad110c01b31bd8d203f9c29331de19c5aeae8692c2af02"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial150_reach024_open180_seed2026137007__target_spoon",
+              "state_sha256": "9078f5a3203486daf85c2b373339a104a7839975d72b9a8b66d98765f3e35cd1"
+            },
+            {
+              "id": "FKS_packed3_expose_spoon_-06_axial150_reach020_open060_seed2026137030_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "9e1e6de2c81084005971f02e6e3090423ef3dae7392cff6751a2918972c4e09c"
+            },
+            {
+              "id": "KSF_packed3_expose_knife_+10_axial200_reach020_open120_seed2026137014_heading+0100_broll+0000__target_spoon",
+              "state_sha256": "b8a7ccdbd2c0c5b3f0e70d2a970d778be9c5e40a89c4d08babc32654287a5d1f"
+            }
+          ]
+        },
+        "ga_os_03_fork": {
+          "runtime_bundle_sha256": "2fb8aa0aff734298c260af3b8e409e4fe58454470d27d55dadbc3b933d68ec31",
+          "source_runtime_bundle_sha256": "33f3decb57247053c7c53ed7324b802da62efd522b1b240e2d65e6c48e1850c2",
+          "qualification_report": "reserved-validation-v15/19_ga_os_03_fork/report.json",
+          "starts": [
+            {
+              "id": "KSF_packed3_expose_knife_-06_axial250_reach024_open120_seed2026347065_heading-0100_broll+0050_depth000_curl040__sv2_fork_01718f0d0e",
+              "state_sha256": "01718f0d0eb4b411bad2c3617d1339c11d7f53184f1d9f7ecc2fc46d80037c7c"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial150_reach020_open120_seed2026147028_heading-0100_broll+0050_depth030_curl020__target_spoon__sv2_fork_018fadc49a",
+              "state_sha256": "018fadc49aff6b1b1fbf635751722fa857d84afb141db25cdb4fc71b41e98dfe"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial250_reach024_open120_seed2026147064_heading-0100_broll+0050_depth000_curl040__target_spoon__sv2_fork_01d00b906a",
+              "state_sha256": "01d00b906ae14eed98529a0cc1c2b56e2fcf78e854f2a616c9c9fe1be2d0e8d7"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_+10_axial250_reach032_open000_seed2027847040_heading+0000_broll-0050_depth050_curl020",
+              "state_sha256": "0239ff53800c9bbce27cba39895b23ac4ba9f9039598a0f8aca8723891c2c5b1"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial200_reach024_open120_seed2026347034_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "031031e3441ed48cbacf5f285bf08842d81261f9806c3b9a309d848e521f3f90"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_+10_axial150_reach020_open180_seed2026147049_heading+0100_broll+0000_depth050_curl040__target_spoon__sv2_fork_044c05a422",
+              "state_sha256": "044c05a4222681046789fd899112f92e7d6340fbe7d6ee9bc4d6a270e8df714e"
+            },
+            {
+              "id": "SKF_packed1_expose_spoon_+10_axial200_reach028_open180_seed2027847033_heading-0100_broll-0050_depth030_curl020__sv2_fork_049aaed778",
+              "state_sha256": "049aaed778399029ec17331b1eab46823e5f2b372e956e4508f8262364ec07be"
+            },
+            {
+              "id": "FKS_packed1_expose_knife_-06_axial250_reach024_open000_seed2026147065_heading-0100_broll+0050_depth000_curl040__target_spoon__sv2_fork_04ed9ee2cd",
+              "state_sha256": "04ed9ee2cd5fdc7ddd848d102e7498243483afb4d20936a52c3c76b4bad8016d"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial150_reach024_open180_seed2026147005__target_spoon__sv2_fork_0591a5f0a9",
+              "state_sha256": "0591a5f0a90009f4ca1cff8498bca7f459f6cb7859e943521a84479e343348e0"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial200_reach020_open180_seed2027847013_heading+0100_broll+0000",
+              "state_sha256": "05ce6d92a463bdf07b47c653c63e7945f79fa1e9b00688572f9a4efbccc9eb69"
+            }
+          ]
+        },
+        "ga_os_03_knife": {
+          "runtime_bundle_sha256": "f25d1ab2ef347b0e18ec0735167781a7d3305c509f5285aa359dab910bfdd8dd",
+          "source_runtime_bundle_sha256": "af1f69a56cc2081a6a344e47c26afa95884bc12e0e781a13d2bb8eff1694d48f",
+          "qualification_report": "reserved-validation-v15/20_ga_os_03_knife/report.json",
+          "starts": [
+            {
+              "id": "KSF_packed3_expose_knife_-06_axial250_reach024_open120_seed2026347065_heading-0100_broll+0050_depth000_curl040",
+              "state_sha256": "01718f0d0eb4b411bad2c3617d1339c11d7f53184f1d9f7ecc2fc46d80037c7c"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial150_reach020_open120_seed2026147028_heading-0100_broll+0050_depth030_curl020__target_spoon__sv2_knife_018fadc49a",
+              "state_sha256": "018fadc49aff6b1b1fbf635751722fa857d84afb141db25cdb4fc71b41e98dfe"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial250_reach024_open120_seed2026147064_heading-0100_broll+0050_depth000_curl040__target_spoon__sv2_knife_01d00b906a",
+              "state_sha256": "01d00b906ae14eed98529a0cc1c2b56e2fcf78e854f2a616c9c9fe1be2d0e8d7"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_+10_axial250_reach032_open000_seed2027847040_heading+0000_broll-0050_depth050_curl020__sv2_knife_0239ff5380",
+              "state_sha256": "0239ff53800c9bbce27cba39895b23ac4ba9f9039598a0f8aca8723891c2c5b1"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial200_reach024_open120_seed2026347034_heading-0100_broll-0050_depth030_curl020__sv2_knife_031031e344",
+              "state_sha256": "031031e3441ed48cbacf5f285bf08842d81261f9806c3b9a309d848e521f3f90"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_+10_axial150_reach020_open180_seed2026147049_heading+0100_broll+0000_depth050_curl040__target_spoon__sv2_knife_044c05a422",
+              "state_sha256": "044c05a4222681046789fd899112f92e7d6340fbe7d6ee9bc4d6a270e8df714e"
+            },
+            {
+              "id": "SKF_packed1_expose_spoon_+10_axial200_reach028_open180_seed2027847033_heading-0100_broll-0050_depth030_curl020__sv2_knife_049aaed778",
+              "state_sha256": "049aaed778399029ec17331b1eab46823e5f2b372e956e4508f8262364ec07be"
+            },
+            {
+              "id": "FKS_packed1_expose_knife_-06_axial250_reach024_open000_seed2026147065_heading-0100_broll+0050_depth000_curl040__target_spoon__sv2_knife_04ed9ee2cd",
+              "state_sha256": "04ed9ee2cd5fdc7ddd848d102e7498243483afb4d20936a52c3c76b4bad8016d"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial150_reach024_open180_seed2026147005__target_spoon__sv2_knife_0591a5f0a9",
+              "state_sha256": "0591a5f0a90009f4ca1cff8498bca7f459f6cb7859e943521a84479e343348e0"
+            },
+            {
+              "id": "FKS_packed3_expose_fork_+10_axial200_reach020_open180_seed2027847013_heading+0100_broll+0000__sv2_knife_05ce6d92a4",
+              "state_sha256": "05ce6d92a463bdf07b47c653c63e7945f79fa1e9b00688572f9a4efbccc9eb69"
+            }
+          ]
+        },
+        "ga_os_03_spoon": {
+          "runtime_bundle_sha256": "519bc1a8e65dd3e4b4c42b489d39b4104ecb53cd2eda51d5f2bc95040be541c9",
+          "source_runtime_bundle_sha256": "05e981598ab06d23b283a507741d28b82be44025e4793170efe03f5fd6174a6b",
+          "qualification_report": "reserved-validation-v15/18_ga_os_03_spoon/report.json",
+          "starts": [
+            {
+              "id": "KSF_packed3_expose_knife_-06_axial250_reach024_open120_seed2026347065_heading-0100_broll+0050_depth000_curl040__sv2_spoon_01718f0d0e",
+              "state_sha256": "01718f0d0eb4b411bad2c3617d1339c11d7f53184f1d9f7ecc2fc46d80037c7c"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial150_reach020_open120_seed2026147028_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "018fadc49aff6b1b1fbf635751722fa857d84afb141db25cdb4fc71b41e98dfe"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial250_reach024_open120_seed2026147064_heading-0100_broll+0050_depth000_curl040__target_spoon",
+              "state_sha256": "01d00b906ae14eed98529a0cc1c2b56e2fcf78e854f2a616c9c9fe1be2d0e8d7"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_+10_axial250_reach032_open000_seed2027847040_heading+0000_broll-0050_depth050_curl020__sv2_spoon_0239ff5380",
+              "state_sha256": "0239ff53800c9bbce27cba39895b23ac4ba9f9039598a0f8aca8723891c2c5b1"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_-06_axial200_reach024_open120_seed2026347034_heading-0100_broll-0050_depth030_curl020__sv2_spoon_031031e344",
+              "state_sha256": "031031e3441ed48cbacf5f285bf08842d81261f9806c3b9a309d848e521f3f90"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_+10_axial150_reach020_open180_seed2026147049_heading+0100_broll+0000_depth050_curl040__target_spoon",
+              "state_sha256": "044c05a4222681046789fd899112f92e7d6340fbe7d6ee9bc4d6a270e8df714e"
+            },
+            {
+              "id": "FKS_packed1_expose_knife_-06_axial250_reach024_open000_seed2026147065_heading-0100_broll+0050_depth000_curl040__target_spoon",
+              "state_sha256": "04ed9ee2cd5fdc7ddd848d102e7498243483afb4d20936a52c3c76b4bad8016d"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial150_reach024_open180_seed2026147005__target_spoon",
+              "state_sha256": "0591a5f0a90009f4ca1cff8498bca7f459f6cb7859e943521a84479e343348e0"
+            },
+            {
+              "id": "SKF_packed1_expose_spoon_+10_axial200_reach020_open060_seed2027747015_heading+0100_broll+0000",
+              "state_sha256": "0692626ca9aa38cc2bb307460956aea6ba3d0cf1e88f2ca85176a2985274e235"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_+10_axial200_reach020_open000_seed2026147014_heading+0100_broll+0000__target_spoon",
+              "state_sha256": "3ce5c1e6dce6b0f4e3daa769cd544e33ceae3f985a1ec962d757a099cadfe009"
+            }
+          ]
+        },
+        "ga_os_04_fork": {
+          "runtime_bundle_sha256": "c51310138a11ef9760354c997b7974bdd477958aff8cece3f3520d888b752eaa",
+          "source_runtime_bundle_sha256": "e3ff357ca2cee532ba2c5cf95cecfc1ef2b14cc40942e7e636dd03abe2803447",
+          "qualification_report": "reserved-validation-v15/22_ga_os_04_fork/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial250_reach020_open060_seed2026357046_heading+0000_broll-0050_depth050_curl020",
+              "state_sha256": "00bca9a5d3d18051cfa04c41a89817ecfbf6346851ae4326077e3f930b643502"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_-06_axial150_reach020_open120_seed2027857028_heading-0100_broll+0050_depth030_curl020",
+              "state_sha256": "01b1e866dfa8f576f94a6299d9f9f57b417f06bd1757bf6c948a8311b06c89dd"
+            },
+            {
+              "id": "FSK_packed1_expose_knife_+10_axial150_reach024_open060_seed2027757002__sv2_fork_0230f8862d",
+              "state_sha256": "0230f8862df2c83e1f939669ad633662cdcf6715b0d3e2a71f73f6a444401e1a"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial250_reach024_open000_seed2026157019_heading+0100_broll+0050__target_spoon__sv2_fork_02d61214df",
+              "state_sha256": "02d61214dfb2cb9490edc49f9f68208e90aa9b637952a55ed77db965344e2c51"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial200_reach024_open060_seed2026157032_heading-0100_broll-0050_depth030_curl020__target_spoon__sv2_fork_039a16d64f",
+              "state_sha256": "039a16d64f8424638ee5e50c8403753e440266200eb80aea17804b4364a32893"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial200_reach028_open000_seed2026157033_heading-0100_broll-0050_depth030_curl020__target_spoon__sv2_fork_0446bf96de",
+              "state_sha256": "0446bf96defccc8f02a6598665e38692eed95db72391e290ecc64403a35cf5fb"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_+10_axial150_reach020_open060_seed2026157025_heading-0100_broll+0050_depth030_curl020__target_spoon__sv2_fork_04aa8755ec",
+              "state_sha256": "04aa8755ec5c81326070fad827890585ae848c50acd92806762900d9ce139dca"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_-06_axial250_reach020_open120_seed2026157044_heading+0000_broll-0050_depth050_curl020__target_spoon__sv2_fork_04b5957593",
+              "state_sha256": "04b59575939a8e90ef1167358c8c71ab88fdad112eea71f74790cddd75c4fe36"
+            },
+            {
+              "id": "KSF_packed3_expose_fork_+10_axial200_reach024_open000_seed2026357034_heading-0100_broll-0050_depth030_curl020",
+              "state_sha256": "05a3370770d018461bd77fa940c42614c52ef2deba4906c13cc05189c1d0e6b7"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial200_reach020_open180_seed2026157013_heading+0100_broll+0000__target_fork",
+              "state_sha256": "19b564fad98681de1dfea28ee33e6f4cf965cac9b16fd5be3e3983caf5e87c66"
+            }
+          ]
+        },
+        "ga_os_04_knife": {
+          "runtime_bundle_sha256": "43d0fa68b9da59706ec419d44a343c2bd8b40655b76e6fc6261ddd369cf3e865",
+          "source_runtime_bundle_sha256": "3e15b715594a14703bba4b71af332581b27a30a76a5d3f847670c4090cf9cb8f",
+          "qualification_report": "reserved-validation-v15/23_ga_os_04_knife/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial250_reach020_open060_seed2026357046_heading+0000_broll-0050_depth050_curl020__sv2_knife_00bca9a5d3",
+              "state_sha256": "00bca9a5d3d18051cfa04c41a89817ecfbf6346851ae4326077e3f930b643502"
+            },
+            {
+              "id": "FKS_packed1_expose_fork_-06_axial150_reach020_open120_seed2027857028_heading-0100_broll+0050_depth030_curl020__sv2_knife_01b1e866df",
+              "state_sha256": "01b1e866dfa8f576f94a6299d9f9f57b417f06bd1757bf6c948a8311b06c89dd"
+            },
+            {
+              "id": "FSK_packed1_expose_knife_+10_axial150_reach024_open060_seed2027757002",
+              "state_sha256": "0230f8862df2c83e1f939669ad633662cdcf6715b0d3e2a71f73f6a444401e1a"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial250_reach024_open000_seed2026157019_heading+0100_broll+0050__target_spoon__sv2_knife_02d61214df",
+              "state_sha256": "02d61214dfb2cb9490edc49f9f68208e90aa9b637952a55ed77db965344e2c51"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial200_reach024_open060_seed2026157032_heading-0100_broll-0050_depth030_curl020__target_spoon__sv2_knife_039a16d64f",
+              "state_sha256": "039a16d64f8424638ee5e50c8403753e440266200eb80aea17804b4364a32893"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial200_reach028_open000_seed2026157033_heading-0100_broll-0050_depth030_curl020__target_spoon__sv2_knife_0446bf96de",
+              "state_sha256": "0446bf96defccc8f02a6598665e38692eed95db72391e290ecc64403a35cf5fb"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_+10_axial150_reach020_open060_seed2026157025_heading-0100_broll+0050_depth030_curl020__target_spoon__sv2_knife_04aa8755ec",
+              "state_sha256": "04aa8755ec5c81326070fad827890585ae848c50acd92806762900d9ce139dca"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_-06_axial250_reach020_open120_seed2026157044_heading+0000_broll-0050_depth050_curl020__target_spoon__sv2_knife_04b5957593",
+              "state_sha256": "04b59575939a8e90ef1167358c8c71ab88fdad112eea71f74790cddd75c4fe36"
+            },
+            {
+              "id": "FKS_packed3_expose_knife_+10_axial200_reach020_open000_seed2026157014_heading+0100_broll+0000__target_spoon__sv2_knife_066c63a524",
+              "state_sha256": "066c63a5245114d4b1686de968440f1e3372abbd63e37aca46941b4720c77bb0"
+            },
+            {
+              "id": "FKS_packed1_expose_knife_-06_axial150_reach032_open000_seed2026157026_heading-0100_broll+0050_depth030_curl020__target_knife",
+              "state_sha256": "36a6d4014f2d0643b52044c4a112933d8c849ead3cde575618872899034f1288"
+            }
+          ]
+        },
+        "ga_os_04_spoon": {
+          "runtime_bundle_sha256": "7753f1258c01abab04d01f2f0b4d61ae66b1e1e065a382d27434d4b77dd1dce2",
+          "source_runtime_bundle_sha256": "75fc2ecaf3db067ae0356d61ee40a182f11b2c9554abf379e0a57b2f966cff3b",
+          "qualification_report": "reserved-validation-v15/21_ga_os_04_spoon/report.json",
+          "starts": [
+            {
+              "id": "FKS_packed1_expose_fork_+10_axial250_reach020_open060_seed2026357046_heading+0000_broll-0050_depth050_curl020__sv2_spoon_00bca9a5d3",
+              "state_sha256": "00bca9a5d3d18051cfa04c41a89817ecfbf6346851ae4326077e3f930b643502"
+            },
+            {
+              "id": "SKF_packed1_expose_fork_+10_axial250_reach024_open000_seed2026157019_heading+0100_broll+0050__target_spoon",
+              "state_sha256": "02d61214dfb2cb9490edc49f9f68208e90aa9b637952a55ed77db965344e2c51"
+            },
+            {
+              "id": "SKF_packed1_expose_knife_-06_axial200_reach024_open060_seed2026157032_heading-0100_broll-0050_depth030_curl020__target_spoon",
+              "state_sha256": "039a16d64f8424638ee5e50c8403753e440266200eb80aea17804b4364a32893"
+            },
+            {
+              "id": "FKS_packed1_expose_spoon_+10_axial200_reach028_open000_seed2026157033_heading-0100_broll-0050_depth030_curl020__target_spoon",
+              "state_sha256": "0446bf96defccc8f02a6598665e38692eed95db72391e290ecc64403a35cf5fb"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_+10_axial150_reach020_open060_seed2026157025_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "04aa8755ec5c81326070fad827890585ae848c50acd92806762900d9ce139dca"
+            },
+            {
+              "id": "KFS_packed1_expose_knife_-06_axial250_reach020_open120_seed2026157044_heading+0000_broll-0050_depth050_curl020__target_spoon",
+              "state_sha256": "04b59575939a8e90ef1167358c8c71ab88fdad112eea71f74790cddd75c4fe36"
+            },
+            {
+              "id": "FSK_packed1_expose_fork_+10_axial200_reach020_open180_seed2026157013_heading+0100_broll+0000__target_spoon",
+              "state_sha256": "19b564fad98681de1dfea28ee33e6f4cf965cac9b16fd5be3e3983caf5e87c66"
+            },
+            {
+              "id": "FKS_packed1_expose_knife_-06_axial150_reach032_open000_seed2026157026_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "36a6d4014f2d0643b52044c4a112933d8c849ead3cde575618872899034f1288"
+            },
+            {
+              "id": "KFS_packed1_expose_fork_-06_axial150_reach024_open180_seed2026157007__target_spoon",
+              "state_sha256": "3b0a71d71030ea7cedba14f4c29daad2688f765a9c97a417e2de51d7f3fcc2bc"
+            },
+            {
+              "id": "FSK_packed1_expose_knife_+10_axial150_reach032_open180_seed2026157026_heading-0100_broll+0050_depth030_curl020__target_spoon",
+              "state_sha256": "54b3c274132e7801e2356283816898dbaad65f161f03e993d25ca71f1330dfad"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "ga_os_protocol": "held_out_objects_unseen_geometry_dependent_grasps_v1",
+  "ga_os_scope": "Held-out objects and unseen geometry-dependent grasps; same generation procedure; no independent spatial extrapolation claim."
+}

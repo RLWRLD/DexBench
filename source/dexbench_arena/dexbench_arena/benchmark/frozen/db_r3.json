@@ -1,0 +1,686 @@
+{
+ "outputs/db_conditions/db_r3_train/dexbench_retail_e1_fc_r3t1.jsonl": {
+  "sha256": "616625d089da48a768c1b5e40f59855355a53b50864cdeaa269a4ed5f89915e3",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r3_train/dexbench_retail_e1_fc_r3t2.jsonl": {
+  "sha256": "6bed010a731f9bad1d951300ce4d7c50e8202ef4afd551379317c0914a87c0c1",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r3_train/dexbench_retail_e1_fc_r3t3.jsonl": {
+  "sha256": "ad267fcd3e659db405e14c1a6f3b8f2d8b9285ead39ca04138560bcd70441b61",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r3_train/dexbench_retail_e1_fc_r3t4.jsonl": {
+  "sha256": "986ad20e73a369f3c7b3efdbae328f9d2b70bb5f2f08ab05a6e498a9ac3a7856",
+  "rows": 30
+ },
+ "outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e1.jsonl": {
+  "sha256": "2c3b43ab1caa6e416be4fcbea4858ebe8c6c56506079ca213354fdc3d3ce2527",
+  "rows": 24
+ },
+ "outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e2.jsonl": {
+  "sha256": "5fc0d6e0531a9bcc216935eb4e24d8da6a49aa813e7210198c5c334eb4995934",
+  "rows": 24
+ },
+ "outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e4.jsonl": {
+  "sha256": "de28b2ffda697e103d5a22d63fffa2c226826ba900332863d12e99eff527c4f1",
+  "rows": 24
+ },
+ "outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e5.jsonl": {
+  "sha256": "0d0d69a3a1e9b6f6ef143cdd9513dcffac1fb1f53b0f34212c47caee79127acc",
+  "rows": 24
+ },
+ "outputs/db_conditions/db_r3_ga_o/dexbench_retail_e1_fc_r3e6.jsonl": {
+  "sha256": "95e4adc33e7d1aab602368edcc368c6f4979b866c7b7374cec7e92e7cccc4f1a",
+  "rows": 24
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_e.jsonl": {
+  "sha256": "96ef0d1476e7e0250e293d14765a7e8e16131091c9d8130648449344cad07210",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_ne.jsonl": {
+  "sha256": "381620bb8f46bac7402a81f7ea4cc1bb7c31c9997558a951211065a7a4f8a2a8",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_n.jsonl": {
+  "sha256": "3e93ca0809a21e60055d13ec2dea40c6e1d7740c4b2208a463ea6543ba6e3d65",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_nw.jsonl": {
+  "sha256": "ebc413808397847c7ab2f492bca11feaf0e3b59406d5f1b3cf77e55dd39840fb",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_w.jsonl": {
+  "sha256": "af722d5f6ae596461291143a620b9d1d2543adf715907e10720be59777a159df",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_sw.jsonl": {
+  "sha256": "c69345109d3fdff46661715c64977d929a29170e55a79a98cd1ddf411849e8b3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_s.jsonl": {
+  "sha256": "06eac777c0ca0bbca0e5844e9141dce45f1b89982a5b18542d521fabd51d7153",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_se.jsonl": {
+  "sha256": "456c3dd2a51fca57674cd34a64f62b378ad8a8251a4334e4597443127d8916a6",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_e.jsonl": {
+  "sha256": "748774618a505312b150bf55745f0ac08d724582b653e3b4046594450658afda",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_ne.jsonl": {
+  "sha256": "1e5197505930dde8adb8dc3735defb3f67676cbaf44ee347a7ab7b983921f200",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_n.jsonl": {
+  "sha256": "65362c9a0ec44743418a8ed535a7965f440315fd269c76c70f9fd604278027a2",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_nw.jsonl": {
+  "sha256": "4d24ed144abde833b4b655ddf8d6cd9ff464a6a17dab47a0030831ebb6556719",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_w.jsonl": {
+  "sha256": "ecfadc01af4f006699351db13045f2548f53b5496c19b441819cfd4f6cc00b81",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_sw.jsonl": {
+  "sha256": "de168ec8b8c8e3a434f3853af1ff02a20870179edfe7719235311e9527d41477",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_s.jsonl": {
+  "sha256": "41ab5502a56c22205c480b50ecb77ddacef7833ad3c6e6f0c72e374c709e39f7",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_carton_se.jsonl": {
+  "sha256": "974f2b6a564734db8f9041a68b5c3815384ba487130f527b796ab457f17cfb1e",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_yaw_p6.jsonl": {
+  "sha256": "851141310bb81747c2d233518164b6f3c9d5bc4fc4241e79e4820c630a25066d",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t1_base_yaw_m5p8.jsonl": {
+  "sha256": "1bf775809f7a85d888d750078e3d2ce3e4c9d1e398f5270950c7fb36cfb29648",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_e.jsonl": {
+  "sha256": "dddb0bd783ed52a0ff141d57abb08321ad43ec04b198234c8caf37f9676a668f",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_ne.jsonl": {
+  "sha256": "3897289eea4fb43d2f3aafabd24b50624b50a63cc4171e3156e8ad209d681b16",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_n.jsonl": {
+  "sha256": "8591e064222f3b9283e996e7fdd1c30270e6c1c1dd81c951b40e3efc43253e1d",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_nw.jsonl": {
+  "sha256": "fe4e4905f281d7ab8cd9b2fdd3e21fa02a19f68186dc7ff35cd33a3ebf35aad8",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_w.jsonl": {
+  "sha256": "d5ff4b9819082a94930b01b3089cc31f96dd8b8f02f1dc44cbd47b62a70fbdfa",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_sw.jsonl": {
+  "sha256": "f111e10905d496cdf6beb63527c2548f22a1ccb5e6641ca2f665d38e98c5ad7b",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_s.jsonl": {
+  "sha256": "3bdf807210acf40b66e52c6174309927dfb4ff11e586c3405b252a4a273af3db",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_se.jsonl": {
+  "sha256": "88c1a3305bf277e21f41e4453ba7bda5ffcd65470a67be80d7fa1fc7d6bc98e8",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_e.jsonl": {
+  "sha256": "2fabf5c54c37dd2b791eb7503fb77bb69e811be8f2e9bfab7ed7781c54caedaa",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_ne.jsonl": {
+  "sha256": "eeff2baee5623f72815fef0c243eeacaa5291c5a6f28a87090aa864d6b256165",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_n.jsonl": {
+  "sha256": "d0dd0035efec223bd7ab7bd2c8c47ee75a0ec5ae70265f27a5e49138b1341f7b",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_nw.jsonl": {
+  "sha256": "260147c6ee974cbf557ea8cb438188a298ae9868b47868ce11ed83b72bb186bd",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_w.jsonl": {
+  "sha256": "1a681fa2ff1924cb23c1bd416eec3a2a1affd423b48923b1c87f6fbd5134722b",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_sw.jsonl": {
+  "sha256": "df5cbfad1fe61c1d74e47f9294f1119e1b313704c21aebbb3580362599db7b1d",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_s.jsonl": {
+  "sha256": "22e92304be6d46bd816f5acfc59d3385d2a932bd5f5a9b96cfeb8312090be1d7",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_carton_se.jsonl": {
+  "sha256": "a9a958b126717ac5a8df4957a77a9b4af38d43c19b9281acba1429b1eb65d096",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_yaw_p6.jsonl": {
+  "sha256": "2d01e6a7889a8086e329c747230bef60128f3bd84758f8bc05584ecb777833ec",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t2_base_yaw_m5p8.jsonl": {
+  "sha256": "6b353800ef98c7991e0817d64982e8421e79df6e24bb417b16cc2dee055b4287",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_e.jsonl": {
+  "sha256": "9756a560f7eca51c367c1a30727eba2ac142145dd0c56e5ff1187b2cbefa9968",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_ne.jsonl": {
+  "sha256": "9d09bec8789c1cf1c9a0bb5a4544a3dbc788c4017e07a6a6ef30a16da636f68a",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_n.jsonl": {
+  "sha256": "0e10858b9a74815771e6d7b548af1b68c88372dea13b6539d9d5061ec6920ade",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_nw.jsonl": {
+  "sha256": "721c361631bce3d4f6f51c1f495965e9a33cbc1f02d3bf4535b1460174308f72",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_w.jsonl": {
+  "sha256": "ddd4e9ced8bcda6f45ce5ab18bf3675d6383ac66d7c5e7ca379cb9bf46bd7d26",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_sw.jsonl": {
+  "sha256": "5373c35fb7c378e8b42985bfe1579a763a248bf48915defea766d9fa7c37b488",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_s.jsonl": {
+  "sha256": "c4e3fdccedcb34f4dd03647be55711100836221b0ace348d6e038fb42da54f9c",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_se.jsonl": {
+  "sha256": "8e14d57b8d8a3eb269f24f02e2b09a170b6fe4af07271184a8c42aad192879fe",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_e.jsonl": {
+  "sha256": "d6c26201b878c6c54a5e0c01efb5d4d6c12fc92098ff07a50c4f51dcdd8d6cc0",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_ne.jsonl": {
+  "sha256": "34830dae9fc8dae83ddebf3c2c3091ac0ea4bf77298c911f85a921d380927792",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_n.jsonl": {
+  "sha256": "f4dc297af2cc250a93076bc37a03abaa03b452795e699431d82e7bd929dcfc79",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_nw.jsonl": {
+  "sha256": "5903c395d801edd705ae7c45302b5aab0fee50c111aa0bc959a48c87c9859ee9",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_w.jsonl": {
+  "sha256": "1daef23ea93f87cd8eed62d18427373c3f310444268413acef9f868c735aa635",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_sw.jsonl": {
+  "sha256": "8d088bb6551c35a9e24c4fb4176acff4af2ca54430d29cfb4775d7e9dba31f83",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_s.jsonl": {
+  "sha256": "a79849f017b9f97c794f8c74983becdb1eacc522971b76679b00d33b4b7f35c3",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_carton_se.jsonl": {
+  "sha256": "ae12ff5b19b7b1b07d82f510711babad2572b2cd43a7b22d20158f5514b6bd87",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_yaw_p6.jsonl": {
+  "sha256": "2554af3beb9d62803331fed8e74aad2b1725beadb1924c79f8ecddee4a948c44",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t3_base_yaw_m5p8.jsonl": {
+  "sha256": "2dca4478b58b10e45a770f950762da200c74ff083d18dfba561271fd6550e3b0",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_e.jsonl": {
+  "sha256": "3cdbcea2a21711e73e1b54e417238e377d6d7595d1dae4ab33e9f47a32fa76ef",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_ne.jsonl": {
+  "sha256": "785781b4cf659f11c321cc7232d14f766abf36c1b78f64e7ff81ea7a464227e3",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_n.jsonl": {
+  "sha256": "5f07381019b11d979360eb15198d22029b96e6a5e109cd5669c8724cc41beb9c",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_nw.jsonl": {
+  "sha256": "79335912487116a86808629e655e73e7986952b9569e7b008eda7431d9223501",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_w.jsonl": {
+  "sha256": "1b7dacf17bdb6c233fdc592483e5d153f1d9be24e6f9d7688c1944313de386e6",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_sw.jsonl": {
+  "sha256": "a7c737a06bd65dbfaa61a9be9613fd4f72442d5606ada41f4298013abbbb5d33",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_s.jsonl": {
+  "sha256": "9852d921dafc3f13ef301d228fafc5c94ecc9788ef74016aa5aa247ea49305a4",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_se.jsonl": {
+  "sha256": "5083876a771ea5f2316d6b96828287d9b0f3ae9c472b1621ec693f1df4549fbb",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_e.jsonl": {
+  "sha256": "1e5d980c87cb864b0992838c28d3b6a864dabb0a706dc0ddf226736071815983",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_ne.jsonl": {
+  "sha256": "9e6ed24814e3973104a7e03fa82f992373d562a28ad67a2982c882e6b89f2149",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_n.jsonl": {
+  "sha256": "86ecbb65d3369f5030aafea4fc01b3b1509892f1119b9f3aecb5417597ce466f",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_nw.jsonl": {
+  "sha256": "cc63ed5edd79ed5c970ee766559bfb456213be21c4885f2920bcefe7e8a3e264",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_w.jsonl": {
+  "sha256": "52ef757931aa0655af06094d1e78556b10cccf65c19ab61d0ed3eabf984e9b4d",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_sw.jsonl": {
+  "sha256": "bfed96eca39ed1996ae59c8497535bae6eb665465566d5f93576391fcae3b2d7",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_s.jsonl": {
+  "sha256": "4c0b6f55e9f9b81cc1b676ae146287fe97873bfbcd694146ab39377a011128ea",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_carton_se.jsonl": {
+  "sha256": "5356ae03b638673edf3d3e019423c6b828bb7f15b8c0687e1ea01c5e618f35be",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_yaw_p6.jsonl": {
+  "sha256": "ee35f94bc87c0662f363398211452b64c76c4a8f50541bbd8c70101751c3959b",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_s/dexbench_retail_e1_fc_r3t4_base_yaw_m5p8.jsonl": {
+  "sha256": "7cdda6863ee86a53ca22fde04dce13485e3507f4b00a5bbe1de1cf60b1a18802",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_e.jsonl": {
+  "sha256": "7235b3b57e4e8fac1ef3bd1dd03d57d74399287d05a9a3ce233ac61498b2cd85",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_ne.jsonl": {
+  "sha256": "f2179ac7b5fe1a610f2e42dfc5089ca8269421c7c9be679b2c31775d18faf007",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_n.jsonl": {
+  "sha256": "7ff70a95d5e96c04e0b03ccbda82032e4fdacb973c46727f7cc3c33f739870ae",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_nw.jsonl": {
+  "sha256": "85ef6af54ff6d2aa9014d077a5d6a2bd5eadb28a281dc09adcd6bacabf72e9d3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_w.jsonl": {
+  "sha256": "9be4d3473703260be1c3011764578b776fb331f8d7228567bb211d01186b1afb",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_sw.jsonl": {
+  "sha256": "32b002a47f9a41445429ae7593a39104e4bf8a32779fd8091fa8b02f944c2e58",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_s.jsonl": {
+  "sha256": "447558c9997ed6920856a5574d0515fe47ae3284ffc13c71bb46739dd69047a7",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_se.jsonl": {
+  "sha256": "50e231432002bbfdda4c08cd0c1ad98ff94c09ad3900b234d91190fa153c427f",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_e.jsonl": {
+  "sha256": "c0469c90a6bf6701e07e9103cc59f4e6e84972cf32ae1fe5ccfa6161941dd6a8",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_ne.jsonl": {
+  "sha256": "fed17be54ffb167978434986090776d5dc794f2e4d0401a0daf4f76f74051225",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_n.jsonl": {
+  "sha256": "4649843167394e660a9b839560339947d1a27ea664640d4809cd16395b958d89",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_nw.jsonl": {
+  "sha256": "57045176482322d334ccac3a68c573b609d48e86ed479eea17b18b58c94c7dd3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_w.jsonl": {
+  "sha256": "a04be31269e39327db8c6a6f6f63a9c76cdb94d6c68a4d62af15e545e93ef014",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_sw.jsonl": {
+  "sha256": "56eb3574e092e46e83f9b9eddd9dd9ce746712a05ef45131d8841b855ae8afa3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_s.jsonl": {
+  "sha256": "70ea0662d833dd8b3aac27cf4561184f470cc5f4d7849d78dc2b8d7b2d66253e",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_carton_se.jsonl": {
+  "sha256": "11b5c7f9871a8dbe18402a6aea7cd2fc264303345a44b937131460a2e8f1a78e",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_yaw_p6.jsonl": {
+  "sha256": "c788ab9f82ed7835ac86c7503417d50ff2e4e19783804b8ede0f91791be1a806",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e1_base_yaw_m5p8.jsonl": {
+  "sha256": "89250b35ba03ebf624aa469ab4115206797e4f70e413894a3b9ff0665f7b5eb6",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_e.jsonl": {
+  "sha256": "cfc375e04800dbfd1e571e429c98c452b35ea1e0a108ba030ded203f0e0167e4",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_ne.jsonl": {
+  "sha256": "862cb1c15595c7267c21aca0d21fd300887ff4dddf9db2092d02223330237c6f",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_n.jsonl": {
+  "sha256": "a7af7295c7704de46ae8e6d712cea93af10680472abfeb83a0f80e1927bac46e",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_nw.jsonl": {
+  "sha256": "f3339e206aa3a1ad4198bd94438169e7a82d65bac8de66099f6ccef17bc58210",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_w.jsonl": {
+  "sha256": "7f2aab27a43cd382789e182342a57791c4065d86f8ab5d8579ad2f136b6dd89f",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_sw.jsonl": {
+  "sha256": "6b54a3b0632de0816c76ed50968f4d9b5cb41649058a34d55274f33cc6c7b18f",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_s.jsonl": {
+  "sha256": "8d467211df5b761de20a288e3718b201fe18133e06095656008498410773a064",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_se.jsonl": {
+  "sha256": "92e2a794caf48445b8c4953be133d6207e11bb11f558cb11c2ed1912b42b377e",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_e.jsonl": {
+  "sha256": "8589e1d90604a8f87994cb72afad25ea62d96c886166492b975c4628bd7ad0d6",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_ne.jsonl": {
+  "sha256": "bfbe7db04814b13927fa6d402c5ac1211dc6edede7747ef5f26eb0970fbfc778",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_n.jsonl": {
+  "sha256": "da0fc4bfb3118359e4e45977b6b213af359036e8b784a89448bc56c2c7e95534",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_nw.jsonl": {
+  "sha256": "78da1811b7f365757a3cdfe1543b56357c95fb2b0e4edd87663937c7e8044a66",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_w.jsonl": {
+  "sha256": "ff0e0b6bba308d081153b4bf9391ebe0b4a1cf9a6309f005635797d68f47d251",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_sw.jsonl": {
+  "sha256": "2d3c83cf44b0591b915f189428f76ddf3aa5896761625227250cc8b5cda3e5a7",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_s.jsonl": {
+  "sha256": "22e4b3bf7ec60be7298271bcd5534f01fc9c54fc77d0b086f75896eff54a66d6",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_carton_se.jsonl": {
+  "sha256": "19931471b3ad1bb1c3fc003cd641635601ea0d57c963b74be2e3c21c83b81749",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_yaw_p6.jsonl": {
+  "sha256": "2f47b368f9b2e0e29392425dfa9045edfd8ae805b3f24243b161d68bbfe3b0d3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e2_base_yaw_m5p8.jsonl": {
+  "sha256": "e20b7103f3ce4326739720946b702d94740d8d20bd2080e28aadb768e07ed09d",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_e.jsonl": {
+  "sha256": "90d3e22b02ff625fb7d85f62e64666e18c537a44aad8d0a2a60f6630f7cc7095",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_ne.jsonl": {
+  "sha256": "0eb32567b6d5bacd1a6dc17cfd3f0b234479e2b613fedb79d8ba989fbe2db0a2",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_n.jsonl": {
+  "sha256": "6bd6472d48927f5a08ef7f032b7d67998c049e982d974cf2f233cccd5862b0bf",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_nw.jsonl": {
+  "sha256": "65a714d753d35c4344725f3c93e943b145e3ec253785ebe4e8f126203d07e376",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_w.jsonl": {
+  "sha256": "1ce7c68f13e0a0c9322284be05c032b6dca9377d174aa6941fa4ae0c040719a5",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_sw.jsonl": {
+  "sha256": "83fa8b5683bd34db070934fbb3fb0d0b6ca0302fabbfbd68e63c3f2d9ea31af5",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_s.jsonl": {
+  "sha256": "eead3e86b21297b2d9cbf449066e5211192f604d8a7d71f369c0fb51543bca4a",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_se.jsonl": {
+  "sha256": "591bc4185541706d70ef3c51e7cfd95f237bcb3358c1818ea186b08584a15549",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_e.jsonl": {
+  "sha256": "9de5969af1f71a0f12df4c864400c9d021ea8a9ba654e98b76d14b79e103e68b",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_ne.jsonl": {
+  "sha256": "ed68d0ecd04aa4165dac4f629b5f8100bfb75f79ac0f719dd608f2698a34a9d9",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_n.jsonl": {
+  "sha256": "4d33a99c75addb55f41d1c750c851cf482cb63800443e876b9d4fbb0267e4084",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_nw.jsonl": {
+  "sha256": "7371bb39792c866d5b53fec4a441a58a16ca6febecc8a898e43f953fe14670b0",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_w.jsonl": {
+  "sha256": "456968ce75aedb3308857d7b00ad727571ebfd0a698534b0b29bb8e0a8e25254",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_sw.jsonl": {
+  "sha256": "ce7f0a6189b5358d91b86dc805d57079fe929cfa1dccd6f24aa289dead905b46",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_s.jsonl": {
+  "sha256": "7fc7a983d77e21b90d5785f79342e73bb0691c8a7e268a54703fd17b04bef639",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_carton_se.jsonl": {
+  "sha256": "4ffb300d97449c24de9da06fbdc114459decbf07ecff2ca1f7aa0d3d646b6cb6",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_yaw_p6.jsonl": {
+  "sha256": "07feaa7e6c015504c3c6d73651c49c9a39598e08fda1f01a66b8579865ab5f3e",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e4_base_yaw_m5p8.jsonl": {
+  "sha256": "767d1cb1c0a9542566d2db722c42c67969b1a7f307c0a625d9726d51dd4e2302",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_e.jsonl": {
+  "sha256": "b636e4cf8344dd16ac021f6daa6b710eb66e811296264d5f4c27c8e076f3f67b",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_ne.jsonl": {
+  "sha256": "2aeec34a19e42656ed5ebe5aa3df3f6503e5908506f33253b096b4da035653e3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_n.jsonl": {
+  "sha256": "94d33494bf8da73cbccee1ea44cb88bad5860061d2c928447e4624d8a047f5fb",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_nw.jsonl": {
+  "sha256": "0ad28254ef4b94d08292cf98b476732be1bedc9757f07d68c52cd0c3b8f83726",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_w.jsonl": {
+  "sha256": "88324a487b3fbea50433a71abae2cec1b5f11d2b492758b2957db468a2948769",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_sw.jsonl": {
+  "sha256": "efe550a33a2698856935a523eb5f1885150e2a620952565f90ffabaf3da666d0",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_s.jsonl": {
+  "sha256": "591193b17819baa0d03640b917051d9ab44dff91ec9386d15eb11b13c284045a",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_se.jsonl": {
+  "sha256": "44e6a2b014151c78b63877deed3e1534ef31d23650ad9bfe31e43dcd34ca3321",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_e.jsonl": {
+  "sha256": "f2d9b2967ba3775d963789021beb114bcfbf6aa1483276fdb8d972a9ef5c1c8d",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_ne.jsonl": {
+  "sha256": "b6c3236a9804e32ec31660efa574faf0969a1cec827aab85aa527e20e30d026f",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_n.jsonl": {
+  "sha256": "a0a92549c68a550449a8012a0d251348e3670f9c810f889d997a86aab5b299c7",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_nw.jsonl": {
+  "sha256": "fdefec934b787f327df44e43bb92f9c83e2ffb44bef9c313e84e83f4dc5f6979",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_w.jsonl": {
+  "sha256": "54076d64c158919003398e1d44a5fb9c95101cfc07325502304caad430bb2dc1",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_sw.jsonl": {
+  "sha256": "de3b7de296d2b76ca2b448a0cd9908ac54d5ae76c2f29100d8958602397972de",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_s.jsonl": {
+  "sha256": "67a5992b376095743bcd3108658fa4bd67e651ec7b3038df301978f62162be65",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_carton_se.jsonl": {
+  "sha256": "455e3a5d27026253a58f8c80123bbdf7679acc36f6247ab1e2c78388672c851f",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_yaw_p6.jsonl": {
+  "sha256": "718b3c1473e7e16d49245ecc9f9b9b3f38d782aa5cc8abf2e92ae763e6f2661d",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e5_base_yaw_m5p8.jsonl": {
+  "sha256": "2c69047e34620167cfb59a6323976cebd2ae88a1fcaf806b6d06011bd8a820c3",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_e.jsonl": {
+  "sha256": "0133db3df633fc6115e9276a903ab8218e05040e6f1f46f7401fca77bb03b9a1",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_ne.jsonl": {
+  "sha256": "04c40817ea235b7323aaf5b8a260581be7cccbba8d1e262e838dd436402c4a23",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_n.jsonl": {
+  "sha256": "cf669adce40f20ebd413fc0b83919ba9207d770a867e3696031c8b59eac9a919",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_nw.jsonl": {
+  "sha256": "8b30133e35b2da16c30ddd6f74baa9d180281184589caac963c5a25f3d19ad87",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_w.jsonl": {
+  "sha256": "f218f1a1587d74ece1d93e9e96c3123dc823834f346d45ca71e977216c6e96c0",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_sw.jsonl": {
+  "sha256": "f56025322fd093b257d2c70e479f48dc8d4cfa0f824dd61f254ca285f4d5fa8b",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_s.jsonl": {
+  "sha256": "998f49ee3d9fbd584c28dbf7842890f221c1fc22965c2f5694e2b6bf8815373b",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_se.jsonl": {
+  "sha256": "7129d57ddf44f4320a249f66c5a17255a5d8fa3e50fa5b57141bc0a71a604883",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_e.jsonl": {
+  "sha256": "31f0184344892184d5116a5dc98edb4a841267a6bde8c80e66caaa42530adfc2",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_ne.jsonl": {
+  "sha256": "742f34e91e6e28a42f891719be1c6b3bcd1973fa25c70a5ad13248728236f203",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_n.jsonl": {
+  "sha256": "c41081837a6709a6ac2edb77b8d74d13417d60afe129ce64fad402822ffc5d92",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_nw.jsonl": {
+  "sha256": "e33bf1c0c6bcbf95d12c8d7ddf43ce5d27494a859d986a89bdf0d97ce3bd151a",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_w.jsonl": {
+  "sha256": "24251ecf4dd4458e30a2142cd04c882b80bd2228f4ce60dafbe5d42dacce468f",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_sw.jsonl": {
+  "sha256": "89eae4759b360001962e4c9633418733b2dac96502b78c194cc8de3096564911",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_s.jsonl": {
+  "sha256": "dcc0129672d01570d8501725793da3b1fcf98ddd659099aa931c0f72be9e09ca",
+  "rows": 2
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_carton_se.jsonl": {
+  "sha256": "f5bfc90334b23dbb246ee90bab4838851a1e84f66e94ce37b4d71a276103926d",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_yaw_p6.jsonl": {
+  "sha256": "5ed046f4ec0eab5e2dda2083b1f038e27d4b1efcca8bcceab3a9e09e82b69dc6",
+  "rows": 1
+ },
+ "outputs/db_conditions/db_r3_ga_os/dexbench_retail_e1_fc_r3e6_base_yaw_m5p8.jsonl": {
+  "sha256": "61f871b9fc27999ed0598c309bc6f68cd6570ea1594eacebb5d11d236629a738",
+  "rows": 1
+ }
+}

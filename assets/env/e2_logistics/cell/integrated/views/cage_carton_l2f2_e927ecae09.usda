@@ -1,0 +1,12 @@
+#usda 1.0
+(
+    defaultPrim = "Box_KRPost_04"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "Box_KRPost_04" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_e927ecae09a47c332213/Box_KRPost_04>
+)
+{
+}

@@ -1,0 +1,43 @@
+# DB-M3 (E3 cell, power_driver_fastening at the A_m3 anchor): pick up the power driver from its workbench and fasten
+# B1 and B2 of the open-door centre-hinge station on the low conveyor. Newton only.
+# Recording experiment: every draw live at its training range; the task's own cap,
+# 210 s.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: power_driver_fastening
+    anchor: A_m3
+    rby1_control_hz: 30
+    # The robot base's place, drawn at every reset within +-10 mm in X and Y, no turn, and recorded as
+    # dexbench_rby1_wuji2_joint.base_pose; the M3 staging refuses more (the pickup and low-conveyor corridor).
+    base_jitter_radius: 0.01
+  environment_builder:
+    presets: NEWTON
+  variations:
+    # Where the driver lies on its workbench, drawn at every reset and recorded as power_driver.pickup_position:
+    # [dx m, dy m, dyaw rad], +-10 mm, no turn (its domain keeps the battery on the bare workbench).
+    power_driver:
+      pickup_position:
+        enabled: true
+        sampler_cfg:
+          low: [-0.01, -0.01, 0.0]
+          high: [0.01, 0.01, 0.0]
+    # Where the station (the cabinet, its screw guides and the conveyor) stands, drawn once per build and recorded as
+    # center_hinge_fixture.position: [dx m, dy m], +-10 mm (M3StationPositionVariation; the open door's clearance).
+    center_hinge_fixture:
+      position:
+        enabled: true
+        sampler_cfg:
+          low: [-0.01, -0.01]
+          high: [0.01, 0.01]
+  policy:
+    # Holds the start pose (a zero action would drive this embodiment's joints to 0 rad).
+    type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  rollout_limit:
+    num_episodes: 10
+
+runs:
+  center_hinge_fixture:
+    environment:
+      m3_fixture: center_hinge_fixture

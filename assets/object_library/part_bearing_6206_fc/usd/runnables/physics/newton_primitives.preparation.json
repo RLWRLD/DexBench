@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "part_bearing_6206_fc_newton.usd",
+    "sha256": "a9ac103bbbfc134392bd7c5e86cdf8ba0e8035db024467e91c87bfa594b7d2f3"
+  },
+  "pieces": 1,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/Part_Bearing6206",
+    "sources": [
+      {
+        "prim": "/Part_Bearing6206/Geom/part_bearing_6206_fc/PartFC_Bearing_Mesh_visonly/PartFC_Bearing_Mesh_visonly",
+        "authored_approximation": "visual",
+        "vertices": 32624,
+        "physics_material": "/Part_Bearing6206/_physics/PhysicsMaterial"
+      }
+    ],
+    "max_convex_hull": 1,
+    "coacd_pieces": 1,
+    "start": "coacd",
+    "primitives": 1,
+    "kinds": [
+      "cylinder"
+    ],
+    "cost": 0.4525,
+    "excess_over_mesh_ratio": 0.45041,
+    "missing_ratio": 7e-05,
+    "growth_vs_vendor": 0.01061,
+    "lost_vs_vendor_ratio": 0.00155,
+    "seconds": 7.1,
+    "constraint": {
+      "kinds": [
+        "cylinder"
+      ]
+    },
+    "primitives_detail": [
+      {
+        "kind": "cylinder",
+        "center_m": [
+          -2.3e-06,
+          7.2e-06,
+          0.0080032
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.0310099,
+        "half_height_m": 0.0079868,
+        "physics_material": "/Part_Bearing6206/_physics/PhysicsMaterial"
+      }
+    ],
+    "collider_volume_m3": 4.831e-05,
+    "part_volume_m3": 3.3309e-05,
+    "vendor_newton_variant": {
+      "pieces": 1,
+      "collider_volume_m3": 4.7803e-05,
+      "excess_over_mesh_ratio": 0.44758,
+      "missing_ratio": 0.01245,
+      "cost": 0.82122
+    },
+    "newton8_variant": null,
+    "search": [
+      {
+        "max_convex_hull": 1,
+        "coacd_pieces": 1,
+        "start": "coacd",
+        "primitives": 1,
+        "kinds": [
+          "cylinder"
+        ],
+        "cost": 0.4525,
+        "excess_over_mesh_ratio": 0.45041,
+        "missing_ratio": 7e-05,
+        "growth_vs_vendor": 0.01061,
+        "lost_vs_vendor_ratio": 0.00155,
+        "seconds": 7.1
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "part_bearing_6206_fc_newton.usd",
+    "sha256": "13d1d61c8455cc46a57bc9a720c6b500beb261daff5f9648b33f0b513092a0ba",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

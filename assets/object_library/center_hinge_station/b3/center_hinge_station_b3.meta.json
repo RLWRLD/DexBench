@@ -1,0 +1,39 @@
+{
+  "asset": {
+    "version": "1.0.0",
+    "kind": "fixture",
+    "categories": [
+      "manufacturing",
+      "constrained-fastener"
+    ],
+    "source_delivery": "the DB-M3 delivery MNext3_M3_config_asset.usd; sha256 and original prim paths in ../manifest.json",
+    "physics_scope": "Static CAD fixture and kinematic constrained fasteners; no thread or measured torque model",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "static",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-10-20",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "unmet",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "unmet",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    }
+  }
+}

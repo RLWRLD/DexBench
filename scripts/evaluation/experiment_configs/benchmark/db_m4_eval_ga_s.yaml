@@ -1,0 +1,462 @@
+# DB-M4 (E3 manufacturing, hand_start_leg at A_m4).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: one station fixed off its training square and the other draws at their training ranges: the leg 15 mm out toward each of e, ne, n, nw, w, sw, s, se; or the cabinet at x +-30 mm, y +-28 mm and the four corners, the widest y its pallet keeps on the worktop (CABINET_STATION_MAX_ABS_XY_M). Every GA-S scene lies outside the training box on the fixed station, by a narrow step: the cabinet 10 mm past its training square in x and 8 mm in y (its worktop's limit), the leg 10 mm on an axis and 8 mm past the square's corner on a diagonal; the cabinet's x and the leg stay this close by choice (their domains allow 250 and 80 mm), so a small Train/GA-S gap is expected.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (7 or 8 each, as the spec's row_quotas declare), the filtered rows of db_m4_conditions_ga_s.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 115 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m4 --cell ga_s --model <key> \
+#       --output outputs/db_m4_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m4_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m4_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M4); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: hand_start_leg
+    anchor: A_m4
+    rby1_control_hz: 30
+    episode_length_s: 115.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  lg_fx25_leveling_leg_cabinet_e:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 8199872
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.03, 0.0, 0.0]
+            high: [0.03, 0.0, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_ne:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 3886502
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.03, 0.028, 0.0]
+            high: [0.03, 0.028, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_n:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 3036360
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, 0.028, 0.0]
+            high: [0.0, 0.028, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_nw:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 9549166
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, 0.028, 0.0]
+            high: [-0.03, 0.028, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_w:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 7913608
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, 0.0, 0.0]
+            high: [-0.03, 0.0, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_sw:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 8176114
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.028, 0.0]
+            high: [-0.03, -0.028, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_s:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 2248593
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, -0.028, 0.0]
+            high: [0.0, -0.028, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_cabinet_se:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 8396346
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_cabinet_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.03, -0.028, 0.0]
+            high: [0.03, -0.028, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_e:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 1962400
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_e.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.015, 0.0, 0.0]
+            high: [0.015, 0.0, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_ne:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 9968153
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_ne.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0106, 0.0106, 0.0]
+            high: [0.0106, 0.0106, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_n:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 2327720
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_n.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, 0.015, 0.0]
+            high: [0.0, 0.015, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_nw:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 2165969
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_nw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0106, 0.0106, 0.0]
+            high: [-0.0106, 0.0106, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_w:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 9152104
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_w.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.015, 0.0, 0.0]
+            high: [-0.015, 0.0, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_sw:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 5820109
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_sw.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.0106, -0.0106, 0.0]
+            high: [-0.0106, -0.0106, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_s:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 8747121
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_s.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0, -0.015, 0.0]
+            high: [0.0, -0.015, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  lg_fx25_leveling_leg_leg_se:
+    environment:
+      m4_leg: lg_fx25_leveling_leg
+    environment_builder:
+      seed: 2575749
+      recorded_variation_samples_path: outputs/db_conditions/db_m4_ga_s/lg_fx25_leveling_leg_leg_se.jsonl
+    variations:
+      dexbench_rby1_wuji2_joint:
+        base_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      base_cabinet:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [-0.02, -0.02, 0.0]
+            high: [0.02, 0.02, 0.0]
+      leg:
+        station_pose:
+          enabled: true
+          sampler_cfg:
+            low: [0.0106, -0.0106, 0.0]
+            high: [0.0106, -0.0106, 0.0]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

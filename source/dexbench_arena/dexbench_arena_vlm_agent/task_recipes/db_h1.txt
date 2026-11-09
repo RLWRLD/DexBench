@@ -1,0 +1,7 @@
+Task recipe (DB-H1 stacking dishes; the task's own definition and the fixed furniture, no object positions):
+- Goal: lift the stack of dishes from the round banquet table in front of you and seat it, as one stack, on the stack already standing on the serving cart; the instruction says whether the dishes are plates or bowls.
+- The stack: three dishes (plates or bowls, 16 to 22 cm across) standing on the table straight ahead of you. The task is a two-handed lift: hold the stack with both hands, one on each side.
+- Fixed furniture: the round table's top is at z 0.74 m and its near edge about 0.40 m ahead of the base. The serving cart stands to your left, its near edge about 0.40 m from the base centre; its top is at z 0.80 m (6 cm higher than the table), with a 3 cm rim on its far side and both ends and the open side toward you. The cart's stack of two dishes stands on its near half, to your left.
+- Success, which ends the episode: every dish is in the cart's stack, each seated within 1 cm of its nested height, the rims lined up within 3 cm, none tilted more than 30 degrees, and the stack at rest; and both hands have let go: no part of the robot within 3 cm of the stack's rim, below 3 cm above its top.
+- Failure, which ends the episode: a dish falls below z 0.65 m. Otherwise the episode ends when its time runs out.
+- Start: you start crouched over the table with both arms in front of you; each turn's state gives where your hands are. The torso and the neck can turn (body), so the cart need not be reached with the arms alone.

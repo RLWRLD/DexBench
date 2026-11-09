@@ -1,0 +1,63 @@
+# DB-H2 (E4 banquet hall, lift_and_pour at A_h2).
+# Cell GA-O (ga_o): held-out objects, spatial training range.
+# Spatial: jug x, y +-2 cm and yaw +-10 deg, target goblet x, y +-1 cm, base x, y +-1 cm and yaw +-5 deg, each uniform and independent.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (60 each), the filtered rows of db_h2_conditions_ga_o.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 90 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h2 --cell ga_o --model <key> \
+#       --output outputs/db_h2_eval_ga_o_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h2_eval_ga_o_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h2_eval_ga_o.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H2); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_pour_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: lift_and_pour
+    anchor: A_h2
+    rby1_control_hz: 30
+    idealisk_pour: true
+    base_offset_y: 0.15
+    pour_station_offset_y: 0.05
+    start_pose: teleop_ready
+    newton_nconmax: 16384
+    newton_njmax: 65536
+    newton_num_substeps: 8
+    pour_jug_jitter_xy: 0.02
+    pour_jug_jitter_yaw_deg: 10.0
+    pour_goblet_jitter_xy: 0.01
+    episode_length_s: 90.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.01, -0.01, -0.0872665]
+          high: [0.01, 0.01, 0.0872665]
+runs:
+  steel_pitcher_large:
+    environment:
+      pour_jug: steel_pitcher_large
+    environment_builder:
+      seed: 9100
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_o/steel_pitcher_large.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  steel_pitcher_footed:
+    environment:
+      pour_jug: steel_pitcher_footed
+    environment_builder:
+      seed: 9101
+      recorded_variation_samples_path: outputs/db_conditions/db_h2_ga_o/steel_pitcher_footed.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

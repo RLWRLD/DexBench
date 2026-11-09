@@ -1,0 +1,214 @@
+# DB-M3 (E3 manufacturing, power_driver_fastening at A_m3).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: the base fixed 30 mm from A_m3 toward each of e, ne, n, nw, w, sw, s, se (base_offset_x/y, yaw re-aimed at the station), the driver and the station at their training draws; each Run is one build, one station position. Only the base moves out: 20 mm past its training square on an axis, and on a diagonal 11 mm in each axis (16 mm past the square's corner). The driver and the station are at their staging limits at +-10 mm (the driver's PlanarPoseDomain, M3StationPositionVariation), so this margin is what the scene allows.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (15 each), the filtered rows of db_m3_conditions_ga_s.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 70 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m3 --cell ga_s --model <key> \
+#       --output outputs/db_m3_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m3_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m3_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M3); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: power_driver_fastening
+    anchor: A_m3
+    rby1_control_hz: 30
+    episode_length_s: 70.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  center_hinge_fixture_base_e:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: 0.03
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 9853210
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_e.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_ne:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: 0.0212
+      base_offset_y: 0.0212
+    environment_builder:
+      seed: 5495517
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_ne.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_n:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: 0.0
+      base_offset_y: 0.03
+    environment_builder:
+      seed: 5480466
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_n.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_nw:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: -0.0212
+      base_offset_y: 0.0212
+    environment_builder:
+      seed: 2376085
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_nw.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_w:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: -0.03
+      base_offset_y: 0.0
+    environment_builder:
+      seed: 2042834
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_w.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_sw:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: -0.0212
+      base_offset_y: -0.0212
+    environment_builder:
+      seed: 2396041
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_sw.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_s:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: 0.0
+      base_offset_y: -0.03
+    environment_builder:
+      seed: 2127307
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_s.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  center_hinge_fixture_base_se:
+    environment:
+      m3_fixture: center_hinge_fixture
+      base_offset_x: 0.0212
+      base_offset_y: -0.0212
+    environment_builder:
+      seed: 262337
+      recorded_variation_samples_path: outputs/db_conditions/db_m3_e3_m1_bay_m3_low_conveyor_v2_ga_s/center_hinge_fixture_base_se.jsonl
+    variations:
+      power_driver:
+        pickup_position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01, 0.0]
+            high: [0.01, 0.01, 0.0]
+      center_hinge_fixture:
+        position:
+          enabled: true
+          sampler_cfg:
+            low: [-0.01, -0.01]
+            high: [0.01, 0.01]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

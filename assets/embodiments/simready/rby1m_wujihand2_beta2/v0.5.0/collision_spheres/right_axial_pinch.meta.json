@@ -1,0 +1,495 @@
+{
+ "collision_spheres": {
+  "version": "1.0.0",
+  "model": "right_axial_pinch.json",
+  "sha256": "b0b43afc97ceeb5d6f4ca0e77a88701e8b2615a1dcdff2f373b1cdbd49cc5af7",
+  "reviewed_as": "the sphere review's final model, handed over as rby1_selfcol_r4_m2_axial.json (its metadata: builder build_selfcol_simple.py, hand_pose m2_axial); shipped byte for byte",
+  "build": {
+   "version": "1.0.0",
+   "builder": "scripts/tools/build_rby1_collision_spheres.py",
+   "hand_posture": "right_axial_pinch",
+   "finger_joints_rad": {
+    "right_middle_finger_mcp_flex": 1.3,
+    "right_middle_finger_pip": 1.3,
+    "right_middle_finger_dip": 1.3,
+    "right_ring_finger_mcp_flex": 1.3,
+    "right_ring_finger_pip": 1.3,
+    "right_ring_finger_dip": 1.3,
+    "right_pinky_mcp_flex": 1.3,
+    "right_pinky_pip": 1.3,
+    "right_pinky_dip": 1.3,
+    "right_index_finger_mcp_flex": 1.1,
+    "right_index_finger_pip": 0.2,
+    "right_index_finger_dip": 0.12,
+    "right_thumb_cmc_flex": 0.83,
+    "right_thumb_cmc_abd": -1.065,
+    "right_thumb_mcp": 1.089,
+    "right_thumb_ip": -0.235
+   },
+   "sphere_count": 207,
+   "source_usd": "rby1m_wujihand2_beta2.usd",
+   "source_sha256": {
+    "rby1m_wujihand2_beta2.usd": "0757f09a9bd3194cb093ed436b08fe76d08998cb07596faf0825675e0bbcc365",
+    "rby1m_wujihand2_beta2_geometry.usd": "90cbc54aa331b7c638a03819af9723d96546d6c656919af51e9c43a3d8cce62d"
+   },
+   "urdf": "assets/embodiments/simready/rby1m_wujihand2_beta2/source/rby1m_wujihand2_beta2.urdf",
+   "base_box_m": {
+    "min": [
+     -0.3533,
+     -0.3036,
+     0.0142
+    ],
+    "max": [
+     0.3493,
+     0.3036,
+     0.3754
+    ]
+   },
+   "fit_mm": {
+    "link_torso_0": {
+     "n": 1,
+     "uncovered_p95_mm": 68.2,
+     "uncovered_max_mm": 102.2,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 0.0
+    },
+    "link_torso_1": {
+     "n": 4,
+     "uncovered_p95_mm": 91.8,
+     "uncovered_max_mm": 142.0,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 0.0
+    },
+    "link_torso_2": {
+     "n": 4,
+     "uncovered_p95_mm": 61.1,
+     "uncovered_max_mm": 99.4,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 0.0
+    },
+    "link_torso_3": {
+     "n": 1,
+     "uncovered_p95_mm": 26.3,
+     "uncovered_max_mm": 34.6,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 0.0
+    },
+    "link_torso_4": {
+     "n": 4,
+     "uncovered_p95_mm": 31.2,
+     "uncovered_max_mm": 60.4,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 0.0
+    },
+    "link_torso_5": {
+     "n": 4,
+     "uncovered_p95_mm": 43.6,
+     "uncovered_max_mm": 77.6,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 0.0
+    },
+    "NECK_0": {
+     "n": 1,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 0.0,
+     "stickout_p95_mm": 34.7,
+     "stickout_max_mm": 42.4
+    },
+    "link_right_arm_0": {
+     "n": 2,
+     "uncovered_p95_mm": 6.8,
+     "uncovered_max_mm": 39.2,
+     "stickout_p95_mm": 34.7,
+     "stickout_max_mm": 39.8
+    },
+    "link_right_arm_1": {
+     "n": 1,
+     "uncovered_p95_mm": 1.4,
+     "uncovered_max_mm": 35.1,
+     "stickout_p95_mm": 32.6,
+     "stickout_max_mm": 36.3
+    },
+    "link_right_arm_2": {
+     "n": 3,
+     "uncovered_p95_mm": 40.1,
+     "uncovered_max_mm": 50.3,
+     "stickout_p95_mm": 11.3,
+     "stickout_max_mm": 23.9
+    },
+    "link_right_arm_3": {
+     "n": 3,
+     "uncovered_p95_mm": 1.9,
+     "uncovered_max_mm": 8.7,
+     "stickout_p95_mm": 39.6,
+     "stickout_max_mm": 44.9
+    },
+    "link_right_arm_4": {
+     "n": 4,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 9.5,
+     "stickout_p95_mm": 20.8,
+     "stickout_max_mm": 27.8
+    },
+    "link_right_arm_5": {
+     "n": 4,
+     "uncovered_p95_mm": 3.5,
+     "uncovered_max_mm": 11.5,
+     "stickout_p95_mm": 28.2,
+     "stickout_max_mm": 41.6
+    },
+    "link_right_arm_6": {
+     "n": 1,
+     "uncovered_p95_mm": 0.4,
+     "uncovered_max_mm": 4.0,
+     "stickout_p95_mm": 23.0,
+     "stickout_max_mm": 27.3
+    },
+    "right_wrist": {
+     "n": 75,
+     "uncovered_p95_mm": 3.7,
+     "uncovered_max_mm": 19.4,
+     "stickout_p95_mm": 0.0,
+     "stickout_max_mm": 7.3
+    },
+    "link_left_arm_0": {
+     "n": 2,
+     "uncovered_p95_mm": 5.4,
+     "uncovered_max_mm": 32.7,
+     "stickout_p95_mm": 35.4,
+     "stickout_max_mm": 41.2
+    },
+    "link_left_arm_1": {
+     "n": 1,
+     "uncovered_p95_mm": 4.1,
+     "uncovered_max_mm": 39.0,
+     "stickout_p95_mm": 28.3,
+     "stickout_max_mm": 35.9
+    },
+    "link_left_arm_2": {
+     "n": 3,
+     "uncovered_p95_mm": 37.8,
+     "uncovered_max_mm": 50.0,
+     "stickout_p95_mm": 14.6,
+     "stickout_max_mm": 23.8
+    },
+    "link_left_arm_3": {
+     "n": 3,
+     "uncovered_p95_mm": 2.0,
+     "uncovered_max_mm": 7.2,
+     "stickout_p95_mm": 36.5,
+     "stickout_max_mm": 44.1
+    },
+    "link_left_arm_4": {
+     "n": 4,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 8.9,
+     "stickout_p95_mm": 18.8,
+     "stickout_max_mm": 25.6
+    },
+    "link_left_arm_5": {
+     "n": 4,
+     "uncovered_p95_mm": 3.8,
+     "uncovered_max_mm": 10.3,
+     "stickout_p95_mm": 27.0,
+     "stickout_max_mm": 41.5
+    },
+    "link_left_arm_6": {
+     "n": 1,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 4.1,
+     "stickout_p95_mm": 24.3,
+     "stickout_max_mm": 27.6
+    },
+    "left_wrist": {
+     "n": 74,
+     "uncovered_p95_mm": 3.4,
+     "uncovered_max_mm": 18.3,
+     "stickout_p95_mm": 1.2,
+     "stickout_max_mm": 7.6
+    },
+    "link_head_1": {
+     "n": 1,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 0.0,
+     "stickout_p95_mm": 27.5,
+     "stickout_max_mm": 30.6
+    },
+    "link_head_2": {
+     "n": 1,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 0.0,
+     "stickout_p95_mm": 35.4,
+     "stickout_max_mm": 38.2
+    },
+    "ego_zed_m_camera": {
+     "n": 1,
+     "uncovered_p95_mm": 0.0,
+     "uncovered_max_mm": 0.0,
+     "stickout_p95_mm": 53.3,
+     "stickout_max_mm": 56.4
+    }
+   },
+   "covers": {
+    "link_torso_0": [
+     "link_torso_0"
+    ],
+    "link_torso_1": [
+     "link_torso_1",
+     "link_torso_1",
+     "link_torso_1",
+     "link_torso_1"
+    ],
+    "link_torso_2": [
+     "link_torso_2",
+     "link_torso_2",
+     "link_torso_2",
+     "link_torso_2"
+    ],
+    "link_torso_3": [
+     "link_torso_3"
+    ],
+    "link_torso_4": [
+     "link_torso_4",
+     "link_torso_4",
+     "link_torso_4",
+     "link_torso_4"
+    ],
+    "link_torso_5": [
+     "link_torso_5",
+     "link_torso_5",
+     "link_torso_5",
+     "link_torso_5"
+    ],
+    "NECK_0": [
+     "NECK_0"
+    ],
+    "link_right_arm_0": [
+     "link_right_arm_0",
+     "link_right_arm_0"
+    ],
+    "link_right_arm_1": [
+     "link_right_arm_1"
+    ],
+    "link_right_arm_2": [
+     "link_right_arm_2",
+     "link_right_arm_2",
+     "link_right_arm_2"
+    ],
+    "link_right_arm_3": [
+     "link_right_arm_3",
+     "link_right_arm_3",
+     "link_right_arm_3"
+    ],
+    "link_right_arm_4": [
+     "link_right_arm_4",
+     "link_right_arm_4",
+     "link_right_arm_4",
+     "link_right_arm_4"
+    ],
+    "link_right_arm_5": [
+     "link_right_arm_5",
+     "link_right_arm_5",
+     "link_right_arm_5",
+     "link_right_arm_5"
+    ],
+    "link_right_arm_6": [
+     "link_right_arm_6"
+    ],
+    "right_wrist": [
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_wrist",
+     "right_thumb_proximal",
+     "right_thumb_proximal",
+     "right_thumb_proximal_abd",
+     "right_thumb_proximal_abd",
+     "right_thumb_proximal_abd",
+     "right_thumb_middle",
+     "right_thumb_middle",
+     "right_thumb_middle",
+     "right_thumb_distal",
+     "right_thumb_distal",
+     "right_thumb_distal",
+     "right_index_finger_proximal",
+     "right_index_finger_proximal",
+     "right_index_finger_proximal_abd",
+     "right_index_finger_proximal_abd",
+     "right_index_finger_proximal_abd",
+     "right_index_finger_proximal_abd",
+     "right_index_finger_middle",
+     "right_index_finger_middle",
+     "right_index_finger_middle",
+     "right_index_finger_distal",
+     "right_index_finger_distal",
+     "right_middle_finger_proximal",
+     "right_middle_finger_proximal",
+     "right_middle_finger_proximal_abd",
+     "right_middle_finger_proximal_abd",
+     "right_middle_finger_proximal_abd",
+     "right_middle_finger_proximal_abd",
+     "right_middle_finger_middle",
+     "right_middle_finger_middle",
+     "right_middle_finger_middle",
+     "right_middle_finger_distal",
+     "right_middle_finger_distal",
+     "right_ring_finger_proximal",
+     "right_ring_finger_proximal",
+     "right_ring_finger_proximal_abd",
+     "right_ring_finger_proximal_abd",
+     "right_ring_finger_proximal_abd",
+     "right_ring_finger_proximal_abd",
+     "right_ring_finger_middle",
+     "right_ring_finger_middle",
+     "right_ring_finger_middle",
+     "right_ring_finger_distal",
+     "right_ring_finger_distal",
+     "right_pinky_proximal",
+     "right_pinky_proximal",
+     "right_pinky_proximal_abd",
+     "right_pinky_proximal_abd",
+     "right_pinky_proximal_abd",
+     "right_pinky_proximal_abd",
+     "right_pinky_middle",
+     "right_pinky_middle",
+     "right_pinky_middle",
+     "right_pinky_distal",
+     "right_pinky_distal"
+    ],
+    "link_left_arm_0": [
+     "link_left_arm_0",
+     "link_left_arm_0"
+    ],
+    "link_left_arm_1": [
+     "link_left_arm_1"
+    ],
+    "link_left_arm_2": [
+     "link_left_arm_2",
+     "link_left_arm_2",
+     "link_left_arm_2"
+    ],
+    "link_left_arm_3": [
+     "link_left_arm_3",
+     "link_left_arm_3",
+     "link_left_arm_3"
+    ],
+    "link_left_arm_4": [
+     "link_left_arm_4",
+     "link_left_arm_4",
+     "link_left_arm_4",
+     "link_left_arm_4"
+    ],
+    "link_left_arm_5": [
+     "link_left_arm_5",
+     "link_left_arm_5",
+     "link_left_arm_5",
+     "link_left_arm_5"
+    ],
+    "link_left_arm_6": [
+     "link_left_arm_6"
+    ],
+    "left_wrist": [
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_wrist",
+     "left_thumb_proximal",
+     "left_thumb_proximal",
+     "left_thumb_proximal_abd",
+     "left_thumb_proximal_abd",
+     "left_thumb_proximal_abd",
+     "left_thumb_middle",
+     "left_thumb_middle",
+     "left_thumb_middle",
+     "left_thumb_distal",
+     "left_thumb_distal",
+     "left_thumb_distal",
+     "left_index_finger_proximal",
+     "left_index_finger_proximal",
+     "left_index_finger_proximal_abd",
+     "left_index_finger_proximal_abd",
+     "left_index_finger_proximal_abd",
+     "left_index_finger_proximal_abd",
+     "left_index_finger_middle",
+     "left_index_finger_middle",
+     "left_index_finger_middle",
+     "left_index_finger_distal",
+     "left_index_finger_distal",
+     "left_middle_finger_proximal",
+     "left_middle_finger_proximal",
+     "left_middle_finger_proximal_abd",
+     "left_middle_finger_proximal_abd",
+     "left_middle_finger_proximal_abd",
+     "left_middle_finger_proximal_abd",
+     "left_middle_finger_middle",
+     "left_middle_finger_middle",
+     "left_middle_finger_middle",
+     "left_middle_finger_distal",
+     "left_middle_finger_distal",
+     "left_ring_finger_proximal",
+     "left_ring_finger_proximal",
+     "left_ring_finger_proximal_abd",
+     "left_ring_finger_proximal_abd",
+     "left_ring_finger_proximal_abd",
+     "left_ring_finger_proximal_abd",
+     "left_ring_finger_middle",
+     "left_ring_finger_middle",
+     "left_ring_finger_middle",
+     "left_ring_finger_distal",
+     "left_ring_finger_distal",
+     "left_pinky_proximal",
+     "left_pinky_proximal",
+     "left_pinky_proximal_abd",
+     "left_pinky_proximal_abd",
+     "left_pinky_proximal_abd",
+     "left_pinky_proximal_abd",
+     "left_pinky_middle",
+     "left_pinky_middle",
+     "left_pinky_middle",
+     "left_pinky_distal",
+     "left_pinky_distal"
+    ],
+    "link_head_1": [
+     "link_head_1"
+    ],
+    "link_head_2": [
+     "link_head_2"
+    ],
+    "ego_zed_m_camera": [
+     "ego_zed_m_camera"
+    ]
+   }
+  }
+ }
+}

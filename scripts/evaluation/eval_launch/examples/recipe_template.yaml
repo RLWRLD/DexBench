@@ -1,0 +1,57 @@
+# A template for your own model's server recipe on the Ray backend (CONNECT_YOUR_POLICY.md; USER_GUIDE.md, "Server
+# recipes"). Copy it to outputs/configs/ (the simulator image mounts outputs/), replace each <...>, then check one
+# station before the launch:
+#   scripts/evaluation/eval_launch/launch.sh <your copy> --smoke     # a few rows per simulator: frames, timing, memory
+#   scripts/evaluation/eval_launch/launch.sh <your copy> --local     # the launch
+#
+# The worker fills these fields into setup, command, probe and client_set with Python's str.format, each value
+# already shell-quoted (write {checkpoint}, never "{checkpoint}"), and a brace the shell should see doubled (${{HOME}}):
+#   {checkpoint}     the checkpoint of the unit (model.checkpoint, or model.checkpoints[task]); the run manifest records it
+#   {checkpoint_id}  a short hash of that path: name files that depend on the checkpoint with it
+#   {port}           the port this station's server listens on (port_base + 10 x station); the worker points the
+#                    simulator's client at 127.0.0.1:{port}
+#   {token_file}     a file holding the token the worker made for this server start (owner-only): refuse any request
+#                    without "Authorization: Bearer <token>"; the simulator sends it
+#   {worker_dir}     this station's own directory under the launch's logs/: anything the recipe writes goes here
+#   {launcher}       this launcher's directory (scripts/evaluation/eval_launch in the staged tree)
+model:
+  key: <your-model>                         # a key of your own; never one benchmark/models.py has
+  label: <Your Model>
+  checkpoint: <path/to/checkpoint>
+  policy:                                   # the simulator's client: the benchmark's HTTP client speaks the kit's contract
+    type: dexbench_arena_cosmos.policy.cosmos3_joint_policy.Cosmos3JointPolicy
+    remote_url: http://127.0.0.1:5811       # the worker replaces the port with {port}
+    remote_api_token: ${oc.env:DEXBENCH_POLICY_API_TOKEN,null}   # the worker's token, from the environment
+    policy_device: cpu
+tasks: [r2]
+cells: [train]
+servers:
+  layout: colocated                         # or colocated+N ({sim_gpus: 0, sims_per_gpu: N}) or server+N, once --smoke says it fits
+  # gpu_memory_gb: {server: <GB>, sim: <GB>}   # required by a layout that shares a GPU: measure with --smoke
+  recipe:
+    # Runs before the server, in the worker's environment, bounded by plan.server_ready_timeout_s. Everything that can
+    # fail before a unit runs goes here: a failure hands the unit back untried, so no unit is spent on a broken setup.
+    setup: >-
+      test -e {checkpoint}
+      && test -x <path/to/your/venv>/bin/python
+    # Your server, in the environment saved before Isaac Sim's (launch.sh saves it), on the station's GPU. The kit:
+    # dexbench-policy-server from your model's environment (pip install source/dexbench_policy_server there). It starts
+    # in the launcher's working directory, so change to the directory that holds <your_module> first (or install it).
+    command: >-
+      cd <path/to/your/code> && exec <path/to/your/venv>/bin/dexbench-policy-server --policy <your_module>:<YourPolicy>
+      --checkpoint {checkpoint} --port {port} --token-file {token_file}
+    # A regex the server's own output must match once it serves (the kit prints "Server ready on ...", flushed).
+    ready: Server ready
+    # Optional: a command that succeeds only once the server answers (here: the kit's health endpoint).
+    probe: >-
+      <path/to/your/venv>/bin/python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:{port}/health', timeout=10)"
+    # Optional: --set fields for the simulator's policy block, filled in the same way (e.g. a contract file the setup
+    # wrote under {worker_dir}); only the deployment fields a block declares may change.
+    # client_set: ["policy_config_yaml_path={worker_dir}/contract-{checkpoint_id}.yaml"]
+backend:
+  kind: ray
+  gpus: 1                                   # one station's GPUs for --smoke; as many as you have for the launch
+  # gpu_memory_gb: <GB>                     # one GPU's memory, for the layout check (46 on an L40S)
+  ray:
+    port_base: 5810
+output: outputs/eval/<your-model>

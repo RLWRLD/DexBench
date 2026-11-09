@@ -1,0 +1,56 @@
+{
+ "_note": "An example measurement: on NVIDIA L40S GPUs (46 GB), one simulator and one colocated policy server per GPU, from finished evaluations. slowdown is the median control step's wall time over its simulated time (60 Hz control, so a step is 16.7 ms of sim); build_s is a shard's wall time not spent stepping or loading the server, per Run; server_load_s is the policy server's start per shard; mean_cap_fraction is how far into the cap an episode got on average with the models measured, for reference only (planning uses the cap).",
+ "measured": "2026-11-01",
+ "source_runs": [
+  "m3/gr00t",
+  "m4/gr00t",
+  "r2/gr00t",
+  "r2/rldx15h40",
+  "r3/gr00t",
+  "r3/rldx15h40"
+ ],
+ "tasks": {
+  "r2": {
+   "slowdown": 5.55,
+   "build_s": 138,
+   "server_load_s": 140,
+   "mean_cap_fraction": 0.26,
+   "episodes": 960,
+   "models": [
+    "gr00t",
+    "rldx15h40"
+   ]
+  },
+  "r3": {
+   "slowdown": 5.53,
+   "build_s": 159,
+   "server_load_s": 148,
+   "mean_cap_fraction": 0.8,
+   "episodes": 973,
+   "models": [
+    "gr00t",
+    "rldx15h40"
+   ]
+  },
+  "m3": {
+   "slowdown": 5.24,
+   "build_s": 199,
+   "server_load_s": 113,
+   "mean_cap_fraction": 1.0,
+   "episodes": 252,
+   "models": [
+    "gr00t"
+   ]
+  },
+  "m4": {
+   "slowdown": 5.06,
+   "build_s": 131,
+   "server_load_s": 110,
+   "mean_cap_fraction": 1.0,
+   "episodes": 240,
+   "models": [
+    "gr00t"
+   ]
+  }
+ }
+}

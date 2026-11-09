@@ -1,0 +1,7 @@
+Task recipe (DB-R2 selective retrieval from a refrigerator; the task's own definition and the fixed furniture, no object positions):
+- Goal: take the instructed drink out of the open refrigerator in front of you and put it in the basket, without disturbing the drinks next to it.
+- Which drink: the instructed one stands among other drinks in the rail lanes of the refrigerator shelf in front of you; it is the only one of its kind on that shelf. The instruction names it.
+- Fixed furniture: the refrigerator's opening is about 0.5 m ahead of the base; the drinks stand in rail lanes whose tops are at about z 1.04 m. The basket stands directly to your right, its centre about 0.67 m from the base centre; its floor is at z 0.60 m, its rim at z 0.83 m, and its inside measures about 0.35 m (along x) by 0.24 m (along y).
+- Success, which ends the episode: the instructed drink's centre is inside the basket and below the rim, the drink has been at rest for 1 s, and no other drink has moved more than 1 cm from where it stood.
+- Failure, which ends the episode: another drink is lifted 3 cm or pulled out past the refrigerator's opening, or a drink tips over; the instructed drink falls below z 0.45 m or leaves the area of the refrigerator and the basket. Otherwise the episode ends when its time runs out.
+- Start: you start in the teleoperation start pose, both hands raised in front of you; each turn's state gives where they are.

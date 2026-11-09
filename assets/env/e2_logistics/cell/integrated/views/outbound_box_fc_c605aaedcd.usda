@@ -1,0 +1,23 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            string source_delivery = "deliveries/psl/e2_logistics/261014"
+            string source_generated = "261014"
+            string version = "3.0.0"
+        }
+        string asset_name = "outbound_box_fc"
+        string asset_type = "prop"
+        string source_file = "deliveries/psl/e2_logistics/261014"
+        string usd_date_generated = "2026-10-14"
+    }
+    defaultPrim = "OutboundBox"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "OutboundBox" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_c605aaedcd70918124ee/OutboundBox>
+)
+{
+}

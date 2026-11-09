@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_ceiling__EC_static"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_ceiling__EC_static" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_5324dfd5d30a82ecf44a/BG_ceiling__EC_static>
+)
+{
+}
+

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "model": {
+    "name": "Example policy",
+    "key": "gr00t",
+    "scope": "generalist",
+    "code_url": "https://example.org/policy",
+    "code_commit": "0000000000000000000000000000000000000000",
+    "base_model": "Name and immutable revision of base model"
+  },
+  "training": {
+    "track": "standard-data",
+    "datasets": [
+      {
+        "uri": "https://huggingface.co/datasets/RLWRLD/DexBench-datasets",
+        "revision": "0000000000000000000000000000000000000000",
+        "episodes": 240
+      }
+    ],
+    "additional_data": false,
+    "checkpoint_selection": "Selected on development conditions; no frozen evaluation rows used"
+  },
+  "runtime": {
+    "image_digest": "registry.example.org/policy@sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "command": "Document the exact server command",
+    "hardware": "GPU model/count, VRAM, latency, evaluation wall time",
+    "inference_settings": "Cameras, normalization, denoising, RNG seed, horizon, routing and planner settings",
+    "episode_reset": "Describe reset of all temporal state and server sessions"
+  },
+  "benchmark": {
+    "release": "Approved benchmark release",
+    "code_commit": "0000000000000000000000000000000000000000",
+    "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "eval_version": "v1",
+    "evaluator_image_digest": "registry.example.org/evaluator@sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "evaluation_sha256": {
+      "m1": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "checkpoints": {
+    "m1": {
+      "uri": "https://example.org/checkpoint",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "label": "checkpoint-sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "method_card": {
+    "path": "method_card.md",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "runs": [
+    {
+      "task": "m1",
+      "cell": "train",
+      "directory": "runs/m1/train",
+      "manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "result_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "trajectories": [
+        {
+          "path": "arena/RUN/dataset_RUN_rebuild0.hdf5",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "run": "RUN",
+          "rebuild": 0
+        }
+      ],
+      "videos": [
+        {
+          "path": "arena/RUN/robot-cam-rebuild0-env0-robot_pov_left_cam_rgb-episode-0.mp4",
+          "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ]
+    }
+  ],
+  "model_entry": {
+    "path": "model_entry.json",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

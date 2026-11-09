@@ -1,0 +1,50 @@
+{
+ "outputs/db_conditions/db_h1_train/harmynta_deep_plate_22.jsonl": {
+  "sha256": "528b65882407b190d41bf8cf8c82419406295ad8e0f86838ea0ff38ad3b50001",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_train/ikea_365_bowl_16.jsonl": {
+  "sha256": "63b466c2a4d5ce0530bd89892441f25fe3e48cc6bf96767a9579da5d91b8fb0d",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_train/ikea_365_bowl_22.jsonl": {
+  "sha256": "b4ecb08ad6b9be79ea6c3ecacf0d771a6b8cf2675de3c66ca17487694d772dd0",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_o/godmiddag_deep_plate_23.jsonl": {
+  "sha256": "9b16cfdda97080abc597ce8739bb8b77aa2316e79256bf025cdc893f599a283f",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_o/godmiddag_bowl_16.jsonl": {
+  "sha256": "ccf689cf77e0ce8232b7f890c9d69543a9c280d9f840dfcbf8df7b0c57f76ec8",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_o/ikea_365_bowl_19.jsonl": {
+  "sha256": "9f902910b368fe38ac6e2f226d3f4150a2c6eddc0fcd804905eab4213f9d5836",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_s/harmynta_deep_plate_22.jsonl": {
+  "sha256": "b55ac41ecee8eb4c68d5c3e8b23cb48e7f28aed0e236c1f1e9f3389ef6ff5342",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_s/ikea_365_bowl_16.jsonl": {
+  "sha256": "a9bc452482671af7b9312d17527faac1f708f43ad0ba81e73070a360bdab3340",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_s/ikea_365_bowl_22.jsonl": {
+  "sha256": "c79115eaddfe133a24268dcb4d106c863bffb1daf36fda7ff53badefa6bb79b6",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_os/godmiddag_deep_plate_23.jsonl": {
+  "sha256": "f6a1030359782c8c257a2eab7ecd769b7f444bdb6f308473c3e450dd0b0b36e2",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_os/godmiddag_bowl_16.jsonl": {
+  "sha256": "05363fa14debfd34109871c33cc5eff732a58f099bde72a266e9d1a8e29dd197",
+  "rows": 40
+ },
+ "outputs/db_conditions/db_h1_ga_os/ikea_365_bowl_19.jsonl": {
+  "sha256": "f3693faa4c2d1c309f1c0461d3d4ada8f8f16e66164db9c0496d6d18cfcfb4b2",
+  "rows": 40
+ }
+}

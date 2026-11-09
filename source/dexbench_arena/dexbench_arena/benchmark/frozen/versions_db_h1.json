@@ -1,0 +1,17 @@
+{"frozen_set": "db_h1.json", "frozen_sha256": "3a21cc4949630583ce4e61967963c163068017e343496579af233d5a30e4e1e4",
+"versions": {
+ "v1": {
+  "outputs/db_conditions/db_h1_train/harmynta_deep_plate_22.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37],
+  "outputs/db_conditions/db_h1_train/ikea_365_bowl_16.jsonl": [1, 2, 5, 6, 9, 10, 13, 14, 17, 18, 21, 22, 25, 26, 29, 30, 33, 34, 37, 38],
+  "outputs/db_conditions/db_h1_train/ikea_365_bowl_22.jsonl": [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39],
+  "outputs/db_conditions/db_h1_ga_o/godmiddag_deep_plate_23.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37],
+  "outputs/db_conditions/db_h1_ga_o/godmiddag_bowl_16.jsonl": [1, 2, 5, 6, 9, 10, 13, 14, 17, 18, 21, 22, 25, 26, 29, 30, 33, 34, 37, 38],
+  "outputs/db_conditions/db_h1_ga_o/ikea_365_bowl_19.jsonl": [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39],
+  "outputs/db_conditions/db_h1_ga_s/harmynta_deep_plate_22.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37],
+  "outputs/db_conditions/db_h1_ga_s/ikea_365_bowl_16.jsonl": [1, 2, 5, 6, 9, 10, 13, 14, 17, 18, 21, 22, 25, 26, 29, 30, 33, 34, 37, 38],
+  "outputs/db_conditions/db_h1_ga_s/ikea_365_bowl_22.jsonl": [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39],
+  "outputs/db_conditions/db_h1_ga_os/godmiddag_deep_plate_23.jsonl": [0, 1, 4, 5, 8, 9, 12, 13, 16, 17, 20, 21, 24, 25, 28, 29, 32, 33, 36, 37],
+  "outputs/db_conditions/db_h1_ga_os/godmiddag_bowl_16.jsonl": [1, 2, 5, 6, 9, 10, 13, 14, 17, 18, 21, 22, 25, 26, 29, 30, 33, 34, 37, 38],
+  "outputs/db_conditions/db_h1_ga_os/ikea_365_bowl_19.jsonl": [2, 3, 6, 7, 10, 11, 14, 15, 18, 19, 22, 23, 26, 27, 30, 31, 34, 35, 38, 39]
+ }
+}}

@@ -1,0 +1,86 @@
+# DB-L1 (E2 logistics, pick_polybag_from_conveyor at the A_L1 anchor on HB2).
+# Cell Train (train): training objects, spatial training range.
+# Spatial: every bag's long side 0-30 deg off the belt's direction (l1_bag_yaw_off_belt_deg, either way along it), the boxes the same; each item's centre across HB2 uniform in y 0.80-0.95 m and the belt's run between releases 0.72-0.88 m, drawn per episode by the layout draw (l1_park_slab.stream_layout) with the three bags, the two boxes and their order.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (30 each), the filtered rows of db_l1_conditions_train.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 60 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l1 --cell train --model <key> \
+#       --output outputs/db_l1_eval_train_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l1_eval_train_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l1_eval_train.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L1); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_logistics_e2_l1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: pick_polybag_from_conveyor
+    anchor: A_L1
+    rby1_control_hz: 30
+    belt_speed: 0.2
+    l1_stream_mode: episode
+    l1_stream_bags: 3
+    l1_stream_boxes: 2
+    l1_stream_lead: bag
+    l1_item_y: [0.8, 0.95]
+    l1_spacing: [0.72, 0.88]
+    polybag_coupling: two_way
+    polybag_contact_ke: 3000.0
+    polybag_contact_kd: 1.0
+    polybag_collider_ke: 3000.0
+    polybag_collider_kd: 1.0
+    polybag_contact_mu: 1.0
+    newton_solver: newton
+    polybag_stepping: a
+    polybag_vbd_iterations: 8
+    polybag_collider_mu: 3.0
+    l1_bag_wrist_link_collision: 'off'
+    polybag_contact_barrier: 'off'
+    polybag_vbd_init: contact
+    polybag_film_hessian: psd
+    polybag_tet_poisson: 0.45
+    polybag_tet_damping: 10.0
+    l1_bag_yaw_off_belt_deg: [0.0, 30.0]
+    episode_length_s: 60.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  train_a:
+    environment:
+      l1_bag_set: train_a
+    environment_builder:
+      seed: 9393571
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_train/train_a.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  train_b:
+    environment:
+      l1_bag_set: train_b
+    environment_builder:
+      seed: 1910617
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_train/train_b.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  train_c:
+    environment:
+      l1_bag_set: train_c
+    environment_builder:
+      seed: 10035407
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_train/train_c.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  train_d:
+    environment:
+      l1_bag_set: train_d
+    environment_builder:
+      seed: 7381164
+      recorded_variation_samples_path: outputs/db_conditions/db_l1_261014_train/train_d.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

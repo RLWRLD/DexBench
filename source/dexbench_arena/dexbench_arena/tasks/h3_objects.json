@@ -1,0 +1,655 @@
+{
+  "format": "dexbench_h3_objects_v1",
+  "objects": {
+    "ga_os_01_fork": {
+      "trio": "ga_os_01",
+      "target": "fork",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Table_fork",
+      "size_m": [
+        0.02499740011990078,
+        0.19785565453519197,
+        0.017833606185479446
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Table_fork",
+          "sha256": "6f90ab0fc75d66a894891ac3f6642d67102fde6789120493cb82a39f4bc3bd39"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Tablespoon",
+          "sha256": "a010c56c0bf2a233d0a16f64df89123dece140ebf21a5f1124c2b59067b9a0ad"
+        }
+      }
+    },
+    "ga_os_01_knife": {
+      "trio": "ga_os_01",
+      "target": "knife",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Table_knife",
+      "size_m": [
+        0.020456909871896554,
+        0.22988492349633466,
+        0.007009706201658033
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Table_fork",
+          "sha256": "6f90ab0fc75d66a894891ac3f6642d67102fde6789120493cb82a39f4bc3bd39"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Tablespoon",
+          "sha256": "a010c56c0bf2a233d0a16f64df89123dece140ebf21a5f1124c2b59067b9a0ad"
+        }
+      }
+    },
+    "ga_os_01_spoon": {
+      "trio": "ga_os_01",
+      "target": "spoon",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Tablespoon",
+      "size_m": [
+        0.04157260082527858,
+        0.1988679383310103,
+        0.015115927809421982
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Table_fork",
+          "sha256": "6f90ab0fc75d66a894891ac3f6642d67102fde6789120493cb82a39f4bc3bd39"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Tablespoon",
+          "sha256": "a010c56c0bf2a233d0a16f64df89123dece140ebf21a5f1124c2b59067b9a0ad"
+        }
+      }
+    },
+    "ga_os_02_fork": {
+      "trio": "ga_os_02",
+      "target": "fork",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Table_fork",
+      "size_m": [
+        0.02499740011990078,
+        0.19785565453519197,
+        0.017833606185479446
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Table_fork",
+          "sha256": "6f90ab0fc75d66a894891ac3f6642d67102fde6789120493cb82a39f4bc3bd39"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Teaspoon",
+          "sha256": "f39bd6b9533e3e357e5705a357fdf0117a96d48795d04d9c6bfc50a9f84bdd4a"
+        }
+      }
+    },
+    "ga_os_02_knife": {
+      "trio": "ga_os_02",
+      "target": "knife",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Table_knife",
+      "size_m": [
+        0.020456909871896554,
+        0.22988492349633466,
+        0.007009706201658033
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Table_fork",
+          "sha256": "6f90ab0fc75d66a894891ac3f6642d67102fde6789120493cb82a39f4bc3bd39"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Teaspoon",
+          "sha256": "f39bd6b9533e3e357e5705a357fdf0117a96d48795d04d9c6bfc50a9f84bdd4a"
+        }
+      }
+    },
+    "ga_os_02_spoon": {
+      "trio": "ga_os_02",
+      "target": "spoon",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Teaspoon",
+      "size_m": [
+        0.029694600152533605,
+        0.14917400772679776,
+        0.01125356108589019
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Table_fork",
+          "sha256": "6f90ab0fc75d66a894891ac3f6642d67102fde6789120493cb82a39f4bc3bd39"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Teaspoon",
+          "sha256": "f39bd6b9533e3e357e5705a357fdf0117a96d48795d04d9c6bfc50a9f84bdd4a"
+        }
+      }
+    },
+    "ga_os_03_fork": {
+      "trio": "ga_os_03",
+      "target": "fork",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Dessert_fork",
+      "size_m": [
+        0.021991599351167748,
+        0.17808602225766343,
+        0.015721081861112363
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Dessert_fork",
+          "sha256": "e134afeccb9b58b7130e6a9f80ec20b8a4cba684ab288f70197f2e8a688c73fb"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Tablespoon",
+          "sha256": "a010c56c0bf2a233d0a16f64df89123dece140ebf21a5f1124c2b59067b9a0ad"
+        }
+      }
+    },
+    "ga_os_03_knife": {
+      "trio": "ga_os_03",
+      "target": "knife",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Table_knife",
+      "size_m": [
+        0.020456909871896554,
+        0.22988492349633466,
+        0.007009706201658033
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Dessert_fork",
+          "sha256": "e134afeccb9b58b7130e6a9f80ec20b8a4cba684ab288f70197f2e8a688c73fb"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Tablespoon",
+          "sha256": "a010c56c0bf2a233d0a16f64df89123dece140ebf21a5f1124c2b59067b9a0ad"
+        }
+      }
+    },
+    "ga_os_03_spoon": {
+      "trio": "ga_os_03",
+      "target": "spoon",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Tablespoon",
+      "size_m": [
+        0.04157260082527858,
+        0.1988679383310103,
+        0.015115927809421982
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Dessert_fork",
+          "sha256": "e134afeccb9b58b7130e6a9f80ec20b8a4cba684ab288f70197f2e8a688c73fb"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Tablespoon",
+          "sha256": "a010c56c0bf2a233d0a16f64df89123dece140ebf21a5f1124c2b59067b9a0ad"
+        }
+      }
+    },
+    "ga_os_04_fork": {
+      "trio": "ga_os_04",
+      "target": "fork",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Dessert_fork",
+      "size_m": [
+        0.021991599351167748,
+        0.17808602225766343,
+        0.015721081861112363
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Dessert_fork",
+          "sha256": "e134afeccb9b58b7130e6a9f80ec20b8a4cba684ab288f70197f2e8a688c73fb"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Teaspoon",
+          "sha256": "f39bd6b9533e3e357e5705a357fdf0117a96d48795d04d9c6bfc50a9f84bdd4a"
+        }
+      }
+    },
+    "ga_os_04_knife": {
+      "trio": "ga_os_04",
+      "target": "knife",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Table_knife",
+      "size_m": [
+        0.020456909871896554,
+        0.22988492349633466,
+        0.007009706201658033
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Dessert_fork",
+          "sha256": "e134afeccb9b58b7130e6a9f80ec20b8a4cba684ab288f70197f2e8a688c73fb"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Teaspoon",
+          "sha256": "f39bd6b9533e3e357e5705a357fdf0117a96d48795d04d9c6bfc50a9f84bdd4a"
+        }
+      }
+    },
+    "ga_os_04_spoon": {
+      "trio": "ga_os_04",
+      "target": "spoon",
+      "split": "eval",
+      "asset": "ForgeCAD_cutlery_set_Teaspoon",
+      "size_m": [
+        0.029694600152533605,
+        0.14917400772679776,
+        0.01125356108589019
+      ],
+      "assets": {
+        "fork": {
+          "id": "ForgeCAD_cutlery_set_Dessert_fork",
+          "sha256": "e134afeccb9b58b7130e6a9f80ec20b8a4cba684ab288f70197f2e8a688c73fb"
+        },
+        "knife": {
+          "id": "ForgeCAD_cutlery_set_Table_knife",
+          "sha256": "8893a7bee2204f2147a16866efed2fe1ab89def553b2b9fe2aa18b7ff0a61ad3"
+        },
+        "spoon": {
+          "id": "ForgeCAD_cutlery_set_Teaspoon",
+          "sha256": "f39bd6b9533e3e357e5705a357fdf0117a96d48795d04d9c6bfc50a9f84bdd4a"
+        }
+      }
+    },
+    "train_01_fork": {
+      "trio": "train_01",
+      "target": "fork",
+      "split": "train",
+      "asset": "PalatialSim_D00313",
+      "size_m": [
+        0.19823489834307806,
+        0.035706597909234875,
+        0.01897290972609778
+      ],
+      "assets": {
+        "fork": {
+          "id": "PalatialSim_D00313",
+          "sha256": "cbbd3b73814f7768315bbb824ef3eeaaeb5f9b80f614c72398674397373913a6"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_b01",
+          "sha256": "ec897f8b7f1a3e09bba1e3ca554df5147a10ada900e6966d23a06b26beb65315"
+        }
+      }
+    },
+    "train_01_knife": {
+      "trio": "train_01",
+      "target": "knife",
+      "split": "train",
+      "asset": "PalatialSim_D00052",
+      "size_m": [
+        0.2096098948510107,
+        0.027088700081402378,
+        0.012026700455114617
+      ],
+      "assets": {
+        "fork": {
+          "id": "PalatialSim_D00313",
+          "sha256": "cbbd3b73814f7768315bbb824ef3eeaaeb5f9b80f614c72398674397373913a6"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_b01",
+          "sha256": "ec897f8b7f1a3e09bba1e3ca554df5147a10ada900e6966d23a06b26beb65315"
+        }
+      }
+    },
+    "train_01_spoon": {
+      "trio": "train_01",
+      "target": "spoon",
+      "split": "train",
+      "asset": "nvidia_kitchenware_spoon_b01",
+      "size_m": [
+        0.034914201301511454,
+        0.19010479904248803,
+        0.012995676479698
+      ],
+      "assets": {
+        "fork": {
+          "id": "PalatialSim_D00313",
+          "sha256": "cbbd3b73814f7768315bbb824ef3eeaaeb5f9b80f614c72398674397373913a6"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_b01",
+          "sha256": "ec897f8b7f1a3e09bba1e3ca554df5147a10ada900e6966d23a06b26beb65315"
+        }
+      }
+    },
+    "train_02_fork": {
+      "trio": "train_02",
+      "target": "fork",
+      "split": "train",
+      "asset": "nvidia_kitchenware_fork_b01",
+      "size_m": [
+        0.16496739618065548,
+        0.020851400522291605,
+        0.018905551330919035
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_b01",
+          "sha256": "ac4a326a93bf540040272ca7f2e547aa38f0fe565d3830d0d76d227ec15d8cdb"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_b01",
+          "sha256": "ec897f8b7f1a3e09bba1e3ca554df5147a10ada900e6966d23a06b26beb65315"
+        }
+      }
+    },
+    "train_02_knife": {
+      "trio": "train_02",
+      "target": "knife",
+      "split": "train",
+      "asset": "PalatialSim_D00052",
+      "size_m": [
+        0.2096098948510103,
+        0.027088700081402396,
+        0.012026700455114624
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_b01",
+          "sha256": "ac4a326a93bf540040272ca7f2e547aa38f0fe565d3830d0d76d227ec15d8cdb"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_b01",
+          "sha256": "ec897f8b7f1a3e09bba1e3ca554df5147a10ada900e6966d23a06b26beb65315"
+        }
+      }
+    },
+    "train_02_spoon": {
+      "trio": "train_02",
+      "target": "spoon",
+      "split": "train",
+      "asset": "nvidia_kitchenware_spoon_b01",
+      "size_m": [
+        0.03491420130151145,
+        0.19010479904248817,
+        0.012995676479697777
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_b01",
+          "sha256": "ac4a326a93bf540040272ca7f2e547aa38f0fe565d3830d0d76d227ec15d8cdb"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_b01",
+          "sha256": "ec897f8b7f1a3e09bba1e3ca554df5147a10ada900e6966d23a06b26beb65315"
+        }
+      }
+    },
+    "train_03_fork": {
+      "trio": "train_03",
+      "target": "fork",
+      "split": "train",
+      "asset": "nvidia_kitchenware_fork_c01",
+      "size_m": [
+        0.027040199543125754,
+        0.16866320282381594,
+        0.010350513993051804
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_c01",
+          "sha256": "5b3d45da856a7e5f556167bc34024fe320de182c90174536c3ef28b11c72b275"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_d01",
+          "sha256": "031c65aa9c2549964b68fafdfb1451b73cf4c221d0623ba05ff784ac914062a8"
+        }
+      }
+    },
+    "train_03_knife": {
+      "trio": "train_03",
+      "target": "knife",
+      "split": "train",
+      "asset": "PalatialSim_D00052",
+      "size_m": [
+        0.2096098948510107,
+        0.027088700081402378,
+        0.012026700455114617
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_c01",
+          "sha256": "5b3d45da856a7e5f556167bc34024fe320de182c90174536c3ef28b11c72b275"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_d01",
+          "sha256": "031c65aa9c2549964b68fafdfb1451b73cf4c221d0623ba05ff784ac914062a8"
+        }
+      }
+    },
+    "train_03_spoon": {
+      "trio": "train_03",
+      "target": "spoon",
+      "split": "train",
+      "asset": "nvidia_kitchenware_spoon_d01",
+      "size_m": [
+        0.04250150172517956,
+        0.18298120017384384,
+        0.025841874091791547
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_c01",
+          "sha256": "5b3d45da856a7e5f556167bc34024fe320de182c90174536c3ef28b11c72b275"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_d01",
+          "sha256": "031c65aa9c2549964b68fafdfb1451b73cf4c221d0623ba05ff784ac914062a8"
+        }
+      }
+    },
+    "train_04_fork": {
+      "trio": "train_04",
+      "target": "fork",
+      "split": "train",
+      "asset": "nvidia_kitchenware_fork_k01",
+      "size_m": [
+        0.033678598470805995,
+        0.20868709641005237,
+        0.01754947164252394
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_k01",
+          "sha256": "3114aeab849047ad1c1e60787a209260ae0a01d550f22950d89a914ed627649b"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_d01",
+          "sha256": "031c65aa9c2549964b68fafdfb1451b73cf4c221d0623ba05ff784ac914062a8"
+        }
+      }
+    },
+    "train_04_knife": {
+      "trio": "train_04",
+      "target": "knife",
+      "split": "train",
+      "asset": "PalatialSim_D00052",
+      "size_m": [
+        0.2096098948510107,
+        0.027088700081402378,
+        0.012026700455114617
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_k01",
+          "sha256": "3114aeab849047ad1c1e60787a209260ae0a01d550f22950d89a914ed627649b"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_d01",
+          "sha256": "031c65aa9c2549964b68fafdfb1451b73cf4c221d0623ba05ff784ac914062a8"
+        }
+      }
+    },
+    "train_04_spoon": {
+      "trio": "train_04",
+      "target": "spoon",
+      "split": "train",
+      "asset": "nvidia_kitchenware_spoon_d01",
+      "size_m": [
+        0.04250150172517956,
+        0.18298120017384384,
+        0.025841874091791547
+      ],
+      "assets": {
+        "fork": {
+          "id": "nvidia_kitchenware_fork_k01",
+          "sha256": "3114aeab849047ad1c1e60787a209260ae0a01d550f22950d89a914ed627649b"
+        },
+        "knife": {
+          "id": "PalatialSim_D00052",
+          "sha256": "1ace69a341cea67bf84cc93a0121f51393a230513bb7b74c7a8b3a5cad066f97"
+        },
+        "spoon": {
+          "id": "nvidia_kitchenware_spoon_d01",
+          "sha256": "031c65aa9c2549964b68fafdfb1451b73cf4c221d0623ba05ff784ac914062a8"
+        }
+      }
+    }
+  },
+  "packages": {
+    "ForgeCAD_cutlery_set_Dessert_fork": {
+      "usd_path": "object_library/cutlery_set_dessert_fork/usd/cutlery_set_dessert_fork.usd",
+      "source_sha256": "0e37c71bb97572e80e79a885b895920b73d64ebf3ea01400eede024230d0590b"
+    },
+    "ForgeCAD_cutlery_set_Table_fork": {
+      "usd_path": "object_library/cutlery_set_table_fork/usd/cutlery_set_table_fork.usd",
+      "source_sha256": "58415319d90d490d11e84d71ce7014c5ffc6cbb681a51a2028a82cd846a49801"
+    },
+    "ForgeCAD_cutlery_set_Table_knife": {
+      "usd_path": "object_library/cutlery_set_table_knife/usd/cutlery_set_table_knife.usd",
+      "source_sha256": "6165c8332f45b956e70ef497d727fca874d72460e67381f604af25db6650ae99"
+    },
+    "ForgeCAD_cutlery_set_Tablespoon": {
+      "usd_path": "object_library/cutlery_set_tablespoon/usd/cutlery_set_tablespoon.usd",
+      "source_sha256": "e97ff89d3a8f6d6a3eb5d1b0a06f0fb7084d981cc5957a044b68f43252dc4d98"
+    },
+    "ForgeCAD_cutlery_set_Teaspoon": {
+      "usd_path": "object_library/cutlery_set_teaspoon/usd/cutlery_set_teaspoon.usd",
+      "source_sha256": "23d6517aec2967302e7a79b854b9ab4628cf35e51c7914eb20d2e1544da617f7"
+    },
+    "PalatialSim_D00052": {
+      "usd_path": "object_library/butter_knife_d00052/usd/butter_knife_d00052.usd",
+      "source_sha256": "b1f242da0a580999e661ee710b2b8d831b513c8495e61a0b2509ebfeef67dc0b"
+    },
+    "PalatialSim_D00313": {
+      "usd_path": "object_library/fork_d00313/usd/fork_d00313.usd",
+      "source_sha256": "6d46d2fc724bf7c4426e34b1147e392c97953a905337e22189c5efcdce3aa3a4"
+    },
+    "nvidia_kitchenware_fork_b01": {
+      "usd_path": "object_library/kitchenware_fork_b01/usd/kitchenware_fork_b01.usd",
+      "source_sha256": "0a6adf5f9f8203ad42352fa379ad89490b2717a984ab44e7ab9a1d204fdb9244"
+    },
+    "nvidia_kitchenware_fork_c01": {
+      "usd_path": "object_library/kitchenware_fork_c01/usd/kitchenware_fork_c01.usd",
+      "source_sha256": "aabbd0621b03da788ec49a9d5b3285242985a3cddf67aab4d2189fd0bd4a34a2"
+    },
+    "nvidia_kitchenware_fork_k01": {
+      "usd_path": "object_library/kitchenware_fork_k01/usd/kitchenware_fork_k01.usd",
+      "source_sha256": "963e9a1654179cdb20c1210aed3b41534b62df53b9f006f22b8ce880854689af"
+    },
+    "nvidia_kitchenware_spoon_b01": {
+      "usd_path": "object_library/kitchenware_spoon_b01/usd/kitchenware_spoon_b01.usd",
+      "source_sha256": "e545bf898f3865e5e1e3948c0ecd8c2c7984e7d3d759aae20ad932c53a9092a1"
+    },
+    "nvidia_kitchenware_spoon_d01": {
+      "usd_path": "object_library/kitchenware_spoon_d01/usd/kitchenware_spoon_d01.usd",
+      "source_sha256": "6d9ba16be15c21a2740f9df843c7132a867274f0ad070c4de349c6ccd769a95d"
+    }
+  }
+}

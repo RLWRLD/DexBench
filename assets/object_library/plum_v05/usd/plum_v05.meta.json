@@ -1,0 +1,150 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "source_delivery": "deliveries/spaceai/260914",
+    "source_generated": "260914",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid plum variant (one side flat, a little redder) from object_library/plum_scan: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 96.7 g, plum skin friction 0.55/0.45.",
+    "mass_kg": 0.0967,
+    "mass_source": "realistic plum weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 1075.1 kg/m3 over render-mesh volume 8.995e-05 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "geometry": {
+      "size_m": [
+        0.057,
+        0.057,
+        0.0551
+      ],
+      "volume_m3": 8.9949e-05,
+      "vertices": 15000,
+      "faces": 30000,
+      "textures": {
+        "Albedo": "./textures/plum_v05_base_color.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 9.1081e-05,
+      "hull_vertices": 11012
+    },
+    "physics_material": {
+      "static_friction": 0.55,
+      "dynamic_friction": 0.45,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth waxy (apple 0.60/0.50 as the SpaceAI scans; plum, citrus 0.55/0.45), achened strawberry 0.70/0.60, fuzzy peach 0.75/0.65, hairy kiwi 0.80/0.70; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.0485,
+            0.0,
+            0.0276
+          ],
+          [
+            0.0485,
+            0.0,
+            0.0276
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "plum",
+      "base": "plum_scan",
+      "base_kind": "scan",
+      "base_version": "1.2.0",
+      "package_template": null,
+      "base_quality": "SpaceAI scan, 15k vertices, 2048 px albedo: good",
+      "subdivision_levels": 0,
+      "index": 5,
+      "seed": 205,
+      "preset_mm": 52,
+      "size_vs_preset": 0.096,
+      "params": {
+        "label": "one side flat, a little redder",
+        "size_mm": 57,
+        "flatten": {
+          "depth": 0.12,
+          "azimuth_deg": 120
+        },
+        "color": {
+          "hue_deg": 4,
+          "sat": 1.04,
+          "val": 1.04
+        },
+        "seed": 205
+      },
+      "derived": {},
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 1040,
+        "spread": 0.034,
+        "unclamped_g": 96.7,
+        "range_g": [
+          40,
+          100
+        ],
+        "requested_g": 96.7,
+        "implied_density_kg_m3": 1075.1
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 15000,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.000807771930061707,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.00044874101877212524,
+      "convex_volume_ratio": 0.9731803243041396,
+      "previous_scan_outside_hull_m": 0.0024073256195974516
+    }
+  }
+}

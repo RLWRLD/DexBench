@@ -1,0 +1,32 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/ripe_tomato"
+                        string variantSetName = "Newton"
+                    }
+                }
+            }
+            string version = "1.0.0"
+        }
+        string asset_name = "ripe_tomato_fc"
+        string asset_type = "prop"
+        string source_file = "authored"
+        string usd_date_generated = "2026-09-14"
+    }
+    defaultPrim = "ripe_tomato"
+    doc = "Blender v5.2.0 LTS"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "ripe_tomato" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_99631e00e1b99236a977/ripe_tomato>
+)
+{
+}
+

@@ -1,0 +1,37 @@
+# One per-task checkpoint on one task, on a single host with GPUs 0-3: one colocated GR00T server and simulator per GPU
+# (servers.layout: server+N gives each server its own GPU; USER_GUIDE.md, "Stations and layouts"). Start it with launch.sh (it saves the environment the servers need before /isaac-sim/python.sh changes it):
+#   scripts/evaluation/eval_launch/launch.sh scripts/evaluation/eval_launch/examples/single_task_local.yaml --local
+# Stopped (Ctrl-C, a reboot)? The same command with --resume continues; accepted units never rerun.
+# Placeholders: STAGE is the directory where the checkpoints and the GR00T server runtime are staged, CHECKPOINT the
+# checkpoint directory. A copy with real values goes in outputs/configs/, which git ignores and the simulator image
+# mounts.
+model:
+  key: gr00t
+  checkpoint: /STAGE/ckpts/CHECKPOINT
+tasks: [l1]
+cells: all
+servers:
+  recipe:
+    # The client's contract goes in this worker's own directory, one per checkpoint, with the checkpoint's cameras in
+    # its order (read from its processor config); client_set points the simulator's policy block at it.
+    setup: >-
+      (cd {checkpoint} && sha256sum -c --quiet MANIFEST.sha256)
+      && test "$(cat /STAGE/ws/DexBench-Isaac-GR00T-0acbcf902/.source-commit)" = 0acbcf9027240a622371da057dcbb2e86e233b41
+      && /isaac-sim/python.sh -m dexbench_arena_gr00t.policy.wuji2_gr00t_config --output {worker_dir}/gr00t-{checkpoint_id}
+      --cameras $(/isaac-sim/python.sh -c "import glob, json, sys; path = sorted(glob.glob(sys.argv[1] + '/processor_config.json') + glob.glob(sys.argv[1] + '/processor/processor_config.json'))[0]; print(*json.load(open(path))['processor_kwargs']['modality_configs']['new_embodiment']['video']['modality_keys'])" {checkpoint}) > /dev/null
+    client_set: ["policy_config_yaml_path={worker_dir}/gr00t-{checkpoint_id}/policy.yaml"]
+    # GR00T's own server from RLWRLD/DexBench-Isaac-GR00T (the token and offline loading, merged in its PR #3), staged at its main
+    # commit 0acbcf90 (PR #4 added only training docs and the train.sh worker fix) and run with a staged Isaac-GR00T venv
+    # (same uv.lock); offline
+    command: >-
+      cd /STAGE/ws/DexBench-Isaac-GR00T-0acbcf902 && HF_HOME=/STAGE/.cache/huggingface HF_HUB_OFFLINE=1
+      exec /STAGE/ws/Isaac-GR00T-n1.7/.venv/bin/python -m gr00t.eval.run_gr00t_server --model-path {checkpoint}
+      --embodiment-tag NEW_EMBODIMENT --host 127.0.0.1 --port {port} --api-token-file {token_file}
+    ready: Server ready
+backend:
+  kind: local
+  gpus: [0, 1, 2, 3]
+  local:
+    port_base: 5810         # station i's server listens on port_base + 10 i
+    station_restarts: 2     # a station whose server or simulator cannot run units is rebuilt this many times
+output: outputs/eval/l1-gr00t

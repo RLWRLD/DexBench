@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dexbench-policy-server"
+version = "0.1.0"
+description = "Serve a policy to the DexBench benchmark over its HTTP contract (GET /info, POST /predict)."
+license = "Apache-2.0"
+requires-python = ">=3.10"
+dependencies = ["numpy", "Pillow"]
+
+[project.scripts]
+dexbench-policy-server = "dexbench_policy_server.server:main"
+
+[tool.setuptools]
+packages = ["dexbench_policy_server"]
+
+[tool.setuptools.package-data]
+dexbench_policy_server = ["rby1_wuji2_joint_names.json"]

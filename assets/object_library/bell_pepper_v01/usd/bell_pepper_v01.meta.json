@@ -1,0 +1,158 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid bell_pepper variant (small) from SimReady food_produce_bellPepper_a01 (nvidia/simready-assets@a666cb43, CC-BY-4.0) in apple_scan's package layout: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 120.0 g, bell_pepper skin friction 0.55/0.45.",
+    "mass_kg": 0.12,
+    "mass_source": "realistic bell_pepper weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 547.4 kg/m3 over render-mesh volume 2.192e-04 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "provenance": {
+      "dataset": "nvidia/simready-assets",
+      "revision": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "catalogue": "https://huggingface.co/spaces/nvidia/simready-central",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "package": "food_produce_bellPepper_a01",
+      "package_id": "simready.hf.nvidia.simready-assets.food_produce_bellPepper_a01.2026.10.09_044012316573",
+      "package_license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/nvidia/simready-assets/tree/a666cb4381ba513b174fb120ed523c1566ba832c/food_produce_bellPepper_a01",
+      "files": [
+        "food_produce_bellPepper_a01/simready_usd/sm_food_produce_bellPepper_a01_01.usd",
+        "food_produce_bellPepper_a01/simready_usd/payloads/geometries.usd",
+        "food_produce_bellPepper_a01/simready_usd/Textures/t_food_produce_bellPepper_a01_alb.png",
+        "food_produce_bellPepper_a01/simready_usd/Textures/t_food_produce_bellPepper_a01_nor.png"
+      ],
+      "attribution": "food_produce_bellPepper_a01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; modified: render mesh re-scaled and deformed, albedo recoloured, re-packaged by scripts/tools/make_fruit_variants.py"
+    },
+    "geometry": {
+      "size_m": [
+        0.0684,
+        0.102,
+        0.0679
+      ],
+      "volume_m3": 0.000219226,
+      "vertices": 19378,
+      "faces": 38752,
+      "textures": {
+        "Albedo": "./textures/bell_pepper_v01_base_color.png",
+        "Normal": "./textures/bell_pepper_v01_normal.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 0.00024563,
+      "hull_vertices": 5053
+    },
+    "physics_material": {
+      "static_friction": 0.55,
+      "dynamic_friction": 0.45,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth (apple, pear 0.60/0.50 as the SpaceAI apple scan; plum, citrus, waxy bell pepper 0.55/0.45), fuzzy peach 0.75/0.65; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.0536,
+            0.0,
+            0.034
+          ],
+          [
+            0.0536,
+            0.0,
+            0.034
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "bell_pepper",
+      "base": "food_produce_bellPepper_a01",
+      "base_kind": "simready",
+      "base_version": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "package_template": "object_library/apple_scan",
+      "base_quality": "SimReady bellPepper_a01 (red) recoloured green: 1.2k quads Loop-subdivided x2, 2048 px albedo + normal map: good",
+      "subdivision_levels": 2,
+      "index": 1,
+      "seed": 1101,
+      "preset_mm": 110,
+      "size_vs_preset": -0.073,
+      "params": {
+        "label": "small",
+        "size_mm": 102,
+        "seed": 1101
+      },
+      "derived": {},
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 500,
+        "spread": -0.0144,
+        "unclamped_g": 108.0,
+        "range_g": [
+          120,
+          180
+        ],
+        "requested_g": 120.0,
+        "implied_density_kg_m3": 547.4
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 19378,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.0015530592002416278,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.0006671026349067688,
+      "convex_volume_ratio": 0.9775260405093731,
+      "previous_scan_outside_hull_m": 0.003487155521596612
+    }
+  }
+}

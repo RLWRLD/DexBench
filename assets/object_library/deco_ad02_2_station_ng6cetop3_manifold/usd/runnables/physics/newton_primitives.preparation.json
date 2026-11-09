@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "deco_ad02_2_station_ng6cetop3_manifold_newton.usd",
+    "sha256": "cb18101c25645f4dda7441e06778835c3d05a5a0cd9ed5ed43bb05daac675d6f"
+  },
+  "pieces": 1,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/World/DECO_AD02_2_Station_NG6CETOP3_Manifold",
+    "sources": [
+      {
+        "prim": "/World/DECO_AD02_2_Station_NG6CETOP3_Manifold/manifold",
+        "authored_approximation": "sdf",
+        "vertices": 52237,
+        "physics_material": "/World/PhysicsMaterials/Aluminium"
+      }
+    ],
+    "max_convex_hull": 1,
+    "coacd_pieces": 1,
+    "start": "merge-kmeans0.25",
+    "primitives": 1,
+    "kinds": [
+      "box"
+    ],
+    "cost": 0.15202,
+    "excess_over_mesh_ratio": 0.15202,
+    "missing_ratio": 0.0,
+    "growth_vs_vendor": -0.02924,
+    "lost_vs_vendor_ratio": 0.04412,
+    "seconds": 82.9,
+    "growth_vs_newton8": -0.04434,
+    "lost_vs_newton8_ratio": 0.04435,
+    "primitives_detail": [
+      {
+        "kind": "box",
+        "center_m": [
+          -0.0,
+          0.0,
+          0.035
+        ],
+        "orient_wxyz": [
+          -0.4999999,
+          0.5000001,
+          0.5000001,
+          0.4999999
+        ],
+        "half_extents_m": [
+          0.035,
+          0.06,
+          0.035
+        ],
+        "physics_material": "/World/PhysicsMaterials/Aluminium"
+      }
+    ],
+    "collider_volume_m3": 0.000587866,
+    "part_volume_m3": 0.000510293,
+    "vendor_newton_variant": {
+      "pieces": 32,
+      "collider_volume_m3": 0.00060557,
+      "excess_over_mesh_ratio": 0.18674,
+      "missing_ratio": 3e-05,
+      "cost": 0.1876
+    },
+    "newton8_variant": {
+      "pieces": 1,
+      "collider_volume_m3": 0.00061514,
+      "excess_over_mesh_ratio": 0.20546,
+      "missing_ratio": 0.0,
+      "cost": 0.20546
+    },
+    "search": [
+      {
+        "max_convex_hull": 1,
+        "coacd_pieces": 1,
+        "start": "merge-kmeans0.25",
+        "primitives": 1,
+        "kinds": [
+          "box"
+        ],
+        "cost": 0.15202,
+        "excess_over_mesh_ratio": 0.15202,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": -0.02924,
+        "lost_vs_vendor_ratio": 0.04412,
+        "seconds": 82.9,
+        "growth_vs_newton8": -0.04434,
+        "lost_vs_newton8_ratio": 0.04435
+      },
+      {
+        "max_convex_hull": 2,
+        "coacd_pieces": 2,
+        "start": "merge-kmeans0.25",
+        "primitives": 1,
+        "kinds": [
+          "box"
+        ],
+        "cost": 0.15202,
+        "excess_over_mesh_ratio": 0.15202,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": -0.02924,
+        "lost_vs_vendor_ratio": 0.04412,
+        "seconds": 114.5,
+        "growth_vs_newton8": -0.04434,
+        "lost_vs_newton8_ratio": 0.04435
+      },
+      {
+        "max_convex_hull": 3,
+        "coacd_pieces": 3,
+        "start": "merge-kmeans0.25",
+        "primitives": 1,
+        "kinds": [
+          "box"
+        ],
+        "cost": 0.15202,
+        "excess_over_mesh_ratio": 0.15202,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": -0.02924,
+        "lost_vs_vendor_ratio": 0.04412,
+        "seconds": 139.7,
+        "growth_vs_newton8": -0.04434,
+        "lost_vs_newton8_ratio": 0.04435
+      },
+      {
+        "max_convex_hull": 4,
+        "coacd_pieces": 4,
+        "start": "merge-kmeans0.25",
+        "primitives": 1,
+        "kinds": [
+          "box"
+        ],
+        "cost": 0.15202,
+        "excess_over_mesh_ratio": 0.15202,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": -0.02924,
+        "lost_vs_vendor_ratio": 0.04412,
+        "seconds": 141.0,
+        "growth_vs_newton8": -0.04434,
+        "lost_vs_newton8_ratio": 0.04435
+      },
+      {
+        "max_convex_hull": 5,
+        "coacd_pieces": 5,
+        "start": "merge-kmeans0.25",
+        "primitives": 1,
+        "kinds": [
+          "box"
+        ],
+        "cost": 0.15202,
+        "excess_over_mesh_ratio": 0.15202,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": -0.02924,
+        "lost_vs_vendor_ratio": 0.04412,
+        "seconds": 149.4,
+        "growth_vs_newton8": -0.04434,
+        "lost_vs_newton8_ratio": 0.04435
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "deco_ad02_2_station_ng6cetop3_manifold_newton.usd",
+    "sha256": "fda341e7132fa5948f2edd33e488b72c7789b2341d1dda8d45e26d5bbf146ed0",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "asset": {
+    "version": "1.0.0",
+    "authored": "prepared for DB-H3 by RLWRLD from a third-party SimReady package (see source_archive); not a vendor delivery",
+    "source_archive": {
+      "repo": "PalatialSim/palatial-nv-asset-library",
+      "revision": "69a87329036cec0440403351c12230970c4e67d8",
+      "author": "Palatial Platforms — Palatial NV Asset Library",
+      "from": "HF dataset PalatialSim/palatial-nv-asset-library",
+      "file": "D00313/simready_usd/D00313.usd",
+      "catalog_id": "batch18_D00313_Fork",
+      "package_id": "simready.hf.PalatialSim.palatial-nv-asset-library.D00313.2026.10.15_00",
+      "package_record_sha256": "9ce4a99006482382583825b9648a037e13987b1128328334b07750f3b4e0f767",
+      "license": "CC-BY-4.0",
+      "attribution": "Palatial Platforms — Palatial NV Asset Library, item D00313 (https://huggingface.co/datasets/PalatialSim/palatial-nv-asset-library), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); prepared for DB-H3 by RLWRLD (rigid body enabled, delivered grasp line deactivated)."
+    },
+    "derived_from": {
+      "h3_asset_id": "PalatialSim_D00313",
+      "preparation": "RLWRLD wrapper layer (usd/fork_d00313.usd) referencing the unmodified upstream package under usd/deps/D00313/",
+      "upstream_root_sha256": "c0fc6aeb67429a44c9a881fe02e536ecc7a51cf1f3137b7b73a166089e8a1338",
+      "layer_metadata": {
+        "h3_mass_policy": "preserve_authored; promote identity-frame descendant attributes to body when needed",
+        "h3_source_id": "PalatialSim_D00313",
+        "h3_source_prim": "/World"
+      },
+      "adopted_from": "DB-H3's evaluation inputs (an internal revision): PalatialSim_D00313.usda (sha256 6d46d2fc724bf7c4426e34b1147e392c97953a905337e22189c5efcdce3aa3a4)",
+      "adoption_changes": [
+        "reference @../../vendor/simready-assets-69a87329/D00313/ -> @./deps/D00313/",
+        "root customLayerData h3_* entries moved here; SimReady Core stamp (SimReady_Metadata, asset_name, asset_type, source_file, usd_date_generated) added"
+      ]
+    },
+    "categories": [
+      "cutlery",
+      "hotel",
+      "tableware"
+    ],
+    "kind": "handled",
+    "description": "fork for DB-H3's held utensil bundle. Z-up, metres; rigid body as prepared for DB-H3.",
+    "attribution": "Palatial Platforms — Palatial NV Asset Library, item D00313 (https://huggingface.co/datasets/PalatialSim/palatial-nv-asset-library), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); prepared for DB-H3 by RLWRLD (rigid body enabled, delivered grasp line deactivated).",
+    "used_by": "DB-H3 extract_utensil (runtime bundles in RLWRLD/DexBench-eval eval/db_h3_inputs)",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1, RLWRLD fork d5c4c95)",
+      "validated": "2026-11-09",
+      "result": "fail",
+      "failing_requirements": [
+        "COL.001",
+        "GSP.001"
+      ],
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "unmet",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "unmet",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "unmet",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    }
+  }
+}

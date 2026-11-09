@@ -1,0 +1,70 @@
+/*
+ * Flat-parameter front end for NVIDIA's glTF reference material (gltf/pbr.mdl, BSD-3-Clause,
+ * bundled next to this file). gltf_material takes its textures as struct values produced by
+ * lookup functions; this wrapper does those lookups itself so every input is a plain value or
+ * texture asset in USD, and every material shares this one module.
+ *
+ * Vertex colour/opacity are read from gltf_color / gltf_alpha - the primvars the original
+ * MaterialX graphs read (absent here, so 1.0). The pbr.mdl default, displayColor, is set on
+ * these meshes for viewport display and would otherwise tint the base colour.
+ */
+mdl 1.8;
+
+import ::anno::*;
+import ::tex::*;
+using .::pbr import *;
+
+export material lg_gltf(
+    uniform color base_color_factor = color(1.0),
+    uniform texture_2d diffuse_texture = texture_2d()
+    [[ anno::description("glTF baseColorTexture (sRGB); its alpha is the glTF alpha") ]],
+    uniform float base_alpha = 1.0,
+    uniform gltf_alpha_mode alpha_mode = opaque,
+    uniform float alpha_cutoff = 0.5,
+    uniform float metallic_factor = 1.0,
+    uniform float roughness_factor = 1.0,
+    uniform texture_2d metallic_roughness_texture = texture_2d(),
+    uniform float specular_factor = 1.0,
+    uniform color specular_color_factor = color(1.0),
+    uniform float ior = 1.5,
+    uniform texture_2d normal_texture = texture_2d(),
+    uniform float normal_scale = 1.0,
+    uniform texture_2d occlusion_texture = texture_2d(),
+    uniform float occlusion_strength = 1.0,
+    uniform color emissive_factor = color(0.0),
+    uniform texture_2d emissive_texture = texture_2d(),
+    uniform float emissive_strength = 1.0,
+    uniform float clearcoat_factor = 0.0,
+    uniform float clearcoat_roughness_factor = 0.0,
+    uniform float transmission_factor = 0.0
+    [[ anno::description("KHR_materials_transmission; the transmitted light is tinted by the base colour") ]],
+    uniform bool thin_walled = true
+    [[ anno::description("false for closed glass solids, which then refract with ior") ]]
+) [[
+    anno::display_name("glTF Metallic-Roughness (flat)")
+]] = gltf_material(
+    base_color_factor: base_color_factor,
+    base_color_texture: gltf_texture_lookup(texture: diffuse_texture),
+    specular_factor: specular_factor,
+    specular_color_factor: specular_color_factor,
+    metallic_factor: metallic_factor,
+    roughness_factor: roughness_factor,
+    metallic_roughness_texture: gltf_texture_lookup(texture: metallic_roughness_texture),
+    ior: ior,
+    normal_texture: gltf_normal_texture_lookup(texture: normal_texture, normal_scale_factor: normal_scale),
+    clearcoat_factor: clearcoat_factor,
+    clearcoat_roughness_factor: clearcoat_roughness_factor,
+    transmission_factor: transmission_factor,
+    thin_walled: thin_walled,
+    emissive_factor: emissive_factor,
+    emissive_texture: gltf_texture_lookup(texture: emissive_texture),
+    emissive_strength: emissive_strength,
+    occlusion_texture: gltf_texture_lookup(texture: occlusion_texture),
+    occlusion_strength: occlusion_strength,
+    alpha_mode: alpha_mode,
+    base_alpha: base_alpha,
+    alpha_cutoff: alpha_cutoff,
+    vertex_color_name: "gltf_color",
+    use_vertex_color_alpha: true,
+    vertex_opacity_name: "gltf_alpha"
+);

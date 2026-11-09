@@ -1,0 +1,143 @@
+# DB-H3 (E4 banquet hall, extract one utensil from the held bundle).
+# Cell GA-OS (ga_os): held-out objects, spatial beyond the training range.
+# Spatial: held-out utensil trios with unseen geometry-dependent in-hand grasps from the same generation procedure; coupled object/layout generalization, not an independently held-out angle range.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (10 each), frozen rows (10 distinct state-target pairs per trio/target, 120 per cell; a physical grasp may be reused for another target), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 25 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task h3 --cell ga_os --model <key> \
+#       --output outputs/db_h3_eval_ga_os_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_h3_eval_ga_os_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_h3_eval_ga_os.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-H3); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_hotel_fb_e4_h3_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: extract_utensil
+    anchor: A_h3
+    rby1_control_hz: 30
+    wrist_cameras: true
+    camera_scale: 0.5
+    head_yaw_deg: 5.0
+    head_pitch_deg: 45.0
+    h3_drive_profile: collection_v1
+    episode_length_s: 25.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+runs:
+  ga_os_01_fork:
+    environment:
+      h3_object: ga_os_01_fork
+    environment_builder:
+      seed: 1506311
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_01_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_01_knife:
+    environment:
+      h3_object: ga_os_01_knife
+    environment_builder:
+      seed: 6770518
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_01_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_01_spoon:
+    environment:
+      h3_object: ga_os_01_spoon
+    environment_builder:
+      seed: 5795146
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_01_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_02_fork:
+    environment:
+      h3_object: ga_os_02_fork
+    environment_builder:
+      seed: 3041129
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_02_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_02_knife:
+    environment:
+      h3_object: ga_os_02_knife
+    environment_builder:
+      seed: 5058763
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_02_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_02_spoon:
+    environment:
+      h3_object: ga_os_02_spoon
+    environment_builder:
+      seed: 8388823
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_02_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_03_fork:
+    environment:
+      h3_object: ga_os_03_fork
+    environment_builder:
+      seed: 257164
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_03_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_03_knife:
+    environment:
+      h3_object: ga_os_03_knife
+    environment_builder:
+      seed: 9466047
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_03_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_03_spoon:
+    environment:
+      h3_object: ga_os_03_spoon
+    environment_builder:
+      seed: 8195491
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_03_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_04_fork:
+    environment:
+      h3_object: ga_os_04_fork
+    environment_builder:
+      seed: 8692596
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_04_fork.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_04_knife:
+    environment:
+      h3_object: ga_os_04_knife
+    environment_builder:
+      seed: 9289905
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_04_knife.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets
+  ga_os_04_spoon:
+    environment:
+      h3_object: ga_os_04_spoon
+    environment_builder:
+      seed: 174253
+      recorded_variation_samples_path: outputs/db_conditions/db_h3_ga_os/ga_os_04_spoon.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+      hold: targets

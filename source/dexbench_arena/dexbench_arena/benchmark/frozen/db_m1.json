@@ -1,0 +1,10 @@
+{
+ "outputs/db_conditions/db_m1_tabletop_train/lg_fh25eae_detergent_drawer.jsonl": {
+  "sha256": "323631badbb205565a1ea6e201eb1aed096a2187398704abf2f413f25e135cfc",
+  "rows": 120
+ },
+ "outputs/db_conditions/db_m1_tabletop_ga_s/lg_fh25eae_detergent_drawer.jsonl": {
+  "sha256": "dd6cfb37c467bd9f0c9af31234872d8d68e2defe31944dc81d6d85d8740ca8d6",
+  "rows": 120
+ }
+}

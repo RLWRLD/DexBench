@@ -1,0 +1,103 @@
+# DB-L4 (E2 logistics, deliver_parcels_barcode_up at A_L4 on HB2 and FB1) sensitivity sweep, the +alpha robustness section (never in the score).
+# Factors, uniform:
+#   high_bay_light_02.intensity: x0.25-1.5 of the high-bay's 6302 (DexBenchInteriorLightBase), the high-bay nearest the station, 0.67 m off A_L4
+#   high_bay_light_02.color_temperature: 2700-6500 K
+#   high_bay_light_05.intensity: x0.25-1.5, the next nearest, 1.37 m off
+#   high_bay_light_05.color_temperature: 2700-6500 K
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_left_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_robot_pov_right_cam: head camera translation, +-30 mm per axis, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_left_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+#   dexbench_rby1_wuji2_joint.camera_extrinsics_wrist_right_cam: palm camera translation, x, y +-5 mm and z (optical axis) 0 to +5 mm, each camera drawn independently
+# Training-range draws live as in the Train cell. Object: eval_00.
+# Unavailable at this pin (not swept, not claimed):
+#   camera_intrinsics: held by choice: each camera keeps its calibrated intrinsics, which a mount change does not alter (Arena's CameraIntrinsicsVariation exists at the pin)
+#   camera_rotation: CameraExtrinsicsVariation draws a translation only at the pin and on Arena main; rotation coordinates are an upstream ask
+#   texture: no material or texture variation at the pin or Arena main; the smallest addition is a run-time material-swap variation of ours
+#   distractors: the sequence's other parcels wait parked out of view; one put down beside the task's would be a second task item, not a distraction
+# Note: DB-L1's sweep: the same two high-bays, which are also the two nearest A_L4 (3.191, 1.640)
+#
+# Replay: the 200 recorded draws (db_l4_sensitivity_conditions.yaml), one file per build, at the benchmark cap of 95 s.
+# Report: isaaclab_arena.analysis.sensitivity.generate_report on the Run's episode_results_rebuild*.jsonl.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l4 --sweep --model <key> \
+#       --output outputs/db_l4_sensitivity_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l4_sensitivity_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l4_sensitivity.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L4); edit the spec, not this file.
+runs:
+  eval_00:
+    environment:
+      type: dexbench_logistics_e2_l4_environment
+      embodiment: dexbench_rby1_wuji2_joint
+      task: deliver_parcels_barcode_up
+      anchor: A_L4
+      rby1_control_hz: 30
+      belt_speed: 0.45
+      end_on_parcel_failure: true
+      l4_sequence: eval_00
+      enable_cameras: true
+      camera_scale: 0.5
+      wrist_cameras: true
+      l4_rotation_draw: id
+      l4_mass_draw: id
+      episode_length_s: 95.0
+      benchmark_replay: true
+    environment_builder:
+      presets: NEWTON
+      seed: 1016
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+    recorded_variation_samples_paths: [outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild0.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild1.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild2.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild3.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild4.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild5.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild6.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild7.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild8.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild9.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild10.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild11.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild12.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild13.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild14.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild15.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild16.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild17.jsonl,
+      outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild18.jsonl, outputs/db_conditions/db_l4_sensitivity/eval_00_rebuild19.jsonl]
+    variations:
+      high_bay_light_02:
+        intensity:
+          enabled: true
+        color_temperature:
+          enabled: true
+          sampler_cfg:
+            low: [2700.0]
+            high: [6500.0]
+      high_bay_light_05:
+        intensity:
+          enabled: true
+        color_temperature:
+          enabled: true
+          sampler_cfg:
+            low: [2700.0]
+            high: [6500.0]
+      dexbench_rby1_wuji2_joint:
+        camera_extrinsics_robot_pov_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_robot_pov_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.03, -0.03, -0.03]
+            high: [0.03, 0.03, 0.03]
+        camera_extrinsics_wrist_left_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]
+        camera_extrinsics_wrist_right_cam:
+          enabled: true
+          sampler_cfg:
+            low: [-0.005, -0.005, 0.0]
+            high: [0.005, 0.005, 0.005]

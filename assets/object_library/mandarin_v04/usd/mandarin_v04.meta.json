@@ -1,0 +1,164 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid mandarin variant (a little lighter) from SimReady food_produce_tangerine_a01 (nvidia/simready-assets@a666cb43, CC-BY-4.0) in apple_scan's package layout: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 86.6 g, mandarin skin friction 0.55/0.45.",
+    "mass_kg": 0.0866,
+    "mass_source": "realistic mandarin weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 895.1 kg/m3 over render-mesh volume 9.675e-05 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "provenance": {
+      "dataset": "nvidia/simready-assets",
+      "revision": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "catalogue": "https://huggingface.co/spaces/nvidia/simready-central",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "package": "food_produce_tangerine_a01",
+      "package_id": "simready.hf.nvidia.simready-assets.food_produce_tangerine_a01.2026.10.09_050254050706",
+      "package_license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/nvidia/simready-assets/tree/a666cb4381ba513b174fb120ed523c1566ba832c/food_produce_tangerine_a01",
+      "files": [
+        "food_produce_tangerine_a01/simready_usd/sm_food_produce_tangerine_a01_01.usd",
+        "food_produce_tangerine_a01/simready_usd/payloads/geometries.usd",
+        "food_produce_tangerine_a01/simready_usd/Textures/t_tangerine_orange_a01_alb.png",
+        "food_produce_tangerine_a01/simready_usd/Textures/t_tangerine_orange_a01_nor.png"
+      ],
+      "attribution": "food_produce_tangerine_a01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; modified: render mesh re-scaled and deformed, albedo recoloured, re-packaged by scripts/tools/make_fruit_variants.py"
+    },
+    "geometry": {
+      "size_m": [
+        0.059,
+        0.0579,
+        0.0496
+      ],
+      "volume_m3": 9.6745e-05,
+      "vertices": 16794,
+      "faces": 33584,
+      "textures": {
+        "Albedo": "./textures/mandarin_v04_base_color.png",
+        "Normal": "./textures/mandarin_v04_normal.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 9.7257e-05,
+      "hull_vertices": 10649
+    },
+    "physics_material": {
+      "static_friction": 0.55,
+      "dynamic_friction": 0.45,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth waxy (apple 0.60/0.50 as the SpaceAI scans; plum, citrus 0.55/0.45), achened strawberry 0.70/0.60, fuzzy peach 0.75/0.65, hairy kiwi 0.80/0.70; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.0495,
+            0.0,
+            0.0248
+          ],
+          [
+            0.0495,
+            0.0,
+            0.0248
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "mandarin",
+      "base": "food_produce_tangerine_a01",
+      "base_kind": "simready",
+      "base_version": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "package_template": "object_library/apple_scan",
+      "base_quality": "SimReady tangerine_a01: 4.2k vertices Loop-subdivided x1, 512 px albedo + normal map: fair (soft texture up close)",
+      "subdivision_levels": 1,
+      "index": 4,
+      "seed": 704,
+      "preset_mm": 62,
+      "size_vs_preset": -0.048,
+      "params": {
+        "label": "a little lighter",
+        "size_mm": 59,
+        "aspect": 0.84,
+        "color": {
+          "hue_deg": 3,
+          "sat": 0.96,
+          "val": 1.05
+        },
+        "seed": 704
+      },
+      "derived": {},
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 860,
+        "spread": 0.0411,
+        "unclamped_g": 86.6,
+        "range_g": [
+          50,
+          140
+        ],
+        "requested_g": 86.6,
+        "implied_density_kg_m3": 895.1
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 16794,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.000848010413012047,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.00012069568037986755,
+      "convex_volume_ratio": 0.9744853029256022,
+      "previous_scan_outside_hull_m": 0.0020774032513111093
+    }
+  }
+}

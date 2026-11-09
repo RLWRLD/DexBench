@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "part_nema17_fc_newton.usd",
+    "sha256": "ab11a1e066adc07876c1f781b032cd372079694e19a387c5177beef02763695d"
+  },
+  "pieces": 2,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/Part_Nema17",
+    "sources": [
+      {
+        "prim": "/Part_Nema17/Geom/part_nema17_fc/PartFC_Nema17_Mesh_visonly/PartFC_Nema17_Mesh_visonly",
+        "authored_approximation": "visual",
+        "vertices": 29710,
+        "physics_material": "/Part_Nema17/_physics/PhysicsMaterial"
+      }
+    ],
+    "max_convex_hull": 2,
+    "coacd_pieces": 0,
+    "start": "set",
+    "primitives": 2,
+    "kinds": [
+      "cylinder",
+      "box"
+    ],
+    "cost": 0.11915,
+    "excess_over_mesh_ratio": 0.10507,
+    "missing_ratio": 0.00047,
+    "growth_vs_vendor": -0.60611,
+    "lost_vs_vendor_ratio": 0.60611,
+    "seconds": 0.0,
+    "constraint": {
+      "kinds": [
+        "box",
+        "cylinder"
+      ],
+      "snap_axis": [
+        0,
+        1
+      ],
+      "set_center_mm": {
+        "0": [
+          0.0,
+          null,
+          18.3
+        ]
+      },
+      "set_radius_mm": {
+        "0": 2.14
+      }
+    },
+    "primitives_detail": [
+      {
+        "kind": "cylinder",
+        "center_m": [
+          0.0,
+          0.0096238,
+          0.0183
+        ],
+        "orient_wxyz": [
+          -0.4667658,
+          -0.4667658,
+          -0.5311588,
+          0.5311588
+        ],
+        "radius_m": 0.00214,
+        "half_height_m": 0.0114434,
+        "physics_material": "/Part_Nema17/_physics/PhysicsMaterial"
+      },
+      {
+        "kind": "box",
+        "center_m": [
+          1.84e-05,
+          -0.0093372,
+          0.0176477
+        ],
+        "orient_wxyz": [
+          -0.5,
+          0.5,
+          -0.5,
+          -0.5
+        ],
+        "half_extents_m": [
+          0.0176189,
+          0.0210838,
+          0.0113309
+        ],
+        "physics_material": "/Part_Nema17/_physics/PhysicsMaterial"
+      }
+    ],
+    "collider_volume_m3": 3.4009e-05,
+    "part_volume_m3": 3.0789e-05,
+    "vendor_newton_variant": {
+      "pieces": 2,
+      "collider_volume_m3": 8.6343e-05,
+      "excess_over_mesh_ratio": 1.80436,
+      "missing_ratio": 0.0,
+      "cost": 1.80436
+    },
+    "newton8_variant": null,
+    "search": [
+      {
+        "max_convex_hull": 2,
+        "coacd_pieces": 0,
+        "start": "set",
+        "primitives": 2,
+        "kinds": [
+          "cylinder",
+          "box"
+        ],
+        "cost": 0.11915,
+        "excess_over_mesh_ratio": 0.10507,
+        "missing_ratio": 0.00047,
+        "growth_vs_vendor": -0.60611,
+        "lost_vs_vendor_ratio": 0.60611,
+        "seconds": 0.0
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002,
+      "ignored_meshes": null,
+      "ignored_above_mm": 35.5
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "part_nema17_fc_newton.usd",
+    "sha256": "ec419785e30c11a29ebffffde1191f44253e4cd6eaa62adea9b5d09df527effa",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

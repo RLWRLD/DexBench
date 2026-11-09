@@ -1,0 +1,97 @@
+# E2 logistics (DB-L2) variation scenarios at the cage station, for
+# experiment_runner.py. Scene only: mount a robot by
+# adding `embodiment` under `shared.environment`.
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz kit \
+#       --experiment_config scripts/evaluation/experiment_configs/e2_logistics_variations.yaml
+shared:
+  environment:
+    type: dexbench_logistics_center_e2_environment
+    task: lift_to_conveyor
+    anchor: A1_CAGE
+  policy:
+    type: zero_action
+  rollout_limit:
+    num_steps: 30
+
+runs:
+  # Recorded placement draw on the parcel at its full range: press R and the parcel
+  # re-lands across the two upper-front cage boxes, shifted and turned a little.
+  # Check it never overhangs the box edge facing the robot (the cage's opening, +X).
+  parcel_pose:
+    environment:
+      object_box: parcel
+    variations:
+      cage_l2_package.pose.enabled: true
+
+  # Structural: every cage box at 85 %, the stack scaled about its front plane and
+  # floor, so the box spawns lower (top 0.778 m) on a smaller tier. Check it rests
+  # on the boxes, not in the air.
+  cage_small_boxes:
+    environment:
+      cage_box_scale: 0.85
+
+  # Structural: boxes at 115 %, the largest that clears the side walls; the box
+  # spawns higher (top 0.964 m). Check nothing pokes through the cage mesh.
+  cage_big_boxes:
+    environment:
+      cage_box_scale: 1.15
+
+  # Structural: the stack slid 0.15 m toward the back wall, so the box is farther
+  # from the robot. Check the reach from A1_CAGE.
+  cage_stack_back:
+    environment:
+      cage_stack_offset_depth: 0.15
+
+  # Both at once: the placement draw on the 80 % stack, its range shrunk to the
+  # smaller top (printed at startup). Press R; the box must stay on the tier.
+  cage_parcel_draw_on_small_boxes:
+    environment:
+      cage_box_scale: 0.8
+    variations:
+      cage_l2_package.pose.enabled: true
+
+  # Per-reset stack: three box sets (100 %, 85 %, 115 %) take turns in the cage,
+  # slid a little each time, the box re-seated on the tier with its own draw on
+  # top. The 115 % set leaves 13 mm to the side walls and 88 mm to the back wall,
+  # so the default offsets are narrowed to fit it. The unused sets wait 30 m
+  # outside the room.
+  cage_stack_draw:
+    environment:
+      cage_box_alt_scales: [0.85, 1.15]
+    variations:
+      cage_l2_package.cage_stack.enabled: true
+      cage_l2_package.cage_stack.sampler_cfg.low: [0.0, 0.0, -0.01]
+      cage_l2_package.cage_stack.sampler_cfg.high: [1.0, 0.08, 0.01]
+      cage_l2_package.pose.enabled: true
+
+  # GA-O train set: env 0 lifts train_0 (Korea Post No.4, 410x310x280), env 1
+  # train_1 (No.5, 480x380x340), each seated on the upper tier for its own depth.
+  # Check both sit flat on the boxes and read apart from the Korea Post boxes under them.
+  object_train_boxes:
+    environment:
+      object_set: train
+      num_envs: 2  # the environment's copy picks tiled cameras; the builder's sizes the scene
+    environment_builder:
+      num_envs: 2
+      env_spacing: 8.0
+
+  # GA-O eval set across four envs: 400x300x250, 450x350x300, 500x400x250,
+  # 600x400x300. The long one spreads over both rows of the tier; check it clears
+  # the cage sides.
+  object_eval_boxes:
+    environment:
+      object_set: eval
+      num_envs: 4  # the environment's copy picks tiled cameras; the builder's sizes the scene
+    environment_builder:
+      num_envs: 4
+      env_spacing: 8.0
+
+  # The biggest spec box (eval_3, 600x400x300) with its placement draw, its
+  # lateral range cut to the 7 cm the tier leaves it (printed at startup). Press
+  # R; it must never overhang.
+  object_long_box_draw:
+    environment:
+      object_box: eval_3
+    variations:
+      cage_l2_package.pose.enabled: true

@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "origin": "dbclutter's `_prim5` collision primitives (at most 5 boxes, cylinders, capsules or spheres fitted to the visual mesh by db-m5-create-stable-clutter `scripts/fit_primitive_colliders.py`, a script not yet committed there, run on its 5f08c9a working tree)",
+  "source": {
+    "layer": "norgren_rt_57232_m_50_roundline_cylinder_newton.usd",
+    "sha256": "aa6b239a63593fa8c5f5ae73beafb9233b050b25536662729f84fbb99e697514"
+  },
+  "pieces": 5,
+  "primitive_collision": {
+    "date": "2026-10-14",
+    "tool": "scripts/fit_primitive_colliders.py",
+    "goal": "at most 5 MuJoCo Warp primitives (box, cylinder, capsule, sphere) fitted to the visual mesh; cost = (excess + 30 * missing) / mesh volume; the fewest primitives within 5% of the best cost",
+    "body": "/World/Norgren_RT_57232_M_50_Roundline_Cylinder",
+    "sources": [
+      {
+        "prim": "/World/Norgren_RT_57232_M_50_Roundline_Cylinder/cylinder_body_01",
+        "authored_approximation": "convexHull",
+        "vertices": 20004,
+        "physics_material": "/World/PhysicsMaterials/Stainless304"
+      },
+      {
+        "prim": "/World/Norgren_RT_57232_M_50_Roundline_Cylinder/piston_rod_01",
+        "authored_approximation": "sdf",
+        "vertices": 2449,
+        "physics_material": "/World/PhysicsMaterials/SteelPolished"
+      }
+    ],
+    "max_convex_hull": 5,
+    "coacd_pieces": 0,
+    "start": "set",
+    "primitives": 5,
+    "kinds": [
+      "cylinder",
+      "cylinder",
+      "cylinder",
+      "box",
+      "box"
+    ],
+    "cost": 0.05522,
+    "excess_over_mesh_ratio": 0.05522,
+    "missing_ratio": 0.0,
+    "growth_vs_vendor": -0.06117,
+    "lost_vs_vendor_ratio": 0.07704,
+    "seconds": 0.0,
+    "growth_vs_newton8": -0.12898,
+    "lost_vs_newton8_ratio": 0.13031,
+    "constraint": {
+      "stack_from_high_end": [
+        "cylinder",
+        "cylinder",
+        "cylinder",
+        "cylinder"
+      ],
+      "cuts_m": [
+        0.151375,
+        0.131913,
+        0.010813
+      ],
+      "set_radius_mm": {
+        "0": 6.0,
+        "1": 11.0,
+        "2": 16.8,
+        "3": 10.9
+      },
+      "set_span_mm": {
+        "2": [
+          27.0,
+          128.0
+        ]
+      },
+      "coaxial": 2,
+      "enclose_span_mm": {
+        "3": [
+          "box",
+          0.0,
+          15.0
+        ],
+        "4": [
+          "box",
+          15.0,
+          27.0
+        ]
+      }
+    },
+    "primitives_detail": [
+      {
+        "kind": "cylinder",
+        "center_m": [
+          1e-07,
+          2e-07,
+          0.1580151
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.006,
+        "half_height_m": 0.015,
+        "physics_material": "/World/PhysicsMaterials/SteelPolished"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          1e-07,
+          2e-07,
+          0.135501
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.011,
+        "half_height_m": 0.0075,
+        "physics_material": "/World/PhysicsMaterials/Stainless304"
+      },
+      {
+        "kind": "cylinder",
+        "center_m": [
+          1e-07,
+          2e-07,
+          0.0775
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius_m": 0.0168,
+        "half_height_m": 0.0505,
+        "physics_material": "/World/PhysicsMaterials/Stainless304"
+      },
+      {
+        "kind": "box",
+        "center_m": [
+          0.0,
+          -7e-07,
+          0.0075
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "half_extents_m": [
+          0.008,
+          0.011,
+          0.0075
+        ],
+        "physics_material": "/World/PhysicsMaterials/Stainless304"
+      },
+      {
+        "kind": "box",
+        "center_m": [
+          0.0,
+          -6e-07,
+          0.021
+        ],
+        "orient_wxyz": [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "half_extents_m": [
+          0.008,
+          0.0167501,
+          0.006
+        ],
+        "physics_material": "/World/PhysicsMaterials/Stainless304"
+      }
+    ],
+    "collider_volume_m3": 0.000110504,
+    "part_volume_m3": 0.000104721,
+    "vendor_newton_variant": {
+      "pieces": 2,
+      "collider_volume_m3": 0.000117705,
+      "excess_over_mesh_ratio": 0.12527,
+      "missing_ratio": 0.00129,
+      "cost": 0.16391
+    },
+    "newton8_variant": {
+      "pieces": 4,
+      "collider_volume_m3": 0.000126869,
+      "excess_over_mesh_ratio": 0.21152,
+      "missing_ratio": 4e-05,
+      "cost": 0.21259
+    },
+    "search": [
+      {
+        "max_convex_hull": 5,
+        "coacd_pieces": 0,
+        "start": "set",
+        "primitives": 5,
+        "kinds": [
+          "cylinder",
+          "cylinder",
+          "cylinder",
+          "box",
+          "box"
+        ],
+        "cost": 0.05522,
+        "excess_over_mesh_ratio": 0.05522,
+        "missing_ratio": 0.0,
+        "growth_vs_vendor": -0.06117,
+        "lost_vs_vendor_ratio": 0.07704,
+        "seconds": 0.0,
+        "growth_vs_newton8": -0.12898,
+        "lost_vs_newton8_ratio": 0.13031
+      }
+    ],
+    "measurement": {
+      "method": "uniform bounding-box samples, open3d ray-cast occupancy vs analytic primitive tests",
+      "fit_samples": 200000,
+      "score_samples": 400000,
+      "missing_weight": 30.0,
+      "slack": 0.05,
+      "drop_tolerance": 0.002,
+      "ignored_meshes": null,
+      "ignored_above_mm": null
+    },
+    "coacd_seed": {
+      "threshold": 0.05,
+      "max_ch_vertex": 64,
+      "mcts_nodes": 20,
+      "mcts_iterations": 20,
+      "mcts_max_depth": 2,
+      "merge": true,
+      "preprocess_mode": "auto",
+      "seed": 0
+    },
+    "versions": {
+      "coacd": "1.0.14",
+      "usd-core": "26.3",
+      "open3d": "0.20.0"
+    }
+  },
+  "primitive_collision_source": {
+    "layer": "norgren_rt_57232_m_50_roundline_cylinder_newton.usd",
+    "sha256": "e8abc95f34a8258823ffe2580093b3a016306748fc73d82d7a98ffbca0faabb5",
+    "restaged_from": "the Newton payload of an earlier internal revision"
+  }
+}

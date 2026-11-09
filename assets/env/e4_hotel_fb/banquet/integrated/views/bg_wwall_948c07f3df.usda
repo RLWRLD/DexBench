@@ -1,0 +1,14 @@
+#usda 1.0
+(
+    defaultPrim = "BG_wwall"
+    doc = "E4 r01 배경 그룹 BG_wwall — 시각 전용. 오브젝트 35 · 평가 삼각형 132196."
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "BG_wwall" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_948c07f3df5e9b2af2ab/BG_wwall>
+)
+{
+}
+

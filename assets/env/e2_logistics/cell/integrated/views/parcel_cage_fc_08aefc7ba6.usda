@@ -1,0 +1,32 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary SimReady_Metadata = {
+            dictionary Variants = {
+                dictionary Physics = {
+                    dictionary Newton = {
+                        string activateOption = "Enabled"
+                        string prim = "/ParcelCage"
+                        string variantSetName = "Newton"
+                    }
+                }
+            }
+            string source_delivery = "deliveries/psl/e2_logistics/261014"
+            string source_generated = "261014"
+            string version = "2.0.0"
+        }
+        string asset_name = "parcel_cage_fc"
+        string asset_type = "fixture"
+        string source_file = "deliveries/psl/e2_logistics/261014"
+        string usd_date_generated = "2026-10-14"
+    }
+    defaultPrim = "ParcelCage"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def "ParcelCage" (
+    prepend references = @../scene.usdz@</__EmbeddedSceneLayers/layer_08aefc7ba6b3373d9624/ParcelCage>
+)
+{
+}

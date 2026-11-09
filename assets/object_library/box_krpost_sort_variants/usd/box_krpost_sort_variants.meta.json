@@ -1,0 +1,192 @@
+{
+  "asset": {
+    "version": "1.1.0",
+    "tool": "scripts/tools/make_polybag_sort_variants.py",
+    "kind": "handled",
+    "categories": [
+      "logistics",
+      "parcel"
+    ],
+    "description": "DB-L1 stream boxes: Korea Post boxes No.1-3 with fictional 4x6 in shipping labels on their lids (visual only); distractors that pass the robot. Main file: a `label` variant set over usd/variants/<key>.usd",
+    "variants": [
+      {
+        "key": "krpost1_1__1a",
+        "base_package": "box_krpost_fc_01",
+        "size_m": [
+          0.221,
+          0.19,
+          0.091
+        ],
+        "sort_code": "5K21-1A",
+        "fields": {
+          "tracking": "6719 2225 5112",
+          "date": "2026-10-11",
+          "recipient": "B. PARK",
+          "recipient_phone": "+82 10-8419-****",
+          "address1": "Unit 2303, Bldg 115",
+          "address2": "13 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04784",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "83 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-805964",
+          "sscc": "088092400206900385"
+        }
+      },
+      {
+        "key": "krpost1_2__3c",
+        "base_package": "box_krpost_fc_01",
+        "size_m": [
+          0.221,
+          0.19,
+          0.091
+        ],
+        "sort_code": "5K21-3C",
+        "fields": {
+          "tracking": "6917 3654 2025",
+          "date": "2026-10-11",
+          "recipient": "J. OH",
+          "recipient_phone": "+82 10-8745-****",
+          "address1": "Unit 901, Bldg 107",
+          "address2": "75 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04801",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "23 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-367435",
+          "sscc": "088035983718948946"
+        }
+      },
+      {
+        "key": "krpost2_1__2b",
+        "base_package": "box_krpost_fc_02",
+        "size_m": [
+          0.271,
+          0.18,
+          0.151
+        ],
+        "sort_code": "5K21-2B",
+        "fields": {
+          "tracking": "6649 5789 7208",
+          "date": "2026-10-11",
+          "recipient": "E. LEE",
+          "recipient_phone": "+82 10-2253-****",
+          "address1": "Unit 2403, Bldg 103",
+          "address2": "82 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04792",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "21 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "1 KG",
+          "ref": "ORD-731275",
+          "sscc": "088045401139749036"
+        }
+      },
+      {
+        "key": "krpost2_2__1a",
+        "base_package": "box_krpost_fc_02",
+        "size_m": [
+          0.271,
+          0.18,
+          0.151
+        ],
+        "sort_code": "5K21-1A",
+        "fields": {
+          "tracking": "5569 2242 6038",
+          "date": "2026-10-11",
+          "recipient": "C. YOON",
+          "recipient_phone": "+82 10-5251-****",
+          "address1": "Unit 2304, Bldg 104",
+          "address2": "74 Dexseongsu 1ga-gil",
+          "address3": "Seongdong-gu, Seoul 04789",
+          "sender": "DEXBENCH FULFILMENT CTR",
+          "sender_address": "20 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-248159",
+          "sscc": "088032879126001508"
+        }
+      },
+      {
+        "key": "krpost3_1__3c",
+        "base_package": "box_krpost_fc_03",
+        "size_m": [
+          0.341,
+          0.25,
+          0.211
+        ],
+        "sort_code": "5K21-3C",
+        "fields": {
+          "tracking": "6893 3792 5814",
+          "date": "2026-10-11",
+          "recipient": "G. LIM",
+          "recipient_phone": "+82 10-3482-****",
+          "address1": "Unit 504, Bldg 107",
+          "address2": "65 Dexsongjeong-gil",
+          "address3": "Seongdong-gu, Seoul 04805",
+          "sender": "DEXSTORE NO.1",
+          "sender_address": "83 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "3 KG",
+          "ref": "ORD-883128",
+          "sscc": "088042703644659040"
+        }
+      },
+      {
+        "key": "krpost3_2__2b",
+        "base_package": "box_krpost_fc_03",
+        "size_m": [
+          0.341,
+          0.25,
+          0.211
+        ],
+        "sort_code": "5K21-2B",
+        "fields": {
+          "tracking": "6381 4382 2986",
+          "date": "2026-10-11",
+          "recipient": "J. KANG",
+          "recipient_phone": "+82 10-9886-****",
+          "address1": "Unit 2503, Bldg 104",
+          "address2": "47 Dexseongsu 2ga-gil",
+          "address3": "Seongdong-gu, Seoul 04791",
+          "sender": "DEXMALL LOGISTICS",
+          "sender_address": "41 Dexhwaseong-ro, Hwaseong-si",
+          "sender_city": "Gyeonggi-do 18450 KOREA",
+          "weight": "2 KG",
+          "ref": "ORD-217086",
+          "sscc": "088065414695002273"
+        }
+      }
+    ],
+    "fonts": "Liberation Sans (SIL Open Font License 1.1)",
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation 2026.07.1)",
+      "validated": "2026-10-30",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    }
+  }
+}

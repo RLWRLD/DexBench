@@ -1,0 +1,8 @@
+{
+  "initial_ml": 100,
+  "density_kg_m3": 1000,
+  "spacing_m": 0.004,
+  "voxel_m": 0.008,
+  "max_iterations": 40,
+  "cup_collider_margin_m": 0.006
+}

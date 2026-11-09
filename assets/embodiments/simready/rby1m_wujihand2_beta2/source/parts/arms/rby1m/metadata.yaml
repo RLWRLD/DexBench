@@ -1,0 +1,30 @@
+# Per-part metadata for 'rby1m' (arm). computed.* is read from the MJCF.
+
+canonical_format: mjcf
+name: rby1m
+kind: arm
+vendor:
+  source: RainbowRobotics/rby1-sdk
+  version: v1.2
+  license: Apache-2.0 (RainbowRobotics/rby1-sdk; upstream NOTICE file applies)
+formats:
+  mjcf: reference-extracted (snapshot rby1m_inspire_rh56f1_flat.xml, hands/grippers removed);
+    actuator gains from vendor model_act.xml, ctrlranges = joint limits; base_1..4 and
+    LINK_2_0 material assignments corrected against rby1-sim-isaac model_v_1_2_m.usd, matched
+    subset-to-mesh by face count (the snapshot had read CAD material NAMES literally, so
+    "0,0,0" became pure black where the vendor material of that name is 0.039)
+  urdf: vendor
+  usd: generated (URDF->Isaac)
+mount_frames:
+- link_left_arm_6
+- link_right_arm_6
+tags:
+- arm
+- bimanual
+- mobile
+- torso
+computed:
+  nq: 26
+  nu: 26
+  njnt: 26
+  nbody: 29

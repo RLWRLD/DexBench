@@ -1,0 +1,31 @@
+{
+  "format_version": "1.0",
+  "package_id": "simready.hf.ForgeCAD.simready-assets.cutlery_set.2026.10.17_00",
+  "license": "cc-by-4.0",
+  "metadata": [
+    {
+      "name": "com.nvidia.simready.conformance.Package-Candidate@1.0.0.json",
+      "hash": {
+        "sha256": "ca29e7c0817680c25a721950d7342efbc4e80de6461a2e2d00360184f67239bf"
+      }
+    },
+    {
+      "name": "com.nvidia.simready.packaging.bom.json",
+      "hash": {
+        "sha256": "95db975cf756682362ddb98d35ae8de4672e7b2b0ffbb6eccc3abc25624990aa"
+      }
+    },
+    {
+      "name": "com.nvidia.simready.root_usds.json",
+      "hash": {
+        "sha256": "0dff60586ebc86fbd8e4b9f27dea671ce255b9598756f7b820d2fd19f997049c"
+      }
+    }
+  ],
+  "content_hash": {
+    "sha256": "b6a6197ba7d54e6bfdcfa1f332c827dd41bf9f773d332b89de0a2b62a03cf9af"
+  },
+  "package_hash": {
+    "sha256": "d144c593ad38cfe0579b8a1ad70f823b0f0a4efcd867dce30abbfae02ac9b0ee"
+  }
+}

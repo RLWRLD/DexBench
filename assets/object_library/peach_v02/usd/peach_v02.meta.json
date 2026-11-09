@@ -1,0 +1,173 @@
+{
+  "asset": {
+    "version": "1.2.0",
+    "kind": "handled",
+    "categories": [
+      "produce"
+    ],
+    "categories_seeded": false,
+    "description": "Rigid peach variant (large, deeper blush) from SimReady food_produce_peach_d01 (nvidia/simready-assets@a666cb43, CC-BY-4.0) in apple_scan's package layout: render mesh deformed and recoloured by scripts/tools/make_fruit_variants.py, convex hull collider on the new mesh, realistic weight 243.2 g, peach skin friction 0.75/0.65.",
+    "mass_kg": 0.2432,
+    "mass_source": "realistic peach weight: render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range; implied density 947.0 kg/m3 over render-mesh volume 2.568e-04 m3",
+    "tool": "scripts/tools/make_fruit_variants.py",
+    "provenance": {
+      "dataset": "nvidia/simready-assets",
+      "revision": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "catalogue": "https://huggingface.co/spaces/nvidia/simready-central",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "package": "food_produce_peach_d01",
+      "package_id": "simready.hf.nvidia.simready-assets.food_produce_peach_d01.2026.10.09_045542093845",
+      "package_license": "CC-BY-4.0",
+      "url": "https://huggingface.co/datasets/nvidia/simready-assets/tree/a666cb4381ba513b174fb120ed523c1566ba832c/food_produce_peach_d01",
+      "files": [
+        "food_produce_peach_d01/simready_usd/sm_food_produce_peach_d01_01.usd",
+        "food_produce_peach_d01/simready_usd/payloads/geometries.usd",
+        "food_produce_peach_d01/simready_usd/Textures/t_peach_lightRed_d01_alb.png",
+        "food_produce_peach_d01/simready_usd/Textures/t_peach_lightRed_d01_nor.png"
+      ],
+      "attribution": "food_produce_peach_d01 from NVIDIA SimReady Assets (nvidia/simready-assets), CC BY 4.0; modified: render mesh re-scaled and deformed, albedo recoloured, re-packaged by scripts/tools/make_fruit_variants.py"
+    },
+    "geometry": {
+      "size_m": [
+        0.0715,
+        0.082,
+        0.0754
+      ],
+      "volume_m3": 0.000256811,
+      "vertices": 11998,
+      "faces": 23992,
+      "textures": {
+        "Albedo": "./textures/peach_v02_base_color.png",
+        "Normal": "./textures/peach_v02_normal.png"
+      }
+    },
+    "collision": {
+      "approximation": "convexHull",
+      "hull_volume_m3": 0.000263256,
+      "hull_vertices": 8650
+    },
+    "physics_material": {
+      "static_friction": 0.75,
+      "dynamic_friction": 0.65,
+      "restitution": 0.05,
+      "binding": "material:binding:physics on the collider mesh -> <root>/_physics/PhysicsMaterial",
+      "basis": "per-fruit skin: smooth waxy (apple 0.60/0.50 as the SpaceAI scans; plum, citrus 0.55/0.45), achened strawberry 0.70/0.60, fuzzy peach 0.75/0.65, hairy kiwi 0.80/0.70; restitution low (0.05)"
+    },
+    "grasp_lines": [
+      {
+        "prim": "grasp_identifier_01",
+        "curve": "grasp_identifier_01/grasp_identifier_01_line",
+        "points": [
+          [
+            -0.0558,
+            0.0,
+            0.0377
+          ],
+          [
+            0.0558,
+            0.0,
+            0.0377
+          ]
+        ],
+        "rule": "cylinder-diameter",
+        "note": "base rule (cylinder diameter, 20 mm out) re-applied to the variant mesh",
+        "reviewed": null,
+        "evidence": "derived by scripts/tools/make_fruit_variants.py; not reviewed, not simulated"
+      }
+    ],
+    "variant": {
+      "fruit": "peach",
+      "base": "food_produce_peach_d01",
+      "base_kind": "simready",
+      "base_version": "a666cb4381ba513b174fb120ed523c1566ba832c",
+      "package_template": "object_library/apple_scan",
+      "base_quality": "SimReady peach_d01: 3k vertices Loop-subdivided x1, 2048 px albedo + normal map: good",
+      "subdivision_levels": 1,
+      "index": 2,
+      "seed": 302,
+      "preset_mm": 72,
+      "size_vs_preset": 0.139,
+      "params": {
+        "label": "large, deeper blush",
+        "size_mm": 82,
+        "aspect": 0.92,
+        "color": {
+          "hue_deg": -3,
+          "sat": 1.06,
+          "val": 0.95
+        },
+        "blush": {
+          "rgb": [
+            0.72,
+            0.22,
+            0.2
+          ],
+          "amount": 0.18,
+          "azimuth_deg": 300
+        },
+        "seed": 302
+      },
+      "derived": {},
+      "mass": {
+        "rule": "render-mesh volume x flesh density x (1 + seeded spread), clamped to the typical range",
+        "flesh_density_kg_m3": 960,
+        "spread": -0.0134,
+        "unclamped_g": 243.2,
+        "range_g": [
+          110,
+          260
+        ],
+        "requested_g": 243.2,
+        "implied_density_kg_m3": 947.0
+      },
+      "flipped_faces": 0
+    },
+    "variants": {
+      "physics": {
+        "Newton": "usd/runnables/physics/newton.usd"
+      }
+    },
+    "simready": {
+      "profile": "Robotics-Prop",
+      "spec_version": "3.1.0",
+      "scope": "full",
+      "validator": "simready-validate 2026.7.1 (SimReady Foundation v2026.07.1)",
+      "validated": "2026-11-01",
+      "result": "pass",
+      "features": {
+        "FET_000_MUJOCO": "unmet",
+        "FET_000_NEWTON": "pass",
+        "FET_000_PHYSX": "unmet",
+        "FET_000_STANDARD": "pass",
+        "FET_001_STANDARD": "pass",
+        "FET_003_MUJOCO": "unmet",
+        "FET_003_NEWTON": "pass",
+        "FET_003_PHYSX": "pass",
+        "FET_003_STANDARD": "pass",
+        "FET_004_MUJOCO": "unmet",
+        "FET_004_NEWTON": "unmet",
+        "FET_004_PHYSX": "unmet",
+        "FET_004_STANDARD": "unmet",
+        "FET_005_STANDARD": "pass",
+        "FET_006_MDL": "pass",
+        "FET_006_STANDARD": "pass",
+        "FET_007_STANDARD": "unmet"
+      }
+    },
+    "collision_preparation": {
+      "tool": "scripts/tools/prepare_db_r1_newton_colliders.py",
+      "date": "2026-10-30",
+      "runtime": "Newton",
+      "source_vertices": 11998,
+      "pieces": 4,
+      "hull_vertices": 64,
+      "max_hull_vertices": 64,
+      "max_scan_outside_hull_m": 0.0014888381342968715,
+      "hull_triangles": 496,
+      "max_bounds_error_m": 0.00032641738653182983,
+      "convex_volume_ratio": 0.9732206872854371,
+      "previous_scan_outside_hull_m": 0.0033164396603337885
+    }
+  }
+}

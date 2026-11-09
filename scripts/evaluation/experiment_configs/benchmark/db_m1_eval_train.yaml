@@ -1,0 +1,64 @@
+# DB-M1 (E3 manufacturing, tabletop pick_insert_drawer at A_m1).
+# Cell Train (train): training objects, spatial training range.
+# Spatial: outcome-blind draws inside base XY +-3 cm, yaw +-5 deg; drawer XY +-5 cm, yaw +-5 deg; washer XY +-5 cm, yaw +-5 deg, conditioned on complete worktop/pallet support; the success-selected training set is nonuniform inside this envelope and reports its actual coverage; the frozen rows supply every draw.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (120 each), frozen rows (120 support-constrained draws per cell, at independent cell_run_seed seeds; no training pose is reused), through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 100 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task m1 --cell train --model <key> \
+#       --output outputs/db_m1_eval_train_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_m1_eval_train_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_m1_eval_train.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-M1); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_manufacturing_e3_m1_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: pick_insert_drawer
+    anchor: A_m1
+    start_pose: teleop_ready
+    m1_tabletop_base_xy: [0.15, -0.9757]
+    m1_tabletop_base_yaw_deg: 180.0
+    m1_tabletop_crouch_deg: 55.0
+    m1_tabletop_drawer_mass_kg: 0.55
+    m1_physics_profile: damped_contacts
+    rby1_control_hz: 30
+    camera_hz: 30
+    episode_length_s: 100.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    dexbench_rby1_wuji2_joint:
+      base_pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.03, -0.03, -0.0872665]
+          high: [0.03, 0.03, 0.0872665]
+    drawer:
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.05, -0.05, -0.0872665]
+          high: [0.05, 0.05, 0.0872665]
+    washer:
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.05, -0.05, -0.0872665]
+          high: [0.05, 0.05, 0.0872665]
+runs:
+  lg_fh25eae_detergent_drawer:
+    environment:
+      m1_drawer: lg_fh25eae_detergent_drawer
+    environment_builder:
+      seed: 173535
+      recorded_variation_samples_path: outputs/db_conditions/db_m1_tabletop_train/lg_fh25eae_detergent_drawer.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy

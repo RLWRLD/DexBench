@@ -1,0 +1,124 @@
+{
+  "collision_spheres": {
+    "version": "1.0.0",
+    "model": "wrist_mounts.json",
+    "sha256": "28d5cf64caaae95ec23866984b011953956137c64e4df4fde2f723b60c981d43",
+    "build": {
+      "version": "1.0.0",
+      "builder": "scripts/tools/build_wuji2_mount_spheres.py",
+      "coverage": "Circumspheres of complete hull-local bounding-box cells, maximum edge 0.012 m",
+      "frame": "Named arm_6 link; independent of hand posture",
+      "hulls": {
+        "link_left_arm_6": [
+          {
+            "prim": "wrist_camera/collisions/camera_body",
+            "first": 0,
+            "count": 27
+          },
+          {
+            "prim": "wrist_camera/collisions/camera_lens",
+            "first": 27,
+            "count": 8
+          },
+          {
+            "prim": "wrist_camera/collisions/camera_socket",
+            "first": 35,
+            "count": 8
+          },
+          {
+            "prim": "wrist_camera/collisions/cable_plug",
+            "first": 43,
+            "count": 8
+          },
+          {
+            "prim": "wrist_camera/collisions/cable_tail",
+            "first": 51,
+            "count": 2
+          },
+          {
+            "prim": "wrist_camera/collisions/camera_clamp",
+            "first": 53,
+            "count": 9
+          },
+          {
+            "prim": "wrist_camera/collisions/bonded_carrier",
+            "first": 62,
+            "count": 4
+          },
+          {
+            "prim": "wrist_camera/collisions/saddle_base",
+            "first": 66,
+            "count": 1
+          },
+          {
+            "prim": "wrist_camera/collisions/saddle_back",
+            "first": 67,
+            "count": 3
+          },
+          {
+            "prim": "wrist_camera/collisions/conformal_spacer",
+            "first": 70,
+            "count": 4
+          }
+        ],
+        "link_right_arm_6": [
+          {
+            "prim": "wrist_camera/collisions/camera_body",
+            "first": 0,
+            "count": 27
+          },
+          {
+            "prim": "wrist_camera/collisions/camera_lens",
+            "first": 27,
+            "count": 8
+          },
+          {
+            "prim": "wrist_camera/collisions/camera_socket",
+            "first": 35,
+            "count": 8
+          },
+          {
+            "prim": "wrist_camera/collisions/cable_plug",
+            "first": 43,
+            "count": 8
+          },
+          {
+            "prim": "wrist_camera/collisions/cable_tail",
+            "first": 51,
+            "count": 2
+          },
+          {
+            "prim": "wrist_camera/collisions/camera_clamp",
+            "first": 53,
+            "count": 9
+          },
+          {
+            "prim": "wrist_camera/collisions/bonded_carrier",
+            "first": 62,
+            "count": 4
+          },
+          {
+            "prim": "wrist_camera/collisions/saddle_base",
+            "first": 66,
+            "count": 1
+          },
+          {
+            "prim": "wrist_camera/collisions/saddle_back",
+            "first": 67,
+            "count": 3
+          },
+          {
+            "prim": "wrist_camera/collisions/conformal_spacer",
+            "first": 70,
+            "count": 4
+          }
+        ]
+      },
+      "source_sha256": {
+        "rby1m_wujihand2_beta2.usd": "0757f09a9bd3194cb093ed436b08fe76d08998cb07596faf0825675e0bbcc365",
+        "geometry/left_palm_camera.usd": "c8f53f393821d7029e008d6fc28b3c183ff245fe7a509fe6562b692a1d75b7e7",
+        "geometry/right_palm_camera.usd": "77e12dcf9d524ec274b30f8bb92551ddd0ece8fceb183f77ec4c7016c27db632"
+      }
+    }
+  }
+}

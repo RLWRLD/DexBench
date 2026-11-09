@@ -1,0 +1,26 @@
+# A site profile for a plain Kubernetes cluster with NVIDIA GPUs and a ReadWriteMany volume: what the cluster decides,
+# so a launch config names only the model, the tasks, the GPUs and its own Job (kubernetes.yaml and
+# ray_kubernetes.yaml beside it point here with backend.site). Replace each <...>; a key your cluster does not ask for
+# can go. Every key is the field of the same name under backend (site.py).
+name: my-cluster
+image: <registry>/dexbench-arena@sha256:<digest>   # the simulator image, by digest, built at the staged tree's commit
+env: {HDF5_USE_FILE_LOCKING: "FALSE"}               # only when the shared volume is NFS
+k8s:
+  namespace: <namespace>
+  volume_claim: <rwx-claim>                         # every pod mounts it: the staged tree, checkpoints, outputs
+  volume_mount: /data
+  cpu: 10                                           # per GPU of a worker pod: a node's CPUs over its GPUs, minus the node's share
+  memory: 80Gi                                      # per GPU
+  shm_size: 16Gi                                    # per GPU: the pod's /dev/shm
+  node_selector: {}                                 # e.g. {nvidia.com/gpu.product: NVIDIA-L40S}
+  tolerations: [{key: nvidia.com/gpu, operator: Exists, effect: NoSchedule}]
+  labels: {}                                        # on every Job and pod, e.g. {team: <team>}
+  required_labels: {}                               # labels your cluster refuses a workload without
+  annotations: {}                                   # on every Job and pod template, if your admission asks for keys
+  security_context: {}                              # the container's, e.g. {allowPrivilegeEscalation: false}
+  pod_security_context: {}                          # the pod's, e.g. {seccompProfile: {type: RuntimeDefault}}
+  prepull: true                                     # false where you may not create DaemonSets
+  ray:
+    head_tolerations: []                            # the Ray head requests no GPU
+    head_cpu: 2
+    head_memory: 8Gi

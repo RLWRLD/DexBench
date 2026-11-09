@@ -1,0 +1,34 @@
+# Your own model on one host (CONNECT_YOUR_POLICY.md): one colocated server and simulator per GPU, the server
+# speaking the HTTP contract (the server kit's example, source/dexbench_policy_server), registered by
+# this config alone.
+#   scripts/evaluation/eval_launch/launch.sh scripts/evaluation/eval_launch/examples/own_policy_local.yaml --local
+model:
+  key: mymodel                              # a key of your own: its name in the run manifests and the score
+  label: My Model
+  checkpoint: /path/to/your/checkpoint      # the server gets it as {checkpoint}; the run manifest records it
+  # Registered by this config (no benchmark/models.py entry): the client's policy block. The benchmark's HTTP client
+  # (CONNECT_YOUR_POLICY.md); the worker sets its port. Reported apart from the headline (group: community).
+  policy:
+    type: dexbench_arena_cosmos.policy.cosmos3_joint_policy.Cosmos3JointPolicy
+    remote_url: http://127.0.0.1:5811
+    remote_api_token: ${oc.env:DEXBENCH_POLICY_API_TOKEN,null}   # the worker's token, from the environment
+    policy_device: cpu
+tasks: [r2]
+cells: [train]                              # all, once the check cell looks right
+servers:
+  recipe:
+    # Everything that can fail before a unit runs: the checkpoint is there, your environment imports.
+    setup: test -e {checkpoint}
+    # Your server in your model's environment (here the kit's example, run from this checkout); the launcher picks the
+    # port and writes the token file.
+    command: >-
+      cd {launcher}/../../../source/dexbench_policy_server && exec /isaac-sim/python.sh -m dexbench_policy_server
+      --policy dexbench_policy_server.example:HoldPose --checkpoint {checkpoint} --port {port} --token-file {token_file}
+      --option cameras=camera_ego_left,camera_ego_right,camera_wrist_left,camera_wrist_right
+    ready: Server ready
+backend:
+  kind: local
+  gpus: [0, 1, 2, 3]   # or a count, or leave it out: every GPU this host shows
+  local:
+    port_base: 5810    # station i's server listens on port_base + 10 i
+output: outputs/eval/r2-mymodel

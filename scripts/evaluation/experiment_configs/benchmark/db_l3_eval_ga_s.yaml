@@ -1,0 +1,314 @@
+# DB-L3 (E2 logistics, pack_invoice at the A3_BENCH anchor).
+# Cell GA-S (ga_s): training objects, spatial beyond the training range.
+# Spatial: one axis fixed outside training, at 1.5 times the training extent on one side, the others drawn in training (beyond_settings), one Run per axis and side.
+# Evaluation: each Run (an object at a spatial setting) replays its row file (6 each), the filtered rows of db_l3_conditions_ga_s.yaml, through
+# environment_builder.recorded_variation_samples_path: one episode per start-state row (120 in the cell),
+# at the benchmark cap of 25 s.
+# A model runs it with its own policy block (dexbench_arena.benchmark.model_run):
+#
+#   /isaac-sim/python.sh scripts/evaluation/run_benchmark_cell.py --task l3 --cell ga_s --model <key> \
+#       --output outputs/db_l3_eval_ga_s_<key> -- --viz none
+#
+# Run as it is, the file is the baseline, a pipeline check that is never scored:
+#
+#   /isaac-sim/python.sh scripts/evaluation/experiment_runner.py --viz none \
+#       --experiment_output_directory outputs/db_l3_eval_ga_s_baseline \
+#       --experiment_config scripts/evaluation/experiment_configs/benchmark/db_l3_eval_ga_s.yaml
+#
+# Generated from dexbench_arena.benchmark.spec (DB-L3); edit the spec, not this file.
+shared:
+  environment:
+    type: dexbench_logistics_center_e2_environment
+    embodiment: dexbench_rby1_wuji2_joint
+    task: pack_invoice
+    anchor: A3_BENCH
+    rby1_control_hz: 30
+    paper_coupling: one_way_proxy
+    paper_hand_colliders: official_hull
+    paper_num_sheets: 4
+    paper_resolution: 4x6
+    paper_substeps: 16
+    paper_iterations: 10
+    paper_contact_mu: 0.2
+    paper_self_contact_radius: 0.002
+    base_jitter_low: [-0.01, -0.02, -2.5]
+    base_jitter_high: [0.02, 0.015, 2.0]
+    episode_length_s: 25.0
+    benchmark_replay: true
+  environment_builder:
+    presets: NEWTON
+  variations:
+    packing_bench:
+      paper_pile:
+        enabled: true
+        sampler_cfg:
+          low: [-0.02, -0.045, -0.2617994]
+          high: [0.06, 0.075, 0.3490659]
+      height:
+        enabled: true
+        sampler_cfg:
+          low: [-0.04]
+          high: [0.015]
+    outbound_box:
+      pose:
+        enabled: true
+        sampler_cfg:
+          low: [-0.06, -0.015, -0.0872665]
+          high: [0.02, 0.02, 0.2181662]
+runs:
+  invoice_202x276_paper_x_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_x_neg_1p5x.jsonl
+    variations:
+      packing_bench:
+        paper_pile:
+          sampler_cfg:
+            low: [-0.03, -0.045, -0.2617994]
+            high: [-0.03, 0.075, 0.3490659]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_paper_x_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_x_pos_1p5x.jsonl
+    variations:
+      packing_bench:
+        paper_pile:
+          sampler_cfg:
+            low: [0.09, -0.045, -0.2617994]
+            high: [0.09, 0.075, 0.3490659]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_paper_y_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_y_neg_1p5x.jsonl
+    variations:
+      packing_bench:
+        paper_pile:
+          sampler_cfg:
+            low: [-0.02, -0.0675, -0.2617994]
+            high: [0.06, -0.0675, 0.3490659]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_paper_y_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_y_pos_1p5x.jsonl
+    variations:
+      packing_bench:
+        paper_pile:
+          sampler_cfg:
+            low: [-0.02, 0.1125, -0.2617994]
+            high: [0.06, 0.1125, 0.3490659]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_paper_yaw_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_yaw_neg_1p5x.jsonl
+    variations:
+      packing_bench:
+        paper_pile:
+          sampler_cfg:
+            low: [-0.02, -0.045, -0.3926991]
+            high: [0.06, 0.075, -0.3926991]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_paper_yaw_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_paper_yaw_pos_1p5x.jsonl
+    variations:
+      packing_bench:
+        paper_pile:
+          sampler_cfg:
+            low: [-0.02, -0.045, 0.5235988]
+            high: [0.06, 0.075, 0.5235988]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_box_x_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_x_neg_1p5x.jsonl
+    variations:
+      outbound_box:
+        pose:
+          sampler_cfg:
+            low: [-0.09, -0.015, -0.0872665]
+            high: [-0.09, 0.02, 0.2181662]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_box_x_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_x_pos_1p5x.jsonl
+    variations:
+      outbound_box:
+        pose:
+          sampler_cfg:
+            low: [0.03, -0.015, -0.0872665]
+            high: [0.03, 0.02, 0.2181662]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_box_y_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_y_neg_1p5x.jsonl
+    variations:
+      outbound_box:
+        pose:
+          sampler_cfg:
+            low: [-0.06, -0.0225, -0.0872665]
+            high: [0.02, -0.0225, 0.2181662]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_box_y_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_y_pos_1p5x.jsonl
+    variations:
+      outbound_box:
+        pose:
+          sampler_cfg:
+            low: [-0.06, 0.03, -0.0872665]
+            high: [0.02, 0.03, 0.2181662]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_box_yaw_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_yaw_neg_1p5x.jsonl
+    variations:
+      outbound_box:
+        pose:
+          sampler_cfg:
+            low: [-0.06, -0.015, -0.1308997]
+            high: [0.02, 0.02, -0.1308997]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_box_yaw_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_box_yaw_pos_1p5x.jsonl
+    variations:
+      outbound_box:
+        pose:
+          sampler_cfg:
+            low: [-0.06, -0.015, 0.3272492]
+            high: [0.02, 0.02, 0.3272492]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_bench_z_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_bench_z_neg_1p5x.jsonl
+    variations:
+      packing_bench:
+        height:
+          sampler_cfg:
+            low: [-0.06]
+            high: [-0.06]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_bench_z_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_bench_z_pos_1p5x.jsonl
+    variations:
+      packing_bench:
+        height:
+          sampler_cfg:
+            low: [0.0225]
+            high: [0.0225]
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_base_x_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+      base_jitter_low: [-0.015, -0.02, -2.5]
+      base_jitter_high: [-0.015, 0.015, 2.0]
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_x_neg_1p5x.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_base_x_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+      base_jitter_low: [0.03, -0.02, -2.5]
+      base_jitter_high: [0.03, 0.015, 2.0]
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_x_pos_1p5x.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_base_y_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+      base_jitter_low: [-0.01, -0.03, -2.5]
+      base_jitter_high: [0.02, -0.03, 2.0]
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_y_neg_1p5x.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_base_y_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+      base_jitter_low: [-0.01, 0.0225, -2.5]
+      base_jitter_high: [0.02, 0.0225, 2.0]
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_y_pos_1p5x.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_base_yaw_neg_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+      base_jitter_low: [-0.01, -0.02, -3.75]
+      base_jitter_high: [0.02, 0.015, -3.75]
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_yaw_neg_1p5x.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
+  invoice_202x276_base_yaw_pos_1p5x:
+    environment:
+      invoice_sheet: invoice_202x276
+      base_jitter_low: [-0.01, -0.02, 3.0]
+      base_jitter_high: [0.02, 0.015, 3.0]
+    environment_builder:
+      seed: 9200
+      recorded_variation_samples_path: outputs/db_conditions/db_l3_ga_s/invoice_202x276_base_yaw_pos_1p5x.jsonl
+    policy:
+      type: dexbench_arena.policy.hold_pose_policy.HoldPosePolicy
