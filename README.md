@@ -14,6 +14,7 @@
   <a href="https://dexbench.ai/#leaderboard"><img src="docs/media/dexbench/link-leaderboard.svg" alt="Leaderboard" height="36"></a>
   <a href="docs/Getting_Started.md"><img src="docs/media/dexbench/link-documentation.svg" alt="Documentation" height="36"></a>
   <a href="https://huggingface.co/collections/RLWRLD/dexbench"><img src="docs/media/dexbench/link-hugging-face.svg" alt="Hugging Face" height="36"></a>
+  <a href="https://docs.manifold.bifrost.ai/benchmarks/dexbench"><img src="docs/media/dexbench/link-manifold.svg" alt="Manifold" height="36"></a>
   <img src="docs/media/dexbench/report-coming-soon.svg" alt="Tech Report on arXiv — Coming soon" height="36">
 </p>
 
@@ -42,6 +43,8 @@ Explore [all tasks and demonstrations](https://dexbench.ai/#tasks) on the websit
 
 ## Get started
 
+### Installation
+
 This release includes **evaluation and OpenXR teleoperation**. Training datasets are
 available on Hugging Face; data-generation and model-training scripts are not included.
 
@@ -51,6 +54,14 @@ available on Hugging Face; data-generation and model-training scripts are not in
 
 The simulator needs an NVIDIA GPU with RT cores; the policy server can run on a separate machine.
 
+### Run on Manifold
+
+To avoid downloading assets, building Docker images and finding an RT-core GPU, run DexBench
+on [Manifold](https://docs.manifold.bifrost.ai/benchmarks/dexbench). A single command splits
+the evaluation across parallel cloud GPUs, connects to your policy wherever it runs, and
+returns results with failure analysis and episode replays. At launch, your first DexBench
+runs are free.
+
 ## Resources
 
 | Resource | Contents |
@@ -59,6 +70,7 @@ The simulator needs an NVIDIA GPU with RT cores; the policy server can run on a 
 | [Datasets](https://huggingface.co/datasets/RLWRLD/DexBench-datasets) | Per-task and multitask demonstrations in LeRobot v3.0 format |
 | [Teleoperation](docs/Getting_Started.md#6-teleoperate-with-a-meta-quest-over-openxr) | Meta Quest setup and demonstration recording |
 | [Leaderboard submissions](docs/Leaderboard_Submission.md) | Required results and submission format |
+| [Manifold](https://docs.manifold.bifrost.ai/benchmarks/dexbench) | Hosted DexBench evaluation on cloud GPUs, with failure reports and episode replays |
 
 ## License
 
