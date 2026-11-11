@@ -103,14 +103,14 @@ Every simulator runs `run_benchmark_cell.py` from one checkout of this repo (one
 submodules, its assets and the benchmark's runtime inputs. On one host that is your checkout; on a cluster it is a
 copy on the shared volume, staged once per commit. Build it from the published sources with one command, on a host
 that mounts the volume, as your normal (non-root) user, not from inside a container or pod: files a container writes
-into `assets/` belong to its user (often root), and the next `git lfs pull` there then fails.
+into `assets/` belong to its user (often root), and the next asset download there then fails.
 
 ```bash
 scripts/evaluation/eval_launch/stage_tree.sh <commit> <volume>/<you>/trees/<12-char commit>
 ```
 
 It clones the repository your checkout came from (its `origin` remote; `--repo <url>` names another), so the commit must
-be one that repository has. It needs git, git-lfs, the `hf` CLI and python3, and the credentials git and `hf` already
+be one that repository has. It needs git, the `hf` CLI and python3, and the credentials git and `hf` already
 use (a git credential helper for GitHub and huggingface.co, `HF_TOKEN` or `HF_TOKEN_PATH`, `hf auth login`; an SSH
 `origin`, such as `git@github.com:...`, needs an SSH key for it on the staging host, or pass `--repo https://...`), with
 a token that can read the assets and datasets repositories; it never prints one. It refuses to run as root, and an
@@ -118,11 +118,10 @@ existing destination. It builds in `<dest>.partial` and renames it to `<dest>` o
 the manual steps:
 
 ```bash
-GIT_LFS_SKIP_SMUDGE=1 git clone --no-checkout <this repo> <tree> && cd <tree>
-git lfs install --local --skip-smudge --skip-repo     # before the checkout: no pointer is smudged at it
-GIT_LFS_SKIP_SMUDGE=1 git checkout --detach <commit>
+git clone --no-checkout <this repo> <tree> && cd <tree>
+git checkout --detach <commit>
 GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive submodule/isaaclab_arena
-git lfs pull --include="assets/**" --exclude=""      # the assets' payloads, from the Hugging Face LFS endpoint in .lfsconfig
+./scripts/download_assets.sh                          # assets/: the Hugging Face snapshot that reproducibility/assets.lock.json pins
 ./scripts/download_datasets.sh --eval-conditions     # outputs/db_conditions/ (the frozen rows, each checked)
                                                       # and outputs/db_h3_inputs/ (Hotel - Task 3's input package)
 git rev-parse HEAD > .source-commit                   # the commit the pods hold the tree to

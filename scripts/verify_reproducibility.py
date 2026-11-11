@@ -4,7 +4,9 @@
 """Check that what runs is what the commit says.
 
 The pins are the commit itself: the assets subtree OID (or the assets gitlink of a
-commit that has one) fixes ``assets/``; submodule gitlinks fix ``submodule/isaaclab_arena`` and, through
+commit that has one) fixes ``assets/``; a checkout that downloads its assets instead
+(RLWRLD/DexBench) pins them in ``reproducibility/assets.lock.json`` by the id of the tree
+its Hugging Face snapshot was uploaded from; submodule gitlinks fix ``submodule/isaaclab_arena`` and, through
 it, IsaacLab and Isaac-GR00T. The ``ARG``
 lines and ``pip install ...==`` pins of ``docker/Dockerfile`` fix the base
 image digest, the image tag and the package versions; ``docker/cloudxr_quest3.env`` is the
@@ -19,7 +21,7 @@ failure, not a skipped check (a pin that cannot be read says "initialise the sub
 it never passes), and a git command that fails raises instead of reading as "clean".
 
 * ``--check host``: the working tree matches the commit (assets checkout on the pin, clean,
-  LFS payload present; the submodule objects available; the mounted CloudXR profile
+  LFS payload present, or the downloaded snapshot the lock pins, file by file; the submodule objects available; the mounted CloudXR profile
   identical to the committed one) and the dataset directory exists;
 * ``--check image``: the image's labels and recording packages against the commit;
 * ``--check cloudxr``: the running CloudXR server's marker, socket and container;
@@ -45,6 +47,9 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "source" / "dexbench_arena"))
 from dexbench_arena.recording.git_status import GitUnavailable, git_dirty_paths  # noqa: E402
+from dexbench_arena.assets.snapshot import (  # noqa: E402
+    ASSETS_LOCK, extra_files, file_mismatches, locked_assets_tree, parse_lock, read_receipt,
+)
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -83,7 +88,7 @@ PIN_HINTS = {
     "isaaclab_arena": "the commit carries no submodule/isaaclab_arena gitlink",
     "isaaclab": "initialise IsaacLab-Arena: git submodule update --init submodule/isaaclab_arena",
     "isaac_groot": "initialise IsaacLab-Arena: git submodule update --init submodule/isaaclab_arena",
-    "assets": "the commit carries no assets subtree or legacy gitlink",
+    "assets": f"the commit carries no assets subtree, legacy gitlink or {ASSETS_LOCK}",
     "base_image": "selected Dockerfile has no ARG BASE_IMAGE in this commit",
     "image_tag": "selected Dockerfile has no ARG DEXBENCH_IMAGE_TAG in this commit",
     "cloudxr_profile_sha256": f"{CLOUDXR_PROFILE} is not in this commit",
@@ -184,12 +189,31 @@ def gitlink(path: str, *, revision: str, cwd: Path) -> str | None:
 
 
 def asset_revision(*, revision: str, cwd: Path) -> str | None:
-    """The assets tree OID, or the assets gitlink OID of a commit that pins assets as a submodule."""
+    """The assets tree OID, or the assets gitlink OID of a commit that pins assets as a submodule, or for a commit
+    that downloads its assets the tree OID its ``ASSETS_LOCK`` names."""
     try:
         fields = _run("git", "ls-tree", revision, "assets", cwd=cwd).split()
     except (OSError, subprocess.CalledProcessError):
         return None
-    return fields[2] if len(fields) >= 3 and fields[1] in {"tree", "commit"} else None
+    if len(fields) >= 3 and fields[1] in {"tree", "commit"}:
+        return fields[2]
+    lock = git_show(ASSETS_LOCK, revision=revision, cwd=cwd)
+    return locked_assets_tree(lock.decode("utf-8", "replace")) if lock is not None else None
+
+
+def asset_lock(*, revision: str, cwd: Path) -> dict | None:
+    """The ``ASSETS_LOCK`` of a commit that downloads its assets (no assets tree or gitlink), or None."""
+    blob = git_show(ASSETS_LOCK, revision=revision, cwd=cwd)
+    if blob is None or _run_ok("git", "rev-parse", "--verify", "-q", f"{revision}:assets", cwd=cwd):
+        return None
+    try:
+        return parse_lock(blob.decode("utf-8", "replace"))
+    except ValueError:
+        return None
+
+
+def _run_ok(*args: str, cwd: Path | None = None) -> bool:
+    return subprocess.run(args, cwd=cwd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
 
 
 def git_has_commit(commit: str, cwd: Path) -> bool:
@@ -364,16 +388,28 @@ def worktree_state(root: Path, pins: dict[str, Any]) -> dict[str, Any]:
     """How the working tree at ``root`` relates to the commit's pins."""
     assets = root / "assets"
     legacy = bool(pins.get("source") and gitlink("assets", revision=pins["source"], cwd=root))
+    lock = asset_lock(revision=pins["source"], cwd=root) if pins.get("source") and not legacy else None
     profile = root / CLOUDXR_PROFILE
     state: dict[str, Any] = {
         "dirty": git_dirty_paths(root),
         "assets_initialised": (assets / ".git").exists() if legacy else assets.is_dir(),
+        "assets_lock": lock,
         "assets_head": None,
         "assets_untracked": [],
         "assets_mismatches": [],
         "cloudxr_profile_sha256": _sha256_file(profile) if profile.is_file() else None,
     }
-    if state["assets_initialised"] and pins.get("assets"):
+    if state["assets_initialised"] and pins.get("assets") and lock is not None:
+        receipt = read_receipt(assets)
+        if receipt is None:
+            state["assets_mismatches"] = ["asset-upload-manifest.json: missing; the download did not finish"]
+        else:
+            state["assets_head"] = receipt.get("source_assets_tree")
+            if receipt.get("repository") != lock["repo_id"]:
+                state["assets_mismatches"].append(f"a snapshot of {receipt.get('repository')!r}, not {lock['repo_id']}")
+            state["assets_mismatches"] += file_mismatches(assets, receipt)
+            state["assets_untracked"] = extra_files(assets, receipt)
+    elif state["assets_initialised"] and pins.get("assets"):
         state["assets_head"] = git_head(assets) if legacy else asset_revision(revision="HEAD", cwd=root)
         state["assets_untracked"] = git_dirty_paths(assets) if legacy else git_dirty_paths(root, ("assets",), all_untracked=True)
         state["assets_mismatches"] = tree_mismatches(assets, pins["assets"])
@@ -388,7 +424,26 @@ def check_host(checks: Checks, pins: dict[str, Any], root: Path, datasets_root: 
         return None
 
     if pins["assets"] is None:
-        checks.fail("the commit carries no assets subtree or legacy gitlink")
+        checks.fail(f"the commit carries no assets subtree, legacy gitlink or {ASSETS_LOCK}")
+    elif state["assets_lock"] is not None:
+        lock = state["assets_lock"]
+        snapshot = f"{lock['repo_id']}@{lock['revision']}"
+        if not state["assets_initialised"]:
+            checks.fail(f"assets/ is missing; download {snapshot}: ./scripts/download_assets.sh")
+        else:
+            checks.equal("working tree: assets snapshot (the assets tree it was uploaded from)",
+                         state["assets_head"], pins["assets"])
+            if state["assets_mismatches"]:
+                shown = "; ".join(state["assets_mismatches"][:5])
+                checks.fail(f"assets files differ from {snapshot} ({len(state['assets_mismatches'])}): {shown}; "
+                            "run ./scripts/download_assets.sh")
+            else:
+                checks.ok(f"assets files are {snapshot}'s (by size and sha256)")
+            if state["assets_untracked"]:
+                checks.fail(f"assets/ has files {snapshot} does not have ({len(state['assets_untracked'])}): "
+                            f"{state['assets_untracked'][:5]}; ./scripts/download_assets.sh --prune deletes them")
+            else:
+                checks.ok("assets/ has nothing on top of the snapshot")
     elif not state["assets_initialised"]:
         checks.fail("assets payload directory is missing; restore the assets tree (initialise assets for a legacy gitlink)")
     else:
@@ -607,7 +662,10 @@ def check_profile(
             ". With Git LFS installed, run "
             f"GIT_LFS_SKIP_SMUDGE=1 git checkout --detach {shlex.quote(source)} there."
         )
-        if gitlink("assets", revision=source, cwd=root):
+        if asset_lock(revision=source, cwd=root) is not None:
+            checks.note("assets snapshot: ./scripts/download_assets.sh (it downloads the one that commit's "
+                        f"{ASSETS_LOCK} pins)")
+        elif gitlink("assets", revision=source, cwd=root):
             checks.note(
                 "historical assets gitlink: GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --depth 1 assets "
                 "&& git -C assets lfs pull"

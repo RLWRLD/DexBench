@@ -106,3 +106,21 @@ def test_eval_conditions_refuses_a_missing_or_changed_start_state_set(tmp_path):
     (layouts / "plum_pile_evaluation_s10001.json").write_text("{}")
     assert [problem.split(":")[0] for problem in input_problems(tmp_path, pins)] == list(pins)
     assert input_problems(tmp_path / "elsewhere", pins) == [f"{next(iter(pins))}: not in {tmp_path / 'elsewhere'}"]
+
+
+def test_the_eval_conditions_check_runs_on_python_3_10(tmp_path):
+    """--eval-conditions checks the rows with the host's python3, which is 3.10 on Ubuntu 22.04: the modules it imports
+    must not need 3.11 (hashlib.file_digest broke it). The check's own code runs on the oldest interpreter here."""
+    python = shutil.which("python3.10")
+    if python is None:
+        pytest.skip("no python3.10 on this host")
+    script = (ROOT / "scripts/download_datasets.sh").read_text()
+    imports = "\n".join(line for line in script.splitlines() if line.lstrip().startswith(("from dexbench_arena", "import json")))
+    sample = tmp_path / "rows.jsonl"
+    sample.write_bytes(b'{"seed": 1}\n')
+    code = imports.replace("    ", "") + (
+        "\nfrom dexbench_arena.evaluation.artifacts import file_sha256\nimport hashlib, sys\n"
+        "assert file_sha256(sys.argv[1]) == hashlib.sha256(open(sys.argv[1], 'rb').read()).hexdigest()\n")
+    done = subprocess.run([python, "-c", code, str(sample)], capture_output=True, text=True,
+                          env={**os.environ, "PYTHONPATH": str(ROOT / "source/dexbench_arena")})
+    assert done.returncode == 0, done.stderr

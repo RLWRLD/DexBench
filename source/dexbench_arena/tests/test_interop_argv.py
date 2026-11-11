@@ -60,26 +60,43 @@ def test_the_documented_openxr_command_selects_the_isaacteleop_stack(compute):
     assert "--disable_external_cameras" in lab_argv
     assert _value_after(lab_argv, "--task") == "dexbench_retail_v1_environment"
     assert _value_after(lab_argv, "--external_callback") == CALLBACK
-    assert lab_argv[:4] == ["--viz", "kit", "--device", "cpu"]
+    assert lab_argv[0].startswith("--kit_args=")
+    assert lab_argv[1:5] == ["--viz", "kit", "--device", "cpu"]
+
+
+def test_every_kit_args_folds_into_one_token_in_front(helper):
+    """``with_kit_args_first`` takes any number of ``--kit_args``, in either form and wherever they stand (after an
+    environment subcommand too, with spaces in a value), and leaves one token in front: DexBench's settings, then the
+    values given, in order. A second pass, as a re-spawned process makes, changes nothing."""
+    first = helper["with_kit_args_first"]
+    dexbench = " ".join(helper["DEXBENCH_KIT_ARGS"])
+    argv = shlex.split("--viz none --kit_args '--/app/foo=1 --/app/baz=3' dexbench_retail_v1_environment "
+                       "--kit_args=--/app/bar=2 --enable_cameras")
+    folded = first(argv)
+    assert folded == [f"--kit_args={dexbench} --/app/foo=1 --/app/baz=3 --/app/bar=2",
+                      "--viz", "none", "dexbench_retail_v1_environment", "--enable_cameras"]
+    assert first(folded) == folded
+    assert first(["--viz", "none"]) == [f"--kit_args={dexbench}", "--viz", "none"]
 
 
 @pytest.mark.parametrize("given", ["", " --kit_args '--/app/foo=1'", " --kit_args=--/app/foo=1"])
-def test_an_openxr_run_streams_textures_and_keeps_the_users_kit_args_last(compute, given):
-    """Geometry streaming goes off for every Lab script; the XR experience turns texture streaming off and an OpenXR run
-    turns it back on; any Kit setting the user gave comes last."""
+def test_an_openxr_run_streams_textures_and_keeps_the_users_kit_args_last(helper, compute, given):
+    """DexBench's Kit settings go first for every Lab script; the XR experience turns texture streaming off and an
+    OpenXR run turns it back on; any Kit setting the user gave comes last."""
 
     def settings(script, command):
         kit_args = [token for token in _lab_argv(compute, script, command) if token.startswith("--kit_args")]
         assert len(kit_args) == 1
         return kit_args[0].removeprefix("--kit_args=").split()
 
+    dexbench = list(helper["DEXBENCH_KIT_ARGS"])
     openxr = settings("teleop.py", f"--viz kit{given} dexbench_retail_v1_environment --teleop_device openxr")
-    assert openxr[:3] == ["--/persistent/UJITSO/geometry=false",
-                          "--/rtx-transient/resourcemanager/enableTextureStreaming=true",
-                          "--/rtx-transient/resourcemanager/texturestreaming/memoryBudget=0.25"]
-    assert openxr[3:] == (["--/app/foo=1"] if given else [])
+    assert openxr[: len(dexbench) + 2] == [*dexbench,
+                                           "--/rtx-transient/resourcemanager/enableTextureStreaming=true",
+                                           "--/rtx-transient/resourcemanager/texturestreaming/memoryBudget=0.25"]
+    assert openxr[len(dexbench) + 2 :] == (["--/app/foo=1"] if given else [])
     keyboard = settings("teleop.py", f"--viz kit{given} dexbench_retail_v1_environment --teleop_device keyboard")
-    assert keyboard == ["--/persistent/UJITSO/geometry=false", *(["--/app/foo=1"] if given else [])]
+    assert keyboard == [*dexbench, *(["--/app/foo=1"] if given else [])]
 
 
 def test_the_environment_tail_never_reaches_the_lab_script(compute):
@@ -224,7 +241,7 @@ def test_without_enable_cameras_the_lab_side_is_told_to_skip_them(compute):
 
 
 
-def test_scripts_without_the_teleop_flags_get_no_injections(compute):
+def test_scripts_without_the_teleop_flags_get_no_injections(helper, compute):
     lab_argv = _lab_argv(
         compute,
         "replay_demos.py",
@@ -232,9 +249,9 @@ def test_scripts_without_the_teleop_flags_get_no_injections(compute):
     )
 
     assert lab_argv == [
+        "--kit_args=" + " ".join(helper["DEXBENCH_KIT_ARGS"]),
         "--dataset_file",
         "d.hdf5",
-        "--kit_args=--/persistent/UJITSO/geometry=false",
         "--task",
         "dexbench_x_environment",
         "--external_callback",

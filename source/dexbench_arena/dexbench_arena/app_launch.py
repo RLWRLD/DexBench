@@ -11,13 +11,20 @@ from isaaclab_arena.utils.isaaclab_utils.simulation_app import get_app_launcher
 
 from dexbench_arena.assets.physics_variants import apply_newton_usd_parse_guard
 
-DEXBENCH_KIT_ARGS = ("--/persistent/UJITSO/geometry=false",)
+DEXBENCH_KIT_ARGS = (
+    "--/persistent/UJITSO/geometry=false",
+    "--/UJITSO/textures=false",
+)
 
 
-def with_dexbench_kit_args(kit_args: str | None) -> str:
-    """``DEXBENCH_KIT_ARGS`` followed by the caller's ``--kit_args`` value, so a setting the caller names wins."""
+def with_dexbench_kit_args(kit_args: str | None, leading: tuple[str, ...] = DEXBENCH_KIT_ARGS) -> str:
+    """``leading`` (``DEXBENCH_KIT_ARGS``) followed by the caller's ``--kit_args`` value, so a setting the caller names
+    wins."""
 
-    return " ".join((*DEXBENCH_KIT_ARGS, *([kit_args] if kit_args else [])))
+    tokens = (kit_args or "").split()
+    if tokens[: len(leading)] == list(leading):
+        return " ".join(tokens)
+    return " ".join((*leading, *tokens))
 
 
 ACTIVE_VIEWPORT_SETTING = "/isaaclab/render/active_viewport"

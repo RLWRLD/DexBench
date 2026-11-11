@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import ast
+import json
 import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -303,6 +304,25 @@ def test_code_revision_records_clean_dirty_and_unknown_trees(tmp_path, monkeypat
     assert code_revision(tmp_path, {}) == expected
     source.write_text("modified")
     assert code_revision(tmp_path, {})["dirty"] is True
+
+
+def test_a_checkout_that_downloads_its_assets_records_the_tree_its_lock_names(tmp_path):
+    """RLWRLD/DexBench has no assets/ in Git: it records the assets tree its lock names, the same id a checkout
+    with assets/ in Git records, and the downloaded assets (which Git ignores) leave it clean."""
+    def git(*args):
+        subprocess.run(["git", "-C", str(tmp_path), "-c", "user.name=Test", "-c", "user.email=test@example.org", *args],
+                       check=True, capture_output=True)
+    git("init", "-b", "duke/test")
+    (tmp_path / "reproducibility").mkdir()
+    (tmp_path / "reproducibility/assets.lock.json").write_text(json.dumps(
+        {"repo_id": "RLWRLD/DexBench-assets", "revision": "a" * 40, "source_assets_tree": "b" * 40}))
+    (tmp_path / ".gitignore").write_text("/assets/\n")
+    git("add", ".")
+    git("commit", "-m", "Fixture")
+    (tmp_path / "assets").mkdir()
+    (tmp_path / "assets/scene.usd").write_text("downloaded")
+    recorded = code_revision(tmp_path, {})
+    assert recorded["assets"] == "b" * 40 and recorded["dirty"] is False
 
 
 def test_default_source_snapshot_is_reused_but_submission_refreshes_it(tmp_path, monkeypatch):
