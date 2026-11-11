@@ -6,12 +6,13 @@ Run host commands from the repository root. Simulation commands run inside Docke
 
 ## 1. Install
 
-Prerequisites on the host: `git`, `git-lfs` (`sudo apt install git-lfs && git lfs
-install`), the Hugging Face CLI (`pip install -U huggingface_hub`), Docker with the
-NVIDIA container toolkit, and a Hugging Face account that can read
+Prerequisites on the host: `git`, `python3`, the Hugging Face CLI
+(`pip install -U huggingface_hub`), Docker with the NVIDIA container toolkit, and a
+Hugging Face account that can read
 [`RLWRLD/DexBench-assets`](https://huggingface.co/datasets/RLWRLD/DexBench-assets),
 [`RLWRLD/DexBench-eval`](https://huggingface.co/datasets/RLWRLD/DexBench-eval)
 and [`RLWRLD/DexBench-datasets`](https://huggingface.co/datasets/RLWRLD/DexBench-datasets).
+Git LFS is not necessary.
 
 **GPU.** The simulator renders every Run's cameras with Isaac Sim's RTX renderer,
 so evaluation (and teleoperation) needs an NVIDIA GPU with RT cores: a GeForce
@@ -27,10 +28,9 @@ are not necessary:
 
 ```bash
 # host
-git config --global credential.helper store
-hf auth login --add-to-git-credential
+hf auth login
 
-GIT_LFS_SKIP_SMUDGE=1 git clone git@github.com:RLWRLD/DexBench.git
+git clone git@github.com:RLWRLD/DexBench.git
 cd DexBench
 GIT_LFS_SKIP_SMUDGE=1 git submodule update --init submodule/isaaclab_arena
 GIT_LFS_SKIP_SMUDGE=1 git -C submodule/isaaclab_arena submodule update --init submodules/IsaacLab
@@ -38,22 +38,39 @@ GIT_LFS_SKIP_SMUDGE=1 git -C submodule/isaaclab_arena submodule update --init su
 
 ## 2. Assets
 
+The assets are not in Git. They are the Hugging Face dataset
+[`RLWRLD/DexBench-assets`](https://huggingface.co/datasets/RLWRLD/DexBench-assets),
+and `reproducibility/assets.lock.json` pins the commit of it that this checkout
+uses. `scripts/download_assets.sh` downloads that commit into `assets/`, which Git
+ignores:
+
 ```bash
 # host, in the checkout
-git lfs install --local --skip-smudge --skip-repo
-git lfs pull --include="assets/**"
+./scripts/download_assets.sh
 ```
 
-For part of the payload, name the folders:
-`git lfs pull --include="assets/embodiments/simready/rby1m_wujihand2_beta2/**,assets/env/e4_hotel_fb/**"`.
-An environment says which payload to restore when an asset is missing or still an
-LFS pointer. Run Git and LFS on the host as your own user, never from a container:
-files a container writes are root-owned. `assets/README.md` has the packaging
-rules.
+The script then checks every file against the snapshot's receipt
+(`assets/asset-upload-manifest.json`): the receipt must name the assets that the lock
+pins, and each file must have the size and SHA-256 that the receipt records. A
+second run downloads only the files that are missing or changed.
+
+For part of the payload, name the folders, relative to `assets/`:
+`./scripts/download_assets.sh --include "embodiments/simready/rby1m_wujihand2_beta2/**" --include "env/e4_hotel_fb/**"`.
+The script then also downloads the small files that every part needs: the indexes,
+reference views, sidecars and documents (about 7 MB; the receipt lists them with
+`"storage": "git"`). An environment says which payload to download when an asset is
+missing.
+
+After a `git pull` that changes the lock, run the script again. If the new snapshot
+no longer has a file, the check refuses it; `--prune` deletes such files. Run the
+script on the host as your own user, never from a container: files a container
+writes are root-owned. The dataset card, `assets/README.md`, lists the contents and
+the license terms.
 
 ### Asset licensing
 
-[assets/ASSET_LIST.md](../assets/ASSET_LIST.md) records the identified contributor grants, exclusions
+[`ASSET_LIST.md`](https://huggingface.co/datasets/RLWRLD/DexBench-assets/blob/main/ASSET_LIST.md)
+(`assets/ASSET_LIST.md` after the download) records the identified contributor grants, exclusions
 and generated texture sources. It is a partial attribution register, not a license
 for the entire repository. Preserve package licenses and notices; unresolved
 permissions remain unresolved.

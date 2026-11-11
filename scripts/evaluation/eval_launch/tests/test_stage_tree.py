@@ -122,6 +122,39 @@ def test_only_the_assets_lfs_payloads_are_fetched_and_checked_whatever_the_hosts
     assert (dest / "docs/figure.png").read_text().startswith("version https://git-lfs")
 
 
+def test_a_commit_that_pins_its_assets_in_a_lock_downloads_them_with_its_own_script(tmp_path):
+    """A commit without assets/ in Git (RLWRLD/DexBench) pins a Hugging Face snapshot in reproducibility/assets.lock.json:
+    the tree's own download_assets.sh fills assets/, which Git ignores, and the tracked files' sums leave it out."""
+    source = tmp_path / "source"
+    (source / "scripts").mkdir(parents=True)
+    for name, body in (("download_datasets.sh", DOWNLOAD),
+                       ("download_assets.sh", "#!/bin/bash\nmkdir -p assets && echo payload > assets/part.bin\n")):
+        (source / "scripts" / name).write_text(body)
+        (source / "scripts" / name).chmod(0o755)
+    (source / "reproducibility").mkdir()
+    (source / "reproducibility/assets.lock.json").write_text('{"repo_id": "RLWRLD/DexBench-assets"}\n')
+    (source / ".gitignore").write_text("/assets/\n")
+    _git("init", "-q", cwd=source)
+    _with_arena_submodule(source, tmp_path)
+    _git("-c", "user.name=t", "-c", "user.email=t@t", "add", ".", cwd=source)
+    _git("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "tree", cwd=source)
+    commit = _git("rev-parse", "HEAD", cwd=source)
+    tools = tmp_path / "bin"
+    tools.mkdir()
+    (tools / "hf").write_text("#!/bin/sh\nexit 0\n")
+    (tools / "hf").chmod(0o755)
+    (tmp_path / "home").mkdir()
+    environment = {**os.environ, "PATH": f"{tools}:{Path(sys.executable).parent}:{os.environ['PATH']}",
+                   "HOME": str(tmp_path / "home"), **FILE_SUBMODULES}
+    dest = tmp_path / "tree"
+    built = subprocess.run([str(PACKAGE_DIR / "stage_tree.sh"), "--repo", str(source), commit, str(dest)],
+                           env=environment, capture_output=True, text=True, timeout=300)
+    assert built.returncode == 0, built.stderr
+    assert (dest / "assets/part.bin").read_text() == "payload\n"
+    assert "assets (Hugging Face snapshot) done" in built.stdout and "assets (LFS)" not in built.stdout
+    assert not any(line.split()[1].startswith("assets/") for line in (dest / "SHA256SUMS").read_text().splitlines())
+
+
 def test_without_repo_the_tree_comes_from_the_scripts_own_checkouts_origin(tmp_path):
     """A user of another copy of the benchmark stages from their own repository: stage_tree.sh clones its checkout's
     origin, not ours. A checkout without an origin is refused, asking for --repo."""

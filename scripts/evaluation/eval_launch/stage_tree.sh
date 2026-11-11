@@ -7,17 +7,20 @@
 #      <commit>, detached;
 #   2. submodule/isaaclab_arena at its gitlink, recursively (the evaluation needs no other submodule); LFS payloads are
 #      not fetched for any of them;
-#   3. the assets' LFS payloads (git lfs pull --include="assets/**" --exclude=""), then a check that no file under
-#      assets/ is still a pointer (LFS files elsewhere, e.g. docs/, stay pointers and are not checked);
+#   3. the assets: in a commit that pins them in reproducibility/assets.lock.json (RLWRLD/DexBench), the tree's own
+#      scripts/download_assets.sh, which downloads that Hugging Face snapshot and checks every file; otherwise their
+#      LFS payloads (git lfs pull --include="assets/**" --exclude=""), then a check that no file under assets/ is
+#      still a pointer (LFS files elsewhere, e.g. docs/, stay pointers and are not checked);
 #   4. the benchmark's runtime inputs (EVAL_INPUTS below: every cell's frozen rows, checked against benchmark/frozen/,
 #      and DB-H3's input package) with the tree's own scripts/download_datasets.sh;
 #   5. .source-commit, the full commit the pods hold the tree to, and SHA256SUMS of every tracked file.
 # The launcher's own input check (plan.missing_inputs) sees whether files are there, not what they hold: this script's
 # steps are what make them right.
 # Run it on a host, as your normal user, not inside a container or pod (a container writes assets/ as its own user).
-# It refuses to run as root (files written into assets/ as root lock the next git lfs pull out, and on a shared volume
-# a non-root reader may not open them), an existing <dest> or <dest>.partial, and a missing tool (git, git-lfs, the hf
-# CLI, python3), before anything is written. Credentials are the ones git and the hf CLI already use (a git
+# It refuses to run as root (files written into assets/ as root lock the next asset download out, and on a shared
+# volume a non-root reader may not open them), an existing <dest> or <dest>.partial, and a missing tool (git, the hf
+# CLI, python3, and git-lfs unless this script's checkout pins its assets in reproducibility/assets.lock.json), before
+# anything is written. Credentials are the ones git and the hf CLI already use (a git
 # credential helper for GitHub and huggingface.co, HF_TOKEN or HF_TOKEN_PATH, hf auth login; an SSH origin, such as
 # git@github.com:..., needs an SSH key for it on this host, or --repo https://...); this script never reads,
 # writes or prints a token, and git is told not to prompt. Each step prints its time.
@@ -46,7 +49,11 @@ partial=$dest.partial
 for path in "$dest" "$partial"; do
   [ ! -e "$path" ] || { echo "stage_tree.sh: $path exists; remove it or choose another destination" >&2; exit 1; }
 done
-for tool in git git-lfs hf python3; do
+# A checkout that downloads its assets (reproducibility/assets.lock.json) needs no git-lfs; the staged commit is
+# checked again below, after its checkout.
+tools=(git hf python3)
+[ -f "$(dirname "$0")/../../../reproducibility/assets.lock.json" ] || tools+=(git-lfs)
+for tool in "${tools[@]}"; do
   command -v "$tool" >/dev/null || { echo "stage_tree.sh: $tool not found (hf: pip install huggingface_hub)" >&2; exit 1; }
 done
 # A user may have no writable home (a uid without a passwd entry, as a scheduler can set); git and hf keep their state
@@ -68,20 +75,30 @@ GIT_LFS_SKIP_SMUDGE=1 git clone --no-checkout "$repo" "$partial"
 cd "$partial"
 # Before the checkout: a host's global git-lfs filter would otherwise smudge every pointer of the commit through the
 # LFS endpoint, assets and docs alike, and fail at the checkout without a huggingface.co credential
-git lfs install --local --skip-smudge --skip-repo
+if command -v git-lfs >/dev/null; then
+  git lfs install --local --skip-smudge --skip-repo
+fi
 GIT_LFS_SKIP_SMUDGE=1 git -c advice.detachedHead=false checkout --detach "$commit"
 full=$(git rev-parse HEAD)
 step "clone at $full"
 GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --recursive submodule/isaaclab_arena
 step submodules
-git lfs pull --include="assets/**" --exclude=""
-# git lfs pull checks each object's sha256 as it downloads it, and fails itself (naming only the oid) on an object the
-# endpoint does not have; this catches what is left after a pull that ran (ls-files marks a file whose payload is not in
-# the tree with '-'). Not git lfs fsck: it checks every pointer of HEAD, docs/ included.
-pointers=$(git lfs ls-files --include="assets/**" --exclude="" | awk '$2 == "-" { print $3 }')
-[ -z "$pointers" ] || { echo "stage_tree.sh: these assets are still LFS pointers after the pull:" >&2
-                       echo "$pointers" | head -20 >&2; exit 1; }
-step "assets (LFS)"
+if [ -f reproducibility/assets.lock.json ]; then
+  # The snapshot the commit pins; the script checks every file against the snapshot's receipt.
+  ./scripts/download_assets.sh
+  step "assets (Hugging Face snapshot)"
+else
+  command -v git-lfs >/dev/null || { echo "stage_tree.sh: $full keeps its assets in Git LFS; install git-lfs" >&2
+                                     exit 1; }
+  git lfs pull --include="assets/**" --exclude=""
+  # git lfs pull checks each object's sha256 as it downloads it, and fails itself (naming only the oid) on an object
+  # the endpoint does not have; this catches what is left after a pull that ran (ls-files marks a file whose payload
+  # is not in the tree with '-'). Not git lfs fsck: it checks every pointer of HEAD, docs/ included.
+  pointers=$(git lfs ls-files --include="assets/**" --exclude="" | awk '$2 == "-" { print $3 }')
+  [ -z "$pointers" ] || { echo "stage_tree.sh: these assets are still LFS pointers after the pull:" >&2
+                         echo "$pointers" | head -20 >&2; exit 1; }
+  step "assets (LFS)"
+fi
 ./scripts/download_datasets.sh "${EVAL_INPUTS[@]}"
 step "runtime inputs (${EVAL_INPUTS[*]})"
 # These generated provenance files are not source modifications.

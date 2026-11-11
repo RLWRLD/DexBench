@@ -22,3 +22,7 @@ scripts/evaluation/eval_launch/configs/local/
 source/dexbench_policy_server/build/
 source/dexbench_policy_server/dist/
 source/dexbench_policy_server/*.egg-info/
+
+# assets/ is the RLWRLD/DexBench-assets snapshot that reproducibility/assets.lock.json pins;
+# ./scripts/download_assets.sh downloads it.
+/assets/

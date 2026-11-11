@@ -9,7 +9,6 @@
 /.cache
 /datasets
 /.venv
-/assets
 /data
 /logs
 /outputs

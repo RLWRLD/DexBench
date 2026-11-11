@@ -1,0 +1,7 @@
+{
+  "format_version": 1,
+  "note": "The assets snapshot scripts/download_assets.sh downloads into assets/: a commit of the Hugging Face dataset repo_id, and the assets/ tree it was uploaded from (its asset-upload-manifest.json records it). source_assets_tree is the assets pin that evaluation records and the Docker image labels carry.",
+  "repo_id": "RLWRLD/DexBench-assets",
+  "revision": "4302f7312b1338f875c656eba583fafd19dbc495",
+  "source_assets_tree": "448cfc320131bd30e3613cdb6954290291e7916b"
+}

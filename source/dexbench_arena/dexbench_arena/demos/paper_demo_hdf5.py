@@ -21,6 +21,7 @@ import h5py
 import numpy as np
 import warp as wp
 
+from dexbench_arena.assets.snapshot import ASSETS_LOCK, locked_assets_tree
 from dexbench_arena.variations.variation_draws import episode_variation_draws
 
 PAPER_LAYOUT_AT_EPISODE_START = "episode_start"
@@ -120,7 +121,7 @@ def collect_run_info() -> dict[str, Any]:
             "head": _git("rev-parse", "HEAD"),
             "branch": _git("rev-parse", "--abbrev-ref", "HEAD"),
             "dirty": dirty.splitlines() if dirty else [],
-            "assets_pin": _git("rev-parse", "HEAD:assets"),
+            "assets_pin": _git("rev-parse", "HEAD:assets") or locked_assets_tree(_git("show", f"HEAD:{ASSETS_LOCK}")),
         },
         "python": sys.version.split()[0],
         "packages": packages,

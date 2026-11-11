@@ -47,7 +47,7 @@ if str(SOURCE_ROOT) not in sys.path:
 from isaaclab_arena.cli.isaaclab_arena_cli import get_isaaclab_arena_cli_parser  # noqa: E402
 from isaaclab_arena.utils.isaaclab_utils.simulation_app import SimulationAppContext  # noqa: E402
 
-from dexbench_arena.app_launch import stop_unneeded_viewport_rendering  # noqa: E402
+from dexbench_arena.app_launch import stop_unneeded_viewport_rendering, with_dexbench_kit_args  # noqa: E402
 from dexbench_arena.assets.physics_variants import apply_newton_usd_parse_guard  # noqa: E402
 
 
@@ -124,6 +124,7 @@ def main() -> None:
     add_env_server_cli_args(args_parser)
     args_cli, _ = args_parser.parse_known_args()
     apply_newton_usd_parse_guard()
+    args_cli.kit_args = with_dexbench_kit_args(args_cli.kit_args)
     launcher_enable_cameras = bool(getattr(args_cli, "enable_cameras", False))
 
     with SimulationAppContext(args_cli) as sim_app_context:

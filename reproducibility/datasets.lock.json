@@ -2,7 +2,7 @@
   "format_version": 1,
   "note": "Dataset revisions consumed by scripts/download_datasets.sh. The top-level repository holds the frozen evaluation conditions (eval/db_conditions/ and eval/db_h3_inputs/), which --eval-conditions installs. multitask names the training release, which --repo-id selects, and the multitask set's path in it. Explicit --revision or DEXBENCH_DATA_REVISION overrides the pin.",
   "repo_id": "RLWRLD/DexBench-eval",
-  "revision": "c54c9c123e93541dc2e6e6128eeaa748db40a027",
+  "revision": "efc9aa12b849bd320a55b56a439930452588150c",
   "multitask": {
     "repo_id": "RLWRLD/DexBench-datasets",
     "revision": "55339ad880a9d658e4841c2650581e6b90c6488d",
