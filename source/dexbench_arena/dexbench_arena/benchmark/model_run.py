@@ -18,6 +18,8 @@ import yaml
 from isaaclab_arena.evaluation.arena_experiment_config_loader import load_arena_experiment_from_config_file
 
 import dexbench_arena.environments  # noqa: F401  -- registers the environment types the cell files name
+from dexbench_arena import REPO_ROOT
+from dexbench_arena.assets.snapshot import checkout_problems, restore_command
 from dexbench_arena.environments.manipulation.scene_environment_base import environment_cfg_snapshot
 from dexbench_arena.benchmark.models import MODEL_ENVIRONMENT, ModelEntry, model_record, plain, resolve_model
 from dexbench_arena.benchmark.protocol import (
@@ -149,6 +151,10 @@ def prepare(task: str, cell: str | None, model_key: str, output: str | Path, *, 
     source_code = code_revision(refresh=submission)
     if submission and source_code.get("dirty") is not False:
         raise ValueError("a submission requires a recorded clean evaluator checkout")
+    asset_problems = checkout_problems(REPO_ROOT) if submission else []
+    if asset_problems:
+        raise ValueError(f"a submission requires the downloaded assets unchanged ({len(asset_problems)} problems, "
+                         f"e.g. {asset_problems[0]}); run {restore_command(REPO_ROOT)} --prune")
     policy = model_policy(model, deployment, task)
     manifest_bytes = Path(manifest_path).read_bytes()
     manifest = json.loads(manifest_bytes)

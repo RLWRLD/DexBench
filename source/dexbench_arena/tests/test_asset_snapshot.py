@@ -88,3 +88,19 @@ def test_the_snapshot_must_be_the_one_the_lock_pins(tmp_path):
     problems = snapshot.snapshot_problems(tmp_path, LOCK)
     assert problems[0] == "assets/ is a snapshot of 'someone/else', not RLWRLD/DexBench-assets"
     assert problems[1].startswith(f"assets/ was uploaded from assets tree {'3' * 40}, not {TREE}")
+
+
+def test_a_submission_finds_an_asset_changed_or_added_after_a_partial_download(tmp_path):
+    """Git does not track the downloaded assets, so ``git status`` does not see a change to them: submission
+    preparation checks the files that are there instead."""
+    assert snapshot.checkout_problems(tmp_path) == []
+    (tmp_path / "reproducibility").mkdir()
+    (tmp_path / snapshot.ASSETS_LOCK).write_text(json.dumps(LOCK))
+    assets = tmp_path / "assets"
+    write_snapshot(assets, {"env/scene.usd": b"scene", "object_library/cup.usd": b"cup"})
+    (assets / "object_library/cup.usd").unlink()
+    assert snapshot.checkout_problems(tmp_path) == []
+    (assets / "env/scene.usd").write_bytes(b"other")
+    (assets / "env/extra.usd").write_bytes(b"added")
+    assert snapshot.checkout_problems(tmp_path) == [
+        "env/scene.usd: SHA-256 differs from the snapshot's", "env/extra.usd: not in the snapshot"]

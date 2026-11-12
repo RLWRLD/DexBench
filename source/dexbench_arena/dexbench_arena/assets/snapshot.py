@@ -130,9 +130,11 @@ def extra_files(assets_dir: str | Path, receipt: dict) -> list[str]:
                   if relative not in known and relative.split("/", 1)[0] != DOWNLOAD_STATE)
 
 
-def snapshot_problems(assets_dir: str | Path, lock: dict, include=()) -> list[str]:
+def snapshot_problems(assets_dir: str | Path, lock: dict, include=(), *, partial: bool = False) -> list[str]:
     """Why ``assets_dir`` is not the snapshot ``lock`` pins: no receipt, a receipt of another dataset or tree, a file
-    that differs (``file_mismatches``), and, for the whole snapshot (no ``include``), a file it does not have."""
+    that differs (``file_mismatches``), and, for the whole snapshot (no ``include``), a file it does not have.
+    With ``partial``, a file of the snapshot that ``assets_dir`` does not hold is no problem (a partial download
+    leaves it out); every file it holds is still checked, and so is a file the snapshot does not have."""
     receipt = read_receipt(assets_dir)
     if receipt is None:
         return [f"assets/{RECEIPT} is missing or unreadable: the download did not finish"]
@@ -142,7 +144,19 @@ def snapshot_problems(assets_dir: str | Path, lock: dict, include=()) -> list[st
     if receipt.get("source_assets_tree") != lock["source_assets_tree"]:
         problems.append(f"assets/ was uploaded from assets tree {receipt.get('source_assets_tree')}, "
                         f"not {lock['source_assets_tree']}: download {lock['repo_id']}@{lock['revision']}")
+    if partial:
+        root = Path(assets_dir)
+        receipt = {**receipt, "files": [entry for entry in receipt.get("files", ())
+                                        if entry.get("storage") == "git" or (root / entry["path"]).exists()]}
     problems += file_mismatches(assets_dir, receipt, include)
     if not include:
         problems += [f"{relative}: not in the snapshot" for relative in extra_files(assets_dir, receipt)]
     return problems
+
+
+def checkout_problems(root: str | Path) -> list[str]:
+    """Why the ``assets/`` of the checkout at ``root`` is not the snapshot its lock pins, as a full or partial download
+    leaves it (``snapshot_problems`` with ``partial``): a file changed or added after the download, which the
+    download's own check cannot see. Empty for a checkout that tracks ``assets/`` in Git: ``git status`` sees those."""
+    lock = read_lock(root)
+    return snapshot_problems(Path(root) / "assets", lock, partial=True) if lock is not None else []
