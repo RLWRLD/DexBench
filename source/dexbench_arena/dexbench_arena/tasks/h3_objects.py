@@ -6,7 +6,8 @@ import json
 from pathlib import Path
 import subprocess
 
-from dexbench_arena import ASSETS_DIR
+from dexbench_arena import ASSETS_DIR, REPO_ROOT
+from dexbench_arena.assets.snapshot import restore_command
 from dexbench_arena.tasks.object_axis import ObjectAxis, TaskObject
 from dexbench_arena.evaluation.artifacts import file_sha256, sha256_bytes
 
@@ -80,7 +81,8 @@ def read_h3_runtime_bundle(path, digest, *, verify_assets=True):
         if not usd.is_relative_to(root):
             raise ValueError(f"H3 asset path leaves assets/: {asset['id']}")
         if verify_assets:
-            hint = f" (pull its payload: git lfs pull --include=assets/{Path(asset['usd_path']).parent.parent}/**)"
+            package = Path(asset['usd_path']).parent.parent
+            hint = f" (restore its payload: {restore_command(REPO_ROOT, f'{package}/**')})"
             if not usd.is_file() or file_sha256(usd) != asset['sha256']:
                 raise ValueError(f"H3 asset SHA-256 mismatch: {asset['id']}{hint}")
             for relative, expected in asset['files'].items():

@@ -1,5 +1,0 @@
-# deliveries/ is vendor payload kept byte for byte; DexBench never reads it
-# (AGENTS.md), so `git lfs pull` leaves it as pointers. Fetch it on purpose with
-#   git lfs pull -I "deliveries/<vendor>/<env>/<date>/**" -X ""
-[lfs]
-	fetchexclude = deliveries/**

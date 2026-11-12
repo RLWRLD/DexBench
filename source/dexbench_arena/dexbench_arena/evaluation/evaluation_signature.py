@@ -19,6 +19,7 @@ from types import MappingProxyType
 from typing import Any
 
 from dexbench_arena import REPO_ROOT
+from dexbench_arena.assets.snapshot import ASSETS_LOCK, locked_assets_tree
 from dexbench_arena.evaluation.artifacts import numeric_draw, recorded
 
 EVALUATION_SETTINGS_KEY = "evaluation_settings"
@@ -216,7 +217,8 @@ def code_revision(root: str | Path | None = None, environ: Mapping[str, str] | N
                   *, refresh: bool = False) -> dict[str, Any]:
     """The source commit and the assets tree the env runs from, and where the commit was read
     (``revision_source``): git; else the tree's ``.source-commit`` (a git-archive staging); else
-    ``DEXBENCH_IMAGE_REVISION``; else "unknown". The assets tree comes from git only.
+    ``DEXBENCH_IMAGE_REVISION``; else "unknown". The assets pin comes from git only: the commit's
+    ``assets/`` tree, or in a checkout that downloads its assets the tree its assets lock names.
     Default calls share one source snapshot per process, returned as independent dictionaries.
     Submission preparation passes ``refresh=True`` to recheck the checkout and replace that snapshot;
     an explicit root or environment always reads afresh. Each env also caches its settings."""
@@ -260,7 +262,10 @@ def code_revision(root: str | Path | None = None, environ: Mapping[str, str] | N
                 dirty = bool(status.stdout.strip())
         except (OSError, subprocess.SubprocessError):
             pass
-    return {"revision": revision, "revision_source": source, "assets": read("rev-parse", "HEAD:assets"), "dirty": dirty}
+    assets = read("rev-parse", "HEAD:assets")
+    if assets == "unknown":
+        assets = locked_assets_tree(read("show", f"HEAD:{ASSETS_LOCK}")) or "unknown"
+    return {"revision": revision, "revision_source": source, "assets": assets, "dirty": dirty}
 
 
 def evaluation_settings(env_cfg, code: Mapping[str, str] | None = None) -> dict[str, Any]:

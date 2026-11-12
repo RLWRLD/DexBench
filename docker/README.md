@@ -117,9 +117,10 @@ smoke check does not cover them.
 ## GPU smoke check
 
 From the container shell opened above, run each backend in a separate process.
-Keep the read-only `assets` mount: environment registration reads its ordinary
-Git metadata files, although the physics scene uses only primitive shapes. The
-check does not need the LFS robot and scene payloads:
+Keep the read-only `assets` mount: environment registration reads the asset
+metadata files in it, although the physics scene uses only primitive shapes. The
+check does not use the robot and scene payloads, but it needs the downloaded
+`assets/` ([Getting started](../docs/Getting_Started.md#2-assets)):
 
 ```bash
 /isaac-sim/python.sh /opt/dexbench-smoke-simulation.py --viz none --enable_cameras --device cuda:0 --presets physx

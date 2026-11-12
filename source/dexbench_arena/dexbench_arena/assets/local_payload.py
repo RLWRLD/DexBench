@@ -6,6 +6,7 @@ from pathlib import Path
 
 import dexbench_arena
 from dexbench_arena.assets.scene_bundles import geometry_payload, runtime_usd
+from dexbench_arena.assets.snapshot import ASSETS_LOCK, restore_command
 
 
 def require_local_assets(scene, embodiment, *, environment_name: str) -> None:
@@ -42,12 +43,14 @@ def require_local_assets(scene, embodiment, *, environment_name: str) -> None:
 
     if missing:
         missing_lines = "\n".join(f"  - {path.relative_to(dexbench_arena.REPO_ROOT)}" for path in missing)
+        if (dexbench_arena.REPO_ROOT / ASSETS_LOCK).is_file():
+            source = f"assets/ is the Hugging Face snapshot that {ASSETS_LOCK} pins"
+            restore = "Download it on the host, as your own user:\n"
+        else:
+            source = "assets/ uses LFS payload from RLWRLD/DexBench-assets, see README \"Assets Reference\""
+            restore = ("Restore the payload on the host using README setup commands:\n"
+                       "  hf auth login --add-to-git-credential   # once per machine\n")
         raise FileNotFoundError(
-            f"{environment_name} needs local assets that are not present "
-            "(assets/ uses LFS payload from RLWRLD/DexBench-assets, see README "
-            "\"Assets Reference\"):\n"
-            f"{missing_lines}\n"
-            "Restore the payload on the host using README setup commands:\n"
-            "  hf auth login --add-to-git-credential   # once per machine\n"
-            "  git lfs pull --include='assets/**'"
+            f"{environment_name} needs local assets that are not present ({source}):\n"
+            f"{missing_lines}\n{restore}  {restore_command(dexbench_arena.REPO_ROOT)}"
         )

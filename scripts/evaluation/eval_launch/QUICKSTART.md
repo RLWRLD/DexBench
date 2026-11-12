@@ -1,15 +1,14 @@
 # Eval launcher: quickstart
 
 From a checkpoint to a DexBench score. Commands run from the repository root in one of two places: **on the host**,
-as your normal user (git, git-lfs, staging, `kubectl`, and planning), or **in the simulator image** (the runs).
+as your normal user (git, the asset download, staging, `kubectl`, and planning), or **in the simulator image** (the runs).
 Never write `assets/` from inside a container. [USER_GUIDE.md](USER_GUIDE.md) is the full reference, and
 [CONNECT_YOUR_POLICY.md](CONNECT_YOUR_POLICY.md) covers a model of your own.
 
 ## Before you start
 
-- **On the host:** git, git-lfs, python3 with PyYAML, and the `hf` CLI (`pip install huggingface_hub`), logged in with
-  a token that can read the assets and datasets repositories: `hf auth login --add-to-git-credential`, so that git's
-  LFS pull of `assets/` from the Hugging Face endpoint in `.lfsconfig` has the token too.
+- **On the host:** git, python3 with PyYAML, and the `hf` CLI (`pip install huggingface_hub`), logged in with
+  a token that can read the datasets repositories (`hf auth login`).
 - **The simulator image**, built on the host from the recipe in docker/README.md: its
   two `git submodule update` lines, then `python3 docker/build.py`. Start it with that file's `docker run`
   line, which mounts `assets/` read-only and `outputs/` from the host: the image holds the source as it was built, so
@@ -23,7 +22,7 @@ the image, and `launch.sh` refuses them on a host's `python3`.
 
 ## 1. Stage the tree, once per commit (on the host)
 
-A launch runs from one checkout, which must hold the assets' LFS payloads and the benchmark's frozen inputs. On a
+A launch runs from one checkout, which must hold the assets' payloads and the benchmark's frozen inputs. On a
 cluster, build it on the shared volume from a host that mounts it, as your normal (non-root) user (it clones your
 checkout's `origin`; `--repo <url>` names another):
 
@@ -34,7 +33,7 @@ scripts/evaluation/eval_launch/stage_tree.sh <commit> <volume>/<you>/trees/<12-c
 On one host, your checkout can be the tree:
 
 ```bash
-git lfs pull --include="assets/**" --exclude=""
+./scripts/download_assets.sh
 ./scripts/download_datasets.sh --eval-conditions   # outputs/db_conditions/ and outputs/db_h3_inputs/, each checked
 ```
 

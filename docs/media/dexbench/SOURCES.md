@@ -24,4 +24,5 @@ rights remain with their respective owners.
 
 The `link-*.svg` navigation banners and `report-coming-soon.svg` status banner are original vector artwork for this
 README, using the website's teal and dark palette. They contain no external
-fonts or image dependencies.
+fonts or image dependencies. The Manifold team drew `link-manifold.svg` in the same style when they
+contributed the README's Manifold section to RLWRLD/DexBench.

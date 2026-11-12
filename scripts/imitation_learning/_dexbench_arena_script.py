@@ -15,7 +15,7 @@ import signal
 import sys
 from pathlib import Path
 
-from dexbench_arena.app_launch import DEXBENCH_KIT_ARGS
+from dexbench_arena.app_launch import DEXBENCH_KIT_ARGS, with_dexbench_kit_args
 from dexbench_arena.assets.physics_variants import apply_newton_usd_parse_guard
 from dexbench_arena.benchmark.protocol import launcher_hook_variables
 from dexbench_arena.evaluation.experiment_backend import experiment_run_collection_rows, experiment_run_command_line
@@ -972,6 +972,7 @@ def _run_upstream_script(
     if not script_path.exists():
         raise FileNotFoundError(f"Missing upstream Arena script: {script_path}")
 
+    sys.argv[1:] = with_kit_args_first(sys.argv[1:])
     runpy.run_path(str(script_path), run_name="__main__")
 
 
@@ -1128,6 +1129,15 @@ def _take_flag(tokens: list[str], flag: str, *, has_value: bool) -> tuple[list[s
     return kept, taken
 
 
+def with_kit_args_first(argv: list[str], leading: tuple[str, ...] = DEXBENCH_KIT_ARGS) -> list[str]:
+    """``argv`` with its ``--kit_args`` (either form, any number of them) replaced by one ``--kit_args=`` token in
+    front: ``leading`` (``DEXBENCH_KIT_ARGS``), then the values given, in order, so a setting the user names wins."""
+    rest, given = _take_flag(argv, "--kit_args", has_value=True)
+    values = [token.partition("=")[2] if token.startswith("--kit_args=") else token
+              for token in given if token != "--kit_args"]
+    return ["--kit_args=" + with_dexbench_kit_args(" ".join(values), leading), *rest]
+
+
 def _head_runs_headless(head: list[str]) -> bool:
     """Whether the launcher flags ask for no visualizer -- the headless form."""
 
@@ -1271,11 +1281,7 @@ def _compute_lab_argv(script_name: str, argv: list[str]) -> tuple[list[str], lis
         if not _flag_present(head, tail, "--enable_cameras"):
             lab_argv.append("--disable_external_cameras")
 
-    lab_argv, given = _take_flag(lab_argv, "--kit_args", has_value=True)
-    given_values = [token.partition("=")[2] if token.startswith("--kit_args=") else token
-                    for token in given if token != "--kit_args"]
-    lab_argv.append("--kit_args=" + " ".join((*DEXBENCH_KIT_ARGS, *(OPENXR_KIT_ARGS if openxr else ()),
-                                              *given_values)))
+    lab_argv = with_kit_args_first(lab_argv, (*DEXBENCH_KIT_ARGS, *(OPENXR_KIT_ARGS if openxr else ())))
 
     if script_name == "record_demos.py":
         reset_flags = ("--reset_sim_buffer_each_episode", "--no-reset_sim_buffer_each_episode")
@@ -1605,6 +1611,7 @@ def run_upstream_evaluation_module(
 
     sys.argv[0] = wrapper_path
     os.environ["DEXBENCH_TELEOP_TRACE_TRUNCATE"] = "0"
+    sys.argv[1:] = with_kit_args_first(sys.argv[1:])
 
     module = importlib.import_module(module_name)
     module_file = Path(getattr(module, "__file__", "") or "").resolve()

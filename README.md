@@ -76,4 +76,4 @@ runs are free.
 
 RLWRLD-authored code is licensed under [Apache-2.0](LICENSE); see [NOTICE](NOTICE).
 Assets, datasets, models and runtime binaries retain their own terms.
-See [asset attribution](assets/ASSET_LIST.md) for the asset-specific notices.
+See [asset attribution](https://huggingface.co/datasets/RLWRLD/DexBench-assets/blob/main/ASSET_LIST.md) for the asset-specific notices.

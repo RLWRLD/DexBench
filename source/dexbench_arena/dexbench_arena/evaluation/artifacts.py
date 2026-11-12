@@ -20,8 +20,11 @@ def sha256_bytes(data: bytes) -> str:
 
 
 def file_sha256(path: str | Path) -> str:
+    digest = hashlib.sha256()
     with Path(path).open("rb") as handle:
-        return hashlib.file_digest(handle, "sha256").hexdigest()
+        for block in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
 
 
 def read_jsonl(path: str | Path) -> tuple[str, list[dict]]:

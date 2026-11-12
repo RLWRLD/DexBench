@@ -103,7 +103,8 @@ def test_the_evaluation_module_launcher_keeps_argv0_on_the_wrapper(monkeypatch):
         "dexbench_test_stub_runner", wrapper_path="/dexbench/scripts/evaluation/experiment_runner.py"
     )
 
-    assert seen["argv"] == ["/dexbench/scripts/evaluation/experiment_runner.py", "--chunk_size", "1"]
+    assert seen["argv"] == ["/dexbench/scripts/evaluation/experiment_runner.py",
+                            "--kit_args=" + " ".join(launcher.DEXBENCH_KIT_ARGS), "--chunk_size", "1"]
     assert os.environ["DEXBENCH_TELEOP_TRACE_TRUNCATE"] == "0"
 
 
